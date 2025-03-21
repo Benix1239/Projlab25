@@ -9,7 +9,7 @@ public class Fonal extends Osszekoto
         super();
     }
 
-    Gombasz getTartozik()
+    public Gombasz getTartozik()
     {
         return null;
     }

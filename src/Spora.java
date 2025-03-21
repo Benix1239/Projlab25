@@ -11,6 +11,10 @@ public abstract class Spora
         
     }
 
-    abstract void hatas(Bogar b);
+    int getPluszpont(){
+        return plusszpont;
+    }
+
+    public abstract void hatas(Bogar b);
     
 }
