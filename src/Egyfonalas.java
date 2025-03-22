@@ -4,8 +4,8 @@ public class Egyfonalas extends Tekton
 {
     boolean lehet;
 
-    Egyfonalas(Gombatest test, ArrayList<Spora> spo, ArrayList<Fonal> ossze, ArrayList<Tekton> szom /*, int plusz*/){
-        super(test, spo, ossze, szom);
+    Egyfonalas(Gombatest test, ArrayList<Spora> spo, ArrayList<Fonal> ossze, ArrayList<Tekton> szom /*, int plusz*/,int nev){
+        super(test, spo, ossze, szom, nev);
         lehet=true;
     }
 

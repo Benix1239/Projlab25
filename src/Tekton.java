@@ -10,14 +10,16 @@ public class Tekton
 	ArrayList<Tekton> szomszed;
 	int eletkor;
 	int pluszPont;
+	int id;
 
 	//Paraméter nélküli konstruktor tesztekhez
-	Tekton(Gombatest test, ArrayList<Spora> spo, ArrayList<Fonal> ossze, ArrayList<Tekton> szom /*, int plusz*/ ){
+	Tekton(Gombatest test, ArrayList<Spora> spo, ArrayList<Fonal> ossze, ArrayList<Tekton> szom /*, int plusz*/, int nev ){
 		this.gombatest=test;
 		this.sporak=spo;
 		this.osszekoto=ossze;
 		this.szomszed=szom;
 		eletkor=1;
+		this.id=nev;
 		/*this.pluszPont = plusz 
 		Random random = new Random();
 		pluszPont=random.nextInt(5);
@@ -33,16 +35,9 @@ public class Tekton
 	}
 
 	void mindenFonalElszakad(){
-		ArrayList<Gombasz> torlendoFonalGombaszai=new ArrayList<>();
-				for (Fonal elem : osszekoto) {										//Kigyujtjuk hogy mely gombaszokhoz kell meghívni az elszakadas kezelest							
-					if(!torlendoFonalGombaszai.contains(elem.getTartozik())) {
-						torlendoFonalGombaszai.add(elem.getTartozik());
-					}
-				}
-				//meghivjuk az elszakadas kezelest minden gombasznal
-				for (Gombasz elem : torlendoFonalGombaszai) {
-					elem.elszakadasDfsKezeles();					//dfs gondolom majd torli a fonalakat a fonalElszakad fuggvenemmel, ami nem latszik a szekvencia diagrammon
-				}
+		for(Fonal elem : osszekoto){
+			fonalElszakad(elem);
+		}
 	}
 
 	//uj tekton szomszed listaja
@@ -75,8 +70,9 @@ public class Tekton
 	}
 		
 
-	Tekton tores(int toresarany)
+	Tekton tores()
 	{
+		int toresarany=eletkor*5+20;
 		//ha szettorik a tekton
 		if(torikE(toresarany)){
 			//ha a tekton van fonal
@@ -84,7 +80,7 @@ public class Tekton
 				mindenFonalElszakad();
 			}
 			ArrayList<Spora> ujSporak=new ArrayList<>();
-			ujSporak=ujTektonSorakListaja();			
+			ujSporak=ujTektonSporakListaja();			
 			Tekton ujTekton=new Tekton(null,ujSporak,null,ujTektonSzomszedListajanakBeallitasa());
 			sajatSporaimBeallitasa(ujSporak);
 			ujSzomszedaimBeallaitasa();
@@ -93,7 +89,7 @@ public class Tekton
 		return null;
 	}
 
-	ArrayList<Spora> ujTektonSorakListaja(){
+	ArrayList<Spora> ujTektonSporakListaja(){
 		ArrayList<Spora>uj=new ArrayList<>();
 		Random random = new Random();
 		if(sporak.size()!=0){
@@ -124,9 +120,17 @@ public class Tekton
 	void fonalElszakad(Fonal fonal){
 		for (Fonal elem : osszekoto) {
 			if(elem==fonal || elem.equals(fonal)){
+				for(Fonal elem1 : elem.getHova().getFonalLista()){
+					if(elem1.getHova()==this){
+						elem.getHova().getFonalLista().remove(elem1);
+					}
+				}
 				osszekoto.remove(elem);
+				
 			}
 		}
+		fonal.getTartozik().elszakadasDfsKezeles();
+		
 	}
 
 	int hanyFonalaVanGombasznak(Gombasz g){
@@ -151,7 +155,7 @@ public class Tekton
 
 	boolean tudEpulni(Gombasz g){
 		boolean tud=false;
-		if(hanyFonalaVanGombasznak(g)>=1 && hanySporajaVanGombasznak(g)>=5 ){
+		if(hanyFonalaVanGombasznak(g)>=1 && hanySporajaVanGombasznak(g)>=5 && gombatest==null ){
 			return tud;
 		}
 		return tud;
@@ -190,6 +194,10 @@ public class Tekton
 		return tektonok;
 
 	}
+
+	ArrayList<Fonal> getFonalLista(){
+		return osszekoto;
+	}
 	
 
 	void addSpora(Spora s)
@@ -226,6 +234,12 @@ public class Tekton
 		}
 		return null;
 	}
+
+	void setEletkorNoveles(){
+		eletkor++;
+	}
+
+
 
  
 }
