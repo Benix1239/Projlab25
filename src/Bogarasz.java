@@ -22,56 +22,13 @@ public class Bogarasz extends Jatekos
 
             switch (actionValasztas) {
                 case 1:
-                    if(bogar.getMozgaspont()!=0){
-                        helyzet= bogar.getHelyzet();
-                        fonalak = helyzet.fonalKeres();
-                        ArrayList<Tekton> lehetsegesLepes=null;
-                        for (Fonal fonal : fonalak) {
-                            lehetsegesLepes.add(fonal.getHova());
-                        }
-
-                        
-                        System.out.println("Melyik tektonra szeretnél lépni?");
-                        
-                        for (int i=0;i<lehetsegesLepes.size();i++) {
-                            System.out.println(i+". "+lehetsegesLepes.get(i).getNev());
-                
-                        }
-                        int lepesValasztas = bemenet.nextInt();
-                        Tekton hova= lehetsegesLepes.get(lepesValasztas-1);
-                        bogar.mozgas(hova);
-                    }
-                    else{
-                        System.out.println("Már nem tudsz mozogni a körben");
-                    }
+                    lep();
                     break;
                 case 2:
-                    if(bogar.getactionEves()==true){
-                        if (bogar.getHelyzet().sporak!=null) {
-                            bogar.eves();
-                        }
-                        else{
-                            System.out.println("Nincs a tektonon spóra");
-                        }
-                    }
-                    else{
-                        System.out.println("Már ettél a körben");
-                    }
+                    eves();
                     break;
                 case 3:
-                    if(bogar.getactionRagas()==true){
-                        helyzet= bogar.getHelyzet();
-                        fonalak = helyzet.fonalKeres();
-                        System.out.println("Melyik fonalat szeretnéd elrágni?");
-                        for (int i=0;i<fonalak.size();i++) {
-                            System.out.println(i+". fonal amely a "+ fonalak.get(i).getHova().getNev()+"ra ér");
-                        }
-                        int ragasValasztas = bemenet.nextInt();
-                        bogar.ragas(fonalak.get(ragasValasztas-1));
-                    }
-                    else{
-                        System.out.println("Már rágtál a körben");
-                    }
+                    ragas();
                     break;
                 default:
                     System.out.println("Érvénytelen menüpontot választottál");
@@ -86,6 +43,63 @@ public class Bogarasz extends Jatekos
         }
 
         bogar.sporaMegemesztes();
+    }
+
+    void lep(){
+        if(bogar.getMozgaspont()!=0){
+            Scanner bemenet = new Scanner(System.in);
+            Tekton helyzet= bogar.getHelyzet();
+            ArrayList<Fonal> fonalak = helyzet.fonalKeres();
+            ArrayList<Tekton> lehetsegesLepes=null;
+            for (Fonal fonal : fonalak) {
+                lehetsegesLepes.add(fonal.getHova());
+            }
+
+            
+            System.out.println("Melyik tektonra szeretnél lépni?");
+            
+            for (int i=0;i<lehetsegesLepes.size();i++) {
+                System.out.println(i+". "+lehetsegesLepes.get(i).getNev());
+    
+            }
+            int lepesValasztas = bemenet.nextInt();
+            Tekton hova= lehetsegesLepes.get(lepesValasztas-1);
+            bogar.mozgas(hova);
+        }
+        else{
+            System.out.println("Már nem tudsz mozogni a körben");
+        }
+    }
+
+    void eves(){
+        if(bogar.getactionEves()==true){
+            if (bogar.getHelyzet().sporak!=null) {
+                bogar.eves();
+            }
+            else{
+                System.out.println("Nincs a tektonon spóra");
+            }
+        }
+        else{
+            System.out.println("Már ettél a körben");
+        }
+    }
+
+    void ragas(){
+        if(bogar.getactionRagas()==true){
+            Scanner bemenet = new Scanner(System.in);
+            Tekton helyzet= bogar.getHelyzet();
+            ArrayList<Fonal> fonalak = helyzet.fonalKeres();
+            System.out.println("Melyik fonalat szeretnéd elrágni?");
+            for (int i=0;i<fonalak.size();i++) {
+                System.out.println(i+". fonal amely a "+ fonalak.get(i).getHova().getNev()+"ra ér");
+            }
+            int ragasValasztas = bemenet.nextInt();
+            bogar.ragas(fonalak.get(ragasValasztas-1));
+        }
+        else{
+            System.out.println("Már rágtál a körben");
+        }
     }
 
     void bogarHozzaad(Bogar b,Tekton t)
