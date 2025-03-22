@@ -149,10 +149,19 @@ public class Tekton
 		return db;
 	}
 
+	boolean tudEpulni(Gombasz g){
+		boolean tud=false;
+		if(hanyFonalaVanGombasznak(g)>=1 && hanySporajaVanGombasznak(g)>=5 ){
+			return tud;
+		}
+		return tud;
+	}
+
+
 	void addFonal(Fonal f)
 	{
 		osszekoto.add(f);
-		if(hanyFonalaVanGombasznak(f.getTartozik())>=1 && hanySporajaVanGombasznak(f.getTartozik())>=5 ){
+		if(tudEpulni(f.getTartozik()) ){
 			gombaTestEpul(f.getTartozik());
 		}
 	}
@@ -186,7 +195,7 @@ public class Tekton
 	void addSpora(Spora s)
 	{
 		sporak.add(s);
-		if(hanyFonalaVanGombasznak(s.getTartozik())>=1 && hanySporajaVanGombasznak(s.getTartozik())>=5 ){
+		if(tudEpulni(s.getTartozik()) ){
 			gombaTestEpul(s.getTartozik());
 		}
 	}
