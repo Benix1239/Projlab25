@@ -1,0 +1,3 @@
+Tekton: getKoto()
+Fonal
+Osszekoto
