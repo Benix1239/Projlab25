@@ -8,7 +8,7 @@ public class Jatek
     ArrayList<Jatekos> karakterek;
 
     //konstruktor
-    Jatek(int Jatekosdb)
+    Jatek()
     {
       
     }

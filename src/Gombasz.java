@@ -7,7 +7,7 @@ public class Gombasz extends Jatekos
     ArrayList<Gombatest> testek;
     ArrayList<Tekton> palya;
 
-    Gombasz(Tekton kezdo)
+    Gombasz()
     {
     
     }
