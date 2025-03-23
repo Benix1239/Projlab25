@@ -1,61 +1,136 @@
 import java.util.ArrayList;
 
+/*
+ * @class Egyfonalas
+ * @brief Az egyfonalas tektonokat kezeli. (Erre a tektonra csak egy fonalt lehet letenni)
+ */
 public class Egyfonalas extends Tekton
 {
-    boolean lehet;
+    boolean lehet;  ///Van-e mar a tektonon fonal
 
-    Egyfonalas(ArrayList<Tekton> szom){
-        super(szom);
+    /*
+     * @brief Parameter nelkuli konstruktor
+     */
+    Egyfonalas(){
+        super();    ///Az ososztaly parameter nelkuli konstruktorat hivja
         lehet=true;
     }
 
-    boolean lehetFonalatEpiteni()
-    {
+     /*
+     * @brief Parameteres konstruktor
+     * @param spo -> A tekton spora listaja
+     * @szom -> A tekton szomszed listaja
+     */
+    Egyfonalas(ArrayList<Spora> spo, ArrayList<Tekton> szom){
+        super(spo,szom);
+        lehet=true; ///Az ososztaly parameteres konstruktorat hivja
+    }
+
+
+    /*
+     * @brief Getter
+     * @return true -> Lehet fonalat epiteni
+     * @return false -> Nem lehet fonalat epiteni
+     */
+    boolean getLehetFonalatEpiteni(){
+        szkeleton.logMethodEntry(this, "getLehetFonalatEpiteni");	///Szkeleton kiiratas fuggveny kezdetekor
+        szkeleton.logMethodExit(this, lehet);			///Szkeleton kiiratas fuggveny vegen	
         return lehet;
     }
     
+    /*
+     * @brief Setter
+     * @param leh -> Lehet -e epiteni
+     */
     void setLehet(Boolean leh){
+        szkeleton.logMethodEntry(this, "setLehet");	///Szkeleton kiiratas fuggveny kezdetekor
         this.lehet=leh;
+        szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
     }
 
-    @Override
-    boolean  addFonal(Fonal f){
-            if(lehet){
-            osszekoto.add(f);
-            if(hanyFonalaVanGombasznak(f.getTartozik())>=1 && hanySporajaVanGombasznak(f.getTartozik())>=5 ){
-                gombaTestEpul(f.getTartozik());
-            }
-        }
-            lehet=false;
-            return lehet;
-	}
 
+    /*
+     * @brief Megepiti a fonalat a tektonra.
+     * @param f -> Fonal amit a tektonra helyez
+     * @return true -> Epites sikeres
+     * @retrun false -> Sikertelen epites
+     */
     @Override
-    void mindenFonalElszakad(){
-		ArrayList<Gombasz> torlendoFonalGombaszai=new ArrayList<>();
-				for (Fonal elem : osszekoto) {										//Kigyujtjuk hogy mely gombaszokhoz kell meghívni az elszakadas kezelest							
-					if(!torlendoFonalGombaszai.contains(elem.getTartozik())) {
-						torlendoFonalGombaszai.add(elem.getTartozik());
-					}
-				}
-				//meghivjuk az elszakadas kezelest minden gombasznal
-				for (Gombasz elem : torlendoFonalGombaszai) {
-					elem.elszakadasDfsKezeles();
-                    lehet=true;					//dfs gondolom majd torli a fonalakat a fonalElszakad fuggvenemmel, ami nem latszik a szekvencia diagrammon
-				}
-	}
+    boolean addFonal(Fonal f){
+        szkeleton.logMethodEntry(this, "addFonal");	///Szkeleton kiiratas fuggveny kezdetekor
+		for(Fonal elem:osszekoto){
+			if(elem.getTartozik().equals(f.getTartozik())){
 
-    @Override
-    //elszakít egy fonalat
-	void fonalElszakad(Fonal fonal){
-		for (Fonal elem : osszekoto) {
-			if(elem==fonal || elem.equals(fonal)){
-				osszekoto.remove(elem);
-                lehet=true;
+                szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen
+
+				return false;
 			}
 		}
+		osszekoto.add(f);
+		if(tudEpulni(f.getTartozik()) ){                    ///Ha tud gombatestet is epit
+			gombaTestEpul(f.getTartozik());
+		}
+        lehet=false;                                    ///Tobbet mar ne lehessen letenni
+
+        szkeleton.logMethodExit(this, true);			///Szkeleton kiiratas fuggveny vegen
+		return true;
+
+	} 
+
+
+
+
+
+
+    /*
+     * @brief Elszakitj a tektonon levo osszes fonalat
+     */
+    @Override
+    void mindenFonalElszakad(){
+        szkeleton.logMethodEntry(this, "mindenFonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
+		for(Fonal elem : osszekoto){
+			fonalElszakad(elem);
+		}
+        lehet=true;                                 ///Ujra lehet a tektonra fonalat tenni
+        szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
+
+
+    /*
+     * @brief Elszakitja a tektonon levo adott fonalat
+     * @param fonal -> Elszakitani kivant fonal
+     */
+    @Override
+	void fonalElszakad(Fonal fonal){
+        szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
+		for (Fonal elem : osszekoto) {
+			if(elem==fonal || elem.equals(fonal)){
+				for(Fonal elem1 : elem.getHova().getFonalLista()){
+					if(elem1.getHova()==this){
+						elem.getHova().getFonalLista().remove(elem1);
+					}
+				}
+				osszekoto.remove(elem);
+				
+			}
+		}
+		fonal.getTartozik().elszakadasDfsKezeles();
+		lehet=true;                                 ///Ismet lehet fonalat epiteni a tektonra
+        szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+    /*
+     * @brief Szeteseskor szinten egy Egyfonalas tektont hozz letre
+     * @return Letrehozott tekton
+     */
+  @Override
+    Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+        szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
+        szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
+        return new Egyfonalas(spo,szom);
+    }
 
 
 
