@@ -2,16 +2,16 @@
 public abstract class Osszekoto
 {
 
-    Tekton Hova;
+    private Tekton hova;
     
-    public Osszekoto() 
+    public Osszekoto(Tekton hova) 
     {
- 
+        this.hova = hova;
     }
 
-    Tekton getHova()
+    public Tekton getHova()
     {
-        return null;
+        return hova;
     }
     
     

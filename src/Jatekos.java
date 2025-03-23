@@ -1,7 +1,7 @@
 
 
 
-public abstract class Jatekos
+public abstract class Jatekos implements serializable
 {
     int id;
     int pontok;

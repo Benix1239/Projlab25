@@ -1,17 +1,18 @@
 
 public class Fonal extends Osszekoto
 {
-    Gombasz tartozik;
+    private Gombasz tartozik;
   
 
-    public Fonal() 
+    public Fonal(Gombasz tartozik, Tekton hova) 
     {
-        super();
+        super(hova);
+        this.tartozik = tartozik;
     }
 
     Gombasz getTartozik()
     {
-        return null;
+        return tartozik;
     }
 
 }

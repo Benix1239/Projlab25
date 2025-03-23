@@ -2,15 +2,17 @@
 public class Keseru extends Spora
 {
 
-    Keseru() 
+   Keseru(Gombasz tartozik) 
     {
-        super();   
+        super(tartozik);
     }
     
-        @Override
+    @Override
     void hatas(Bogar b) 
     {
-        
+        if (b != null) {
+            b.ragasBlock();
+        }
     }
 
     

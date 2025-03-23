@@ -2,14 +2,16 @@
 public class Lassito extends Spora
 {
 
-    Lassito() 
+    Lassito(Gombasz tartozik) 
     {
-        super();
+        super(tartozik);
     }
     
     @Override
     void hatas(Bogar b) 
     {
-       b.Lassul();
-    }  
+        if (b != null) {
+            b.lassul();
+        }
+    }
 }

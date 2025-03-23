@@ -2,14 +2,16 @@
 public class Benito extends Spora
 {
 
-    Benito() 
+    Benito(Gombasz tartozik) 
     {
-        super();
+        super(tartozik);
     }
     
     @Override
     void hatas(Bogar b) 
     {
-        b.benul();
+        if (b != null) {
+            b.benul();
+        }
     }
 }

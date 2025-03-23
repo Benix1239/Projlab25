@@ -1,14 +1,14 @@
 public class Sima extends Spora
 {
-    Sima()
+    Sima(Gombasz tartozik)
     {
-        super();
+        super(tartozik);
     }
     
     @Override
     void hatas(Bogar b)
     {
-
+        // nincs hatas
     }
     
 }

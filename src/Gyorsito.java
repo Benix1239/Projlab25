@@ -2,15 +2,17 @@
 public class Gyorsito extends Spora
 {
 
-    Gyorsito() 
+    Gyorsito(Gombasz tartozik) 
     {
-      super();
+      super(tartozik);
     }
     
     @Override
-    void hatas(Bogar b) 
+    public void hatas(Bogar b) 
     {
-
+        if (b != null) {
+            b.gyorsul();
+        }
     }
     
 }

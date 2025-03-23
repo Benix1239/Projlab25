@@ -3,14 +3,14 @@
 
 public abstract class Spora 
 {
-    int plusszpont;
-    Gombasz tartozik;
+    private int pluszPont;
+    private Gombasz tartozik;
 
-    Spora()
+    Spora(Gombasz tartozik)
     {
-        
+        this.tartozik = tartozik;
     }
 
-    abstract void hatas(Bogar b);
+    public abstract void hatas(Bogar b);
     
 }

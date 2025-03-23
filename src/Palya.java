@@ -1,41 +1,54 @@
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-
-public class Palya
+public class Palya implements Serializable;
 {
-    ArrayList<Tekton> palya;
+    private ArrayList<Tekton> palya;
 
     Palya(int kezdomeret)
     {
-    
+        letrehoz(kezdomeret);
+    }
+
+    public void tektonHozzaad(Tekton t)
+    {
+        if (t != null)) {
+            palya.add(t);
+        }
         
     }
 
-    void TektonHozzaad(Tekton t)
+    public void letrehoz(int kezdomeret)
     {
-     
+        for (int i = 0; i < kezdomeret; i++) {
+            tektonHozzaad(new Tekton());
+        }
     }
 
-    void letrehoz()
-    {
-
-    }
-
-    void round(Jatekos karakterek)
+    public void round(Jatekos karakterek)
     {
 
     }
 
-    void tores()
+    public void tores()
     {
-
-    }
-
-    void felszivodo()
-    {
-        
+        for (Tekton t : palya) {
+            Tekton torott = t.tores();
+            if (torott != null) {
+                tektonHozzaad(torott);
+            }
+        }
     }
 
     
+
+    public void felszivodik()
+    {
+        for (Tekton t : palya) {
+            if (t instanceof Testetlen) {
+                t.fonalElszakadKoronkent();
+            }
+        }
+    }
 }
