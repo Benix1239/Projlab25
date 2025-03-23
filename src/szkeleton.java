@@ -439,4 +439,104 @@ public class szkeleton
 
         bogar.sporaMegemesztes();
     }
+
+    void tektonSzetesesFonalNelkulTeszt()
+    {
+        Palya jatekter = new Palya();
+        Tekton palya = new Tekton(null);
+        Tekton szomszed1 = new Tekton(null);
+        Tekton szomszed2 = new Tekton(null);
+
+        palya.addSzomszed(szomszed1);
+        palya.addSzomszed(szomszed2);
+
+        jatekter.TektonHozzaad(palya);
+        jatekter.TektonHozzaad(szomszed1);
+        jatekter.TektonHozzaad(szomszed2);
+
+        jatekter.TektonHozzaad(palya.tores());//itt bekene adni egy 0 erteket, hogy biztosan szettorjon, mert tamas megoldasaval nem megoldhato az, ami miatt direkt ugy csinatuk ahogy akartuk
+    }
+
+
+    void fonalFelszivTeszt()
+    {
+        Tekton t1 = new Tekton(null);
+        Tekton t2 = new Felszivo(null);
+        Palya jatekter = new Palya();
+        jatekter.TektonHozzaad(t1);
+        jatekter.TektonHozzaad(t2);
+        Gombasz jatekos = new Gombasz(jatekter.palya);
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        t1.addFonal(fon10);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+
+        jatekter.felszivodo();
+     
+    }
+
+    void egyFonalasHonnanTeszt()
+    {
+        Tekton t1 = new Tekton(null);
+        Tekton t2 = new Egyfonalas(null);
+        Tekton t3 = new Tekton(null);
+        Palya jatekter = new Palya();
+        jatekter.TektonHozzaad(t1);
+        jatekter.TektonHozzaad(t2);
+        jatekter.TektonHozzaad(t3);
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        t3.addSzomszed(t2);
+        t2.addSzomszed(t3);
+        Gombasz jatekos = new Gombasz(jatekter.palya);
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        t1.addFonal(fon10);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+
+        Gombatest test = new Gombatest(t1,jatekos);
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito s1 = new Lassito();
+        s1.setTartozik(jatekos);
+        test.setSpora(s1);
+
+        jatekos.fonalLerak();
+     
+    }
+
+    void egyFonalasHovaTeszt()
+    {
+        Tekton t1 = new Tekton(null);
+        Tekton t2 = new Tekton(null);
+        Tekton t3 = new Egyfonalas(null);
+        Palya jatekter = new Palya();
+        jatekter.TektonHozzaad(t1);
+        jatekter.TektonHozzaad(t2);
+        jatekter.TektonHozzaad(t3);
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        t3.addSzomszed(t2);
+        t2.addSzomszed(t3);
+        Gombasz jatekos = new Gombasz(jatekter.palya);
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        t1.addFonal(fon10);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+
+        Gombatest test = new Gombatest(t1,jatekos);
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito s1 = new Lassito();
+        s1.setTartozik(jatekos);
+        test.setSpora(s1);
+
+        jatekos.fonalLerak();
+     
+    }
 }
