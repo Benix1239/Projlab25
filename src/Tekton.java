@@ -380,12 +380,16 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 
 	void fonalElszakad(Fonal fonal){
 		//szkeleton.logMethodEntry(this, "fonalElszakad");
+		szkeleton.logMethodEntry(fonal, "getHova");
 		Tekton hova = fonal.getHova();
+		szkeleton.logMethodExit(fonal, "Hova");
 		szkeleton.logMethodEntry(fonal, "getTartozik");
         Gombasz gombasz = fonal.getTartozik();
         szkeleton.logMethodExit(fonal, "Gombasz");
         this.osszekoto.remove(fonal);
+		szkeleton.logMethodEntry(hova, "getOsszekoto");
         ArrayList<Fonal> fonalak = hova.getOsszekoto();
+		szkeleton.logMethodExit(this, "Osszekoto[]");
 
         for (Fonal fonali : fonalak) {
             if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {
