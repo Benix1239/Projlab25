@@ -4,8 +4,8 @@ public class Egyfonalas extends Tekton
 {
     boolean lehet;
 
-    Egyfonalas(Gombatest test, ArrayList<Spora> spo, ArrayList<Fonal> ossze, ArrayList<Tekton> szom /*, int plusz*/,int nev){
-        super(test, spo, ossze, szom, nev);
+    Egyfonalas(ArrayList<Tekton> szom){
+        super(szom);
         lehet=true;
     }
 
@@ -19,7 +19,7 @@ public class Egyfonalas extends Tekton
     }
 
     @Override
-    void addFonal(Fonal f){
+    boolean  addFonal(Fonal f){
             if(lehet){
             osszekoto.add(f);
             if(hanyFonalaVanGombasznak(f.getTartozik())>=1 && hanySporajaVanGombasznak(f.getTartozik())>=5 ){
@@ -27,6 +27,7 @@ public class Egyfonalas extends Tekton
             }
         }
             lehet=false;
+            return lehet;
 	}
 
     @Override

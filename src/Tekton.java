@@ -21,7 +21,10 @@ public class Tekton
 		pluszPont=random.nextInt(5);
 		*/
 	}
-
+	int getID()
+	{
+		return id;
+	}
 	//megnezzuk hogy az esely alapjan tenyleg szettorik-e a tekton
 	boolean torikE(int toresarany){
 		Random random = new Random();
@@ -158,12 +161,15 @@ public class Tekton
 	}
 
 
-	void addFonal(Fonal f)
+	boolean addFonal(Fonal f)
 	{
 		osszekoto.add(f);
 		if(tudEpulni(f.getTartozik()) ){
 			gombaTestEpul(f.getTartozik());
+			return true;
 		}
+
+		return false;
 	}
 
 	//Vissza adja az összes olyan szomszédos tektont ahová megy fonal
@@ -206,7 +212,7 @@ public class Tekton
 
 	void gombaTestEpul(Gombasz g)
 	{
-		Gombatest uj=new Gombatest(10 , null , this , g);		///faszom tudja hogyan van
+		Gombatest uj=new Gombatest(this , g);		///faszom tudja hogyan van
 		setGombatest(uj);
 		sporak=null;											///az enemy spora is eltunik??
 																///szakad el valami ??? 
@@ -235,7 +241,14 @@ public class Tekton
 		eletkor++;
 	}
 
+	ArrayList<Fonal> getKoto()
+	{
+		return this.osszekoto;
+	}
 
-
+	ArrayList<Tekton> getSzomszed()
+	{
+		return this.szomszed;
+	}
  
 }

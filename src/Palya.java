@@ -6,7 +6,7 @@ public class Palya
 {
     ArrayList<Tekton> palya;
 
-    Palya(int kezdomeret)
+    Palya()
     {
     
         

@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Felszivo extends Tekton
 {
-    Felszivo(Gombatest test, ArrayList<Spora> spo, ArrayList<Fonal> ossze, ArrayList<Tekton> szom /*, int plusz*/,int nev ){
-        super(test, spo, ossze, szom, nev);
+    Felszivo(ArrayList<Tekton> szom){
+        super(szom);
     }
 
     void fonalElszakadKoronkent(){

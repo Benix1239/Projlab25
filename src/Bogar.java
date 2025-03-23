@@ -56,11 +56,12 @@ public class Bogar
 
         helyzet.fonalElszakad(fonal);// Ez amin éppen áll a bogár
 
-        ArrayList<Fonal> fonalak = hova.fonalKeres();
+        ArrayList<Fonal> fonalak = hova.getKoto();
 
         for (Fonal fonali : fonalak) {
             if (fonali.getHova()==helyzet && fonal.getTartozik()==gombasz) {
-                hova.fonalElszakad();
+                hova.fonalElszakad(fonali);
+                continue;
             }
         }
 

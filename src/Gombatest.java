@@ -43,6 +43,11 @@ public class Gombatest
         }
     }
 
+    void setSpora(Spora s)
+    {
+        this.spora = s;
+    }
+
     public void elszor(Tekton c){
         c.addSpora(spora);
         maradt--;
@@ -103,5 +108,8 @@ public class Gombatest
         return maradt;
     }
     
-    //vmi
+    void setMaradt(int n)
+    {
+        this.maradt = n;
+    }
 }
