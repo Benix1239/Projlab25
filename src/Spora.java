@@ -28,7 +28,7 @@ public abstract class Spora
 
     int getPluszpont()
     {
-        return plusszpont;
+        return pluszPont;
     }
     /**
      * A sp�ra hat�sa egy adott bog�rra.

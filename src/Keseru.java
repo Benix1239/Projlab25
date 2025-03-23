@@ -2,9 +2,9 @@
 public class Keseru extends Spora
 {
     /**
-     * Konstruktor, amely létrehozza a Keseru spórát egy adott gombászhoz.
+     * Konstruktor, amely lï¿½trehozza a Keseru spï¿½rï¿½t egy adott gombï¿½szhoz.
      * 
-     * @param tartozik A gombász, akihez a spóra tartozik.
+     * @param tartozik A gombï¿½sz, akihez a spï¿½ra tartozik.
      */
    Keseru(Gombasz tartozik) 
     {
@@ -12,11 +12,11 @@ public class Keseru extends Spora
     }
     
     /**
-     * A Keseru spóra kifejti a hatását.
+     * A Keseru spï¿½ra kifejti a hatï¿½sï¿½t.
      * 
-     * @param b A bogár, amelyre kifejti a hatását.
+     * @param b A bogï¿½r, amelyre kifejti a hatï¿½sï¿½t.
      */
-    @Override
+    
     public void hatas(Bogar b) 
     {
         szkeleton.logMethodEntry(this, "hatas");

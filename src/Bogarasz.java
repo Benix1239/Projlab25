@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Scanner;
 
 /**
  * A Bogarasz osztály egy játékost reprezentál, aki egy bogarat irányít a játék során.
@@ -69,7 +68,7 @@ public class Bogarasz extends Jatekos
         if(bogar.getMozgaspont()!=0){
             Scanner bemenet = new Scanner(System.in);
             Tekton helyzet= bogar.getHelyzet();
-            ArrayList<Fonal> fonalak = helyzet.fonalKeres();
+            ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
             ArrayList<Tekton> lehetsegesLepes=null;
             for (Fonal fonal : fonalak) {
                 lehetsegesLepes.add(fonal.getHova());
@@ -119,7 +118,7 @@ public class Bogarasz extends Jatekos
         if(bogar.getactionRagas()==true){
             Scanner bemenet = new Scanner(System.in);
             Tekton helyzet= bogar.getHelyzet();
-            ArrayList<Fonal> fonalak = helyzet.fonalKeres();
+            ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
             System.out.println("Melyik fonalat szeretnéd elrágni?");
             for (int i=0;i<fonalak.size();i++) {
                 System.out.println(i+". fonal amely a Tekton"+ fonalak.get(i).getHova().getId()+"ra ér");

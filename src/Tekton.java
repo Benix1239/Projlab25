@@ -39,7 +39,7 @@ public class Tekton
 	* @brief Parameter nelkuli konstruktor teszteleshez
 	*/
 	Tekton(){
-		gombatest=new Gombatest();
+		gombatest = null;
 		sporak=new ArrayList<Spora>();
 		osszekoto=new ArrayList<Fonal>();
 		szomszed=new ArrayList<Tekton>();
@@ -346,7 +346,7 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		for (Fonal elem : osszekoto) {
 			if(elem==fonal || elem.equals(fonal)){					///Ha megtalaltuk a fonalat amit torolni akarunk 
 				int j=0;
-				for(Fonal elem1 : elem.getHova().getFonalLista()){	///Megkeressuk a fonal listajaban a sajat tektonunkra vezetot
+				for(Fonal elem1 : elem.getHova().getOsszekoto()){	///Megkeressuk a fonal listajaban a sajat tektonunkra vezetot
 					if(elem1.getHova()==this){
 						keresettIndexJ=j;							///Eltaraoljuk hogy a megtalalt fonal listajaban hol van a mi tektonukra vezeto fonal
 					}
@@ -357,12 +357,13 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 			
 			i++;
 		}
+		
+		if(keresettIndexJ!=-1){
+			osszekoto.get(i).getHova().getOsszekoto().remove(keresettIndexJ);	///Toroljuk a torlendo fonalat a szomszed listajabol
+		}	
 		if(keresettIndexI!=-1){
 			osszekoto.remove(i);									///Toroljuk a torlendo fonalat a fonal listankbol
 		}
-		if(keresettIndexJ!=-1){
-			osszekoto.get(i).getHova().getFonalLista().get(j).remove(keresettIndexJ);	///Toroljuk a torlendo fonalat a szomszed listajabol
-		}	
 
 
 		fonal.getTartozik().elszakadasDfsKezeles();										///Minden torles utan meghivjuk a dfs szakadas kezelest
@@ -500,10 +501,11 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @brief Getter
 	 * @return osszekoto -> Vissza adja a fonal listat
 	 */
-	ArrayList<Fonal> getFonalLista(){
-		szkeleton.logMethodEntry(this, "getFonalLista");	///Szkeleton kiiratas fuggveny kezdetekor
+	ArrayList<Fonal> getOsszekoto(){
+		szkeleton.logMethodEntry(this, "getOsszekoto");	///Szkeleton kiiratas fuggveny kezdetekor
+		szkeleton.logMethodExit(this, "ArrayList<Fonal>");			///Szkeleton kiiratas fuggveny vegen
 		return osszekoto;
-		szkeleton.logMethodExit(this, "ArrayList<Fonal>");			///Szkeleton kiiratas fuggveny vegen	
+			
 	}
 	
 
@@ -627,7 +629,10 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
 	}
 
-
+	/*
+	 * @brief kompatibilitas problema megoldas
+	 */
+	void fonalElszakadKoronkent(){}
 
  
 }

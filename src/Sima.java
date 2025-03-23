@@ -1,9 +1,9 @@
 public class Sima extends Spora
 {
     /**
-     * Konstruktor, amely létrehozza a Sima spórát egy adott gombászhoz.
+     * Konstruktor, amely lï¿½trehozza a Sima spï¿½rï¿½t egy adott gombï¿½szhoz.
      * 
-     * @param tartozik A gombász, akihez a spóra tartozik.
+     * @param tartozik A gombï¿½sz, akihez a spï¿½ra tartozik.
      */
     Sima(Gombasz tartozik)
     {
@@ -11,16 +11,16 @@ public class Sima extends Spora
     }
 
     /**
-     * A Sima spóra nem fejt ki hatást a bogarakra.
-     * 
-     * @param b A bogár, amelyre a spóra hatással lehetne.
-     */
-    @Override
-    void hatas(Bogar b)
-    {
-        szkeleton.logMethodEntry(this, "hatas");
-        szkeleton.logMethodExit(this, "");
-        // nincs hatas
-    }
+         * A Sima spï¿½ra nem fejt ki hatï¿½st a bogarakra.
+         * 
+         * @param b A bogï¿½r, amelyre a spï¿½ra hatï¿½ssal lehetne.
+         */
+       
+        public void hatas(Bogar b)
+        {
+            szkeleton.logMethodEntry(this, "hatas");
+            szkeleton.logMethodExit(this, "");
+            // nincs hatas
+        }
     
 }

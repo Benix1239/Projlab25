@@ -1,8 +1,8 @@
 
-import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Palya implements Serializable;
+public class Palya implements Serializable
 {
     private ArrayList<Tekton> palya;
 
@@ -13,7 +13,12 @@ public class Palya implements Serializable;
      */
     Palya(int kezdomeret)
     {
+        palya = new ArrayList<>();
         letrehoz(kezdomeret);
+    }
+    Palya()
+    {
+        palya = new ArrayList<>();
     }
 
     /**
@@ -24,8 +29,9 @@ public class Palya implements Serializable;
     public void tektonHozzaad(Tekton t)
     {
         szkeleton.logMethodEntry(this, "tektonHozzaad");
-        if (t != null)) {
+        if (t != null) {
             palya.add(t);
+            t.setId(palya.size());
         }
         szkeleton.logMethodExit(this, "");
     }
@@ -72,5 +78,11 @@ public class Palya implements Serializable;
             }
         }
         szkeleton.logMethodExit(this, "");
+    }
+
+
+    public ArrayList<Tekton> getPalya()
+    {
+        return this.palya;
     }
 }

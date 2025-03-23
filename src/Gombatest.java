@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
 
 public class Gombatest
 {
@@ -35,19 +32,19 @@ public class Gombatest
         int randomSzam = random.nextInt(4);
         switch (randomSzam) {
             case 0:
-                spora = new Gyorsito();
+                spora = new Gyorsito(this.tartozik);
                 break;
             case 1:
-                spora = new Benito();
+                spora = new Benito(this.tartozik);
                 break;
             case 2:
-                spora = new Keseru();
+                spora = new Keseru(this.tartozik);
                 break;
             case 3:
-                spora = new Lassito();
+                spora = new Lassito(this.tartozik);
                 break;
             case 4:
-                spora = new Sima();     
+                spora = new Sima(this.tartozik);     
         }
     }
 
@@ -101,7 +98,7 @@ public class Gombatest
         }
          megtalalt.add(tekton);
 
-         for(Fonal f : tekton.getKoto()){
+         for(Fonal f : tekton.getOsszekoto()){
             if(f.getTartozik() == tartozik){
                 dfsRekurzio(f.getHova(), megtalalt);
             }
@@ -114,8 +111,7 @@ public class Gombatest
         return megtalalt;
     }
 
-    public int getMaradt(){
-        return maradt;
+
     public int getMaradt(){
         return maradt;
     }

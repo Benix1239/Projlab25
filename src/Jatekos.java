@@ -17,7 +17,7 @@ public abstract class Jatekos implements Serializable
         
     }
 
-    void Round() 
+    void round() 
     {
 
     }

@@ -24,6 +24,7 @@ public class Felszivo extends Tekton
     /*
      * @brief Minden korben meghivjuk. Elszakitja a legutobb erre a tektonra letett fonalat
      */
+    @Override
     void fonalElszakadKoronkent(){
         szkeleton.logMethodEntry(this, "fonalElszakadKoronkent");	///Szkeleton kiiratas fuggveny kezdetekor
         if(osszekoto.size()!=0){

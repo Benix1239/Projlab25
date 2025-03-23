@@ -1,4 +1,9 @@
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Jatek
@@ -7,7 +12,7 @@ public class Jatek
     private Palya jatekter;
     private ArrayList<Jatekos> karakterek;
 
-    /**
+    /*
      * Konstruktor, amely l�trehozza a j�t�kteret �s a karakterek list�j�t.
      * 
      * @param palyaMeret A p�lya m�rete.
@@ -30,7 +35,7 @@ public class Jatek
        while (gameRunning) {
            for (Jatekos karakter : karakterek) {
                karakter.round();
-               jatekter.tores()
+               jatekter.tores();
            }
            turnCount++;  // kilepesi feltetel?
        }
@@ -40,10 +45,10 @@ public class Jatek
     /**
      * Felvesz egy �j j�t�kost a karakterek list�j�ba.
      */
-    public void jatekosHozzaad()
+    public void jatekosHozzaad(Jatekos karakter)
     {
         szkeleton.logMethodEntry(this, "jatekosHozzaad");
-        Jatekos karakter = new Jatekos();
+       // Jatekos karakter = new Jatekos();
         karakterek.add(karakter);
         szkeleton.logMethodExit(this, "");
     }
@@ -75,5 +80,6 @@ public class Jatek
             oos.writeObject(karakterek);
         } catch (IOException e) {
             e.printStackTrace();
+        }
     }
 }

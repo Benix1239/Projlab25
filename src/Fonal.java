@@ -1,5 +1,5 @@
 
-public class Fonal
+public class Fonal extends Osszekoto
 {
     private Gombasz tartozik;
   
@@ -10,11 +10,13 @@ public class Fonal
      * @param tartozik A gomb�sz, akihez a fonal tartozik.
      * @param hova A Tekton objektum, amelyhez a fonal kapcsol�dik.
      */
-    public Fonal(Gombasz tartozik, Tekton hova) 
+    public Fonal(Tekton hova,Gombasz tartozik) 
     {
         super(hova);
         this.tartozik = tartozik;
     }
+
+
 
     /**
      * Visszaadja a gomb�szt, akihez a fonal tartozik.
@@ -24,8 +26,9 @@ public class Fonal
     public Gombasz getTartozik()
     {
         szkeleton.logMethodEntry(this, "getTartozik");
+        szkeleton.logMethodExit(this, "tartozik");
         return tartozik;
-        szkeleton.logMethodExit(this, "");
+        
     }
 
 

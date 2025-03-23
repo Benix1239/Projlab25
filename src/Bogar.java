@@ -64,7 +64,7 @@ public class Bogar
     /**
      * Csökkenti a mozgási pontok számát.
      */
-    public void Lassul() {
+    public void lassul() {
         szkeleton.logMethodEntry(this, "ro");
         mozgasok--;
         szkeleton.logMethodExit(this, "");
@@ -75,17 +75,17 @@ public class Bogar
      * 
      * @param fonal A fonal, amelyet a bogár elrág.
      */
-    public void ragas(Osszekoto fonal) {
+    public void ragas(Fonal fonal) {
         szkeleton.logMethodEntry(this, "ragas");
         Tekton hova = fonal.getHova();
         Gombasz gombasz = fonal.getTartozik();
         
         helyzet.fonalElszakad(fonal);
-        ArrayList<Fonal> fonalak = hova.fonalKeres();
+        ArrayList<Fonal> fonalak = hova.getOsszekoto();
 
         for (Fonal fonali : fonalak) {
             if (fonali.getHova() == helyzet && fonal.getTartozik() == gombasz) {
-                hova.fonalElszakad();
+                hova.fonalElszakad(fonali);
             }
         }
 
@@ -170,7 +170,7 @@ public class Bogar
      */
     public boolean getactionRagas() {
         szkeleton.logMethodEntry(this, "getactionRagas");
-        szkeleton.logMethodExit(this, boolean);
+        szkeleton.logMethodExit(this, actionRagas);
         return actionRagas;
     }
 
@@ -181,7 +181,7 @@ public class Bogar
      */
     public boolean getactionEves() {
         szkeleton.logMethodEntry(this, "getactionEves");
-        szkeleton.logMethodExit(this, boolean);
+        szkeleton.logMethodExit(this, actionEves);
         return actionEves;
     }
     
