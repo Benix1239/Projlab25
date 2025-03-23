@@ -30,7 +30,7 @@ public class Bogarasz extends Jatekos
             System.out.println("4. Vége a körömnek");
             
             int actionValasztas =bemenet.nextInt();
-
+            
             switch (actionValasztas) {
                 case 1:
                     lep();
@@ -48,6 +48,7 @@ public class Bogarasz extends Jatekos
                     System.out.println("Érvénytelen menüpontot választottál");
                     break;
             }
+            bemenet.close();
         }
 
         bogar.beallit();
@@ -84,6 +85,7 @@ public class Bogarasz extends Jatekos
             int lepesValasztas = bemenet.nextInt();
             Tekton hova= lehetsegesLepes.get(lepesValasztas-1);
             bogar.mozgas(hova);
+            bemenet.close();
         }
         else{
             System.out.println("Már nem tudsz mozogni a körben");
@@ -125,6 +127,7 @@ public class Bogarasz extends Jatekos
             }
             int ragasValasztas = bemenet.nextInt();
             bogar.ragas(fonalak.get(ragasValasztas-1));
+            bemenet.close();
         }
         else{
             System.out.println("Már rágtál a körben");

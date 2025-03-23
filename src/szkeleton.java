@@ -106,9 +106,10 @@ public class szkeleton
                 default:
                     
             }
+            bemenet.close();
+            
         }while(tart);
         
-      
     }
 
     void PalyaLogikaTeszteles()
@@ -132,6 +133,7 @@ public class szkeleton
             default:
                 
         }
+        bemenet.close();
     }
 
     void GombaszLogikaTeszteles()
@@ -170,6 +172,7 @@ public class szkeleton
             default:
                 
         }
+        bemenet.close();
     }
 
     void BogarLogikaTeszteles()
@@ -196,6 +199,7 @@ public class szkeleton
             default:
                 
         }
+        bemenet.close();
     }
 
     void BogarEmesztTeszteles()
@@ -219,6 +223,7 @@ public class szkeleton
             default:
                 
         }
+        bemenet.close();
     }
 
 //---------------------------------------------------------------------------------------------------------------------------------
