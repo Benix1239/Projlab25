@@ -11,6 +11,11 @@ public abstract class Spora
         
     }
 
+    Gombasz getTartozik()
+    {
+        return tartozik;
+    }
+
     abstract void hatas(Bogar b);
     
 }

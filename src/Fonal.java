@@ -16,4 +16,8 @@ public class Fonal
         return tartozik;
     }
 
+    Tekton getHova()
+    {
+        return hova;
+    }
 }

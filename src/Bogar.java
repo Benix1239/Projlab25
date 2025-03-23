@@ -48,9 +48,9 @@ public class Bogar
         mozgasok--;
     }
 
-    void ragas(Osszekoto fonal) //Megvan
+    void ragas(Fonal fonal) //Megvan
     {
-        Tekton hova= fonal.getHova();
+        Tekton hova = fonal.getHova();
 
         Gombasz gombasz=fonal.getTartozik();
 
