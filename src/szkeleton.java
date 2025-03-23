@@ -331,9 +331,12 @@ public class szkeleton
         hely.setGombatest(test);
 
         gyujtemeny = new ArrayList<>();
+
         szkeleton.logMethodEntry(karakter, "fonalLerak");
         karakter.fonalLerak();
         szkeleton.logMethodExit(karakter, "");
+
+
         gyujtemenyKiiratas();
     }
 
@@ -370,6 +373,7 @@ public class szkeleton
         szkeleton.logMethodEntry(jatekos, "sporaSzor");
         jatekos.sporaSzor();
         szkeleton.logMethodExit(jatekos, "");
+
         gyujtemenyKiiratas();
     }
 
@@ -796,9 +800,9 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
 
         gyujtemeny = new ArrayList<>();
-        szkeleton.logMethodEntry(jatekos1, "lep");
+        szkeleton.logMethodEntry(this, "lep");
         jatekos1.lep();
-        szkeleton.logMethodExit(jatekos1, "");
+        szkeleton.logMethodExit(this, "");
         gyujtemenyKiiratas();
     }
 
@@ -831,11 +835,11 @@ public class szkeleton
         addToMap(bogar, "bogar");
 
         jatekos1.bogarHozzaad(bogar, t1);
-
+        
         gyujtemeny = new ArrayList<>();
-        szkeleton.logMethodEntry(jatekos1, "ragas");
+        szkeleton.logMethodEntry(this, "ragas");
         jatekos1.ragas();
-        szkeleton.logMethodExit(jatekos1, "");
+        szkeleton.logMethodExit(this, "");
         gyujtemenyKiiratas();
     }
 
@@ -859,9 +863,9 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
 
         gyujtemeny = new ArrayList<>();
-        szkeleton.logMethodEntry(jatekos1, "eves");
+        szkeleton.logMethodEntry(this, "eves");
         jatekos1.eves();
-        szkeleton.logMethodExit(jatekos1, "");
+        szkeleton.logMethodExit(this, "");
         gyujtemenyKiiratas();
     }
 

@@ -19,11 +19,13 @@ public class Gyorsito extends Spora
     @Override
     public void hatas(Bogar b) 
     {
-        szkeleton.logMethodEntry(this, "hatas");
+        //szkeleton.logMethodEntry(this, "hatas");
         if (b != null) {
+            szkeleton.logMethodEntry(this, "gyorsul");
             b.gyorsul();
+            szkeleton.logMethodExit(this, "");
         }
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
     
 }

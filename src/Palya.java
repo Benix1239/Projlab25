@@ -28,12 +28,12 @@ public class Palya implements Serializable
      */
     public void tektonHozzaad(Tekton t)
     {
-        szkeleton.logMethodEntry(this, "tektonHozzaad");
+        //szkeleton.logMethodEntry(this, "tektonHozzaad");
         if (t != null) {
             palya.add(t);
             t.setId(palya.size());
         }
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
     /**
@@ -43,11 +43,11 @@ public class Palya implements Serializable
      */
     public void letrehoz(int kezdomeret)
     {
-        szkeleton.logMethodEntry(this, "letrehoz");
+        //szkeleton.logMethodEntry(this, "letrehoz");
         for (int i = 0; i < kezdomeret; i++) {
             tektonHozzaad(new Tekton());
         }
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
     /**
@@ -55,14 +55,16 @@ public class Palya implements Serializable
      */
     public void tores()
     {
-        szkeleton.logMethodEntry(this, "tores");
+        //szkeleton.logMethodEntry(this, "tores");
         for (Tekton t : palya) {
+            szkeleton.logMethodEntry(this, "tores");
             Tekton torott = t.tores();
+            szkeleton.logMethodExit(this, "");
             if (torott != null) {
                 tektonHozzaad(torott);
             }
         }
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
     
@@ -71,13 +73,13 @@ public class Palya implements Serializable
      */
     public void felszivodik()
     {
-        szkeleton.logMethodEntry(this, "felszivodik");
+        //szkeleton.logMethodEntry(this, "felszivodik");
         for (Tekton t : palya) {
             if (t instanceof Testetlen) {
                 t.fonalElszakadKoronkent();
             }
         }
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
 
