@@ -107,7 +107,11 @@ public class Gombasz extends Jatekos
             }
 
             szkeleton.logMethodEntry(honnan, "getSzomszed");
-            ArrayList<Tekton> hovaLehetosegek = honnan.getSzomszed();
+            ArrayList<Tekton> hovaLehetosegek = new ArrayList<>();
+            for(Tekton f : honnan.getSzomszed())
+            {
+                hovaLehetosegek.add(f);
+            }
             szkeleton.logMethodExit(honnan, "hovaLehetosegek");
 
             ArrayList<Fonal> honnanFonaljai = new ArrayList<>();
@@ -118,7 +122,7 @@ public class Gombasz extends Jatekos
             for(Tekton t : hovaLehetosegek){
                 for(Fonal f : honnanFonaljai){
                     if(f.getTartozik() == this && f.getHova() == t){
-                        hovaLehetosegek.remove(t);
+                        honnan.getSzomszed().remove(t);
                     }
                 }
             }
