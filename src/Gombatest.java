@@ -114,8 +114,8 @@ public class Gombatest
     }
 
     public int getMaradt(){
-        szkeleton.logMethodEntry(this, "getMaradt");
-        szkeleton.logMethodExit(this, "maradt");
+        //szkeleton.logMethodEntry(this, "getMaradt");
+        //szkeleton.logMethodExit(this, "maradt");
         return maradt;
     }
 
