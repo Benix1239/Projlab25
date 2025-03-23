@@ -24,6 +24,7 @@ public class Gombatest
     }
 
     public void termel(){
+        szkeleton.logMethodEntry(this, "termel");
         int randomSzam = random.nextInt(4);
         switch (randomSzam) {
             case 0:
@@ -41,42 +42,53 @@ public class Gombatest
             case 4:
                 spora = new Sima();     
         }
+        szkeleton.logMethodExit(this, "");
     }
 
     public void elszor(Tekton c){
+        szkeleton.logMethodEntry(this, "elszor");
         c.addSpora(spora);
         maradt--;
         if(maradt == 0){
             this.gombatestMeghal();
         }
         spora = null;
+        szkeleton.logMethodExit(this, "");
     }
 
     private void gombatestMeghal(){
+        szkeleton.logMethodEntry(this, "gombatestMeghal");
         hely.setGombatest(null);
         tartozik.removeGombatest(this);
         tartozik.elszakadasDfsKezeles();
+        szkeleton.logMethodExit(this, "");
     }
 
     //legjobb minta erre az EgyFonalasHova szekvenciadiagram
     public boolean elhelyez(Tekton honnan, Tekton hova){
+        szkeleton.logMethodEntry(this, "elhelyez");
         Fonal f1 = new Fonal(honnan, this.tartozik);
         Fonal f2 = new Fonal(hova, this.tartozik);
         if(honnan.addFonal(f2)){
             if(!hova.addFonal(f1)){
                 honnan.fonalElszakad(f2);
                 System.out.println("Sikertelen lerakas, mert a hova tekton EgyFonalas");
+                szkeleton.logMethodExit(this, "false");
                 return false;
             }
             System.out.println("Sikeres lerakas!");
+            szkeleton.logMethodExit(this, "true");
             return true;
         }
         System.out.println("Sikertelen lerakas, mert a honnan tekton EgyFonalas");
+        szkeleton.logMethodExit(this, "false");
         return false;
     }
 
     //ez miert itt van, miert nem a tektonban?
     public ArrayList<Tekton> szomszedKeres(){
+        szkeleton.logMethodEntry(this, "szomszedKeres");
+        szkeleton.logMethodExit(this, "szomszedok");
         return hely.getSzomszed();
     }
 
@@ -94,14 +106,16 @@ public class Gombatest
     }
 
     public Set<Tekton> dfs(){
+        szkeleton.logMethodEntry(this, "dfs");
         Set<Tekton> megtalalt = new HashSet<>();
         dfsRekurzio(hely, megtalalt);
+        szkeleton.logMethodExit(this, "megtalalt");
         return megtalalt;
     }
 
     public int getMaradt(){
+        szkeleton.logMethodEntry(this, "getMaradt");
+        szkeleton.logMethodExit(this, "maradt");
         return maradt;
     }
-    
-    //vmi
 }
