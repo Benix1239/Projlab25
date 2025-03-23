@@ -3,13 +3,56 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
 
 public class Gombasz extends Jatekos
 {
     private ArrayList<Gombatest> testek;
     private ArrayList<Tekton> palya;
+    private ArrayList<Gombatest> testek;
+    private ArrayList<Tekton> palya;
 
+    //valtozas: megkapja a palyat is konstruktorban es nincs Tekton kezdo parametere
+    public Gombasz(ArrayList<Tekton> palya){
+        testek = new ArrayList<>();
+        this.palya = palya;
+    }
+
+    public void gombatestHozzaad(Gombatest g){
+        testek.add(g);
+    }
+
+    public void Round(){
+     
+    }
+
+    //osszegyujti, hogy a hozza tartozo testekbol melyik tektonok erhetoek el es ha talal olyat, ami nem erheto el,
+    //de hozza tartozo fonal van rajta, akkor azt a fonalat torli a tektonrol
+    public void elszakadasDfsKezeles(){
+        HashSet<Tekton> elerhetok = new HashSet<>();
+        for(Gombatest test : testek){
+            Set<Tekton> elerhetoTektonok = test.dfs();
+            for(Tekton t : elerhetoTektonok){
+                elerhetok.add(t);
+            }
+        }
+
+        for(Tekton t : palya){
+            if(!elerhetok.contains(t)){
+               ArrayList<Fonal> fonalak = t.getKoto();
+               for(Fonal f : fonalak){
+                    if(f.getTartozik() == this){
+                        t.fonalElszakad(f);
+                    }
+               }
+            }
+        }
+    }
+
+    public void removeGombatest(Gombatest g)
     //valtozas: megkapja a palyat is konstruktorban es nincs Tekton kezdo parametere
     public Gombasz(ArrayList<Tekton> palya){
         testek = new ArrayList<>();

@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 public class Gombatest
 {
@@ -111,6 +114,8 @@ public class Gombatest
         return megtalalt;
     }
 
+    public int getMaradt(){
+        return maradt;
     public int getMaradt(){
         return maradt;
     }
