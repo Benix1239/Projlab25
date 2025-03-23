@@ -1091,28 +1091,23 @@ public class szkeleton
         objectToStringMap = new IdentityHashMap<>();
         stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
-        Tekton t2 = new Tekton();
         Tekton t3 = new Egyfonalas();
         addToMap(t1, "t1");
-        addToMap(t2, "t2");
-        addToMap(t3, "t3");
+        addToMap(t3, "t2");
         Palya jatekter = new Palya();
         addToMap(jatekter, "jatekter");
         jatekter.tektonHozzaad(t1);
-        jatekter.tektonHozzaad(t2);
         jatekter.tektonHozzaad(t3);
-        t1.addSzomszed(t2);
-        t2.addSzomszed(t1);
-        t3.addSzomszed(t2);
-        t2.addSzomszed(t3);
+        t1.addSzomszed(t3);
+        t3.addSzomszed(t1);
         Gombasz jatekos = new Gombasz(jatekter.getPalya());
         addToMap(jatekos, "jatekos");
 
-        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon10 = new Fonal(t3,jatekos);
         Fonal fon11 = new Fonal(t1,jatekos);
         addToMap(fon10, "fon10");
         addToMap(fon11, "fon11");
-        t2.addFonal(fon11);
+        t3.addFonal(fon11);
         t1.addFonal(fon10);
 
         Gombatest test = new Gombatest(t1,jatekos);

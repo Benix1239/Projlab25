@@ -471,7 +471,7 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		//szkeleton.logMethodEntry(this, "addFonal");	///Szkeleton kiiratas fuggveny kezdetekor
 		for(Fonal elem:osszekoto){
 			szkeleton.logMethodEntry(elem, "getTartozik");	///Szkeleton kiiratas fuggveny kezdetekor
-			boolean osszehasonlitas=elem.getTartozik().equals(f.getTartozik());
+			boolean osszehasonlitas= elem.equals(f);
 			szkeleton.logMethodExit(elem, osszehasonlitas);			///Szkeleton kiiratas fuggveny vegen	
 			if(osszehasonlitas){
 				//szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen	
