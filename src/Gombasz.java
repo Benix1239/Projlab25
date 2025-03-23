@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 
 
@@ -71,11 +70,10 @@ public class Gombasz extends Jatekos
                 System.out.println(t.getId());
                 ervenyesErtekek.add(t.getId());
             }
-            Scanner scanner = new Scanner(System.in);
             int szam;
             while (true) {
-                if(scanner.hasNextInt()){
-                    szam = scanner.nextInt();
+                if(InputHandler.getScanner().hasNextInt()){
+                    szam = InputHandler.getScanner().nextInt();
                     if (ervenyesErtekek.contains(szam)) {
                         break;
                     } else {
@@ -83,10 +81,9 @@ public class Gombasz extends Jatekos
                     }
                 }else {
                     System.out.println("Hibas bemenet!");
-                    scanner.next();
+                    InputHandler.getScanner().next();
                 }
             }
-            scanner.close();
 
             Tekton honnan = null;
             for(Tekton t : honnanLehetosegek){
@@ -112,8 +109,8 @@ public class Gombasz extends Jatekos
                 ervenyesErtekek.add(t.getId());
             }
             while (true) {
-                if(scanner.hasNextInt()){
-                    szam = scanner.nextInt();
+                if(InputHandler.getScanner().hasNextInt()){
+                    szam = InputHandler.getScanner().nextInt();
                     if (ervenyesErtekek.contains(szam)) {
                         break;
                     } else {
@@ -121,10 +118,9 @@ public class Gombasz extends Jatekos
                     }
                 }else {
                     System.out.println("Hibas bemenet!");
-                    scanner.next();
+                    InputHandler.getScanner().next();
                 }
             }
-            scanner.close();
 
             Tekton hova = null;
             for(Tekton t : hovaLehetosegek){
@@ -158,11 +154,10 @@ public class Gombasz extends Jatekos
                 ervenyesErtekek.add(id);
             }
 
-            Scanner scanner = new Scanner(System.in);
-            int szam;
+            int szam = 1;
             while (true) {
-                if(scanner.hasNextInt()){
-                    szam = scanner.nextInt();
+                if(InputHandler.getScanner().hasNextInt()){
+                    szam = InputHandler.getScanner().nextInt();
                     if (ervenyesErtekek.contains(szam)) {
                         break;
                     } else {
@@ -170,10 +165,9 @@ public class Gombasz extends Jatekos
                     }
                 }else {
                     System.out.println("Hibas bemenet!");
-                    scanner.next();
+                    InputHandler.getScanner().next();
                 }
             }
-            scanner.close();
 
             Tekton hova = null;
             for(Tekton t : szomszedok){

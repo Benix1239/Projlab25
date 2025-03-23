@@ -88,8 +88,7 @@ public class szkeleton
             System.out.println("Mit szeretnel tesztelni?:");
             System.out.println("1:Palya logika\n2:Gombasz logika\n3:Bogarasz logika\n4:kilepes"); 
             
-            Scanner bemenet = new Scanner(System.in);
-            int valaszt = bemenet.nextInt();
+            int valaszt = InputHandler.getScanner().nextInt();
             switch (valaszt) {
                 case 1:
                         PalyaLogikaTeszteles();
@@ -106,17 +105,15 @@ public class szkeleton
                 default:
                     
             }
-            bemenet.close();
+            
             
         }while(tart);
-        
     }
 
     void PalyaLogikaTeszteles()
     {
         System.out.println("\nTesztelheto Palya logikak:\n1:JatekInditasa\n2:FonalElhalSzetesesMiatt\n3:TektonSzetesesFonalNelkul\n4:FonalFelsziv");
-        Scanner bemenet = new Scanner(System.in);
-        int valaszt = bemenet.nextInt();
+        int valaszt = InputHandler.getScanner().nextInt();
         switch (valaszt) {
             case 1:
                     jatekInditasTeszt();
@@ -133,14 +130,13 @@ public class szkeleton
             default:
                 
         }
-        bemenet.close();
     }
 
     void GombaszLogikaTeszteles()
     {
         System.out.println("\nTesztelheto Gombasz logikak:\n1:FonalLerakSima\n2:SporaSzorSima\n3:SporaSzorFejlett\n4:GombatestEpitFonallal\n5:GombatestEpitSporaval\n6:GombatestMeghal\n7:fonalElhalGombatestMiatt\n8:EgyFonalasHonnan\n9:EgyFonalasHova");
-        Scanner bemenet = new Scanner(System.in);
-        int valaszt = bemenet.nextInt();
+        
+        int valaszt = InputHandler.getScanner().nextInt();
         switch (valaszt) {
             case 1:
                 this.fonalLerakSimaTeszt();
@@ -172,14 +168,12 @@ public class szkeleton
             default:
                 
         }
-        bemenet.close();
     }
 
     void BogarLogikaTeszteles()
     {
         System.out.println("\nTesztelheto Bogarasz logikak:\n1:FonalElhalBogarMiatt\n2:BogarLep\n3:BogarRag\n4:BogarEszik\n5:BogarEmeszt");
-        Scanner bemenet = new Scanner(System.in);
-        int valaszt = bemenet.nextInt();
+        int valaszt = InputHandler.getScanner().nextInt();
         switch (valaszt) {
             case 1:
                     fonalElhalBogarMiattTeszt();
@@ -199,14 +193,12 @@ public class szkeleton
             default:
                 
         }
-        bemenet.close();
     }
 
     void BogarEmesztTeszteles()
     {
         System.out.println("\nTesztelheto Spora fajta emesztesek:\n1:Gyorsito\n2:Benito\n3:Keseru\n4:Lassito");
-        Scanner bemenet = new Scanner(System.in);
-        int valaszt = bemenet.nextInt();
+        int valaszt = InputHandler.getScanner().nextInt();
         switch (valaszt) {
             case 1:
                     BogarEmesztGyorsitoTeszt();
@@ -223,7 +215,6 @@ public class szkeleton
             default:
                 
         }
-        bemenet.close();
     }
 
 //---------------------------------------------------------------------------------------------------------------------------------
