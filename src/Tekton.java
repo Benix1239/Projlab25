@@ -13,13 +13,9 @@ public class Tekton
 	int id;
 
 	//Paraméter nélküli konstruktor tesztekhez
-	Tekton(Gombatest test, ArrayList<Spora> spo, ArrayList<Fonal> ossze, ArrayList<Tekton> szom /*, int plusz*/, int nev ){
-		this.gombatest=test;
-		this.sporak=spo;
-		this.osszekoto=ossze;
+	Tekton(ArrayList<Tekton> szom /*, int plusz*/){
 		this.szomszed=szom;
 		eletkor=1;
-		this.id=nev;
 		/*this.pluszPont = plusz 
 		Random random = new Random();
 		pluszPont=random.nextInt(5);
@@ -81,7 +77,7 @@ public class Tekton
 			}
 			ArrayList<Spora> ujSporak=new ArrayList<>();
 			ujSporak=ujTektonSporakListaja();			
-			Tekton ujTekton=new Tekton(null,ujSporak,null,ujTektonSzomszedListajanakBeallitasa());
+			Tekton ujTekton=new Tekton(ujTektonSzomszedListajanakBeallitasa());
 			sajatSporaimBeallitasa(ujSporak);
 			ujSzomszedaimBeallaitasa();
 			return ujTekton;	
