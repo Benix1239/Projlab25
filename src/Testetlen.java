@@ -2,8 +2,12 @@ import java.util.ArrayList;
 
 public class Testetlen extends Tekton
 {
-    Testetlen(Gombatest test, ArrayList<Spora> spo, ArrayList<Fonal> ossze, ArrayList<Tekton> szom /*, int plusz*/,int nev){
-        super(test,spo,ossze,szom,nev);
+    Testetlen(){
+        super();
+    }
+
+    Testetlen(ArrayList<Spora> spo, ArrayList<Tekton> szom){
+        super(spo,szom);
     }
 
    
@@ -11,5 +15,11 @@ public class Testetlen extends Tekton
     boolean tudEpulni(Gombasz g) {
         return false;
     }
+
+    @Override
+    Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+        return new Testetlen(spo,szom);
+    }
+
 
 }

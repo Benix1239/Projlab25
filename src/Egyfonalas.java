@@ -4,12 +4,17 @@ public class Egyfonalas extends Tekton
 {
     boolean lehet;
 
-    Egyfonalas(Gombatest test, ArrayList<Spora> spo, ArrayList<Fonal> ossze, ArrayList<Tekton> szom /*, int plusz*/,int nev){
-        super(test, spo, ossze, szom, nev);
+    Egyfonalas(){
+        super();
         lehet=true;
     }
 
-    boolean lehetFonalatEpiteni()
+    Egyfonalas(ArrayList<Spora> spo, ArrayList<Tekton> szom){
+        super(spo,szom);
+        lehet=true;
+    }
+
+    boolean getLehetFonalatEpiteni()
     {
         return lehet;
     }
@@ -18,43 +23,68 @@ public class Egyfonalas extends Tekton
         this.lehet=leh;
     }
 
+
+
+
+
     @Override
-    void addFonal(Fonal f){
-            if(lehet){
-            osszekoto.add(f);
-            if(hanyFonalaVanGombasznak(f.getTartozik())>=1 && hanySporajaVanGombasznak(f.getTartozik())>=5 ){
-                gombaTestEpul(f.getTartozik());
-            }
-        }
-            lehet=false;
-	}
+    boolean addFonal(Fonal f)
+	{
+	
+		for(Fonal elem:osszekoto){
+			if(elem.getTartozik().equals(f.getTartozik())){
+				return false;
+			}
+		}
+		
+		osszekoto.add(f);
+		if(tudEpulni(f.getTartozik()) ){
+			gombaTestEpul(f.getTartozik());
+		}
+        lehet=false;
+		return true;
+
+	} 
+
+
+
+
+
+
 
     @Override
     void mindenFonalElszakad(){
-		ArrayList<Gombasz> torlendoFonalGombaszai=new ArrayList<>();
-				for (Fonal elem : osszekoto) {										//Kigyujtjuk hogy mely gombaszokhoz kell meghívni az elszakadas kezelest							
-					if(!torlendoFonalGombaszai.contains(elem.getTartozik())) {
-						torlendoFonalGombaszai.add(elem.getTartozik());
-					}
-				}
-				//meghivjuk az elszakadas kezelest minden gombasznal
-				for (Gombasz elem : torlendoFonalGombaszai) {
-					elem.elszakadasDfsKezeles();
-                    lehet=true;					//dfs gondolom majd torli a fonalakat a fonalElszakad fuggvenemmel, ami nem latszik a szekvencia diagrammon
-				}
+		for(Fonal elem : osszekoto){
+			fonalElszakad(elem);
+		}
+        lehet=true;
 	}
 
+
+
     @Override
-    //elszakít egy fonalat
 	void fonalElszakad(Fonal fonal){
 		for (Fonal elem : osszekoto) {
 			if(elem==fonal || elem.equals(fonal)){
+				for(Fonal elem1 : elem.getHova().getFonalLista()){
+					if(elem1.getHova()==this){
+						elem.getHova().getFonalLista().remove(elem1);
+					}
+				}
 				osszekoto.remove(elem);
-                lehet=true;
+				
 			}
 		}
+		fonal.getTartozik().elszakadasDfsKezeles();
+		lehet=true;
 	}
 
+
+
+  @Override
+    Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+        return new Egyfonalas(spo,szom);
+    }
 
 
 
