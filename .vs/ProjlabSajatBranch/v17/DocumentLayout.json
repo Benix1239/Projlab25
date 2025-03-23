@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Jatek.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Jatek.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Palya.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Palya.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Jatekos.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Jatekos.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Fonal.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Fonal.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Lassito.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Lassito.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Keseru.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Keseru.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Fonal.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Fonal.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Benito.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -33,14 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Osszekoto.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Osszekoto.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Palya.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Palya.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Jatek.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Jatek.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,11 +54,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "Jatekos.java",
+              "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Jatekos.java",
+              "RelativeDocumentMoniker": "src\\Jatekos.java",
+              "ToolTip": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Jatekos.java",
+              "RelativeToolTip": "src\\Jatekos.java",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-23T10:06:12.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Lassito.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Lassito.java",
               "RelativeDocumentMoniker": "src\\Lassito.java",
@@ -67,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Keseru.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Keseru.java",
               "RelativeDocumentMoniker": "src\\Keseru.java",
@@ -80,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Fonal.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Fonal.java",
               "RelativeDocumentMoniker": "src\\Fonal.java",
@@ -93,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Benito.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Benito.java",
               "RelativeDocumentMoniker": "src\\Benito.java",
@@ -106,7 +123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Gyorsito.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Gyorsito.java",
               "RelativeDocumentMoniker": "src\\Gyorsito.java",
@@ -119,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Sima.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Sima.java",
               "RelativeDocumentMoniker": "src\\Sima.java",
@@ -132,7 +149,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Spora.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Spora.java",
               "RelativeDocumentMoniker": "src\\Spora.java",
@@ -145,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Osszekoto.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Osszekoto.java",
               "RelativeDocumentMoniker": "src\\Osszekoto.java",
@@ -158,26 +175,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "Palya.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Palya.java",
               "RelativeDocumentMoniker": "src\\Palya.java",
               "ToolTip": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Palya.java",
               "RelativeToolTip": "src\\Palya.java",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-03-23T09:52:05.498Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
               "Title": "Jatek.java",
               "DocumentMoniker": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Jatek.java",
               "RelativeDocumentMoniker": "src\\Jatek.java",
               "ToolTip": "C:\\Users\\Boti\\source\\repos\\ProjlabSajatBranch\\src\\Jatek.java",
               "RelativeToolTip": "src\\Jatek.java",
-              "ViewState": "AgIAAAYAAAAAAAAAAADwvzEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACkAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-03-23T09:51:52.531Z",
               "EditorCaption": ""
