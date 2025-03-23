@@ -80,7 +80,7 @@ public class Bogar
         
         szkeleton.logMethodEntry(fonal, "getTartozik");
         Gombasz gombasz = fonal.getTartozik();
-        szkeleton.logMethodExit(fonal, "");
+        szkeleton.logMethodExit(fonal, "Gombasz");
 
         szkeleton.logMethodEntry(helyzet, "fonalElszakad");
         helyzet.fonalElszakad(fonal);
@@ -106,7 +106,7 @@ public class Bogar
         //szkeleton.logMethodEntry(this, "eves");
         szkeleton.logMethodEntry(helyzet, "sporatEszik");
         elozo = helyzet.sporatEszik();
-        szkeleton.logMethodExit(helyzet, "");
+        szkeleton.logMethodExit(helyzet, "Spora");
         actionRagas = false;
         actionEves = false;
         //szkeleton.logMethodExit(this, "");
