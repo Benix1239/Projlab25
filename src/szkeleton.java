@@ -243,7 +243,9 @@ public class szkeleton
         karakter.gombatestHozzaad(test);
         hely.setGombatest(test);
 
+        gyujtemeny = new ArrayList<>();
         karakter.fonalLerak();
+        gyujtemenyKiiratas();
     }
 
     //naon fasza, diagramm szerint fut
