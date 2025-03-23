@@ -57,7 +57,12 @@ public class Gombasz extends Jatekos
 
     public void fonalLerak(){
         //szkeleton.logMethodEntry(this, "fonalLerak");
+        ArrayList<Gombatest> temptestek = new ArrayList<>();
         for(Gombatest gombatest : testek){
+            temptestek.add(gombatest);
+        }
+
+        for(Gombatest gombatest : temptestek){
             Set<Tekton> honnanLehetosegek = new HashSet<>();
             Set<Tekton> ujMegtalaltak = gombatest.dfs();
             for(Tekton t : ujMegtalaltak){
@@ -136,7 +141,12 @@ public class Gombasz extends Jatekos
 
     public void sporaSzor(){
         //szkeleton.logMethodEntry(this, "sporaSzor");
+        ArrayList<Gombatest> temptestek = new ArrayList<>();
         for(Gombatest gombatest : testek){
+            temptestek.add(gombatest);
+        }
+
+        for(Gombatest gombatest : temptestek){
             ArrayList<Tekton> szomszedokList = gombatest.szomszedKeres();
             HashSet<Tekton> szomszedok = new HashSet<>(szomszedokList);
             if(gombatest.getMaradt() < 3){
