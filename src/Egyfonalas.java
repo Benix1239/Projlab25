@@ -14,25 +14,30 @@ public class Egyfonalas extends Tekton
         lehet=true;
     }
 
-    boolean getLehetFonalatEpiteni()
-    {
+
+
+    boolean getLehetFonalatEpiteni(){
+        szkeleton.logMethodEntry(this, "getLehetFonalatEpiteni");	///Szkeleton kiiratas fuggveny kezdetekor
+        szkeleton.logMethodExit(this, lehet);			///Szkeleton kiiratas fuggveny vegen	
         return lehet;
     }
     
     void setLehet(Boolean leh){
+        szkeleton.logMethodEntry(this, "setLehet");	///Szkeleton kiiratas fuggveny kezdetekor
         this.lehet=leh;
+        szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
     }
 
 
 
-
-
     @Override
-    boolean addFonal(Fonal f)
-	{
-	
+    boolean addFonal(Fonal f){
+        szkeleton.logMethodEntry(this, "addFonal");	///Szkeleton kiiratas fuggveny kezdetekor
 		for(Fonal elem:osszekoto){
 			if(elem.getTartozik().equals(f.getTartozik())){
+
+                szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen
+
 				return false;
 			}
 		}
@@ -42,6 +47,8 @@ public class Egyfonalas extends Tekton
 			gombaTestEpul(f.getTartozik());
 		}
         lehet=false;
+
+        szkeleton.logMethodExit(this, true);			///Szkeleton kiiratas fuggveny vegen
 		return true;
 
 	} 
@@ -54,16 +61,19 @@ public class Egyfonalas extends Tekton
 
     @Override
     void mindenFonalElszakad(){
+        szkeleton.logMethodEntry(this, "mindenFonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
 		for(Fonal elem : osszekoto){
 			fonalElszakad(elem);
 		}
         lehet=true;
+        szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
 
 
     @Override
 	void fonalElszakad(Fonal fonal){
+        szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
 		for (Fonal elem : osszekoto) {
 			if(elem==fonal || elem.equals(fonal)){
 				for(Fonal elem1 : elem.getHova().getFonalLista()){
@@ -77,12 +87,15 @@ public class Egyfonalas extends Tekton
 		}
 		fonal.getTartozik().elszakadasDfsKezeles();
 		lehet=true;
+        szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
 
 
   @Override
     Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+        szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
+        szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
         return new Egyfonalas(spo,szom);
     }
 
