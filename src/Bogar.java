@@ -78,13 +78,13 @@ public class Bogar
         //szkeleton.logMethodEntry(this, "ragas");
         //Tekton hova = fonal.getHova();
         
-        szkeleton.logMethodEntry(this, "getTartozik");
+        szkeleton.logMethodEntry(fonal, "getTartozik");
         Gombasz gombasz = fonal.getTartozik();
-        szkeleton.logMethodExit(this, "");
+        szkeleton.logMethodExit(fonal, "");
 
-        szkeleton.logMethodEntry(this, "fonalElszakad");
+        szkeleton.logMethodEntry(helyzet, "fonalElszakad");
         helyzet.fonalElszakad(fonal);
-        szkeleton.logMethodExit(this, "");
+        szkeleton.logMethodExit(helyzet, "");
         /*ArrayList<Fonal> fonalak = hova.getOsszekoto();   
 
         for (Fonal fonali : fonalak) {
@@ -104,9 +104,9 @@ public class Bogar
      */
     public void eves() {
         //szkeleton.logMethodEntry(this, "eves");
-        szkeleton.logMethodEntry(this, "sporatEszik");
+        szkeleton.logMethodEntry(helyzet, "sporatEszik");
         elozo = helyzet.sporatEszik();
-        szkeleton.logMethodExit(this, "");
+        szkeleton.logMethodExit(helyzet, "");
         actionRagas = false;
         actionEves = false;
         //szkeleton.logMethodExit(this, "");
@@ -130,9 +130,9 @@ public class Bogar
     public void sporaMegemesztes() {
         //szkeleton.logMethodEntry(this, "sporaMegemesztes");
         if (elozo != null) {
-            szkeleton.logMethodEntry(this, "hatas");
+            szkeleton.logMethodEntry(elozo, "hatas");
             elozo.hatas(this);
-            szkeleton.logMethodExit(this, "");
+            szkeleton.logMethodExit(elozo, "");
             this.elozo = null;
         }
         //szkeleton.logMethodExit(this, "");
