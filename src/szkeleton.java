@@ -463,7 +463,8 @@ public class szkeleton
         Lassito s5 = new Lassito(jatekos);
         addToMap(s5, "s5");
         s5.setTartozik(jatekos);
-        test.setSpora(s5);
+        t2.addSpora(s5);
+
         gyujtemeny = new ArrayList<>();
         szkeleton.logMethodEntry(jatekos, "fonalLerak");
         jatekos.fonalLerak();
