@@ -4,36 +4,76 @@ import java.util.ArrayList;
 public class Jatek
 {
     
-    Palya jatekter;
-    ArrayList<Jatekos> karakterek;
+    private Palya jatekter;
+    private ArrayList<Jatekos> karakterek;
 
-    //konstruktor
-    Jatek()
+    /**
+     * Konstruktor, amely l�trehozza a j�t�kteret �s a karakterek list�j�t.
+     * 
+     * @param palyaMeret A p�lya m�rete.
+     */
+    Jatek(int palyaMeret)
     {
-      
+      karakterek = new ArrayList<Jatekos>();
+      jatekter = new Palya(palyaMeret);
     }
     
-    //Jatek inditas / gameloop
-    void JatekIndit()
+    /**
+     * Elind�tja a j�t�kot �s kezeli a f� j�t�kmenetet.
+     */
+    public void jatekIndit()
     {
-       
+       szkeleton.logMethodEntry(this, "jatekIndit");
+       boolean gameRunning = true;
+       int turnCount = 0;
+
+       while (gameRunning) {
+           for (Jatekos karakter : karakterek) {
+               karakter.round();
+               jatekter.tores()
+           }
+           turnCount++;  // kilepesi feltetel?
+       }
+       szkeleton.logMethodExit(this, "");
     }
 
-    //felvesz egy uj jatekost
-    void JatekosHozzaad()
+    /**
+     * Felvesz egy �j j�t�kost a karakterek list�j�ba.
+     */
+    public void jatekosHozzaad()
     {
-
+        szkeleton.logMethodEntry(this, "jatekosHozzaad");
+        Jatekos karakter = new Jatekos();
+        karakterek.add(karakter);
+        szkeleton.logMethodExit(this, "");
     }
 
-    //betolti filebol a jatekallapotot
-    void betoltes()
+    /**
+     * Szerializ�l�ssal bet�lti az adatokat egy f�jlb�l, bele�rtve a j�t�kteret �s a j�t�kosokat.
+     * 
+     * @param filePath A f�jl el�r�si �tvonala, ahonnan a j�t�k �llapota bet�lt�sre ker�l.
+     */
+    public void betoltes(String filePath)
     {
-        
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+            jatekter = (Palya) ois.readObject();
+            karakterek = (ArrayList<Jatekos>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
-    //kimenti fileba a jatek allapotot
-    void mentes()
+    /**
+     * Szerializ�l�ssal elmenti az adatokat egy f�jlba, bele�rtve a j�t�kteret �s a j�t�kosokat.
+     * 
+     * @param filepath A f�jl el�r�si �tvonala, ahov� a j�t�k �llapota ment�sre ker�l.
+     */
+    public void mentes(String filepath)
     {
-        
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath))) {
+            oos.writeObject(jatekter);
+            oos.writeObject(karakterek);
+        } catch (IOException e) {
+            e.printStackTrace();
     }
 }

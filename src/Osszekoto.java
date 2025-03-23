@@ -2,16 +2,28 @@
 public abstract class Osszekoto
 {
 
-    Tekton Hova;
+    private Tekton hova;
     
-    public Osszekoto() 
+    /**
+     * Konstruktor, amely inicializálja az Osszekoto objektumot a megadott Tektonnal.
+     * 
+     * @param hova A Tekton objektum, amelyhez az Osszekoto kapcsolódik.
+     */
+    public Osszekoto(Tekton hova) 
     {
- 
+        this.hova = hova;
     }
 
-    Tekton getHova()
+    /**
+     * Visszaadja a Tekton objektumot, amelyhez az Osszekoto kapcsolódik.
+     * 
+     * @return A Tekton objektum, amelyhez az Osszekoto kapcsolódik.
+     */
+    public Tekton getHova()
     {
-        return null;
+        szkeleton.logMethodEntry(this, "getHova");
+        return hova;
+        szkeleton.logMethodExit(this, "Tekton");
     }
 
     protected abstract Gombasz getTartozik();

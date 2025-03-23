@@ -2,21 +2,30 @@
 public class Fonal
 {
     private Gombasz tartozik;
-    private Tekton hova;
   
-
-    public Fonal(Tekton hova, Gombasz tartozik) 
+    /**
+     * Konstruktor, amely l�trehozza a Fonal objektumot egy adott gomb�szhoz 
+     * �s egy adott Tektonhoz kapcsolja.
+     * 
+     * @param tartozik A gomb�sz, akihez a fonal tartozik.
+     * @param hova A Tekton objektum, amelyhez a fonal kapcsol�dik.
+     */
+    public Fonal(Gombasz tartozik, Tekton hova) 
     {
-        this.hova = hova;
+        super(hova);
         this.tartozik = tartozik;
     }
 
-    public Gombasz getTartozik(){
+    /**
+     * Visszaadja a gomb�szt, akihez a fonal tartozik.
+     * 
+     * @return A gomb�sz, akihez a fonal tartozik.
+     */
+    public Gombasz getTartozik()
+    {
+        szkeleton.logMethodEntry(this, "getTartozik");
         return tartozik;
-    }
-
-    public Tekton getHova(){
-        return hova;
+        szkeleton.logMethodExit(this, "");
     }
 
 

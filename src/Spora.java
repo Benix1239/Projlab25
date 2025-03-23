@@ -3,12 +3,17 @@
 
 public abstract class Spora 
 {
-    int plusszpont;
-    Gombasz tartozik;
+    private int pluszPont;
+    private Gombasz tartozik;
 
-    Spora()
+    /**
+     * Konstruktor, amely l�trehozza a sp�r�t egy adott gomb�szhoz.
+     * 
+     * @param tartozik A gomb�sz, akihez a sp�ra tartozik.
+     */
+    Spora(Gombasz tartozik)
     {
-        
+        this.tartozik = tartozik;
     }
 
     Gombasz getTartozik()
@@ -25,8 +30,13 @@ public abstract class Spora
     {
         return plusszpont;
     }
-    abstract void hatas(Bogar b);
+    /**
+     * A sp�ra hat�sa egy adott bog�rra.
+     * 
+     * @param b A bog�r, amelyre a sp�ra hat�ssal lesz.
+     */
+    public abstract void hatas(Bogar b);
     
-    Gombasz getTartozik(){return null;}
+    
 
 }
