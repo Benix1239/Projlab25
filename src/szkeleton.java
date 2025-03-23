@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Stack;
 
 
@@ -82,12 +83,13 @@ public class szkeleton
         boolean tart = true;
         do
         {
+            
             System.out.println("A menupont elotti szím beirasaval valaszthatod ki a dolgokat");
             System.out.println("Mit szeretnel tesztelni?:");
             System.out.println("1:Palya logika\n2:Gombasz logika\n3:Bogarasz logika\n4:kilepes"); 
-           
-            int valaszt = 0;
-
+            
+            Scanner bemenet = new Scanner(System.in);
+            int valaszt = bemenet.nextInt();
             switch (valaszt) {
                 case 1:
                         PalyaLogikaTeszteles();
@@ -112,7 +114,8 @@ public class szkeleton
     void PalyaLogikaTeszteles()
     {
         System.out.println("\nTesztelheto Palya logikak:\n1:JatekInditasa\n2:FonalElhalSzetesesMiatt\n3:TektonSzetesesFonalNelkul\n4:FonalFelsziv");
-        int valaszt = 0;
+        Scanner bemenet = new Scanner(System.in);
+        int valaszt = bemenet.nextInt();
         switch (valaszt) {
             case 1:
                     jatekInditasTeszt();
@@ -134,34 +137,35 @@ public class szkeleton
     void GombaszLogikaTeszteles()
     {
         System.out.println("\nTesztelheto Gombasz logikak:\n1:FonalLerakSima\n2:SporaSzorSima\n3:SporaSzorFejlett\n4:GombatestEpitFonallal\n5:GombatestEpitSporaval\n6:GombatestMeghal\n7:fonalElhalGombatestMiatt\n8:EgyFonalasHonnan\n9:EgyFonalasHova");
-        int valaszt = 0;
+        Scanner bemenet = new Scanner(System.in);
+        int valaszt = bemenet.nextInt();
         switch (valaszt) {
             case 1:
-                    
+                this.fonalLerakSimaTeszt();
                 break;
             case 2:
-                   
+                this.sporaSzorSimaTeszt();
                 break;
             case 3:
-                   
+                this.sporaSzorFejlettTeszt();
                 break;
             case 4:
-                    
+                this.GombatestEpitFonallalTeszt();
                 break;
             case 5:
-                   
+                this.GombatestEpitSporavalTeszt();
                 break;
             case 6:
-                    
+                this.gombaTestMeghalTeszt();
                 break;
             case 7:
-                   
+                this.fonalElhalGombatestMiattTeszt();
                 break;
             case 8:
-                
+                this.egyFonalasHonnanTeszt();
                 break;
             case 9:
-                    ;
+                this.egyFonalasHovaTeszt();
                 break;
             default:
                 
@@ -171,7 +175,8 @@ public class szkeleton
     void BogarLogikaTeszteles()
     {
         System.out.println("\nTesztelheto Bogarasz logikak:\n1:FonalElhalBogarMiatt\n2:BogarLep\n3:BogarRag\n4:BogarEszik\n5:BogarEmeszt");
-        int valaszt = 0;
+        Scanner bemenet = new Scanner(System.in);
+        int valaszt = bemenet.nextInt();
         switch (valaszt) {
             case 1:
                     fonalElhalBogarMiattTeszt();
@@ -196,7 +201,8 @@ public class szkeleton
     void BogarEmesztTeszteles()
     {
         System.out.println("\nTesztelheto Spora fajta emesztesek:\n1:Gyorsito\n2:Benito\n3:Keseru\n4:Lassito");
-        int valaszt = 0;
+        Scanner bemenet = new Scanner(System.in);
+        int valaszt = bemenet.nextInt();
         switch (valaszt) {
             case 1:
                     BogarEmesztGyorsitoTeszt();
