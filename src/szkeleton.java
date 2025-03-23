@@ -364,7 +364,10 @@ public class szkeleton
         test.setSpora(spora);
         
         gyujtemeny = new ArrayList<>();
+
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
         jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
         gyujtemenyKiiratas();
     }
 
