@@ -49,9 +49,10 @@ public class Gombatest
         //szkeleton.logMethodEntry(this, "elszor");
         szkeleton.logMethodEntry(c, "addSpora");
         c.addSpora(spora);
-        szkeleton.logMethodExit(this, "");	
+        szkeleton.logMethodExit(c, "");	
         maradt--;
         if(maradt == 0){
+
             this.gombatestMeghal();
         }
         spora = null;
@@ -60,9 +61,19 @@ public class Gombatest
 
     private void gombatestMeghal(){
         //szkeleton.logMethodEntry(this, "gombatestMeghal");
+
+        szkeleton.logMethodEntry(hely, "setGombatest");
         hely.setGombatest(null);
+        szkeleton.logMethodExit(hely, "");
+
+        szkeleton.logMethodEntry(tartozik, "removeGombatest");
         tartozik.removeGombatest(this);
+        szkeleton.logMethodExit(tartozik, "");
+        
+        szkeleton.logMethodEntry(tartozik, "elszakadasDfsKezeles");
         tartozik.elszakadasDfsKezeles();
+        szkeleton.logMethodExit(tartozik, "");
+        
         //szkeleton.logMethodExit(this, "");
     }
 
@@ -71,8 +82,18 @@ public class Gombatest
         //szkeleton.logMethodEntry(this, "elhelyez");
         Fonal f1 = new Fonal(honnan, this.tartozik);
         Fonal f2 = new Fonal(hova, this.tartozik);
-        if(honnan.addFonal(f2)){
-            if(!hova.addFonal(f1)){
+
+        szkeleton.logMethodEntry(honnan, "addFonal");
+        boolean vissza = honnan.addFonal(f2);
+        szkeleton.logMethodExit(honnan, vissza);
+
+        if(vissza){
+
+            szkeleton.logMethodEntry(hova, "addFonal");
+            boolean vissza2 = hova.addFonal(f1);
+            szkeleton.logMethodExit(hova, vissza2);
+            
+            if(!vissza2){
                 honnan.fonalElszakad(f2);
                 System.out.println("Sikertelen lerakas, mert a hova tekton EgyFonalas");
                 //szkeleton.logMethodExit(this, "false");

@@ -330,7 +330,12 @@ public class szkeleton
         hely.setGombatest(test);
 
         gyujtemeny = new ArrayList<>();
+
+        szkeleton.logMethodEntry(karakter, "fonalLerak");
         karakter.fonalLerak();
+        szkeleton.logMethodExit(karakter, "");
+
+
         gyujtemenyKiiratas();
     }
 
@@ -368,6 +373,7 @@ public class szkeleton
         szkeleton.logMethodEntry(jatekos, "sporaSzor");
         jatekos.sporaSzor();
         szkeleton.logMethodExit(jatekos, "");
+
         gyujtemenyKiiratas();
     }
 
