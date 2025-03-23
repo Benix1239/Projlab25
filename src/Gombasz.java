@@ -38,7 +38,11 @@ public class Gombasz extends Jatekos
 
         for(Tekton t : palya){
             if(!elerhetok.contains(t)){
-               ArrayList<Fonal> fonalak = t.getOsszekoto();
+               ArrayList<Fonal> fonalak = new ArrayList<>();
+               for(Fonal f : t.getOsszekoto())
+               {
+                    fonalak.add(f);
+               }
                for(Fonal f : fonalak){
                     if(f.getTartozik() == this){
                         t.getOsszekoto().remove(f);
