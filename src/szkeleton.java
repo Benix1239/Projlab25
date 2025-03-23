@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.Stack;
 
 
@@ -11,7 +10,7 @@ public class szkeleton
     private static ArrayList<String> gyujtemeny = new ArrayList<>();
     private static Map<Object, String> objectToStringMap = new IdentityHashMap<>();
     private static Map<String, Object> stringToObjectMap = new IdentityHashMap<>();
-    private static int objectCounter = 1;
+    
 
     private static Object jelenlegiHivo = new Object();
 
@@ -100,6 +99,91 @@ public class szkeleton
                     BogarLogikaTeszteles();
                     break;
                 case 4:
+ 
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("1.jatekinditTeszt");
+                    jatekInditasTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("2.fonalLerakSimaTeszt");
+                    fonalLerakSimaTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("3.sporaSzorSimaTeszt");
+                    sporaSzorSimaTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("4.sporaSzorFejlettTeszt");
+                    sporaSzorFejlettTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("5.GombatestepitFonallalTeszt");
+                    GombatestEpitFonallalTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("6.GombatestEpitSporavalTeszt");
+                    GombatestEpitSporavalTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("7.gombaTestMeghalTeszt");
+                    gombaTestMeghalTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("8.fonalElhalBogarMiattTeszt");
+                    fonalElhalBogarMiattTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("9.fonalElhalGombatestMiattTeszt");
+                    fonalElhalGombatestMiattTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("10.FonalElhalSzetesesMiattTeszt");
+                    fonalElhalSzetesesMiattTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("11.BogarLepTeszt");
+                    BogarLepTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("12.BogarRagTeszt");
+                    BogarRagTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("13.BogarEszikTeszt");
+                    BogarEszikTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("14.BogarEmesztGyorsitoTeszt");
+                    BogarEmesztGyorsitoTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("15.BogarEmesztBenitoTeszt");
+                    BogarEmesztBenitoTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("16.BogarEmesztKeseruTeszt");
+                    BogarEmesztkeseruTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("17.BogarEmesztLassitoTeszt");
+                    BogarEmesztlassitoTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("18.tektonSzetesesFonalNelkulTeszt");
+                    tektonSzetesesFonalNelkulTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("19.fonalFelszivTeszt");
+                    fonalFelszivTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("20.egyFonalasHonnanTeszt");
+                    egyFonalasHonnanTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("21.egyFonalasHovaTeszt");
+                    egyFonalasHovaTeszt();
+                    
                     tart = false;
                     break;
                 default:
@@ -225,7 +309,9 @@ public class szkeleton
 
     void fonalLerakSimaTeszt()
     {
-        
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+
         Tekton hely = new Tekton();
         Tekton t2 = new Tekton();
         addToMap(hely, "hely");
@@ -251,6 +337,8 @@ public class szkeleton
     //naon fasza, diagramm szerint fut
     void sporaSzorSimaTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         addToMap(t1, "t1");
@@ -282,6 +370,8 @@ public class szkeleton
 
     void sporaSzorFejlettTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton t3 = new Tekton();
@@ -311,12 +401,17 @@ public class szkeleton
         spora.setTartozik(jatekos);
         test.setSpora(spora);
         test.setMaradt(2);
+
+        gyujtemeny = new ArrayList<>();
         jatekos.sporaSzor();
+        gyujtemenyKiiratas();
     }
 
 
     void GombatestEpitFonallalTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         addToMap(t1, "t1");
@@ -358,13 +453,16 @@ public class szkeleton
         addToMap(s5, "s5");
         s5.setTartozik(jatekos);
         test.setSpora(s5);
-        
+        gyujtemeny = new ArrayList<>();
         jatekos.fonalLerak();
+        gyujtemenyKiiratas();
     }
 
 
     void GombatestEpitSporavalTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         addToMap(t1, "t1");
@@ -411,12 +509,16 @@ public class szkeleton
         addToMap(fon2, "fon2");
         t2.addFonal(fon2);
 
+        gyujtemeny = new ArrayList<>();
         jatekos.sporaSzor();
+        gyujtemenyKiiratas();
     }
 
 
     void gombaTestMeghalTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         addToMap(t1, "t1");
@@ -446,12 +548,16 @@ public class szkeleton
         t2.addFonal(fon2);
         addToMap(fon2, "fon2");
 
+        gyujtemeny = new ArrayList<>();
         jatekos.sporaSzor();
+        gyujtemenyKiiratas();
     }
 
 
     void fonalElhalBogarMiattTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton t3 = new Tekton();
@@ -508,12 +614,16 @@ public class szkeleton
         addToMap(bogar, "bogar");
         jatekos1.bogarHozzaad(bogar, t1);
 
+        gyujtemeny = new ArrayList<>();
         jatekos1.ragas();
+        gyujtemenyKiiratas();
     }
 
 
     void fonalElhalGombatestMiattTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton t3 = new Tekton();
@@ -568,12 +678,16 @@ public class szkeleton
         test.setSpora(spora);
         test.setMaradt(1);
 
+        gyujtemeny = new ArrayList<>();
         jatekos.sporaSzor();
+        gyujtemenyKiiratas();
 
     }
 
     void fonalElhalSzetesesMiattTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton t3 = new Tekton();
@@ -626,12 +740,16 @@ public class szkeleton
         t4.addFonal(fon31);
         t3.addFonal(fon30);
 
-       t2.tores();
+        gyujtemeny = new ArrayList<>();
+        t2.tores();
+        gyujtemenyKiiratas();
 
     }
 
     void BogarLepTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         addToMap(t1, "t1");
@@ -658,11 +776,15 @@ public class szkeleton
 
         jatekos1.bogarHozzaad(bogar, t1);
 
+        gyujtemeny = new ArrayList<>();
         jatekos1.lep();
+        gyujtemenyKiiratas();
     }
 
     void BogarRagTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         addToMap(t1, "t1");
@@ -689,11 +811,15 @@ public class szkeleton
 
         jatekos1.bogarHozzaad(bogar, t1);
 
+        gyujtemeny = new ArrayList<>();
         jatekos1.ragas();
+        gyujtemenyKiiratas();
     }
 
     void BogarEszikTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         addToMap(t1, "t1");
         Palya jatekter = new Palya();
@@ -709,11 +835,15 @@ public class szkeleton
         addToMap(bogar, "bogar");
         jatekos1.bogarHozzaad(bogar, t1);
 
+        gyujtemeny = new ArrayList<>();
         jatekos1.eves();
+        gyujtemenyKiiratas();
     }
 
     void BogarEmesztGyorsitoTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         addToMap(t1, "t1");
         Palya jatekter = new Palya();
@@ -730,11 +860,16 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
         bogar.setElozo(s);
 
+        gyujtemeny = new ArrayList<>();
         bogar.sporaMegemesztes();
+        gyujtemenyKiiratas();
+
     }
 
     void BogarEmesztBenitoTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         addToMap(t1, "t1");
         Palya jatekter = new Palya();
@@ -751,11 +886,16 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
         bogar.setElozo(s);
 
+        gyujtemeny = new ArrayList<>();
         bogar.sporaMegemesztes();
+        gyujtemenyKiiratas();
+
     }
 
     void BogarEmesztkeseruTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         addToMap(t1, "t1");
         Palya jatekter = new Palya();
@@ -772,11 +912,16 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
         bogar.setElozo(s);
 
+        gyujtemeny = new ArrayList<>();
         bogar.sporaMegemesztes();
+        gyujtemenyKiiratas();
+
     }
 
     void BogarEmesztlassitoTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         addToMap(t1, "t1");
         Palya jatekter = new Palya();
@@ -793,11 +938,15 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
         bogar.setElozo(s);
 
+        gyujtemeny = new ArrayList<>();
         bogar.sporaMegemesztes();
+        gyujtemenyKiiratas();
     }
 
     void tektonSzetesesFonalNelkulTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Palya jatekter = new Palya(10);
         addToMap(jatekter, "jatekter");
         Tekton palya = new Tekton();
@@ -812,13 +961,17 @@ public class szkeleton
         jatekter.tektonHozzaad(palya);
         jatekter.tektonHozzaad(szomszed1);
         jatekter.tektonHozzaad(szomszed2);
-
+        palya.setEletkorMegadas(101);
+        gyujtemeny = new ArrayList<>();
         jatekter.tektonHozzaad(palya.tores());//itt bekene adni egy 0 erteket, hogy biztosan szettorjon, mert tamas megoldasaval nem megoldhato az, ami miatt direkt ugy csinatuk ahogy akartuk
+        gyujtemenyKiiratas();
     }
 
 
     void fonalFelszivTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Felszivo();
         addToMap(t1, "t1");
@@ -837,12 +990,16 @@ public class szkeleton
         t2.addFonal(fon11);
         t1.addFonal(fon10);
 
+        gyujtemeny = new ArrayList<>();
         jatekter.felszivodik();
+        gyujtemenyKiiratas();
      
     }
 
     void egyFonalasHonnanTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Egyfonalas();
         Tekton t3 = new Tekton();
@@ -879,12 +1036,16 @@ public class szkeleton
         s1.setTartozik(jatekos);
         test.setSpora(s1);
 
+        gyujtemeny = new ArrayList<>();
         jatekos.fonalLerak();
+        gyujtemenyKiiratas();
      
     }
 
     void egyFonalasHovaTeszt()
     {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton t3 = new Egyfonalas();
@@ -920,7 +1081,9 @@ public class szkeleton
         s1.setTartozik(jatekos);
         test.setSpora(s1);
 
+        gyujtemeny = new ArrayList<>();
         jatekos.fonalLerak();
+        gyujtemenyKiiratas();
      
     }
 }
