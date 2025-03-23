@@ -49,13 +49,16 @@ public class Bogarasz extends Jatekos
             }
         }
 
+        szkeleton.logMethodEntry(this, "beallit");
         bogar.beallit();
+        szkeleton.logMethodExit(this, "");
 
         if(bogar.getSpora()!=null){
             pontok += bogar.getSpora().getPluszpont();
         }
-
+        szkeleton.logMethodEntry(this, "sporaMegemesztes");
         bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(this, "");
         //szkeleton.logMethodExit(this, "");
     }
 
@@ -65,12 +68,19 @@ public class Bogarasz extends Jatekos
     void lep(){
         //szkeleton.logMethodEntry(this, "lep");
         if(bogar.getMozgaspont()!=0){
+            szkeleton.logMethodEntry(this, "getHelyzet");
             Tekton helyzet= bogar.getHelyzet();
+            szkeleton.logMethodExit(this, "Helyzet");
+            szkeleton.logMethodEntry(this, "getOsszekoto");
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
+            szkeleton.logMethodExit(this, "Osszekoto[]");
             ArrayList<Tekton> lehetsegesLepes=new ArrayList<>();
+            
+            szkeleton.logMethodEntry(this, "getHova");
             for (Fonal fonal : fonalak) {
                 lehetsegesLepes.add(fonal.getHova());
             }
+            szkeleton.logMethodExit(this, "Lehetseges helyek");
 
             
             System.out.println("Melyik tektonra szeretnél lépni?");
@@ -81,8 +91,12 @@ public class Bogarasz extends Jatekos
             }
             int lepesValasztas = InputHandler.getScanner().nextInt();
             Tekton hova= lehetsegesLepes.get(lepesValasztas-1);
+            
+            szkeleton.logMethodEntry(this, "mozgas");
             bogar.mozgas(hova);
+            szkeleton.logMethodExit(this, "");
         }
+
         else{
             System.out.println("Már nem tudsz mozogni a körben");
         }
@@ -96,7 +110,9 @@ public class Bogarasz extends Jatekos
         //szkeleton.logMethodEntry(this, "eves");
         if(bogar.getactionEves()==true){
             if (bogar.getHelyzet().sporak!=null) {
+                szkeleton.logMethodEntry(this, "eves");
                 bogar.eves();
+                szkeleton.logMethodExit(this, "");
             }
             else{
                 System.out.println("Nincs a tektonon spóra");
@@ -115,13 +131,17 @@ public class Bogarasz extends Jatekos
         //szkeleton.logMethodEntry(this, "ragas");
         if(bogar.getactionRagas()==true){
             Tekton helyzet= bogar.getHelyzet();
+            szkeleton.logMethodEntry(this, "getOsszekoto");
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
+            szkeleton.logMethodExit(this, "Osszekoto[]");
             System.out.println("Melyik fonalat szeretnéd elrágni?");
             for (int i=0;i<fonalak.size();i++) {
                 System.out.println((i+1)+". fonal amely a Tekton"+ fonalak.get(i).getHova().getId()+"ra ér");
             }
             int ragasValasztas = InputHandler.getScanner().nextInt();
+            szkeleton.logMethodEntry(this, "ragas");
             bogar.ragas(fonalak.get(ragasValasztas-1));
+            szkeleton.logMethodExit(this, "");
         }
         else{
             System.out.println("Már rágtál a körben");
