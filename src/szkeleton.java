@@ -25,8 +25,8 @@ public class szkeleton
     }
 
     private static String indentalasSzamitas() {
-        int melyseg = Thread.currentThread().getStackTrace().length;
-        return "\t".repeat(Math.max(0, melyseg - 4));
+        int melyseg = objektumNevek.size();
+        return "\t".repeat(melyseg);
     }
 
     public static void logMethodEntry(Object hivott, String methodName) {

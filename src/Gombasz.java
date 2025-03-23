@@ -16,7 +16,9 @@ public class Gombasz extends Jatekos
     }
 
     public void gombatestHozzaad(Gombatest g){
+        szkeleton.logMethodEntry(this, "gombatestHozzaad");
         testek.add(g);
+        szkeleton.logMethodExit(this, "");
     }
 
     public void Round(){
@@ -26,6 +28,7 @@ public class Gombasz extends Jatekos
     //osszegyujti, hogy a hozza tartozo testekbol melyik tektonok erhetoek el es ha talal olyat, ami nem erheto el,
     //de hozza tartozo fonal van rajta, akkor azt a fonalat torli a tektonrol
     public void elszakadasDfsKezeles(){
+        szkeleton.logMethodEntry(this, "elszakadasDfsKezeles");
         HashSet<Tekton> elerhetok = new HashSet<>();
         for(Gombatest test : testek){
             Set<Tekton> elerhetoTektonok = test.dfs();
@@ -44,15 +47,17 @@ public class Gombasz extends Jatekos
                }
             }
         }
+        szkeleton.logMethodExit(this, "");
     }
 
-    public void removeGombatest(Gombatest g)
-    {
+    public void removeGombatest(Gombatest g){
+        szkeleton.logMethodEntry(this, "removeGombatest");
         testek.remove(g);
+        szkeleton.logMethodExit(this, "");
     }
 
     public void fonalLerak(){
-
+        szkeleton.logMethodEntry(this, "fonalLerak");
         for(Gombatest gombatest : testek){
             Set<Tekton> honnanLehetosegek = new HashSet<>();
             Set<Tekton> ujMegtalaltak = gombatest.dfs();
@@ -130,7 +135,7 @@ public class Gombasz extends Jatekos
 
             gombatest.elhelyez(honnan, hova);
         }
-        
+        szkeleton.logMethodExit(this, "");
     }
 
     public void sporaSzor(){
@@ -140,15 +145,17 @@ public class Gombasz extends Jatekos
             HashSet<Tekton> szomszedok = new HashSet<>(szomszedokList);
             if(gombatest.getMaradt() < 3){
                 for(Tekton t : szomszedokList){
-                    szomszedok.addAll(t.getSzomszed());
+                    ArrayList<Tekton> vmi = t.getSzomszed();
+                    szomszedok.addAll(vmi);
                 }
             }
 
             System.out.println("Hova szeretnel sporat szorni? Lehetosegek: ");
             Set<Integer> ervenyesErtekek = new HashSet<>();
             for(Tekton t : szomszedok){
-                System.out.println(t.getId());
-                ervenyesErtekek.add(t.getId());
+                int id = t.getId();
+                System.out.println(id);
+                ervenyesErtekek.add(id);
             }
 
             Scanner scanner = new Scanner(System.in);
