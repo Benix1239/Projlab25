@@ -13,6 +13,8 @@ public abstract class Osszekoto
     {
         return null;
     }
+
+    protected abstract Gombasz getTartozik();
     
     
 }

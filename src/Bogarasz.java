@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Scanner;
 
 /**
  * A Bogarasz osztály egy játékost reprezentál, aki egy bogarat irányít a játék során.
@@ -140,6 +141,10 @@ public class Bogarasz extends Jatekos
      */
     void bogarHozzaad(Bogar b,Tekton t)
     {
+        szkeleton.logMethodEntry(this, "bogarHozzaad");
+        bogar=b;
+        bogar.setHelyzet(t);
+        szkeleton.logMethodExit(this, "");
         szkeleton.logMethodEntry(this, "bogarHozzaad");
         bogar=b;
         bogar.setHelyzet(t);

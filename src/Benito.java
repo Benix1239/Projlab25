@@ -8,7 +8,7 @@ public class Benito extends Spora
     }
     
     @Override
-    void hatas(Bogar b) 
+    public void hatas(Bogar b) 
     {
         b.benul();
     }
