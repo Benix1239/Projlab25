@@ -7,8 +7,9 @@ public class Bogarasz extends Jatekos
 
     Bogarasz() {}
 
-    void Round()
+    void round()
     {
+        szkeleton.logMethodEntry(this, "round");
         while(bogar.getMozgaspont()!=0||bogar.getactionEves()==true|| bogar.getactionRagas()==true){
             Scanner bemenet = new Scanner(System.in);
             ArrayList<Fonal> fonalak= null;
@@ -43,9 +44,11 @@ public class Bogarasz extends Jatekos
         }
 
         bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(this, "");
     }
 
     void lep(){
+        szkeleton.logMethodEntry(this, "lep");
         if(bogar.getMozgaspont()!=0){
             Scanner bemenet = new Scanner(System.in);
             Tekton helyzet= bogar.getHelyzet();
@@ -69,9 +72,11 @@ public class Bogarasz extends Jatekos
         else{
             System.out.println("Már nem tudsz mozogni a körben");
         }
+        szkeleton.logMethodExit(this, "");
     }
 
     void eves(){
+        szkeleton.logMethodEntry(this, "eves");
         if(bogar.getactionEves()==true){
             if (bogar.getHelyzet().sporak!=null) {
                 bogar.eves();
@@ -83,9 +88,11 @@ public class Bogarasz extends Jatekos
         else{
             System.out.println("Már ettél a körben");
         }
+        szkeleton.logMethodExit(this, "");
     }
 
     void ragas(){
+        szkeleton.logMethodEntry(this, "ragas");
         if(bogar.getactionRagas()==true){
             Scanner bemenet = new Scanner(System.in);
             Tekton helyzet= bogar.getHelyzet();
@@ -100,12 +107,15 @@ public class Bogarasz extends Jatekos
         else{
             System.out.println("Már rágtál a körben");
         }
+        szkeleton.logMethodExit(this, "");
     }
 
     void bogarHozzaad(Bogar b,Tekton t)
     {
+        szkeleton.logMethodEntry(this, "bogarHozzaad");
         bogar=b;
         bogar.setHelyzet(t);
+        szkeleton.logMethodExit(this, "");
     }
     
 }
