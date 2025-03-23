@@ -12,7 +12,7 @@ public class Bogarasz extends Jatekos
         while(bogar.getMozgaspont()!=0||bogar.getactionEves()==true|| bogar.getactionRagas()==true){
             Scanner bemenet = new Scanner(System.in);
             ArrayList<Fonal> fonalak= null;
-            Tekton helyzet=null;
+            Tekton helyzet= null;
             System.out.println("Mit szeretnél csinálni");
             System.out.println("1. Mozgás");
             System.out.println("2. Evés");
@@ -59,7 +59,7 @@ public class Bogarasz extends Jatekos
             System.out.println("Melyik tektonra szeretnél lépni?");
             
             for (int i=0;i<lehetsegesLepes.size();i++) {
-                System.out.println(i+". "+lehetsegesLepes.get(i).getNev());
+                System.out.println(i+". Tekton"+lehetsegesLepes.get(i).getId());
     
             }
             int lepesValasztas = bemenet.nextInt();
@@ -92,7 +92,7 @@ public class Bogarasz extends Jatekos
             ArrayList<Fonal> fonalak = helyzet.fonalKeres();
             System.out.println("Melyik fonalat szeretnéd elrágni?");
             for (int i=0;i<fonalak.size();i++) {
-                System.out.println(i+". fonal amely a "+ fonalak.get(i).getHova().getNev()+"ra ér");
+                System.out.println(i+". fonal amely a Tekton"+ fonalak.get(i).getHova().getId()+"ra ér");
             }
             int ragasValasztas = bemenet.nextInt();
             bogar.ragas(fonalak.get(ragasValasztas-1));

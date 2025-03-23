@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class Tekton
 {
-    int ID;
-    String nev = "Tekton" + ID;
+    int Id;
     Gombatest gombatest;
     ArrayList<Spora> sporak;
     ArrayList<Osszekoto> koto;
@@ -16,10 +15,6 @@ public class Tekton
     Tekton()
     {
 
-    }
-
-    public String getNev(){
-        return nev;
     }
 
     Tekton tores(int toresarany)
@@ -77,5 +72,7 @@ public class Tekton
         return null;
     }
 
- 
+    int getId(){
+        return Id;
+    }
 }
