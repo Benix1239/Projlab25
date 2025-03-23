@@ -135,8 +135,8 @@ public class szkeleton
         palya.add(t2);
         palya.add(t1);
         Gombasz jatekos = new Gombasz(palya);
-        addToMap(jatekos, "jatekos");
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
         addToMap(test, "test");
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
@@ -155,20 +155,28 @@ public class szkeleton
         Tekton t1 = new Tekton(null);
         Tekton t2 = new Tekton(null);
         Tekton t3 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
         t3.addSzomszed(t2);
         t2.addSzomszed(t3);
+
         ArrayList<Tekton> palya = new ArrayList<Tekton>();
         palya.add(t2);
         palya.add(t1);
         palya.add(t3);
+
         Gombasz jatekos = new Gombasz(palya);
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
 
         Lassito spora = new Lassito();
+        addToMap(spora, "spora");
         spora.setTartozik(jatekos);
         test.setSpora(spora);
         test.setMaradt(2);
@@ -180,6 +188,8 @@ public class szkeleton
     {
         Tekton t1 = new Tekton(null);
         Tekton t2 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
         ArrayList<Tekton> palya = new ArrayList<Tekton>();
@@ -187,26 +197,33 @@ public class szkeleton
         palya.add(t1);
         Gombasz jatekos = new Gombasz(palya);
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
 
         Lassito s1 = new Lassito();
+        addToMap(s1, "s1");
         s1.setTartozik(jatekos);
         t2.addSpora(s1);
 
         Lassito s2 = new Lassito();
+        addToMap(s2, "s2");
         s2.setTartozik(jatekos);
         t2.addSpora(s2);
 
         Lassito s3 = new Lassito();
+        addToMap(s3, "s3");
         s3.setTartozik(jatekos);
         t2.addSpora(s3);
 
         Lassito s4 = new Lassito();
+        addToMap(s4, "s4");
         s4.setTartozik(jatekos);
         t2.addSpora(s4);
 
         Lassito s5 = new Lassito();
+        addToMap(s5, "s5");
         s5.setTartozik(jatekos);
         test.setSpora(s5);
         
@@ -218,6 +235,8 @@ public class szkeleton
     {
         Tekton t1 = new Tekton(null);
         Tekton t2 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
         ArrayList<Tekton> palya = new ArrayList<Tekton>();
@@ -225,32 +244,42 @@ public class szkeleton
         palya.add(t1);
         Gombasz jatekos = new Gombasz(palya);
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
 
         Lassito s1 = new Lassito();
+        addToMap(s1, "s1");
         s1.setTartozik(jatekos);
         t2.addSpora(s1);
 
         Lassito s2 = new Lassito();
+        addToMap(s2, "s2");
         s2.setTartozik(jatekos);
         t2.addSpora(s2);
 
         Lassito s3 = new Lassito();
+        addToMap(s3, "s3");
         s3.setTartozik(jatekos);
         t2.addSpora(s3);
 
         Lassito s4 = new Lassito();
+        addToMap(s4, "s4");
         s4.setTartozik(jatekos);
         t2.addSpora(s4);
 
+
         Lassito s5 = new Lassito();
+        addToMap(s5, "s5");
         s5.setTartozik(jatekos);
         test.setSpora(s5);
         
         Fonal fon1 = new Fonal(t2,jatekos);
+        addToMap(fon1, "fon1");
         t1.addFonal(fon1);
         Fonal fon2 = new Fonal(t1,jatekos);
+        addToMap(fon2, "fon2");
         t2.addFonal(fon2);
 
         jatekos.sporaSzor();
@@ -261,6 +290,8 @@ public class szkeleton
     {
         Tekton t1 = new Tekton(null);
         Tekton t2 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
         ArrayList<Tekton> palya = new ArrayList<Tekton>();
@@ -268,18 +299,23 @@ public class szkeleton
         palya.add(t1);
         Gombasz jatekos = new Gombasz(palya);
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
 
         Lassito spora = new Lassito();
+        addToMap(spora, "spora");
         spora.setTartozik(jatekos);
         test.setSpora(spora);
         test.setMaradt(1);
 
         Fonal fon1 = new Fonal(t2,jatekos);
+        addToMap(fon1, "fon1");
         t1.addFonal(fon1);
         Fonal fon2 = new Fonal(t1,jatekos);
         t2.addFonal(fon2);
+        addToMap(fon2, "fon2");
 
         jatekos.sporaSzor();
     }
@@ -291,6 +327,10 @@ public class szkeleton
         Tekton t2 = new Tekton(null);
         Tekton t3 = new Tekton(null);
         Tekton t4 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
+        addToMap(t4, "t4");
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
         t3.addSzomszed(t2);
@@ -304,26 +344,37 @@ public class szkeleton
         palya.add(t4);
         Gombasz jatekos = new Gombasz(palya);
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
+
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
 
         Fonal fon10 = new Fonal(t2,jatekos);
-        t1.addFonal(fon10);
         Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
         t2.addFonal(fon11);
+        t1.addFonal(fon10);
 
         Fonal fon20 = new Fonal(t2,jatekos);
-        t3.addFonal(fon20);
         Fonal fon21 = new Fonal(t3,jatekos);
+        addToMap(fon21, "fon21");
+        addToMap(fon20, "fon20");
         t2.addFonal(fon21);
+        t3.addFonal(fon20);
 
         Fonal fon30 = new Fonal(t4,jatekos);
-        t3.addFonal(fon30);
         Fonal fon31 = new Fonal(t3,jatekos);
+        addToMap(fon31, "fon31");
+        addToMap(fon30, "fon30");
         t4.addFonal(fon31);
+        t3.addFonal(fon30);
 
         Bogarasz jatekos1 = new Bogarasz();
         Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
         jatekos1.bogarHozzaad(bogar, t1);
 
         jatekos1.ragas();
@@ -336,6 +387,11 @@ public class szkeleton
         Tekton t2 = new Tekton(null);
         Tekton t3 = new Tekton(null);
         Tekton t4 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
+        addToMap(t3, "t3");
+        addToMap(t4, "t4");
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
         t3.addSzomszed(t2);
@@ -349,23 +405,31 @@ public class szkeleton
         palya.add(t4);
         Gombasz jatekos = new Gombasz(palya);
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test"); 
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
 
         Fonal fon10 = new Fonal(t2,jatekos);
-        t1.addFonal(fon10);
         Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
         t2.addFonal(fon11);
+        t1.addFonal(fon10);
 
         Fonal fon20 = new Fonal(t2,jatekos);
-        t3.addFonal(fon20);
         Fonal fon21 = new Fonal(t3,jatekos);
+        addToMap(fon21, "fon21");
+        addToMap(fon20, "fon20");
         t2.addFonal(fon21);
+        t3.addFonal(fon20);
 
         Fonal fon30 = new Fonal(t4,jatekos);
-        t3.addFonal(fon30);
         Fonal fon31 = new Fonal(t3,jatekos);
+        addToMap(fon31, "fon31");
+        addToMap(fon30, "fon30");
         t4.addFonal(fon31);
+        t3.addFonal(fon30);
 
         Lassito spora = new Lassito();
         spora.setTartozik(jatekos);
@@ -382,6 +446,11 @@ public class szkeleton
         Tekton t2 = new Tekton(null);
         Tekton t3 = new Tekton(null);
         Tekton t4 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
+        addToMap(t3, "t3");
+        addToMap(t4, "t4");
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
         t3.addSzomszed(t2);
@@ -397,23 +466,32 @@ public class szkeleton
 
         Gombasz jatekos = new Gombasz(palya);
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
+
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
 
         Fonal fon10 = new Fonal(t2,jatekos);
-        t1.addFonal(fon10);
         Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
         t2.addFonal(fon11);
+        t1.addFonal(fon10);
 
         Fonal fon20 = new Fonal(t2,jatekos);
-        t3.addFonal(fon20);
         Fonal fon21 = new Fonal(t3,jatekos);
+        addToMap(fon21, "fon21");
+        addToMap(fon20, "fon20");
         t2.addFonal(fon21);
+        t3.addFonal(fon20);
 
         Fonal fon30 = new Fonal(t4,jatekos);
-        t3.addFonal(fon30);
         Fonal fon31 = new Fonal(t3,jatekos);
+        addToMap(fon31, "fon31");
+        addToMap(fon30, "fon30");
         t4.addFonal(fon31);
+        t3.addFonal(fon30);
 
        t2.tores();
 
@@ -423,18 +501,27 @@ public class szkeleton
     {
         Tekton t1 = new Tekton(null);
         Tekton t2 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+
         ArrayList<Tekton> palya = new ArrayList<Tekton>();
         palya.add(t2);
         palya.add(t1);
         Gombasz jatekos = new Gombasz(palya);
+        addToMap(jatekos, "jatekos");
 
         Fonal fon10 = new Fonal(t2,jatekos);
-        t1.addFonal(fon10);
         Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
         t2.addFonal(fon11);
+        t1.addFonal(fon10);
 
         Bogarasz jatekos1 = new Bogarasz();
         Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+
         jatekos1.bogarHozzaad(bogar, t1);
 
         jatekos1.lep();
@@ -444,18 +531,27 @@ public class szkeleton
     {
         Tekton t1 = new Tekton(null);
         Tekton t2 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+
         ArrayList<Tekton> palya = new ArrayList<Tekton>();
         palya.add(t2);
         palya.add(t1);
         Gombasz jatekos = new Gombasz(palya);
+        addToMap(jatekos, "jatekos");
 
         Fonal fon10 = new Fonal(t2,jatekos);
-        t1.addFonal(fon10);
         Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
         t2.addFonal(fon11);
+        t1.addFonal(fon10);
 
         Bogarasz jatekos1 = new Bogarasz();
         Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+
         jatekos1.bogarHozzaad(bogar, t1);
 
         jatekos1.ragas();
@@ -466,9 +562,11 @@ public class szkeleton
         Tekton t1 = new Tekton(null);
 
         Sima s = new Sima();
-
+        addToMap(s, "s");
         Bogarasz jatekos1 = new Bogarasz();
         Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
         jatekos1.bogarHozzaad(bogar, t1);
 
         jatekos1.eves();
@@ -479,9 +577,11 @@ public class szkeleton
         Tekton t1 = new Tekton(null);
 
         Spora s = new Gyorsito();
-
+        addToMap(s, "s");
         Bogarasz jatekos1 = new Bogarasz();
         Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
         jatekos1.bogarHozzaad(bogar, t1);
         bogar.setElozo(s);
 
@@ -493,9 +593,11 @@ public class szkeleton
         Tekton t1 = new Tekton(null);
 
         Spora s = new Benito();
-
+        addToMap(s, "s");
         Bogarasz jatekos1 = new Bogarasz();
         Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
         jatekos1.bogarHozzaad(bogar, t1);
         bogar.setElozo(s);
 
@@ -507,9 +609,11 @@ public class szkeleton
         Tekton t1 = new Tekton(null);
 
         Spora s = new Keseru();
-
+        addToMap(s, "s");
         Bogarasz jatekos1 = new Bogarasz();
         Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
         jatekos1.bogarHozzaad(bogar, t1);
         bogar.setElozo(s);
 
@@ -521,9 +625,11 @@ public class szkeleton
         Tekton t1 = new Tekton(null);
 
         Spora s = new Lassito();
-
+        addToMap(s, "s");
         Bogarasz jatekos1 = new Bogarasz();
         Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
         jatekos1.bogarHozzaad(bogar, t1);
         bogar.setElozo(s);
 
@@ -536,7 +642,8 @@ public class szkeleton
         Tekton palya = new Tekton(null);
         Tekton szomszed1 = new Tekton(null);
         Tekton szomszed2 = new Tekton(null);
-
+        addToMap(szomszed1, "szomszed1");
+        addToMap(szomszed2, "szomszed22");
         palya.addSzomszed(szomszed1);
         palya.addSzomszed(szomszed2);
 
@@ -552,15 +659,20 @@ public class szkeleton
     {
         Tekton t1 = new Tekton(null);
         Tekton t2 = new Felszivo(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
         Palya jatekter = new Palya();
         jatekter.TektonHozzaad(t1);
         jatekter.TektonHozzaad(t2);
         Gombasz jatekos = new Gombasz(jatekter.palya);
+        addToMap(jatekos, "jatekos");
 
         Fonal fon10 = new Fonal(t2,jatekos);
-        t1.addFonal(fon10);
         Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
         t2.addFonal(fon11);
+        t1.addFonal(fon10);
 
         jatekter.felszivodo();
      
@@ -571,6 +683,10 @@ public class szkeleton
         Tekton t1 = new Tekton(null);
         Tekton t2 = new Egyfonalas(null);
         Tekton t3 = new Tekton(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
+
         Palya jatekter = new Palya();
         jatekter.TektonHozzaad(t1);
         jatekter.TektonHozzaad(t2);
@@ -580,17 +696,22 @@ public class szkeleton
         t3.addSzomszed(t2);
         t2.addSzomszed(t3);
         Gombasz jatekos = new Gombasz(jatekter.palya);
+        addToMap(jatekos, "jatekos");
 
         Fonal fon10 = new Fonal(t2,jatekos);
-        t1.addFonal(fon10);
         Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
         t2.addFonal(fon11);
+        t1.addFonal(fon10);
 
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(test, "test");
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
 
         Lassito s1 = new Lassito();
+        addToMap(s1, "s1");
         s1.setTartozik(jatekos);
         test.setSpora(s1);
 
@@ -603,6 +724,9 @@ public class szkeleton
         Tekton t1 = new Tekton(null);
         Tekton t2 = new Tekton(null);
         Tekton t3 = new Egyfonalas(null);
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
         Palya jatekter = new Palya();
         jatekter.TektonHozzaad(t1);
         jatekter.TektonHozzaad(t2);
@@ -612,17 +736,22 @@ public class szkeleton
         t3.addSzomszed(t2);
         t2.addSzomszed(t3);
         Gombasz jatekos = new Gombasz(jatekter.palya);
+        addToMap(jatekos, "jatekos");
 
         Fonal fon10 = new Fonal(t2,jatekos);
-        t1.addFonal(fon10);
         Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
         t2.addFonal(fon11);
+        t1.addFonal(fon10);
 
         Gombatest test = new Gombatest(t1,jatekos);
         jatekos.gombatestHozzaad(test);
+        addToMap(test, "test");
         t1.setGombatest(test);
 
         Lassito s1 = new Lassito();
+        addToMap(s1, "s1");
         s1.setTartozik(jatekos);
         test.setSpora(s1);
 
