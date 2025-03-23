@@ -99,7 +99,7 @@ public class szkeleton
                     BogarLogikaTeszteles();
                     break;
                 case 4:
- 
+ /* 
                     System.out.println("-------------------------------------------------------------------");
                     System.out.println("1.jatekinditTeszt");
                     jatekInditasTeszt();
@@ -183,7 +183,7 @@ public class szkeleton
                     System.out.println("-------------------------------------------------------------------");
                     System.out.println("21.egyFonalasHovaTeszt");
                     egyFonalasHovaTeszt();
-                    
+                    */
                     tart = false;
                     break;
                 default:
@@ -304,6 +304,7 @@ public class szkeleton
 //---------------------------------------------------------------------------------------------------------------------------------
     void jatekInditasTeszt()
     {
+
         Jatek tesztJatek = new Jatek(10);
     }
 
@@ -330,11 +331,12 @@ public class szkeleton
         hely.setGombatest(test);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(karakter, "fonalLerak");
         karakter.fonalLerak();
+        szkeleton.logMethodExit(karakter, "");
         gyujtemenyKiiratas();
     }
 
-    //naon fasza, diagramm szerint fut
     void sporaSzorSimaTeszt()
     {
         objectToStringMap = new IdentityHashMap<>();
@@ -364,7 +366,9 @@ public class szkeleton
         test.setSpora(spora);
         
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "sporaszor");
         jatekos.sporaSzor();
+        szkeleton.logMethodExit(this, "");
         gyujtemenyKiiratas();
     }
 
@@ -403,7 +407,9 @@ public class szkeleton
         test.setMaradt(2);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
         jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
         gyujtemenyKiiratas();
     }
 
@@ -454,7 +460,9 @@ public class szkeleton
         s5.setTartozik(jatekos);
         test.setSpora(s5);
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "fonalLerak");
         jatekos.fonalLerak();
+        szkeleton.logMethodExit(jatekos, "");
         gyujtemenyKiiratas();
     }
 
@@ -510,7 +518,9 @@ public class szkeleton
         t2.addFonal(fon2);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
         jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
         gyujtemenyKiiratas();
     }
 
@@ -549,7 +559,9 @@ public class szkeleton
         addToMap(fon2, "fon2");
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
         jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
         gyujtemenyKiiratas();
     }
 
@@ -615,7 +627,9 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos1, "ragas");
         jatekos1.ragas();
+        szkeleton.logMethodExit(jatekos1, "");
         gyujtemenyKiiratas();
     }
 
@@ -679,7 +693,9 @@ public class szkeleton
         test.setMaradt(1);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
         jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
         gyujtemenyKiiratas();
 
     }
@@ -741,7 +757,9 @@ public class szkeleton
         t3.addFonal(fon30);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(t2, "tores");
         t2.tores();
+        szkeleton.logMethodExit(t2, "");
         gyujtemenyKiiratas();
 
     }
@@ -777,7 +795,9 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos1, "lep");
         jatekos1.lep();
+        szkeleton.logMethodExit(jatekos1, "");
         gyujtemenyKiiratas();
     }
 
@@ -812,7 +832,9 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos1, "ragas");
         jatekos1.ragas();
+        szkeleton.logMethodExit(jatekos1, "");
         gyujtemenyKiiratas();
     }
 
@@ -836,7 +858,9 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos1, "eves");
         jatekos1.eves();
+        szkeleton.logMethodExit(jatekos1, "");
         gyujtemenyKiiratas();
     }
 
@@ -861,7 +885,9 @@ public class szkeleton
         bogar.setElozo(s);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
         bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(bogar, "");
         gyujtemenyKiiratas();
 
     }
@@ -887,7 +913,9 @@ public class szkeleton
         bogar.setElozo(s);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
         bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(bogar, "");
         gyujtemenyKiiratas();
 
     }
@@ -913,7 +941,9 @@ public class szkeleton
         bogar.setElozo(s);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
         bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(bogar, "");
         gyujtemenyKiiratas();
 
     }
@@ -939,7 +969,9 @@ public class szkeleton
         bogar.setElozo(s);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
         bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(bogar, "");
         gyujtemenyKiiratas();
     }
 
@@ -963,7 +995,9 @@ public class szkeleton
         jatekter.tektonHozzaad(szomszed2);
         palya.setEletkorMegadas(101);
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekter, "tores");
         jatekter.tektonHozzaad(palya.tores());//itt bekene adni egy 0 erteket, hogy biztosan szettorjon, mert tamas megoldasaval nem megoldhato az, ami miatt direkt ugy csinatuk ahogy akartuk
+        szkeleton.logMethodExit(jatekter, "");
         gyujtemenyKiiratas();
     }
 
@@ -991,7 +1025,9 @@ public class szkeleton
         t1.addFonal(fon10);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekter, "felszivodik");
         jatekter.felszivodik();
+        szkeleton.logMethodExit(jatekter, "");
         gyujtemenyKiiratas();
      
     }
@@ -1037,7 +1073,9 @@ public class szkeleton
         test.setSpora(s1);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "fonalLerak");
         jatekos.fonalLerak();
+        szkeleton.logMethodExit(jatekos, "");
         gyujtemenyKiiratas();
      
     }
@@ -1082,7 +1120,9 @@ public class szkeleton
         test.setSpora(s1);
 
         gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "fonalLerak");
         jatekos.fonalLerak();
+        szkeleton.logMethodExit(jatekos, "");
         gyujtemenyKiiratas();
      
     }
