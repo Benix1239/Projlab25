@@ -592,9 +592,9 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		//szkeleton.logMethodEntry(this, "gombaTestEpul");	///Szkeleton kiiratas fuggveny kezdetekor
 		Gombatest uj=new Gombatest(this, g);		///Letre hozzuk a gombatestet
 		setGombatest(uj);							///Beallitjuk a tekton gombatestjet
-		szkeleton.logMethodEntry(this, "gombatestHozzaad");	///Szkeleton kiiratas fuggveny kezdetekor
+		szkeleton.logMethodEntry(g, "gombatestHozzaad");	///Szkeleton kiiratas fuggveny kezdetekor
 		g.gombatestHozzaad(uj);						///Gombasznak oda adjuk az uj gombatestjet
-		szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+		szkeleton.logMethodExit(g, "");			///Szkeleton kiiratas fuggveny vegen	
 		epitoanyagSporaEltunik(g);					///Eltuntetjuk a sporakat mikbol epult a test
 		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen														
 	}
