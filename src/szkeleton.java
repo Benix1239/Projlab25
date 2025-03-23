@@ -12,7 +12,45 @@ public class szkeleton
     void tesztIndit()
     {
         System.out.println("A menupont elotti szím beirasaval valaszthatod ki a dolgokat");
-        System.out.println("Mit szeretnel tesztelni?: ");
+        System.out.println("Mit szeretnel tesztelni?:");
+        System.out.println("1:Palya logika\n2:Gombasz logika\n3:Bogarasz logika"); 
+        //beolvasas amit lusta vok megcsinalni hajnali 3-kor
+        int valaszt = 0;
+
+        switch (valaszt) {
+            case 1:
+                    PalyaLogikaTeszteles();
+                break;
+            case 2:
+                    GombaszLogikaTeszteles();
+                break;
+            case 3:
+                BogarLogikaTeszteles();
+                break;
+            default:
+                
+        }
+      
+    }
+
+    void PalyaLogikaTeszteles()
+    {
+        System.out.println("\nTesztelheto Palya logikak:\n1:JatekInditasa\n2:FonalElhalSzetesesMiatt\n3:TektonSzetesesFonalNelkul\n4:FonalFelsziv");
+    }
+
+    void GombaszLogikaTeszteles()
+    {
+        System.out.println("\nTesztelheto Gombasz logikak:\n1:FonalLerakSima\n2:SporaSzorSima\n3:SporaSzorFejlett\n4:GombatestEpitFonallal\n5:GombatestEpitSporaval\n6:GombatestMeghal\n7:fonalElhalGombatestMiatt\n8:EgyFonalasHonnan\n9:EgyFonalasHova");
+    }
+
+    void BogarLogikaTeszteles()
+    {
+        System.out.println("\nTesztelheto Bogarasz logikak:\n1:FonalElhalBogarMiatt\n2:BogarLep\n3:BogarRag\n4:BogarEszik\n5:BogarEmeszt");
+    }
+
+    void BogarEmesztTeszteles()
+    {
+        System.out.println("\nTesztelheto Spora fajta emesztesek:\n1:Gyorsito\n2:Benito\n3:Keseru\n4:Lassito");
     }
 
     void jatekInditasTeszt()
