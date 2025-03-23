@@ -1,16 +1,31 @@
 import java.util.ArrayList;
 
+/*
+ * @class Testetlen
+ * @brief Testetlen tekton kezelese. (Erre a tektonra nem tud gombatest epulni)
+ */
 public class Testetlen extends Tekton
 {
+     /*
+    * @brief Parameter nelkuli konstruktor
+    */
     Testetlen(){
-        super();
+        super();    ///Az ososztaly parameter nelkuli konstruktorat hivja
     }
 
+    /*
+     * @brief Parameteres konstruktor
+     * @param spo -> A tekton spora listaja
+     * @szom -> A tekton szomszed listaja
+     */
     Testetlen(ArrayList<Spora> spo, ArrayList<Tekton> szom){
-        super(spo,szom);
+        super(spo,szom); ///Az ososztaly parameteres konstruktorat hivja
     }
 
-   
+   /*
+    * @brief Meghatarozza hogy tud -e gombatest epulni az adott tektonra
+    * @retrun Mindig false
+    */
     @Override
     boolean tudEpulni(Gombasz g) {
         szkeleton.logMethodEntry(this, "tudEpulni");	///Szkeleton kiiratas fuggveny kezdetekor
@@ -18,6 +33,10 @@ public class Testetlen extends Tekton
         return false;
     }
 
+    /*
+     * @brief A tekton szetesesekor egy masik Testetlen tektont hozz letre
+     * @return Letrehozott uj tekton
+     */
     @Override
     Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
         szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
