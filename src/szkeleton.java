@@ -9,16 +9,18 @@ public class szkeleton
 {
     private static ArrayList<String> gyujtemeny = new ArrayList<>();
     private static Map<Object, String> objectToStringMap = new IdentityHashMap<>();
+    private static Map<String, Object> stringToObjectMap = new IdentityHashMap<>();
     private static int objectCounter = 1;
 
-    private static final ThreadLocal<Object> jelenlegiHivo = new ThreadLocal<>();
+    private static Object jelenlegiHivo = new Object();
 
     private static Stack<String> objektumNevek;
 
     public static void addToMap(Object o, String name){
-        if(o == null)
+        if(o == null || name == null || objectToStringMap.containsKey(o) || stringToObjectMap.containsKey(name))
             return;
         objectToStringMap.putIfAbsent(o, name);
+        stringToObjectMap.putIfAbsent(name, o);
     }
 
     private static String indentalasSzamitas() {
@@ -27,9 +29,9 @@ public class szkeleton
     }
 
     public static void logMethodEntry(Object hivott, String methodName) {
-        Object hivo = jelenlegiHivo.get();
+        Object hivo = jelenlegiHivo;
         objektumNevek.push(objectToStringMap.get(hivo));
-        jelenlegiHivo.set(hivott);
+        jelenlegiHivo = hivott;
         //System.out.println(indentalasSzamitas() + objectToStringMap.get(hivo) + " -> " + objectToStringMap.get(hivott) + ": " + methodName + "()");
         String uzenet = indentalasSzamitas() + objectToStringMap.get(hivo) + " -> " + objectToStringMap.get(hivott) + ": " + methodName + "()";
         gyujtemeny.add(uzenet);
@@ -40,7 +42,27 @@ public class szkeleton
         //System.out.println(indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue);
         String uzenet = indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue;
         gyujtemeny.add(uzenet);
-        objektumNevek.pop();
+
+        String jelenlegiHivoNev;
+        jelenlegiHivoNev = objektumNevek.pop();
+        jelenlegiHivo = stringToObjectMap.get(jelenlegiHivoNev);
+    }
+
+    public static void logConstructorEntry(Object hivott, String objectName){
+        addToMap(hivott, objectName);
+        Object hivo = jelenlegiHivo;
+        objektumNevek.push(objectToStringMap.get(hivo));
+        jelenlegiHivo = hivott;
+        String uzenet = indentalasSzamitas() + objectToStringMap.get(hivo) + " -> " + objectToStringMap.get(hivott) + ": " + "<<Constructor>>";
+        gyujtemeny.add(uzenet);
+    }
+
+    public static void logConstructorExit(Object hivott){
+        //System.out.println(indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue);
+
+        String jelenlegiHivoNev;
+        jelenlegiHivoNev = objektumNevek.pop();
+        jelenlegiHivo = stringToObjectMap.get(jelenlegiHivoNev);
     }
 
     private void gyujtemenyKiiratas(){
@@ -146,6 +168,7 @@ public class szkeleton
         spora.setTartozik(jatekos);
         test.setSpora(spora);
         
+        gyujtemeny = new ArrayList<>();
         jatekos.sporaSzor();
         gyujtemenyKiiratas();
     }

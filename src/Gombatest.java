@@ -12,6 +12,11 @@ public class Gombatest
     private Gombasz tartozik;
     private static final Random random = new Random();
 
+    public Gombatest(String bindName){
+        szkeleton.logConstructorEntry(this, bindName);
+        szkeleton.logConstructorExit(this);
+    }
+
     public Gombatest(Tekton hely, Gombasz tartozik) {
         this.hely = hely;
         this.tartozik = tartozik;
