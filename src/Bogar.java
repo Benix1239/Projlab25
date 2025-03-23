@@ -1,5 +1,5 @@
 
-/**
+/** 
  * A Bogar osztály egy bogarat reprezentál, amely képes mozogni, rágni és enni.
  */
 public class Bogar 
@@ -77,10 +77,15 @@ public class Bogar
     public void ragas(Fonal fonal) {
         //szkeleton.logMethodEntry(this, "ragas");
         //Tekton hova = fonal.getHova();
-        Gombasz gombasz = fonal.getTartozik();
         
+        szkeleton.logMethodEntry(this, "getTartozik");
+        Gombasz gombasz = fonal.getTartozik();
+        szkeleton.logMethodExit(this, "");
+
+        szkeleton.logMethodEntry(this, "fonalElszakad");
         helyzet.fonalElszakad(fonal);
-        /*ArrayList<Fonal> fonalak = hova.getOsszekoto();
+        szkeleton.logMethodExit(this, "");
+        /*ArrayList<Fonal> fonalak = hova.getOsszekoto();   
 
         for (Fonal fonali : fonalak) {
             if (fonali.getHova() == helyzet && fonal.getTartozik() == gombasz) {
@@ -99,7 +104,9 @@ public class Bogar
      */
     public void eves() {
         //szkeleton.logMethodEntry(this, "eves");
+        szkeleton.logMethodEntry(this, "sporatEszik");
         elozo = helyzet.sporatEszik();
+        szkeleton.logMethodExit(this, "");
         actionRagas = false;
         actionEves = false;
         //szkeleton.logMethodExit(this, "");
@@ -123,7 +130,9 @@ public class Bogar
     public void sporaMegemesztes() {
         //szkeleton.logMethodEntry(this, "sporaMegemesztes");
         if (elozo != null) {
+            szkeleton.logMethodEntry(this, "hatas");
             elozo.hatas(this);
+            szkeleton.logMethodExit(this, "");
             this.elozo = null;
         }
         //szkeleton.logMethodExit(this, "");

@@ -19,11 +19,13 @@ public class Keseru extends Spora
     
     public void hatas(Bogar b) 
     {
-        szkeleton.logMethodEntry(this, "hatas");
+        //szkeleton.logMethodEntry(this, "hatas");
         if (b != null) {
+            szkeleton.logMethodEntry(this, "ragasBlock");
             b.ragasBlock();
+            szkeleton.logMethodExit(this, "");
         }
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
     

@@ -57,9 +57,19 @@ public class Gombasz extends Jatekos
 
     public void fonalLerak(){
         //szkeleton.logMethodEntry(this, "fonalLerak");
+        ArrayList<Gombatest> temptestek = new ArrayList<>();
         for(Gombatest gombatest : testek){
+            temptestek.add(gombatest);
+        }
+
+        for(Gombatest gombatest : temptestek){
             Set<Tekton> honnanLehetosegek = new HashSet<>();
+
+            szkeleton.logMethodEntry(gombatest, "dfs");
             Set<Tekton> ujMegtalaltak = gombatest.dfs();
+            szkeleton.logMethodExit(gombatest, "megtalaltak");
+
+
             for(Tekton t : ujMegtalaltak){
                 honnanLehetosegek.add(t);
             }
@@ -92,7 +102,10 @@ public class Gombasz extends Jatekos
                 }
             }
 
+            szkeleton.logMethodEntry(honnan, "getSzomszed");
             ArrayList<Tekton> hovaLehetosegek = honnan.getSzomszed();
+            szkeleton.logMethodExit(honnan, "hovaLehetosegek");
+
             ArrayList<Fonal> honnanFonaljai = honnan.getOsszekoto();
             for(Tekton t : hovaLehetosegek){
                 for(Fonal f : honnanFonaljai){
@@ -129,19 +142,35 @@ public class Gombasz extends Jatekos
                 }
             }
 
-            gombatest.elhelyez(honnan, hova);
+            szkeleton.logMethodEntry(gombatest, "elhelyez");
+            boolean vissza = gombatest.elhelyez(honnan, hova);
+            szkeleton.logMethodExit(gombatest, vissza);
+
         }
         //szkeleton.logMethodExit(this, "");
     }
 
     public void sporaSzor(){
         //szkeleton.logMethodEntry(this, "sporaSzor");
+        ArrayList<Gombatest> temptestek = new ArrayList<>();
         for(Gombatest gombatest : testek){
+            temptestek.add(gombatest);
+        }
+
+        for(Gombatest gombatest : temptestek){
+
+            szkeleton.logMethodEntry(gombatest, "szomszedKeres");
             ArrayList<Tekton> szomszedokList = gombatest.szomszedKeres();
+            szkeleton.logMethodExit(gombatest, "szomszedok");
+
             HashSet<Tekton> szomszedok = new HashSet<>(szomszedokList);
             if(gombatest.getMaradt() < 3){
                 for(Tekton t : szomszedokList){
+
+                    szkeleton.logMethodEntry(t, "getSzomszed");
                     ArrayList<Tekton> vmi = t.getSzomszed();
+                    szkeleton.logMethodExit(t, "szomszedok");
+
                     szomszedok.addAll(vmi);
                 }
             }
