@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * A Bogarasz osztály egy játékost reprezentál, aki egy bogarat irányít a játék során.
@@ -20,7 +19,7 @@ public class Bogarasz extends Jatekos
         szkeleton.logMethodEntry(this, "round");
         boolean vege=false;
         while((bogar.getMozgaspont()!=0||bogar.getactionEves()==true|| bogar.getactionRagas()==true)&&(!vege)){
-            Scanner bemenet = new Scanner(System.in);
+            
             ArrayList<Fonal> fonalak= null;
             Tekton helyzet= null;
             System.out.println("Mit szeretnél csinálni");
@@ -29,7 +28,7 @@ public class Bogarasz extends Jatekos
             System.out.println("3. Rágni");
             System.out.println("4. Vége a körömnek");
             
-            int actionValasztas =bemenet.nextInt();
+            int actionValasztas =InputHandler.getScanner().nextInt();
             
             switch (actionValasztas) {
                 case 1:
@@ -48,7 +47,6 @@ public class Bogarasz extends Jatekos
                     System.out.println("Érvénytelen menüpontot választottál");
                     break;
             }
-            bemenet.close();
         }
 
         bogar.beallit();
@@ -67,7 +65,6 @@ public class Bogarasz extends Jatekos
     void lep(){
         szkeleton.logMethodEntry(this, "lep");
         if(bogar.getMozgaspont()!=0){
-            Scanner bemenet = new Scanner(System.in);
             Tekton helyzet= bogar.getHelyzet();
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
             ArrayList<Tekton> lehetsegesLepes=null;
@@ -82,10 +79,9 @@ public class Bogarasz extends Jatekos
                 System.out.println(i+". Tekton"+lehetsegesLepes.get(i).getId());
     
             }
-            int lepesValasztas = bemenet.nextInt();
+            int lepesValasztas = InputHandler.getScanner().nextInt();
             Tekton hova= lehetsegesLepes.get(lepesValasztas-1);
             bogar.mozgas(hova);
-            bemenet.close();
         }
         else{
             System.out.println("Már nem tudsz mozogni a körben");
@@ -118,16 +114,14 @@ public class Bogarasz extends Jatekos
     void ragas(){
         szkeleton.logMethodEntry(this, "ragas");
         if(bogar.getactionRagas()==true){
-            Scanner bemenet = new Scanner(System.in);
             Tekton helyzet= bogar.getHelyzet();
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
             System.out.println("Melyik fonalat szeretnéd elrágni?");
             for (int i=0;i<fonalak.size();i++) {
                 System.out.println(i+". fonal amely a Tekton"+ fonalak.get(i).getHova().getId()+"ra ér");
             }
-            int ragasValasztas = bemenet.nextInt();
+            int ragasValasztas = InputHandler.getScanner().nextInt();
             bogar.ragas(fonalak.get(ragasValasztas-1));
-            bemenet.close();
         }
         else{
             System.out.println("Már rágtál a körben");

@@ -136,8 +136,8 @@ public class Bogar
      * @return A jelenlegi helyzet.
      */
     public Tekton getHelyzet() {
-        szkeleton.logMethodEntry(this, "getHelyzet");
-        szkeleton.logMethodExit(this, "Tekton"+helyzet.getId());
+        //szkeleton.logMethodEntry(this, "getHelyzet");
+        //szkeleton.logMethodExit(this, "Tekton"+helyzet.getId());
         return helyzet;
     }
 
@@ -147,9 +147,9 @@ public class Bogar
      * @param t Az új helyzet.
      */
     public void setHelyzet(Tekton t) {
-        szkeleton.logMethodEntry(this, "setHelyzet");
+        //szkeleton.logMethodEntry(this, "setHelyzet");
         helyzet = t;
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
     /**
@@ -158,8 +158,8 @@ public class Bogar
      * @return A mozgási pontok száma.
      */
     public int getMozgaspont() {
-        szkeleton.logMethodEntry(this, "getMozgaspont");
-        szkeleton.logMethodExit(this, mozgasok);
+        //szkeleton.logMethodEntry(this, "getMozgaspont");
+        //szkeleton.logMethodExit(this, mozgasok);
         return mozgasok;
     }
 
@@ -169,8 +169,8 @@ public class Bogar
      * @return Igaz, ha a bogár rághat, egyébként hamis.
      */
     public boolean getactionRagas() {
-        szkeleton.logMethodEntry(this, "getactionRagas");
-        szkeleton.logMethodExit(this, actionRagas);
+        //szkeleton.logMethodEntry(this, "getactionRagas");
+        //szkeleton.logMethodExit(this, actionRagas);
         return actionRagas;
     }
 
@@ -180,8 +180,8 @@ public class Bogar
      * @return Igaz, ha a bogár ehet, egyébként hamis.
      */
     public boolean getactionEves() {
-        szkeleton.logMethodEntry(this, "getactionEves");
-        szkeleton.logMethodExit(this, actionEves);
+        //szkeleton.logMethodEntry(this, "getactionEves");
+        //szkeleton.logMethodExit(this, actionEves);
         return actionEves;
     }
     
@@ -191,8 +191,8 @@ public class Bogar
      * @param s A spóra, amelyet a bogár elfogyasztott.
      */
     public void setElozo(Spora s) {
-        szkeleton.logMethodEntry(this, "setElozo");
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodEntry(this, "setElozo");
+        //szkeleton.logMethodExit(this, "");
         elozo = s;
     }
 
@@ -202,8 +202,8 @@ public class Bogar
      * @return Az előző spóra.
      */
     public Spora getSpora() {
-        szkeleton.logMethodEntry(this, "setElozo");
-        szkeleton.logMethodExit(this, "spora");
+        //szkeleton.logMethodEntry(this, "setElozo");
+        //szkeleton.logMethodExit(this, "spora");
         return elozo;
     }
 }

@@ -98,8 +98,8 @@ public class Egyfonalas extends Tekton
      */
   @Override
     Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
-        szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
-        szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
+       // szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
+        //szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
         return new Egyfonalas(spo,szom);
     }
 
