@@ -1,8 +1,8 @@
 
 public class Fonal
 {
-    Gombasz tartozik;
-    Tekton hova;
+    private Gombasz tartozik;
+    private Tekton hova;
   
 
     public Fonal(Tekton hova, Gombasz tartozik) 
@@ -11,9 +11,13 @@ public class Fonal
         this.tartozik = tartozik;
     }
 
-    Gombasz getTartozik()
-    {
+    public Gombasz getTartozik(){
         return tartozik;
     }
+
+    public Tekton getHova(){
+        return hova;
+    }
+
 
 }

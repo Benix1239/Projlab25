@@ -6,10 +6,11 @@ public class Tekton
 {
     Gombatest gombatest;
     ArrayList<Spora> sporak;
-    ArrayList<Osszekoto> koto;
+    ArrayList<Fonal> koto;
     ArrayList<Tekton> szomszed;
     int kor;
     int pluszPont;
+    private int ID;
 
     Tekton()
     {
@@ -26,7 +27,7 @@ public class Tekton
 
     }
 
-    void fonalElszakad(Osszekoto koto)
+    void fonalElszakad(Fonal koto)
     {
 
     }
@@ -36,9 +37,9 @@ public class Tekton
 
     }
 
-    void addFonal(Fonal f)
+    boolean addFonal(Fonal f)
     {
-    
+        return true;
     }
 
     ArrayList<Tekton> fonalKeres()
@@ -69,6 +70,22 @@ public class Tekton
     Spora sporatEszik()
     {
         return null;
+    }
+
+    public ArrayList<Fonal> getKoto(){
+        return koto;
+    }
+
+    public ArrayList<Tekton> getSzomszed(){
+        return szomszed;
+    }
+
+    public int getID(){
+        return ID;
+    }
+
+    public void setGombatest(Gombatest gombatest){
+
     }
 
  
