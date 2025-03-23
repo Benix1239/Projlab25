@@ -25,8 +25,8 @@ public class Fonal extends Osszekoto
      */
     public Gombasz getTartozik()
     {
-        szkeleton.logMethodEntry(this, "getTartozik");
-        szkeleton.logMethodExit(this, "tartozik");
+        //szkeleton.logMethodEntry(this, "getTartozik");
+        //szkeleton.logMethodExit(this, "tartozik");
         return tartozik;
         
     }

@@ -16,7 +16,7 @@ public class Bogarasz extends Jatekos
      */
     void round()
     {
-        szkeleton.logMethodEntry(this, "round");
+        //szkeleton.logMethodEntry(this, "round");
         boolean vege=false;
         while((bogar.getMozgaspont()!=0||bogar.getactionEves()==true|| bogar.getactionRagas()==true)&&(!vege)){
             
@@ -56,18 +56,18 @@ public class Bogarasz extends Jatekos
         }
 
         bogar.sporaMegemesztes();
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
     /**
      * A bogarat egy másik Tektonra mozgatja, ha van elérhető mozgáspontja.
      */
     void lep(){
-        szkeleton.logMethodEntry(this, "lep");
+        //szkeleton.logMethodEntry(this, "lep");
         if(bogar.getMozgaspont()!=0){
             Tekton helyzet= bogar.getHelyzet();
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
-            ArrayList<Tekton> lehetsegesLepes=null;
+            ArrayList<Tekton> lehetsegesLepes=new ArrayList<>();
             for (Fonal fonal : fonalak) {
                 lehetsegesLepes.add(fonal.getHova());
             }
@@ -76,7 +76,7 @@ public class Bogarasz extends Jatekos
             System.out.println("Melyik tektonra szeretnél lépni?");
             
             for (int i=0;i<lehetsegesLepes.size();i++) {
-                System.out.println(i+". Tekton"+lehetsegesLepes.get(i).getId());
+                System.out.println((i+1)+". Tekton"+lehetsegesLepes.get(i).getId());
     
             }
             int lepesValasztas = InputHandler.getScanner().nextInt();
@@ -86,14 +86,14 @@ public class Bogarasz extends Jatekos
         else{
             System.out.println("Már nem tudsz mozogni a körben");
         }
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
     /**
      * A bogár megeszi a jelenlegi Tektonon található legkésőbb lerakot sporát ha van.
      */
     void eves(){
-        szkeleton.logMethodEntry(this, "eves");
+        //szkeleton.logMethodEntry(this, "eves");
         if(bogar.getactionEves()==true){
             if (bogar.getHelyzet().sporak!=null) {
                 bogar.eves();
@@ -105,20 +105,20 @@ public class Bogarasz extends Jatekos
         else{
             System.out.println("Már ettél a körben");
         }
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
     /**
      * A bogár elrág egy fonalat ami a jelenlegi tektonról elérhető és a játékos kiválasztott.
      */
     void ragas(){
-        szkeleton.logMethodEntry(this, "ragas");
+        //szkeleton.logMethodEntry(this, "ragas");
         if(bogar.getactionRagas()==true){
             Tekton helyzet= bogar.getHelyzet();
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
             System.out.println("Melyik fonalat szeretnéd elrágni?");
             for (int i=0;i<fonalak.size();i++) {
-                System.out.println(i+". fonal amely a Tekton"+ fonalak.get(i).getHova().getId()+"ra ér");
+                System.out.println((i+1)+". fonal amely a Tekton"+ fonalak.get(i).getHova().getId()+"ra ér");
             }
             int ragasValasztas = InputHandler.getScanner().nextInt();
             bogar.ragas(fonalak.get(ragasValasztas-1));
@@ -126,7 +126,7 @@ public class Bogarasz extends Jatekos
         else{
             System.out.println("Már rágtál a körben");
         }
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
 
      /**
@@ -137,14 +137,10 @@ public class Bogarasz extends Jatekos
      */
     void bogarHozzaad(Bogar b,Tekton t)
     {
-        szkeleton.logMethodEntry(this, "bogarHozzaad");
+        ////szkeleton.logMethodEntry(this, "bogarHozzaad");
         bogar=b;
         bogar.setHelyzet(t);
-        szkeleton.logMethodExit(this, "");
-        szkeleton.logMethodEntry(this, "bogarHozzaad");
-        bogar=b;
-        bogar.setHelyzet(t);
-        szkeleton.logMethodExit(this, "");
+        //szkeleton.logMethodExit(this, "");
     }
     
 }

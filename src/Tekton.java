@@ -338,16 +338,20 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @brief  Elszakit egy fonalat
 	 * @param fonal -> A fonal amit el akarunk szakitani
 	 */
-	void fonalElszakad(Fonal fonal){
+	/*void fonalElszakad(Fonal fonal){
 		szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
 		int	keresettIndexI=-1;
 		int keresettIndexJ=-1;
+		ArrayList<Fonal> szom= new ArrayList<>();
+		ArrayList<Fonal> elemek= new ArrayList<>();
 		int i=0;
 		for (Fonal elem : osszekoto) {
 			if(elem==fonal || elem.equals(fonal)){					///Ha megtalaltuk a fonalat amit torolni akarunk 
 				int j=0;
-				for(Fonal elem1 : elem.getHova().getOsszekoto()){	///Megkeressuk a fonal listajaban a sajat tektonunkra vezetot
+				elemek =elem.getHova().getOsszekoto();
+				for(Fonal elem1 : elemek){	///Megkeressuk a fonal listajaban a sajat tektonunkra vezetot
 					if(elem1.getHova()==this){
+						szom=elem1.getHova().getOsszekoto();
 						keresettIndexJ=j;							///Eltaraoljuk hogy a megtalalt fonal listajaban hol van a mi tektonukra vezeto fonal
 					}
 					j++;												
@@ -359,15 +363,36 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		}
 		
 		if(keresettIndexJ!=-1){
-			osszekoto.get(i).getHova().getOsszekoto().remove(keresettIndexJ);	///Toroljuk a torlendo fonalat a szomszed listajabol
+			szom.remove(keresettIndexJ);
+			//osszekoto.get(keresettIndexI).getHova().getOsszekoto().remove(keresettIndexJ);	///Toroljuk a torlendo fonalat a szomszed listajabol
 		}	
 		if(keresettIndexI!=-1){
-			osszekoto.remove(i);									///Toroljuk a torlendo fonalat a fonal listankbol
+			elemek.remove(keresettIndexI);									///Toroljuk a torlendo fonalat a fonal listankbol
 		}
 
 
 		fonal.getTartozik().elszakadasDfsKezeles();										///Minden torles utan meghivjuk a dfs szakadas kezelest
 		szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+	}*/
+
+
+	void fonalElszakad(Fonal fonal){
+		szkeleton.logMethodEntry(this, "fonalElszakad");
+		Tekton hova = fonal.getHova();
+        Gombasz gombasz = fonal.getTartozik();
+        
+        this.osszekoto.remove(fonal);
+        ArrayList<Fonal> fonalak = hova.getOsszekoto();
+
+        for (Fonal fonali : fonalak) {
+            if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {
+                hova.osszekoto.remove(fonali);
+				break;
+            }
+        }
+
+    	gombasz.elszakadasDfsKezeles();
+		szkeleton.logMethodExit(this, "");
 	}
 
 
@@ -502,8 +527,8 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @return osszekoto -> Vissza adja a fonal listat
 	 */
 	ArrayList<Fonal> getOsszekoto(){
-		//szkeleton.logMethodEntry(this, "getOsszekoto");	///Szkeleton kiiratas fuggveny kezdetekor
-		//szkeleton.logMethodExit(this, "ArrayList<Fonal>");			///Szkeleton kiiratas fuggveny vegen
+		szkeleton.logMethodEntry(this, "getOsszekoto");	///Szkeleton kiiratas fuggveny kezdetekor
+		szkeleton.logMethodExit(this, "ArrayList<Fonal>");			///Szkeleton kiiratas fuggveny vegen
 		return osszekoto;
 			
 	}

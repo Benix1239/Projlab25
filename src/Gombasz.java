@@ -41,7 +41,7 @@ public class Gombasz extends Jatekos
                ArrayList<Fonal> fonalak = t.getOsszekoto();
                for(Fonal f : fonalak){
                     if(f.getTartozik() == this){
-                        t.fonalElszakad(f);
+                        t.getOsszekoto().remove(f);
                     }
                }
             }
