@@ -49,12 +49,14 @@ public class Gombatest
     }
 
     public void elszor(Tekton c){
+        szkeleton.logMethodEntry(this, "elszor");
         c.addSpora(spora);
         maradt--;
         if(maradt == 0){
             this.gombatestMeghal();
         }
         spora = null;
+        szkeleton.logMethodExit(this, "");
     }
 
     private void gombatestMeghal(){

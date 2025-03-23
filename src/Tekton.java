@@ -12,6 +12,13 @@ public class Tekton
 	int pluszPont;
 	int id;
 
+	Tekton(){
+		sporak = new ArrayList<>();
+		osszekoto = new ArrayList<>();
+		szomszed = new ArrayList<>();
+		eletkor = 1;
+	}
+
 	//Paraméter nélküli konstruktor tesztekhez
 	Tekton(ArrayList<Tekton> szom /*, int plusz*/){
 		this.szomszed=szom;

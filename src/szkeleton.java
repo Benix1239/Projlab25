@@ -1,12 +1,58 @@
 
 import java.util.ArrayList;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.Stack;
 
 
 public class szkeleton
 {
+    private static ArrayList<String> gyujtemeny = new ArrayList<>();
+    private static Map<Object, String> objectToStringMap = new IdentityHashMap<>();
+    private static int objectCounter = 1;
+
+    private static final ThreadLocal<Object> jelenlegiHivo = new ThreadLocal<>();
+
+    private static Stack<String> objektumNevek;
+
+    public static void addToMap(Object o, String name){
+        if(o == null)
+            return;
+        objectToStringMap.putIfAbsent(o, name);
+    }
+
+    private static String indentalasSzamitas() {
+        int melyseg = Thread.currentThread().getStackTrace().length;
+        return "    ".repeat(Math.max(0, melyseg - 4));
+    }
+
+    public static void logMethodEntry(Object hivott, String methodName) {
+        Object hivo = jelenlegiHivo.get();
+        objektumNevek.push(objectToStringMap.get(hivo));
+        jelenlegiHivo.set(hivott);
+        //System.out.println(indentalasSzamitas() + objectToStringMap.get(hivo) + " -> " + objectToStringMap.get(hivott) + ": " + methodName + "()");
+        String uzenet = indentalasSzamitas() + objectToStringMap.get(hivo) + " -> " + objectToStringMap.get(hivott) + ": " + methodName + "()";
+        gyujtemeny.add(uzenet);
+    }
+
+    public static void logMethodExit(Object hivott, Object returnValue) {
+        String hivo = objektumNevek.getLast();
+        //System.out.println(indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue);
+        String uzenet = indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue;
+        gyujtemeny.add(uzenet);
+        objektumNevek.pop();
+    }
+
+    private void gyujtemenyKiiratas(){
+        for(String s : gyujtemeny){
+            System.out.println(s);
+        }
+        gyujtemeny = new ArrayList<>();
+    }
+
     szkeleton()
     {
-
+        objektumNevek = new Stack<>();
     }
 
     void tesztIndit()
@@ -28,7 +74,7 @@ public class szkeleton
                 BogarLogikaTeszteles();
                 break;
             default:
-                
+                sporaSzorSimaTeszt();
         }
       
     }
@@ -79,23 +125,29 @@ public class szkeleton
     //naon fasza, diagramm szerint fut
     void sporaSzorSimaTeszt()
     {
-        Tekton t1 = new Tekton(null);
-        Tekton t2 = new Tekton(null);
+        Tekton t1 = new Tekton();
+        addToMap(t1, "t1");
+        Tekton t2 = new Tekton();
+        addToMap(t1, "t2");
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
         ArrayList<Tekton> palya = new ArrayList<Tekton>();
         palya.add(t2);
         palya.add(t1);
         Gombasz jatekos = new Gombasz(palya);
+        addToMap(jatekos, "jatekos");
         Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(test, "test");
         jatekos.gombatestHozzaad(test);
         t1.setGombatest(test);
 
         Lassito spora = new Lassito();
+        addToMap(spora, "spora");
         spora.setTartozik(jatekos);
         test.setSpora(spora);
         
         jatekos.sporaSzor();
+        gyujtemenyKiiratas();
     }
 
     void sporaSzorFejlettTeszt()

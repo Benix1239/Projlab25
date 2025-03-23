@@ -135,6 +135,7 @@ public class Gombasz extends Jatekos
     }
 
     public void sporaSzor(){
+        szkeleton.logMethodEntry(this, "sporaSzor");
         for(Gombatest gombatest : testek){
             ArrayList<Tekton> szomszedokList = gombatest.szomszedKeres();
             HashSet<Tekton> szomszedok = new HashSet<>(szomszedokList);
@@ -176,6 +177,7 @@ public class Gombasz extends Jatekos
             }
 
             gombatest.elszor(hova);
+            szkeleton.logMethodExit(this, "");
         }
     }
     
