@@ -97,7 +97,7 @@ public class Tekton
 		int toresarany=eletkor*5+10;	///toresre az esely: (eletkor*5 + kezdeti esely). Azt jelenti hogy kezdeti esely, koronkent 5%-al no.
 		Random random = new Random();	
 		int toresEsely=random.nextInt(100);	///tenyleges toresei esely: (toresre az esely / 100)
-		if(toresEsely>=toresarany){
+		if(toresEsely<=toresarany){
 
 			szkeleton.logMethodExit(this, true);			///Szkeleton kiiratas fuggveny vegen
 			
