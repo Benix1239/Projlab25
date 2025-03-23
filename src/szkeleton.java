@@ -800,9 +800,9 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
 
         gyujtemeny = new ArrayList<>();
-        szkeleton.logMethodEntry(this, "lep");
+        szkeleton.logMethodEntry(jatekos1, "lep");
         jatekos1.lep();
-        szkeleton.logMethodExit(this, "");
+        szkeleton.logMethodExit(jatekos1, "");
         gyujtemenyKiiratas();
     }
 
@@ -837,9 +837,9 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
         
         gyujtemeny = new ArrayList<>();
-        szkeleton.logMethodEntry(this, "ragas");
+        szkeleton.logMethodEntry(jatekos1, "ragas");
         jatekos1.ragas();
-        szkeleton.logMethodExit(this, "");
+        szkeleton.logMethodExit(jatekos1, "");
         gyujtemenyKiiratas();
     }
 
@@ -863,9 +863,9 @@ public class szkeleton
         jatekos1.bogarHozzaad(bogar, t1);
 
         gyujtemeny = new ArrayList<>();
-        szkeleton.logMethodEntry(this, "eves");
+        szkeleton.logMethodEntry(jatekos1, "eves");
         jatekos1.eves();
-        szkeleton.logMethodExit(this, "");
+        szkeleton.logMethodExit(jatekos1, "");
         gyujtemenyKiiratas();
     }
 
