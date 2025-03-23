@@ -23,7 +23,18 @@ public class Jatek
      */
     public void jatekIndit()
     {
-       
+       szkeleton.logMethodEntry(this, "jatekIndit");
+       boolean gameRunning = true;
+       int turnCount = 0;
+
+       while (gameRunning) {
+           for (Jatekos karakter : karakterek) {
+               karakter.round();
+               jatekter.tores()
+           }
+           turnCount++;  // kilepesi feltetel?
+       }
+       szkeleton.logMethodExit(this, "");
     }
 
     /**
