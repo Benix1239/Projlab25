@@ -40,9 +40,9 @@ public class Egyfonalas extends Tekton
             osszekoto.add(f);
             sikerult = true;
         }
-        szkeleton.logMethodEntry(this, "getTartozik");	///Szkeleton kiiratas fuggveny kezdetekor
+        szkeleton.logMethodEntry(f, "getTartozik");	///Szkeleton kiiratas fuggveny kezdetekor
 		Gombasz temp=f.getTartozik();
-        szkeleton.logMethodExit(this, "Gombasz");			///Szkeleton kiiratas fuggveny vegen
+        szkeleton.logMethodExit(f, "Gombasz");			///Szkeleton kiiratas fuggveny vegen
 		if(tudEpulni(temp) ){                    ///Ha tud gombatestet is epit
 			gombaTestEpul(f.getTartozik());
 		}
@@ -91,9 +91,9 @@ public class Egyfonalas extends Tekton
 				
 			}
 		}
-        szkeleton.logMethodEntry(this, "getTartozik");
+        szkeleton.logMethodEntry(fonal, "getTartozik");
         Gombasz gombasz = fonal.getTartozik();
-        szkeleton.logMethodExit(this, "Gombasz");
+        szkeleton.logMethodExit(fonal, "Gombasz");
 		gombasz.elszakadasDfsKezeles();                          
         //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
