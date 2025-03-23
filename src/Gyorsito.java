@@ -2,9 +2,9 @@
 public class Gyorsito extends Spora
 {
     /**
-     * Konstruktor, amely létrehozza a Gyorsito spórát egy adott gombászhoz.
+     * Konstruktor, amely lï¿½trehozza a Gyorsito spï¿½rï¿½t egy adott gombï¿½szhoz.
      * 
-     * @param tartozik A gombász, akihez a spóra tartozik.
+     * @param tartozik A gombï¿½sz, akihez a spï¿½ra tartozik.
      */
     Gyorsito(Gombasz tartozik) 
     {
@@ -12,18 +12,18 @@ public class Gyorsito extends Spora
     }
     
     /**
-     * A Gyorsito spóra kifejti a hatását.
+     * A Gyorsito spï¿½ra kifejti a hatï¿½sï¿½t.
      * 
-     * @param b A bogár, amelyre kifejti a hatását.
+     * @param b A bogï¿½r, amelyre kifejti a hatï¿½sï¿½t.
      */
     @Override
     public void hatas(Bogar b) 
     {
         //szkeleton.logMethodEntry(this, "hatas");
         if (b != null) {
-            szkeleton.logMethodEntry(this, "gyorsul");
+            szkeleton.logMethodEntry(b, "gyorsul");
             b.gyorsul();
-            szkeleton.logMethodExit(this, "");
+            szkeleton.logMethodExit(b, "");
         }
         //szkeleton.logMethodExit(this, "");
     }

@@ -21,9 +21,9 @@ public class Keseru extends Spora
     {
         //szkeleton.logMethodEntry(this, "hatas");
         if (b != null) {
-            szkeleton.logMethodEntry(this, "ragasBlock");
+            szkeleton.logMethodEntry(b, "ragasBlock");
             b.ragasBlock();
-            szkeleton.logMethodExit(this, "");
+            szkeleton.logMethodExit(b, "");
         }
         //szkeleton.logMethodExit(this, "");
     }

@@ -2,9 +2,9 @@
 public class Benito extends Spora
 {
     /**
-     * Konstruktor, amely létrehozza a Benito spórát egy adott gombászhoz.
+     * Konstruktor, amely lï¿½trehozza a Benito spï¿½rï¿½t egy adott gombï¿½szhoz.
      * 
-     * @param tartozik A gombász, akihez a spóra tartozik.
+     * @param tartozik A gombï¿½sz, akihez a spï¿½ra tartozik.
      */
     Benito(Gombasz tartozik) 
     {
@@ -12,18 +12,18 @@ public class Benito extends Spora
     }
     
     /**
-     * A Benito spóra kifejti a hatását.
+     * A Benito spï¿½ra kifejti a hatï¿½sï¿½t.
      * 
-     * @param b A bogár, amelyre kifejti a hatását.
+     * @param b A bogï¿½r, amelyre kifejti a hatï¿½sï¿½t.
      */
     @Override
     public void hatas(Bogar b) 
     {
         //szkeleton.logMethodEntry(this, "hatas");
         if (b != null) {
-            szkeleton.logMethodEntry(this, "benul");
+            szkeleton.logMethodEntry(b, "benul");
             b.benul();
-            szkeleton.logMethodExit(this, "");
+            szkeleton.logMethodExit(b, "");
         }
         //szkeleton.logMethodExit(this, "");
     }

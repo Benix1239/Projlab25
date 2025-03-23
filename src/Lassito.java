@@ -21,9 +21,9 @@ public class Lassito extends Spora
     {
         //szkeleton.logMethodEntry(this, "hatas");
         if (b != null) {
-            szkeleton.logMethodEntry(this, "lassul");
+            szkeleton.logMethodEntry(b, "lassul");
             b.lassul();
-            szkeleton.logMethodExit(this, "");
+            szkeleton.logMethodExit(b, "");
         }
         //szkeleton.logMethodExit(this, "");
     }

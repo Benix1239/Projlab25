@@ -57,9 +57,9 @@ public class Palya implements Serializable
     {
         //szkeleton.logMethodEntry(this, "tores");
         for (Tekton t : palya) {
-            szkeleton.logMethodEntry(this, "tores");
+            szkeleton.logMethodEntry(t, "tores");
             Tekton torott = t.tores();
-            szkeleton.logMethodExit(this, "");
+            szkeleton.logMethodExit(t, "");
             if (torott != null) {
                 tektonHozzaad(torott);
             }
