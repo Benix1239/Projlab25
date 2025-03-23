@@ -145,15 +145,17 @@ public class Gombasz extends Jatekos
             HashSet<Tekton> szomszedok = new HashSet<>(szomszedokList);
             if(gombatest.getMaradt() < 3){
                 for(Tekton t : szomszedokList){
-                    szomszedok.addAll(t.getSzomszed());
+                    ArrayList<Tekton> vmi = t.getSzomszed();
+                    szomszedok.addAll(vmi);
                 }
             }
 
             System.out.println("Hova szeretnel sporat szorni? Lehetosegek: ");
             Set<Integer> ervenyesErtekek = new HashSet<>();
             for(Tekton t : szomszedok){
-                System.out.println(t.getId());
-                ervenyesErtekek.add(t.getId());
+                int id = t.getId();
+                System.out.println(id);
+                ervenyesErtekek.add(id);
             }
 
             Scanner scanner = new Scanner(System.in);
