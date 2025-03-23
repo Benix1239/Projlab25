@@ -26,11 +26,14 @@ public class Felszivo extends Tekton
      */
     @Override
     void fonalElszakadKoronkent(){
-        szkeleton.logMethodEntry(this, "fonalElszakadKoronkent");	///Szkeleton kiiratas fuggveny kezdetekor
+        //szkeleton.logMethodEntry(this, "fonalElszakadKoronkent");	///Szkeleton kiiratas fuggveny kezdetekor
         if(osszekoto.size()!=0){
+            szkeleton.logMethodEntry(this, "fonalElszakadKoronkent");	///Szkeleton kiiratas fuggveny kezdetekor
            fonalElszakad(osszekoto.get(osszekoto.size()-1));
+           szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+    
         }
-        szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+        //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
     }
 
     /*
