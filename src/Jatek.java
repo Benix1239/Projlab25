@@ -38,9 +38,9 @@ public class Jatek
                 
         for(int i=0;i<gombaszszam;i++){
             Jatekos jatekos=null;
-            szkeleton.logMethodEntry(jatekos, "Gombasz()");
             jatekos = new Gombasz(jatekter.getPalya());
-            szkeleton.addToMap(jatekos, "Gombasz");
+            szkeleton.addToMap(jatekos, "gombasz" + (i+1));
+            szkeleton.logMethodEntry(jatekos, "Gombasz()");
             szkeleton.logMethodExit(jatekos, "");
             karakterek.add(jatekos);
         }
@@ -50,12 +50,17 @@ public class Jatek
 
         for(int i=0;i<bogaraszszam;i++){
             Jatekos jatekos=null;
-            szkeleton.logMethodEntry(jatekos, "Bogarasz()");
             jatekos = new Bogarasz(jatekter.getPalya());
-            szkeleton.addToMap(jatekos, "Bogarasz");
+            szkeleton.addToMap(jatekos, "bogarasz" + (i+1));
+            szkeleton.logMethodEntry(jatekos, "Bogarasz");
             szkeleton.logMethodExit(jatekos, "");
             karakterek.add(jatekos);
         }
+
+        jatekter = new Palya(gombaszszam + 10);
+        szkeleton.addToMap(jatekter, "jatekter");
+        szkeleton.logMethodEntry(jatekter, "Palya");
+        szkeleton.logMethodExit(jatekter, "");
        
 
         /*while (gameRunning) {

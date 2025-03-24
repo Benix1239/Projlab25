@@ -304,11 +304,19 @@ public class szkeleton
 //---------------------------------------------------------------------------------------------------------------------------------
     void jatekInditasTeszt()
     {
-        
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+
         Jatek tesztJatek = new Jatek(10);
+        addToMap(tesztJatek, "tesztJatek");
+
+        gyujtemeny = new ArrayList<>();
+
         szkeleton.logMethodEntry(tesztJatek, "jatekIndit");
         tesztJatek.jatekIndit();
         szkeleton.logMethodExit(tesztJatek, "");
+
+        gyujtemenyKiiratas();
     }
 
     void fonalLerakSimaTeszt()
