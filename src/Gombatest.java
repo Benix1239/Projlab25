@@ -82,6 +82,8 @@ public class Gombatest
         //szkeleton.logMethodEntry(this, "elhelyez");
         Fonal f1 = new Fonal(honnan, this.tartozik);
         Fonal f2 = new Fonal(hova, this.tartozik);
+        szkeleton.addToMap(f2, "tempf2");
+        szkeleton.addToMap(f1, "tempf1");
 
         szkeleton.logMethodEntry(honnan, "addFonal");
         boolean vissza = honnan.addFonal(f2);

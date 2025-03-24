@@ -56,6 +56,7 @@ public class Palya implements Serializable
     public void tores()
     {
         //szkeleton.logMethodEntry(this, "tores");
+        /*
         for (Tekton t : palya) {
             szkeleton.logMethodEntry(t, "tores");
             Tekton torott = t.tores();
@@ -65,7 +66,25 @@ public class Palya implements Serializable
             }
         }
         //szkeleton.logMethodExit(this, "");
+    */
+    int meret = palya.size();
+     for(int i=0;i<meret;i++){
+        szkeleton.logMethodEntry(palya.get(i), "tores");
+        Tekton palya2 = palya.get(i).tores();
+        if(palya2!=null){   
+            szkeleton.addToMap(palya2, "palya2");
+            szkeleton.logMethodExit(palya.get(i), "palya2");
+        }else{
+            szkeleton.logMethodExit(palya.get(i), "");
+        }
+        if (palya2 != null) {
+            tektonHozzaad(palya2);
+        }
+     }
+    
     }
+
+
 
     
     /**
@@ -74,12 +93,23 @@ public class Palya implements Serializable
     public void felszivodik()
     {
         //szkeleton.logMethodEntry(this, "felszivodik");
+       /*
         for (Tekton t : palya) {
             if (t instanceof Testetlen) {
                 t.fonalElszakadKoronkent();
             }
         }
+            */
         //szkeleton.logMethodExit(this, "");
+        
+        int meret=palya.size();
+        for(int i=0;i<meret;i++){
+            
+                palya.get(i).fonalElszakadKoronkent();
+            
+        }
+
+
     }
 
 
