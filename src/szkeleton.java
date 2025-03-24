@@ -304,8 +304,11 @@ public class szkeleton
 //---------------------------------------------------------------------------------------------------------------------------------
     void jatekInditasTeszt()
     {
-
+        
         Jatek tesztJatek = new Jatek(10);
+        szkeleton.logMethodEntry(tesztJatek, "jatekIndit");
+        tesztJatek.jatekIndit();
+        szkeleton.logMethodExit(tesztJatek, "");
     }
 
     void fonalLerakSimaTeszt()

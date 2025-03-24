@@ -28,18 +28,44 @@ public class Jatek
      */
     public void jatekIndit()
     {
-       szkeleton.logMethodEntry(this, "jatekIndit");
-       boolean gameRunning = true;
-       int turnCount = 0;
+        //szkeleton.logMethodEntry(this, "jatekIndit");
+        boolean gameRunning = true;
+        int turnCount = 0;
 
-       while (gameRunning) {
-           for (Jatekos karakter : karakterek) {
-               karakter.round();
-               jatekter.tores();
-           }
-           turnCount++;  // kilepesi feltetel?
-       }
-       szkeleton.logMethodExit(this, "");
+        System.out.println("Hány gombász van?");   
+        int gombaszszam = InputHandler.getScanner().nextInt();
+
+                
+        for(int i=0;i<gombaszszam;i++){
+            Jatekos jatekos=null;
+            szkeleton.logMethodEntry(jatekos, "Gombasz()");
+            jatekos = new Gombasz(jatekter.getPalya());
+            szkeleton.addToMap(jatekos, "Gombasz");
+            szkeleton.logMethodExit(jatekos, "");
+            karakterek.add(jatekos);
+        }
+
+        System.out.println("Hány bogarasz van?");   
+        int bogaraszszam = InputHandler.getScanner().nextInt();
+
+        for(int i=0;i<bogaraszszam;i++){
+            Jatekos jatekos=null;
+            szkeleton.logMethodEntry(jatekos, "Bogarasz()");
+            jatekos = new Bogarasz(jatekter.getPalya());
+            szkeleton.addToMap(jatekos, "Bogarasz");
+            szkeleton.logMethodExit(jatekos, "");
+            karakterek.add(jatekos);
+        }
+       
+
+        /*while (gameRunning) {
+            for (Jatekos karakter : karakterek) {
+                karakter.round();
+                jatekter.tores();
+            }
+            turnCount++;  // kilepesi feltetel?
+        }*/
+        //szkeleton.logMethodExit(this, "");
     }
 
     /**
