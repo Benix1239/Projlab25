@@ -105,7 +105,9 @@ public class Palya implements Serializable
         int meret=palya.size();
         for(int i=0;i<meret;i++){
             
-                palya.get(i).fonalElszakadKoronkent();
+            szkeleton.logMethodEntry(palya.get(i), "fonalElszakadKoronkent");
+            palya.get(i).fonalElszakadKoronkent();
+            szkeleton.logMethodExit(palya.get(i), "");
             
         }
 
