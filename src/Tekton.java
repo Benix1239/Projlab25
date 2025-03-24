@@ -116,9 +116,13 @@ public class Tekton
 	void mindenFonalElszakad(){
 
 		//szkeleton.logMethodEntry(this, "mindenFonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
-		
+		/*
 		for(Fonal elem : osszekoto){		///Minden fonalunkra meghivjuk az elszakadast
 			fonalElszakad(elem);
+		}
+*/
+		for(int i=0;i<osszekoto.size();i++){
+			fonalElszakad(osszekoto.get(i));
 		}
 
 		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
@@ -389,7 +393,7 @@ Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
         this.osszekoto.remove(fonal);
 		szkeleton.logMethodEntry(hova, "getOsszekoto");
         ArrayList<Fonal> fonalak = hova.getOsszekoto();
-		szkeleton.logMethodExit(this, "Osszekoto[]");
+		szkeleton.logMethodExit(hova, "Osszekoto[]");
 
         for (Fonal fonali : fonalak) {
             if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {

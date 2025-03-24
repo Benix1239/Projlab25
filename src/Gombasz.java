@@ -8,6 +8,8 @@ public class Gombasz extends Jatekos
     private ArrayList<Gombatest> testek;
     private ArrayList<Tekton> palya;
 
+    
+
     //valtozas: megkapja a palyat is konstruktorban es nincs Tekton kezdo parametere
     public Gombasz(ArrayList<Tekton> palya){
         testek = new ArrayList<>();

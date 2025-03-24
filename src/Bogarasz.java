@@ -6,9 +6,15 @@ import java.util.ArrayList;
  */
 public class Bogarasz extends Jatekos
 {
-    Bogar bogar;
+    private Bogar bogar;
+    private ArrayList<Tekton> palya;
 
-    Bogarasz() {}
+    Bogarasz(){}
+
+    //valtozas: megkapja a palyat is konstruktorban es nincs Tekton kezdo parametere
+    Bogarasz(ArrayList<Tekton> palya) {
+        this.palya = palya;
+    }
 
     /**
      * A játékos köre, amely során döntéseket hozhat a bogár mozgásáról, evéséről és rágásáról.
