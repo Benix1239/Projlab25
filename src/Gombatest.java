@@ -96,7 +96,11 @@ public class Gombatest
             szkeleton.logMethodExit(hova, vissza2);
             
             if(!vissza2){
+
+                szkeleton.logMethodEntry(honnan, "fonalElszakad");
                 honnan.fonalElszakad(f2);
+                szkeleton.logMethodExit(honnan, "");
+                
                 System.out.println("Sikertelen lerakas, mert a hova tekton EgyFonalas");
                 //szkeleton.logMethodExit(this, "false");
                 return false;

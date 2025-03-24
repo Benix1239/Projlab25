@@ -110,6 +110,7 @@ public class Gombasz extends Jatekos
             ArrayList<Tekton> hovaLehetosegek = new ArrayList<>();
             for(Tekton f : honnan.getSzomszed())
             {
+
                 hovaLehetosegek.add(f);
             }
             szkeleton.logMethodExit(honnan, "hovaLehetosegek");
@@ -119,13 +120,17 @@ public class Gombasz extends Jatekos
             {
                 honnanFonaljai.add(f);
             }
+
+            ArrayList<Tekton> torlendo = new ArrayList<>();
             for(Tekton t : hovaLehetosegek){
                 for(Fonal f : honnanFonaljai){
                     if(f.getTartozik() == this && f.getHova() == t){
-                        honnan.getSzomszed().remove(t);
+                        torlendo.add(t);
                     }
                 }
             }
+
+            hovaLehetosegek.removeAll(torlendo);
 
             System.out.println("Hova szeretnel fonalat lerakni? Lehetosegek: ");
             ervenyesErtekek = new HashSet<>();
