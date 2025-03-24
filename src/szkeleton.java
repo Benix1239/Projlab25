@@ -38,7 +38,7 @@ public class szkeleton
     }
 
     public static void logMethodExit(Object hivott, Object returnValue) {
-        String hivo = objektumNevek.getLast();
+        String hivo = objektumNevek.peek();
         //System.out.println(indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue);
         String uzenet = indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue;
         gyujtemeny.add(uzenet);
