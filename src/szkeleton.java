@@ -763,9 +763,13 @@ public class szkeleton
         t3.addFonal(fon30);
 
         gyujtemeny = new ArrayList<>();
-        szkeleton.logMethodEntry(t2, "tores");
-        t2.tores();
-        szkeleton.logMethodExit(t2, "");
+        t2.setEletkorMegadas(30);
+        t1.setEletkorMegadas(-10);
+        t3.setEletkorMegadas(-10);
+        t4.setEletkorMegadas(-10);
+        szkeleton.logMethodEntry( jatekter, "tores");
+        jatekter.tores();
+        szkeleton.logMethodExit(jatekter, "");
         gyujtemenyKiiratas();
 
     }
@@ -985,24 +989,25 @@ public class szkeleton
     {
         objectToStringMap = new IdentityHashMap<>();
         stringToObjectMap = new IdentityHashMap<>();
-        Palya jatekter = new Palya(10);
+        Palya jatekter = new Palya(0);
         addToMap(jatekter, "jatekter");
         Tekton palya = new Tekton();
         addToMap(palya, "palya");
-        Tekton szomszed1 = new Tekton();
-        Tekton szomszed2 = new Tekton();
-        addToMap(szomszed1, "szomszed1");
-        addToMap(szomszed2, "szomszed2");
-        palya.addSzomszed(szomszed1);
-        palya.addSzomszed(szomszed2);
+        //palya.setEletkorMegadas(30);
+       // Tekton szomszed1 = new Tekton();
+       // Tekton szomszed2 = new Tekton();
+       // addToMap(szomszed1, "szomszed1");
+       // addToMap(szomszed2, "szomszed2");
+       // palya.addSzomszed(szomszed1);
+        //palya.addSzomszed(szomszed2);
 
         jatekter.tektonHozzaad(palya);
-        jatekter.tektonHozzaad(szomszed1);
-        jatekter.tektonHozzaad(szomszed2);
-        palya.setEletkorMegadas(101);
+       // jatekter.tektonHozzaad(szomszed1);
+        //jatekter.tektonHozzaad(szomszed2);
+        palya.setEletkorMegadas(30);
         gyujtemeny = new ArrayList<>();
         szkeleton.logMethodEntry(jatekter, "tores");
-        jatekter.tektonHozzaad(palya.tores());//itt bekene adni egy 0 erteket, hogy biztosan szettorjon, mert tamas megoldasaval nem megoldhato az, ami miatt direkt ugy csinatuk ahogy akartuk
+        jatekter.tores();//itt bekene adni egy 0 erteket, hogy biztosan szettorjon, mert tamas megoldasaval nem megoldhato az, ami miatt direkt ugy csinatuk ahogy akartuk
         szkeleton.logMethodExit(jatekter, "");
         gyujtemenyKiiratas();
     }
