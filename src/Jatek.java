@@ -17,7 +17,7 @@ public class Jatek
      * 
      * @param palyaMeret A p�lya m�rete.
      */
-    Jatek(int palyaMeret)
+    public Jatek(int palyaMeret)
     {
       karakterek = new ArrayList<Jatekos>();
       jatekter = new Palya(palyaMeret);
@@ -50,7 +50,7 @@ public class Jatek
 
         for(int i=0;i<bogaraszszam;i++){
             Jatekos jatekos=null;
-            jatekos = new Bogarasz(jatekter.getPalya());
+            jatekos = new Bogarasz();
             szkeleton.addToMap(jatekos, "bogarasz" + (i+1));
             szkeleton.logMethodEntry(jatekos, "Bogarasz");
             szkeleton.logMethodExit(jatekos, "");
@@ -104,9 +104,9 @@ public class Jatek
      * 
      * @param filepath A f�jl el�r�si �tvonala, ahov� a j�t�k �llapota ment�sre ker�l.
      */
-    public void mentes(String filepath)
+    public void mentes(String filePath)
     {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
             oos.writeObject(jatekter);
             oos.writeObject(karakterek);
         } catch (IOException e) {

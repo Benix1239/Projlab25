@@ -7,20 +7,14 @@ import java.util.ArrayList;
 public class Bogarasz extends Jatekos
 {
     private Bogar bogar;
-    private ArrayList<Tekton> palya;
 
-    Bogarasz(){}
-
-    //valtozas: megkapja a palyat is konstruktorban es nincs Tekton kezdo parametere
-    Bogarasz(ArrayList<Tekton> palya) {
-        this.palya = palya;
-    }
+    public Bogarasz(){}
 
     /**
      * A játékos köre, amely során döntéseket hozhat a bogár mozgásáról, evéséről és rágásáról.
      * A kör addig tart, amíg a bogárnak van mozgáspontja, vagy képes enni és rágni.
      */
-    void round()
+    public void round()
     {
         //szkeleton.logMethodEntry(this, "round");
         boolean vege=false;
@@ -71,7 +65,7 @@ public class Bogarasz extends Jatekos
     /**
      * A bogarat egy másik Tektonra mozgatja, ha van elérhető mozgáspontja.
      */
-    void lep(){
+    public void lep(){
         //szkeleton.logMethodEntry(this, "lep");
         if(bogar.getMozgaspont()!=0){
             szkeleton.logMethodEntry(bogar, "getHelyzet");
@@ -115,7 +109,7 @@ public class Bogarasz extends Jatekos
     /**
      * A bogár megeszi a jelenlegi Tektonon található legkésőbb lerakot sporát ha van.
      */
-    void eves(){
+    public void eves(){
         //szkeleton.logMethodEntry(this, "eves");
         if(bogar.getactionEves()==true){
             if (bogar.getHelyzet().sporak!=null) {
@@ -136,7 +130,7 @@ public class Bogarasz extends Jatekos
     /**
      * A bogár elrág egy fonalat ami a jelenlegi tektonról elérhető és a játékos kiválasztott.
      */
-    void ragas(){
+    public void ragas(){
         //szkeleton.logMethodEntry(this, "ragas");
         if(bogar.getactionRagas()==true){
             Tekton helyzet= bogar.getHelyzet();
@@ -164,7 +158,7 @@ public class Bogarasz extends Jatekos
      * @param b A hozzáadandó bogár.
      * @param t A kezdeti Tekton, ahol a bogár elhelyezkedik.
      */
-    void bogarHozzaad(Bogar b,Tekton t)
+    public void bogarHozzaad(Bogar b,Tekton t)
     {
         ////szkeleton.logMethodEntry(this, "bogarHozzaad");
         bogar=b;

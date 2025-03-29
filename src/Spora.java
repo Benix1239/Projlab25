@@ -11,22 +11,22 @@ public abstract class Spora
      * 
      * @param tartozik A gomb�sz, akihez a sp�ra tartozik.
      */
-    Spora(Gombasz tartozik)
+    public Spora(Gombasz tartozik)
     {
         this.tartozik = tartozik;
     }
 
-    Gombasz getTartozik()
+    public Gombasz getTartozik()
     {
         return tartozik;
     }
 
-    void setTartozik(Gombasz g)
+    public void setTartozik(Gombasz g)
     {
         this.tartozik = g;
     }
 
-    int getPluszpont()
+    public int getPluszpont()
     {
         return pluszPont;
     }

@@ -1,0 +1,3438 @@
+//2025.03.01 23:22 Beke Bence 02:16 end
+
+public class App {
+    
+    public static void main(String[] args) throws Exception 
+    {
+       szkeleton Tesztprogram = new szkeleton();
+
+       Tesztprogram.tesztIndit();
+
+    }
+}
+
+----------------------------------------------------------------------
+
+public class Benito extends Spora
+{
+    /**
+     * Konstruktor, amely l�trehozza a Benito sp�r�t egy adott gomb�szhoz.
+     * 
+     * @param tartozik A gomb�sz, akihez a sp�ra tartozik.
+     */
+    Benito(Gombasz tartozik) 
+    {
+        super(tartozik);
+    }
+    
+    /**
+     * A Benito sp�ra kifejti a hat�s�t.
+     * 
+     * @param b A bog�r, amelyre kifejti a hat�s�t.
+     */
+    @Override
+    public void hatas(Bogar b) 
+    {
+        //szkeleton.logMethodEntry(this, "hatas");
+        if (b != null) {
+            szkeleton.logMethodEntry(b, "benul");
+            b.benul();
+            szkeleton.logMethodExit(b, "");
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+}
+
+---------------------------------------------------------------------------
+
+/** 
+ * A Bogar osztály egy bogarat reprezentál, amely képes mozogni, rágni és enni.
+ */
+public class Bogar 
+{
+    private int mozgasok;
+    private Boolean actionRagas;
+    private Boolean actionEves;
+    private Spora elozo;
+    private Tekton helyzet;
+   
+    /**
+     * Alapértelmezett konstruktor, amely beállítja az alapértékeket.
+     */
+    public Bogar() {
+        mozgasok = 1;
+        actionRagas = true;
+        actionEves = true;
+        elozo = null;
+    }
+
+    /**
+     * Visszaállítja az alapértelmezett értékeket.
+     */
+    public void beallit() {
+        //szkeleton.logMethodEntry(this, "beallit");
+        mozgasok = 1;
+        actionRagas = true;
+        actionEves = true;
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * Növeli a mozgási pontok számát.
+     */
+    public void gyorsul() {
+        //szkeleton.logMethodEntry(this, "gyorsul");
+        mozgasok++;
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * Csökkenti a mozgási pontok számát és letiltja az evést és rágást.
+     */
+    public void benul() {
+        //szkeleton.logMethodEntry(this, "benul");
+        mozgasok--;
+        actionEves = false;
+        actionRagas = false;
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * Letiltja a rágási akciót.
+     */
+    public void ragasBlock() {
+        //szkeleton.logMethodEntry(this, "ragasBlock");
+        actionRagas = false;
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * Csökkenti a mozgási pontok számát.
+     */
+    public void lassul() {
+        //szkeleton.logMethodEntry(this, "ro");
+        mozgasok--;
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * A bogár rágási akciót hajt végre egy adott fonalon.
+     * 
+     * @param fonal A fonal, amelyet a bogár elrág.
+     */
+    public void ragas(Fonal fonal) {
+        //szkeleton.logMethodEntry(this, "ragas");
+        //Tekton hova = fonal.getHova();
+        
+        szkeleton.logMethodEntry(fonal, "getTartozik");
+        Gombasz gombasz = fonal.getTartozik();
+        szkeleton.logMethodExit(fonal, "Gombasz");
+
+        szkeleton.logMethodEntry(helyzet, "fonalElszakad");
+        helyzet.fonalElszakad(fonal);
+        szkeleton.logMethodExit(helyzet, "");
+        /*ArrayList<Fonal> fonalak = hova.getOsszekoto();   
+
+        for (Fonal fonali : fonalak) {
+            if (fonali.getHova() == helyzet && fonal.getTartozik() == gombasz) {
+                hova.fonalElszakad(fonali);
+            }
+        }*/
+
+        //gombasz.elszakadasDfsKezeles();
+        actionRagas = false;
+        actionEves = false;
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * A bogár megeszi az aktuális helyzetén található spórát.
+     */
+    public void eves() {
+        //szkeleton.logMethodEntry(this, "eves");
+        szkeleton.logMethodEntry(helyzet, "sporatEszik");
+        elozo = helyzet.sporatEszik();
+        szkeleton.logMethodExit(helyzet, "Spora");
+        actionRagas = false;
+        actionEves = false;
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * A bogár egy új helyzetbe mozog.
+     * 
+     * @param t Az új helyzet.
+     */
+    public void mozgas(Tekton t) {
+        //szkeleton.logMethodEntry(this, "mozgas");
+        helyzet = t;
+        mozgasok--;
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * A bogár megemészti az előzőleg elfogyasztott spórát.
+     */
+    public void sporaMegemesztes() {
+        //szkeleton.logMethodEntry(this, "sporaMegemesztes");
+        if (elozo != null) {
+            szkeleton.logMethodEntry(elozo, "hatas");
+            elozo.hatas(this);
+            szkeleton.logMethodExit(elozo, "");
+            this.elozo = null;
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * Lekéri a bogár jelenlegi helyzetét.
+     * 
+     * @return A jelenlegi helyzet.
+     */
+    public Tekton getHelyzet() {
+        ////szkeleton.logMethodEntry(this, "getHelyzet");
+        ////szkeleton.logMethodExit(this, "Tekton"+helyzet.getId());
+        return helyzet;
+    }
+
+    /**
+     * Beállítja a bogár helyzetét.
+     * 
+     * @param t Az új helyzet.
+     */
+    public void setHelyzet(Tekton t) {
+        ////szkeleton.logMethodEntry(this, "setHelyzet");
+        helyzet = t;
+        ////szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * Lekéri a mozgási pontok számát.
+     * 
+     * @return A mozgási pontok száma.
+     */
+    public int getMozgaspont() {
+        ////szkeleton.logMethodEntry(this, "getMozgaspont");
+        ////szkeleton.logMethodExit(this, mozgasok);
+        return mozgasok;
+    }
+
+    /**
+     * Ellenőrzi, hogy a bogár képes-e rágni.
+     * 
+     * @return Igaz, ha a bogár rághat, egyébként hamis.
+     */
+    public boolean getactionRagas() {
+        ////szkeleton.logMethodEntry(this, "getactionRagas");
+        ////szkeleton.logMethodExit(this, actionRagas);
+        return actionRagas;
+    }
+
+    /**
+     * Ellenőrzi, hogy a bogár képes-e enni.
+     * 
+     * @return Igaz, ha a bogár ehet, egyébként hamis.
+     */
+    public boolean getactionEves() {
+        ////szkeleton.logMethodEntry(this, "getactionEves");
+        ////szkeleton.logMethodExit(this, actionEves);
+        return actionEves;
+    }
+    
+    /**
+     * Beállítja az előzőleg elfogyasztott spórát.
+     * 
+     * @param s A spóra, amelyet a bogár elfogyasztott.
+     */
+    public void setElozo(Spora s) {
+        ////szkeleton.logMethodEntry(this, "setElozo");
+        ////szkeleton.logMethodExit(this, "");
+        elozo = s;
+    }
+
+    /**
+     * Lekéri az előzőleg elfogyasztott spórát.
+     * 
+     * @return Az előző spóra.
+     */
+    public Spora getSpora() {
+        ////szkeleton.logMethodEntry(this, "setElozo");
+        ////szkeleton.logMethodExit(this, "spora");
+        return elozo;
+    }
+}
+
+------------------------------------------------------------------------
+
+import java.util.ArrayList;
+
+/**
+ * A Bogarasz osztály egy játékost reprezentál, aki egy bogarat irányít a játék során.
+ * A játékos különböző akciókat hajthat végre, például mozgást, evést és fonalak rágását.
+ */
+public class Bogarasz extends Jatekos
+{
+    private Bogar bogar;
+    private ArrayList<Tekton> palya;
+
+    Bogarasz(){}
+
+    //valtozas: megkapja a palyat is konstruktorban es nincs Tekton kezdo parametere
+    Bogarasz(ArrayList<Tekton> palya) {
+        this.palya = palya;
+    }
+
+    /**
+     * A játékos köre, amely során döntéseket hozhat a bogár mozgásáról, evéséről és rágásáról.
+     * A kör addig tart, amíg a bogárnak van mozgáspontja, vagy képes enni és rágni.
+     */
+    void round()
+    {
+        //szkeleton.logMethodEntry(this, "round");
+        boolean vege=false;
+        while((bogar.getMozgaspont()!=0||bogar.getactionEves()==true|| bogar.getactionRagas()==true)&&(!vege)){
+            
+            ArrayList<Fonal> fonalak= null;
+            Tekton helyzet= null;
+            System.out.println("Mit szeretnél csinálni");
+            System.out.println("1. Mozgás");
+            System.out.println("2. Evés");
+            System.out.println("3. Rágni");
+            System.out.println("4. Vége a körömnek");
+            
+            int actionValasztas =InputHandler.getScanner().nextInt();
+            
+            switch (actionValasztas) {
+                case 1:
+                    lep();
+                    break;
+                case 2:
+                    eves();
+                    break;
+                case 3:
+                    ragas();
+                    break;
+                case 4:
+                    vege=true;
+                    break;
+                default:
+                    System.out.println("Érvénytelen menüpontot választottál");
+                    break;
+            }
+        }
+
+        szkeleton.logMethodEntry(bogar, "beallit");
+        bogar.beallit();
+        szkeleton.logMethodExit(bogar, "");
+
+        if(bogar.getSpora()!=null){
+            pontok += bogar.getSpora().getPluszpont();
+        }
+        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
+        bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(bogar, "");
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * A bogarat egy másik Tektonra mozgatja, ha van elérhető mozgáspontja.
+     */
+    void lep(){
+        //szkeleton.logMethodEntry(this, "lep");
+        if(bogar.getMozgaspont()!=0){
+            szkeleton.logMethodEntry(bogar, "getHelyzet");
+            Tekton helyzet= bogar.getHelyzet();
+            szkeleton.logMethodExit(bogar, "Helyzet");
+            szkeleton.logMethodEntry(helyzet, "getOsszekoto");
+            ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
+            szkeleton.logMethodExit(helyzet, "Osszekoto[]");
+            ArrayList<Tekton> lehetsegesLepes=new ArrayList<>();
+            
+            
+            for (Fonal fonal : fonalak) {
+                szkeleton.logMethodEntry(fonal, "getHova");
+                Tekton hova = fonal.getHova();
+                szkeleton.logMethodExit(fonal, "Lehetseges helyek");
+                lehetsegesLepes.add(hova);
+            }
+            
+
+            
+            System.out.println("Melyik tektonra szeretnél lépni?");
+            
+            for (int i=0;i<lehetsegesLepes.size();i++) {
+                System.out.println((i+1)+". Tekton"+lehetsegesLepes.get(i).getId());
+    
+            }
+            int lepesValasztas = InputHandler.getScanner().nextInt();
+            Tekton hova= lehetsegesLepes.get(lepesValasztas-1);
+            
+            szkeleton.logMethodEntry(bogar, "mozgas");
+            bogar.mozgas(hova);
+            szkeleton.logMethodExit(bogar, "");
+        }
+
+        else{
+            System.out.println("Már nem tudsz mozogni a körben");
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * A bogár megeszi a jelenlegi Tektonon található legkésőbb lerakot sporát ha van.
+     */
+    void eves(){
+        //szkeleton.logMethodEntry(this, "eves");
+        if(bogar.getactionEves()==true){
+            if (bogar.getHelyzet().sporak!=null) {
+                szkeleton.logMethodEntry(bogar, "eves");
+                bogar.eves();
+                szkeleton.logMethodExit(bogar, "");
+            }
+            else{
+                System.out.println("Nincs a tektonon spóra");
+            }
+        }
+        else{
+            System.out.println("Már ettél a körben");
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * A bogár elrág egy fonalat ami a jelenlegi tektonról elérhető és a játékos kiválasztott.
+     */
+    void ragas(){
+        //szkeleton.logMethodEntry(this, "ragas");
+        if(bogar.getactionRagas()==true){
+            Tekton helyzet= bogar.getHelyzet();
+            szkeleton.logMethodEntry(helyzet, "getOsszekoto");
+            ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
+            szkeleton.logMethodExit(helyzet, "Osszekoto[]");
+            System.out.println("Melyik fonalat szeretnéd elrágni?");
+            for (int i=0;i<fonalak.size();i++) {
+                System.out.println((i+1)+". fonal amely a Tekton"+ fonalak.get(i).getHova().getId()+"ra ér");
+            }
+            int ragasValasztas = InputHandler.getScanner().nextInt();
+            szkeleton.logMethodEntry(bogar, "ragas");
+            bogar.ragas(fonalak.get(ragasValasztas-1));
+            szkeleton.logMethodExit(bogar, "");
+        }
+        else{
+            System.out.println("Már rágtál a körben");
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+     /**
+     * Hozzáad egy bogarat a játékoshoz és beállítja annak kezdeti helyzetét.
+     * 
+     * @param b A hozzáadandó bogár.
+     * @param t A kezdeti Tekton, ahol a bogár elhelyezkedik.
+     */
+    void bogarHozzaad(Bogar b,Tekton t)
+    {
+        ////szkeleton.logMethodEntry(this, "bogarHozzaad");
+        bogar=b;
+        bogar.setHelyzet(t);
+        //szkeleton.logMethodExit(this, "");
+    }
+    
+}
+
+-----------------------------------------------------------------------------------------------------------------
+
+import java.util.ArrayList;
+
+/*
+ * @class Egyfonalas
+ * @brief Az egyfonalas tektonokat kezeli. (Erre a tektonra csak egy fonalt lehet letenni)
+ */
+public class Egyfonalas extends Tekton
+{
+
+    /*
+     * @brief Parameter nelkuli konstruktor
+     */
+    Egyfonalas(){
+        super();    ///Az ososztaly parameter nelkuli konstruktorat hivja
+   
+    }
+
+     /*
+     * @brief Parameteres konstruktor
+     * @param spo -> A tekton spora listaja
+     * @szom -> A tekton szomszed listaja
+     */
+    Egyfonalas(ArrayList<Spora> spo, ArrayList<Tekton> szom){
+        super(spo,szom);
+    }
+
+
+    /*
+     * @brief Megepiti a fonalat a tektonra.
+     * @param f -> Fonal amit a tektonra helyez
+     * @return true -> Epites sikeres
+     * @retrun false -> Sikertelen epites
+     */
+    @Override
+    boolean addFonal(Fonal f){
+        //szkeletonlogMethodEntry(this, "addFonal");	///Szkeleton kiiratas fuggveny kezdetekor
+        boolean sikerult = false;
+		if(osszekoto.size() == 0)
+        {
+            osszekoto.add(f);
+            sikerult = true;
+        }
+        szkeleton.logMethodEntry(f, "getTartozik");	///Szkeleton kiiratas fuggveny kezdetekor
+		Gombasz temp=f.getTartozik();
+        szkeleton.logMethodExit(f, "Gombasz");			///Szkeleton kiiratas fuggveny vegen
+		if(tudEpulni(temp) ){                    ///Ha tud gombatestet is epit
+			gombaTestEpul(f.getTartozik());
+		}
+                                
+        //szkeletonlogMethodExit(this, sikerult);			///Szkeleton kiiratas fuggveny vegen
+		return sikerult;
+
+	} 
+
+
+
+
+
+
+    /*
+     * @brief Elszakitj a tektonon levo osszes fonalat
+     */
+    @Override
+    void mindenFonalElszakad(){
+        //szkeletonlogMethodEntry(this, "mindenFonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
+		for(Fonal elem : osszekoto){
+            szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
+			fonalElszakad(elem);
+            szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+		}
+        //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+
+    /*
+     * @brief Elszakitja a tektonon levo adott fonalat
+     * @param fonal -> Elszakitani kivant fonal
+     */
+    @Override
+	void fonalElszakad(Fonal fonal){
+        //szkeletonlogMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
+		for (Fonal elem : osszekoto) {
+			if(elem==fonal || elem.equals(fonal)){
+				for(Fonal elem1 : elem.getHova().getOsszekoto()){
+					if(elem1.getHova()==this){
+						elem.getHova().getOsszekoto().remove(elem1);
+					}
+				}
+				osszekoto.remove(elem);
+				
+			}
+		}
+        szkeleton.logMethodEntry(fonal, "getTartozik");
+        Gombasz gombasz = fonal.getTartozik();
+        szkeleton.logMethodExit(fonal, "Gombasz");
+		gombasz.elszakadasDfsKezeles();                          
+        //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+    /*
+     * @brief Szeteseskor szinten egy Egyfonalas tektont hozz letre
+     * @return Letrehozott tekton
+     */
+  @Override
+    Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+       // //szkeletonlogMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
+        ////szkeletonlogMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
+        return new Egyfonalas(spo,szom);
+    }
+
+
+
+}
+
+----------------------------------------------------------------------------------------------------
+
+import java.util.ArrayList;
+/*
+ * @class Felszivo
+ * @brief A felszivo tekton kezelese. (A tektonrol minden korben eltunik az utoljara ra helyezett fonal)
+ */
+public class Felszivo extends Tekton
+{
+    /*
+    * @brief Parameter nelkuli konstruktor
+    */
+   Felszivo(){
+        super();    ///Az ososztaly parameter nelkuli konstruktorat hivja
+    }
+
+    /*
+     * @brief Parameteres konstruktor
+     * @param spo -> A tekton spora listaja
+     * @szom -> A tekton szomszed listaja
+     */
+    Felszivo(ArrayList<Spora> spo, ArrayList<Tekton> szom){
+        super(spo,szom);    ///Az ososztaly parameteres konstruktorat hivja
+    }
+
+    /*
+     * @brief Minden korben meghivjuk. Elszakitja a legutobb erre a tektonra letett fonalat
+     */
+    @Override
+    void fonalElszakadKoronkent(){
+        //szkeleton.logMethodEntry(this, "fonalElszakadKoronkent");	///Szkeleton kiiratas fuggveny kezdetekor
+        if(osszekoto.size()!=0){
+            Fonal szakitjuk=osszekoto.get(osszekoto.size()-1);
+            szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
+           fonalElszakad(szakitjuk);
+           szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+    
+        }
+        //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+    }
+
+    /*
+     * @brief Ez a tekton szeteseskor, egy masik felszivo tektont hozz letre
+     */
+    @Override
+    Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+       // szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
+        //szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen	
+        return new Felszivo(spo,szom);
+    }
+
+
+
+
+    
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+
+public class Fonal extends Osszekoto
+{
+    private Gombasz tartozik;
+  
+    /**
+     * Konstruktor, amely l�trehozza a Fonal objektumot egy adott gomb�szhoz 
+     * �s egy adott Tektonhoz kapcsolja.
+     * 
+     * @param tartozik A gomb�sz, akihez a fonal tartozik.
+     * @param hova A Tekton objektum, amelyhez a fonal kapcsol�dik.
+     */
+    public Fonal(Tekton hova,Gombasz tartozik) 
+    {
+        super(hova);
+        this.tartozik = tartozik;
+    }
+
+
+
+    /**
+     * Visszaadja a gomb�szt, akihez a fonal tartozik.
+     * 
+     * @return A gomb�sz, akihez a fonal tartozik.
+     */
+    public Gombasz getTartozik()
+    {
+        //szkeleton.logMethodEntry(this, "getTartozik");
+        //szkeleton.logMethodExit(this, "tartozik");
+        return tartozik;
+        
+    }
+
+
+
+}
+
+------------------------------------------------------------------------------------------
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+
+public class Gombasz extends Jatekos
+{
+    private ArrayList<Gombatest> testek;
+    private ArrayList<Tekton> palya;
+
+    
+
+    //valtozas: megkapja a palyat is konstruktorban es nincs Tekton kezdo parametere
+    public Gombasz(ArrayList<Tekton> palya){
+        testek = new ArrayList<>();
+        this.palya = palya;
+    }
+
+    public void gombatestHozzaad(Gombatest g){
+        //szkeleton.logMethodEntry(this, "gombatestHozzaad");
+        testek.add(g);
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    public void Round(){
+     
+    }
+
+    //osszegyujti, hogy a hozza tartozo testekbol melyik tektonok erhetoek el es ha talal olyat, ami nem erheto el,
+    //de hozza tartozo fonal van rajta, akkor azt a fonalat torli a tektonrol
+    public void elszakadasDfsKezeles(){
+        //szkeleton.logMethodEntry(this, "elszakadasDfsKezeles");
+        HashSet<Tekton> elerhetok = new HashSet<>();
+        for(Gombatest test : testek){
+            Set<Tekton> elerhetoTektonok = test.dfs();
+            for(Tekton t : elerhetoTektonok){
+                elerhetok.add(t);
+            }
+        }
+
+        for(Tekton t : palya){
+            if(!elerhetok.contains(t)){
+               ArrayList<Fonal> fonalak = new ArrayList<>();
+               for(Fonal f : t.getOsszekoto())
+               {
+                    fonalak.add(f);
+               }
+               for(Fonal f : fonalak){
+                    if(f.getTartozik() == this){
+                        t.getOsszekoto().remove(f);
+                    }
+               }
+            }
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    public void removeGombatest(Gombatest g){
+        //szkeleton.logMethodEntry(this, "removeGombatest");
+        testek.remove(g);
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    public void fonalLerak(){
+        //szkeleton.logMethodEntry(this, "fonalLerak");
+        ArrayList<Gombatest> temptestek = new ArrayList<>();
+        for(Gombatest gombatest : testek){
+            temptestek.add(gombatest);
+        }
+
+        for(Gombatest gombatest : temptestek){
+            Set<Tekton> honnanLehetosegek = new HashSet<>();
+
+            szkeleton.logMethodEntry(gombatest, "dfs");
+            Set<Tekton> ujMegtalaltak = gombatest.dfs();
+            szkeleton.logMethodExit(gombatest, "megtalaltak");
+
+
+            for(Tekton t : ujMegtalaltak){
+                honnanLehetosegek.add(t);
+            }
+
+            System.out.println("Honnan szeretnel fonalat lerakni? Lehetosegek: ");
+            Set<Integer> ervenyesErtekek = new HashSet<>();
+            for(Tekton t : honnanLehetosegek){
+                System.out.println(t.getId());
+                ervenyesErtekek.add(t.getId());
+            }
+            int szam;
+            while (true) {
+                if(InputHandler.getScanner().hasNextInt()){
+                    szam = InputHandler.getScanner().nextInt();
+                    if (ervenyesErtekek.contains(szam)) {
+                        break;
+                    } else {
+                        System.out.println("Hibas bemenet!");
+                    }
+                }else {
+                    System.out.println("Hibas bemenet!");
+                    InputHandler.getScanner().next();
+                }
+            }
+
+            Tekton honnan = null;
+            for(Tekton t : honnanLehetosegek){
+                if(t.getId() == szam){
+                    honnan = t;
+                }
+            }
+
+            szkeleton.logMethodEntry(honnan, "getSzomszed");
+            ArrayList<Tekton> hovaLehetosegek = new ArrayList<>();
+            for(Tekton f : honnan.getSzomszed())
+            {
+
+                hovaLehetosegek.add(f);
+            }
+            szkeleton.logMethodExit(honnan, "hovaLehetosegek");
+
+            ArrayList<Fonal> honnanFonaljai = new ArrayList<>();
+            for(Fonal f : honnan.getOsszekoto())
+            {
+                honnanFonaljai.add(f);
+            }
+
+            ArrayList<Tekton> torlendo = new ArrayList<>();
+            for(Tekton t : hovaLehetosegek){
+                for(Fonal f : honnanFonaljai){
+                    if(f.getTartozik() == this && f.getHova() == t){
+                        torlendo.add(t);
+                    }
+                }
+            }
+
+            hovaLehetosegek.removeAll(torlendo);
+
+            System.out.println("Hova szeretnel fonalat lerakni? Lehetosegek: ");
+            ervenyesErtekek = new HashSet<>();
+            for(Tekton t : hovaLehetosegek){
+                System.out.println(t.getId());
+                ervenyesErtekek.add(t.getId());
+            }
+            while (true) {
+                if(InputHandler.getScanner().hasNextInt()){
+                    szam = InputHandler.getScanner().nextInt();
+                    if (ervenyesErtekek.contains(szam)) {
+                        break;
+                    } else {
+                        System.out.println("Hibas bemenet!");
+                    }
+                }else {
+                    System.out.println("Hibas bemenet!");
+                    InputHandler.getScanner().next();
+                }
+            }
+
+            Tekton hova = null;
+            for(Tekton t : hovaLehetosegek){
+                if(t.getId() == szam){
+                    hova = t;
+                }
+            }
+
+            szkeleton.logMethodEntry(gombatest, "elhelyez");
+            boolean vissza = gombatest.elhelyez(honnan, hova);
+            szkeleton.logMethodExit(gombatest, vissza);
+
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    public void sporaSzor(){
+        //szkeleton.logMethodEntry(this, "sporaSzor");
+        ArrayList<Gombatest> temptestek = new ArrayList<>();
+        for(Gombatest gombatest : testek){
+            temptestek.add(gombatest);
+        }
+
+        for(Gombatest gombatest : temptestek){
+
+            szkeleton.logMethodEntry(gombatest, "szomszedKeres");
+            ArrayList<Tekton> szomszedokList = gombatest.szomszedKeres();
+            szkeleton.logMethodExit(gombatest, "szomszedok");
+
+            HashSet<Tekton> szomszedok = new HashSet<>(szomszedokList);
+            if(gombatest.getMaradt() < 3){
+                for(Tekton t : szomszedokList){
+
+                    szkeleton.logMethodEntry(t, "getSzomszed");
+                    ArrayList<Tekton> vmi = t.getSzomszed();
+                    szkeleton.logMethodExit(t, "szomszedok");
+
+                    szomszedok.addAll(vmi);
+                }
+            }
+
+            System.out.println("Hova szeretnel sporat szorni? Lehetosegek: ");
+            Set<Integer> ervenyesErtekek = new HashSet<>();
+            for(Tekton t : szomszedok){
+                int id = t.getId();
+                System.out.println(id);
+                ervenyesErtekek.add(id);
+            }
+
+            int szam = 1;
+            while (true) {
+                if(InputHandler.getScanner().hasNextInt()){
+                    szam = InputHandler.getScanner().nextInt();
+                    if (ervenyesErtekek.contains(szam)) {
+                        break;
+                    } else {
+                        System.out.println("Hibas bemenet!");
+                    }
+                }else {
+                    System.out.println("Hibas bemenet!");
+                    InputHandler.getScanner().next();
+                }
+            }
+
+            Tekton hova = null;
+            for(Tekton t : szomszedok){
+                if(t.getId() == szam){
+                    hova = t;
+                }
+            }
+
+            szkeleton.logMethodEntry(gombatest, "elszor");
+            gombatest.elszor(hova);
+            szkeleton.logMethodExit(gombatest, "");
+
+            //szkeleton.logMethodExit(this, "");
+        }
+    }
+    
+}
+
+------------------------------------------------------------------------------
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
+public class Gombatest
+{
+    
+    private Tekton hely;
+    private Spora spora;
+    private int maradt;
+    private Gombasz tartozik;
+    private static final Random random = new Random();
+
+    public Gombatest(Tekton hely, Gombasz tartozik) {
+        this.hely = hely;
+        this.tartozik = tartozik;
+        maradt = 20;
+        spora = null;
+    }
+
+    public void termel(){
+        //szkeleton.logMethodEntry(this, "termel");
+        int randomSzam = random.nextInt(4);
+        switch (randomSzam) {
+            case 0:
+                spora = new Gyorsito(tartozik);
+                break;
+            case 1:
+                spora = new Benito(tartozik);
+                break;
+            case 2:
+                spora = new Keseru(tartozik);
+                break;
+            case 3:
+                spora = new Lassito(tartozik);
+                break;
+            case 4:
+                spora = new Sima(tartozik);     
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    public void elszor(Tekton c){
+        //szkeleton.logMethodEntry(this, "elszor");
+        szkeleton.logMethodEntry(c, "addSpora");
+        c.addSpora(spora);
+        szkeleton.logMethodExit(c, "");	
+        maradt--;
+        if(maradt == 0){
+
+            this.gombatestMeghal();
+        }
+        spora = null;
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    private void gombatestMeghal(){
+        //szkeleton.logMethodEntry(this, "gombatestMeghal");
+
+        szkeleton.logMethodEntry(hely, "setGombatest");
+        hely.setGombatest(null);
+        szkeleton.logMethodExit(hely, "");
+
+        szkeleton.logMethodEntry(tartozik, "removeGombatest");
+        tartozik.removeGombatest(this);
+        szkeleton.logMethodExit(tartozik, "");
+        
+        szkeleton.logMethodEntry(tartozik, "elszakadasDfsKezeles");
+        tartozik.elszakadasDfsKezeles();
+        szkeleton.logMethodExit(tartozik, "");
+        
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    //legjobb minta erre az EgyFonalasHova szekvenciadiagram
+    public boolean elhelyez(Tekton honnan, Tekton hova){
+        //szkeleton.logMethodEntry(this, "elhelyez");
+        Fonal f1 = new Fonal(honnan, this.tartozik);
+        Fonal f2 = new Fonal(hova, this.tartozik);
+        szkeleton.addToMap(f2, "tempf2");
+        szkeleton.addToMap(f1, "tempf1");
+
+        szkeleton.logMethodEntry(honnan, "addFonal");
+        boolean vissza = honnan.addFonal(f2);
+        szkeleton.logMethodExit(honnan, vissza);
+
+        if(vissza){
+
+            szkeleton.logMethodEntry(hova, "addFonal");
+            boolean vissza2 = hova.addFonal(f1);
+            szkeleton.logMethodExit(hova, vissza2);
+            
+            if(!vissza2){
+
+                szkeleton.logMethodEntry(honnan, "fonalElszakad");
+                honnan.fonalElszakad(f2);
+                szkeleton.logMethodExit(honnan, "");
+                
+                System.out.println("Sikertelen lerakas, mert a hova tekton EgyFonalas");
+                //szkeleton.logMethodExit(this, "false");
+                return false;
+            }
+            System.out.println("Sikeres lerakas!");
+            //szkeleton.logMethodExit(this, "true");
+            return true;
+        }
+        System.out.println("Sikertelen lerakas, mert a honnan tekton EgyFonalas");
+        //szkeleton.logMethodExit(this, "false");
+        return false;
+    }
+
+    //ez miert itt van, miert nem a tektonban?
+    public ArrayList<Tekton> szomszedKeres(){
+        //szkeleton.logMethodEntry(this, "szomszedKeres");
+        //szkeleton.logMethodExit(this, "szomszedok");
+        return hely.getSzomszed();
+    }
+
+    private void dfsRekurzio(Tekton tekton, Set<Tekton> megtalalt){
+        if (megtalalt.contains(tekton)) {
+            return;
+        }
+         megtalalt.add(tekton);
+
+         for(Fonal f : tekton.getOsszekoto()){
+            if(f.getTartozik() == tartozik){
+                dfsRekurzio(f.getHova(), megtalalt);
+            }
+        }
+    }
+
+    public Set<Tekton> dfs(){
+        //szkeleton.logMethodEntry(this, "dfs");
+        Set<Tekton> megtalalt = new HashSet<>();
+        dfsRekurzio(hely, megtalalt);
+        //szkeleton.logMethodExit(this, "megtalalt");
+        return megtalalt;
+    }
+
+    public int getMaradt(){
+        //szkeleton.logMethodEntry(this, "getMaradt");
+        //szkeleton.logMethodExit(this, "maradt");
+        return maradt;
+    }
+
+    public void setSpora(Spora s){
+        this.spora = s;
+    }
+
+    public void setMaradt(int i){
+        maradt = i;
+    }
+}
+
+------------------------------------------------------------------------------
+
+
+public class Gyorsito extends Spora
+{
+    /**
+     * Konstruktor, amely l�trehozza a Gyorsito sp�r�t egy adott gomb�szhoz.
+     * 
+     * @param tartozik A gomb�sz, akihez a sp�ra tartozik.
+     */
+    Gyorsito(Gombasz tartozik) 
+    {
+      super(tartozik);
+    }
+    
+    /**
+     * A Gyorsito sp�ra kifejti a hat�s�t.
+     * 
+     * @param b A bog�r, amelyre kifejti a hat�s�t.
+     */
+    @Override
+    public void hatas(Bogar b) 
+    {
+        //szkeleton.logMethodEntry(this, "hatas");
+        if (b != null) {
+            szkeleton.logMethodEntry(b, "gyorsul");
+            b.gyorsul();
+            szkeleton.logMethodExit(b, "");
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+    
+}
+
+------------------------------------------------------------------------------------
+
+import java.util.Scanner;
+
+public class InputHandler {
+    private static final Scanner bemenet = new Scanner(System.in); // Közös példány
+
+    public static Scanner getScanner() {
+        return bemenet;
+    }
+}
+
+-------------------------------------------------------------------------------------
+
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+public class Jatek
+{
+    
+    private Palya jatekter;
+    private ArrayList<Jatekos> karakterek;
+
+    /*
+     * Konstruktor, amely l�trehozza a j�t�kteret �s a karakterek list�j�t.
+     * 
+     * @param palyaMeret A p�lya m�rete.
+     */
+    Jatek(int palyaMeret)
+    {
+      karakterek = new ArrayList<Jatekos>();
+      jatekter = new Palya(palyaMeret);
+    }
+    
+    /**
+     * Elind�tja a j�t�kot �s kezeli a f� j�t�kmenetet.
+     */
+    public void jatekIndit()
+    {
+        //szkeleton.logMethodEntry(this, "jatekIndit");
+        boolean gameRunning = true;
+        int turnCount = 0;
+
+        System.out.println("Hány gombász van?");   
+        int gombaszszam = InputHandler.getScanner().nextInt();
+
+                
+        for(int i=0;i<gombaszszam;i++){
+            Jatekos jatekos=null;
+            jatekos = new Gombasz(jatekter.getPalya());
+            szkeleton.addToMap(jatekos, "gombasz" + (i+1));
+            szkeleton.logMethodEntry(jatekos, "Gombasz()");
+            szkeleton.logMethodExit(jatekos, "");
+            karakterek.add(jatekos);
+        }
+
+        System.out.println("Hány bogarasz van?");   
+        int bogaraszszam = InputHandler.getScanner().nextInt();
+
+        for(int i=0;i<bogaraszszam;i++){
+            Jatekos jatekos=null;
+            jatekos = new Bogarasz(jatekter.getPalya());
+            szkeleton.addToMap(jatekos, "bogarasz" + (i+1));
+            szkeleton.logMethodEntry(jatekos, "Bogarasz");
+            szkeleton.logMethodExit(jatekos, "");
+            karakterek.add(jatekos);
+        }
+
+        jatekter = new Palya(gombaszszam + 10);
+        szkeleton.addToMap(jatekter, "jatekter");
+        szkeleton.logMethodEntry(jatekter, "Palya");
+        szkeleton.logMethodExit(jatekter, "");
+       
+
+        /*while (gameRunning) {
+            for (Jatekos karakter : karakterek) {
+                karakter.round();
+                jatekter.tores();
+            }
+            turnCount++;  // kilepesi feltetel?
+        }*/
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * Felvesz egy �j j�t�kost a karakterek list�j�ba.
+     */
+    public void jatekosHozzaad(Jatekos karakter)
+    {
+        szkeleton.logMethodEntry(this, "jatekosHozzaad");
+       // Jatekos karakter = new Jatekos();
+        karakterek.add(karakter);
+        szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * Szerializ�l�ssal bet�lti az adatokat egy f�jlb�l, bele�rtve a j�t�kteret �s a j�t�kosokat.
+     * 
+     * @param filePath A f�jl el�r�si �tvonala, ahonnan a j�t�k �llapota bet�lt�sre ker�l.
+     */
+    public void betoltes(String filePath)
+    {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+            jatekter = (Palya) ois.readObject();
+            karakterek = (ArrayList<Jatekos>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Szerializ�l�ssal elmenti az adatokat egy f�jlba, bele�rtve a j�t�kteret �s a j�t�kosokat.
+     * 
+     * @param filepath A f�jl el�r�si �tvonala, ahov� a j�t�k �llapota ment�sre ker�l.
+     */
+    public void mentes(String filepath)
+    {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath))) {
+            oos.writeObject(jatekter);
+            oos.writeObject(karakterek);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+----------------------------------------------------------------------------------------------------
+
+import java.io.Serializable;
+
+
+public abstract class Jatekos implements Serializable
+{
+    int id;
+    int pontok;
+    String Nev;
+
+    Jatekos()
+    {
+        
+    }
+
+    void addPoint(int amount)
+    {
+        
+    }
+
+    void round() 
+    {
+
+    }
+
+    void pontSzamlalo()
+    {
+        
+    }
+
+}
+
+----------------------------------------------------------------------------------------------------------
+
+
+public class Keseru extends Spora
+{
+    /**
+     * Konstruktor, amely l�trehozza a Keseru sp�r�t egy adott gomb�szhoz.
+     * 
+     * @param tartozik A gomb�sz, akihez a sp�ra tartozik.
+     */
+   Keseru(Gombasz tartozik) 
+    {
+        super(tartozik);
+    }
+    
+    /**
+     * A Keseru sp�ra kifejti a hat�s�t.
+     * 
+     * @param b A bog�r, amelyre kifejti a hat�s�t.
+     */
+    
+    public void hatas(Bogar b) 
+    {
+        //szkeleton.logMethodEntry(this, "hatas");
+        if (b != null) {
+            szkeleton.logMethodEntry(b, "ragasBlock");
+            b.ragasBlock();
+            szkeleton.logMethodExit(b, "");
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    
+}
+
+---------------------------------------------------------------------------------------------
+
+
+public class Lassito extends Spora
+{
+    /**
+     * Konstruktor, amely l�trehozza a Lassito sp�r�t egy adott gomb�szhoz.
+     * 
+     * @param tartozik A gomb�sz, akihez a sp�ra tartozik.
+     */
+    Lassito(Gombasz tartozik) 
+    {
+        super(tartozik);
+    }
+    
+    /**
+     * A Lassito sp�ra kifejti a hat�s�t.
+     * 
+     * @param b A bog�r, amelyre kifejti a hat�s�t.
+     */
+ 
+    public void hatas(Bogar b) 
+    {
+        //szkeleton.logMethodEntry(this, "hatas");
+        if (b != null) {
+            szkeleton.logMethodEntry(b, "lassul");
+            b.lassul();
+            szkeleton.logMethodExit(b, "");
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+}
+
+----------------------------------------------------------------------------------------------------
+
+
+public abstract class Osszekoto
+{
+
+    private Tekton hova;
+    
+    /**
+     * Konstruktor, amely inicializ�lja az Osszekoto objektumot a megadott Tektonnal.
+     * 
+     * @param hova A Tekton objektum, amelyhez az Osszekoto kapcsol�dik.
+     */
+    public Osszekoto(Tekton hova) 
+    {
+        this.hova = hova;
+    }
+
+    /**
+     * Visszaadja a Tekton objektumot, amelyhez az Osszekoto kapcsol�dik.
+     * 
+     * @return A Tekton objektum, amelyhez az Osszekoto kapcsol�dik.
+     */
+    public Tekton getHova()
+    {
+        //szkeleton.logMethodEntry(this, "getHova");
+        //szkeleton.logMethodExit(this, "hova");
+        return hova;
+        
+    }
+
+    protected abstract Gombasz getTartozik();
+    
+    
+}
+
+-----------------------------------------------------------------------------------------------
+
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Palya implements Serializable
+{
+    private ArrayList<Tekton> palya;
+
+    /**
+     * Konstruktor, amely l�trehozza a p�ly�t egy adott m�rettel (tekton sz�mmal).
+     * 
+     * @param kezdomeret A kezdeti m�ret.
+     */
+    Palya(int kezdomeret)
+    {
+        palya = new ArrayList<>();
+        letrehoz(kezdomeret);
+    }
+    Palya()
+    {
+        palya = new ArrayList<>();
+    }
+
+    /**
+     * Hozz�ad egy �j Tekton objektumot a p�ly�hoz.
+     * 
+     * @param t A hozz�adand� Tekton objektum.
+     */
+    public void tektonHozzaad(Tekton t)
+    {
+        //szkeleton.logMethodEntry(this, "tektonHozzaad");
+        if (t != null) {
+            palya.add(t);
+            t.setId(palya.size());
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * L�trehozza a p�ly�t a megadott kezdeti m�rettel.
+     * 
+     * @param kezdomeret A l�trehozand� Tekton objektumok sz�ma.
+     */
+    public void letrehoz(int kezdomeret)
+    {
+        //szkeleton.logMethodEntry(this, "letrehoz");
+        for (int i = 0; i < kezdomeret; i++) {
+            tektonHozzaad(new Tekton());
+        }
+        //szkeleton.logMethodExit(this, "");
+    }
+
+    /**
+     * Kezeli a t�r�si folyamatot a p�lya tektonjain.
+     */
+    public void tores()
+    {
+        //szkeleton.logMethodEntry(this, "tores");
+        /*
+        for (Tekton t : palya) {
+            szkeleton.logMethodEntry(t, "tores");
+            Tekton torott = t.tores();
+            szkeleton.logMethodExit(t, "");
+            if (torott != null) {
+                tektonHozzaad(torott);
+            }
+        }
+        //szkeleton.logMethodExit(this, "");
+    */
+    int meret = palya.size();
+     for(int i=0;i<meret;i++){
+        szkeleton.logMethodEntry(palya.get(i), "tores");
+        Tekton palya2 = palya.get(i).tores();
+        if(palya2!=null){   
+            szkeleton.addToMap(palya2, "palya2");
+            szkeleton.logMethodExit(palya.get(i), "palya2");
+        }else{
+            szkeleton.logMethodExit(palya.get(i), "");
+        }
+        if (palya2 != null) {
+            tektonHozzaad(palya2);
+        }
+     }
+    
+    }
+
+
+
+    
+    /**
+     * A Testetlen tektonokon a fonal felsz�v�d�st v�gzi.
+     */
+    public void felszivodik()
+    {
+        //szkeleton.logMethodEntry(this, "felszivodik");
+       /*
+        for (Tekton t : palya) {
+            if (t instanceof Testetlen) {
+                t.fonalElszakadKoronkent();
+            }
+        }
+            */
+        //szkeleton.logMethodExit(this, "");
+        
+        int meret=palya.size();
+        for(int i=0;i<meret;i++){
+            
+            szkeleton.logMethodEntry(palya.get(i), "fonalElszakadKoronkent");
+            palya.get(i).fonalElszakadKoronkent();
+            szkeleton.logMethodExit(palya.get(i), "");
+            
+        }
+
+
+    }
+
+
+    public ArrayList<Tekton> getPalya()
+    {
+        return this.palya;
+    }
+}
+
+------------------------------------------------------------------------------------------
+
+public class Sima extends Spora
+{
+    /**
+     * Konstruktor, amely l�trehozza a Sima sp�r�t egy adott gomb�szhoz.
+     * 
+     * @param tartozik A gomb�sz, akihez a sp�ra tartozik.
+     */
+    Sima(Gombasz tartozik)
+    {
+        super(tartozik);
+    }
+
+    /**
+         * A Sima sp�ra nem fejt ki hat�st a bogarakra.
+         * 
+         * @param b A bog�r, amelyre a sp�ra hat�ssal lehetne.
+         */
+       
+        public void hatas(Bogar b)
+        {
+            szkeleton.logMethodEntry(this, "hatas");
+            szkeleton.logMethodExit(this, "");
+            // nincs hatas
+        }
+    
+}
+
+---------------------------------------------------------------------------------------------
+
+
+
+
+public abstract class Spora 
+{
+    private int pluszPont;
+    private Gombasz tartozik;
+
+    /**
+     * Konstruktor, amely l�trehozza a sp�r�t egy adott gomb�szhoz.
+     * 
+     * @param tartozik A gomb�sz, akihez a sp�ra tartozik.
+     */
+    Spora(Gombasz tartozik)
+    {
+        this.tartozik = tartozik;
+    }
+
+    Gombasz getTartozik()
+    {
+        return tartozik;
+    }
+
+    void setTartozik(Gombasz g)
+    {
+        this.tartozik = g;
+    }
+
+    int getPluszpont()
+    {
+        return pluszPont;
+    }
+    /**
+     * A sp�ra hat�sa egy adott bog�rra.
+     * 
+     * @param b A bog�r, amelyre a sp�ra hat�ssal lesz.
+     */
+    public abstract void hatas(Bogar b);
+    
+    
+
+}
+
+-------------------------------------------------------------------------------------------------
+
+
+import java.util.ArrayList;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.Stack;
+
+
+public class szkeleton
+{
+    private static ArrayList<String> gyujtemeny = new ArrayList<>();
+    private static Map<Object, String> objectToStringMap = new IdentityHashMap<>();
+    private static Map<String, Object> stringToObjectMap = new IdentityHashMap<>();
+    
+
+    private static Object jelenlegiHivo = new Object();
+
+    private static Stack<String> objektumNevek;
+
+    public static void addToMap(Object o, String name){
+        if(o == null || name == null || objectToStringMap.containsKey(o) || stringToObjectMap.containsKey(name))
+            return;
+        objectToStringMap.putIfAbsent(o, name);
+        stringToObjectMap.putIfAbsent(name, o);
+    }
+
+    private static String indentalasSzamitas() {
+        int melyseg = objektumNevek.size();
+        return "\t".repeat(melyseg);
+    }
+
+    public static void logMethodEntry(Object hivott, String methodName) {
+        Object hivo = jelenlegiHivo;
+        objektumNevek.push(objectToStringMap.get(hivo));
+        jelenlegiHivo = hivott;
+        //System.out.println(indentalasSzamitas() + objectToStringMap.get(hivo) + " -> " + objectToStringMap.get(hivott) + ": " + methodName + "()");
+        String uzenet = indentalasSzamitas() + objectToStringMap.get(hivo) + " -> " + objectToStringMap.get(hivott) + ": " + methodName + "()";
+        gyujtemeny.add(uzenet);
+    }
+
+    public static void logMethodExit(Object hivott, Object returnValue) {
+        String hivo = objektumNevek.peek();
+        //System.out.println(indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue);
+        String uzenet = indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue;
+        gyujtemeny.add(uzenet);
+
+        String jelenlegiHivoNev;
+        jelenlegiHivoNev = objektumNevek.pop();
+        jelenlegiHivo = stringToObjectMap.get(jelenlegiHivoNev);
+    }
+
+    public static void logConstructorEntry(Object hivott, String objectName){
+        addToMap(hivott, objectName);
+        Object hivo = jelenlegiHivo;
+        objektumNevek.push(objectToStringMap.get(hivo));
+        jelenlegiHivo = hivott;
+        String uzenet = indentalasSzamitas() + objectToStringMap.get(hivo) + " -> " + objectToStringMap.get(hivott) + ": " + "<<Constructor>>";
+        gyujtemeny.add(uzenet);
+    }
+
+    public static void logConstructorExit(Object hivott){
+        //System.out.println(indentalasSzamitas() + hivo + " <- " + objectToStringMap.get(hivott) + " : " + returnValue);
+
+        String jelenlegiHivoNev;
+        jelenlegiHivoNev = objektumNevek.pop();
+        jelenlegiHivo = stringToObjectMap.get(jelenlegiHivoNev);
+    }
+
+    private void gyujtemenyKiiratas(){
+        for(String s : gyujtemeny){
+            System.out.println(s);
+        }
+        gyujtemeny = new ArrayList<>();
+    }
+
+    szkeleton()
+    {
+        objektumNevek = new Stack<>();
+    }
+
+    void tesztIndit()
+    {
+        boolean tart = true;
+        do
+        {
+            
+            System.out.println("A menupont elotti szím beirasaval valaszthatod ki a dolgokat");
+            System.out.println("Mit szeretnel tesztelni?:");
+            System.out.println("1:Palya logika\n2:Gombasz logika\n3:Bogarasz logika\n4:kilepes"); 
+            
+            int valaszt = InputHandler.getScanner().nextInt();
+            switch (valaszt) {
+                case 1:
+                        PalyaLogikaTeszteles();
+                    break;
+                case 2:
+                        GombaszLogikaTeszteles();
+                    break;
+                case 3:
+                    BogarLogikaTeszteles();
+                    break;
+                case 4:
+ /* 
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("1.jatekinditTeszt");
+                    jatekInditasTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("2.fonalLerakSimaTeszt");
+                    fonalLerakSimaTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("3.sporaSzorSimaTeszt");
+                    sporaSzorSimaTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("4.sporaSzorFejlettTeszt");
+                    sporaSzorFejlettTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("5.GombatestepitFonallalTeszt");
+                    GombatestEpitFonallalTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("6.GombatestEpitSporavalTeszt");
+                    GombatestEpitSporavalTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("7.gombaTestMeghalTeszt");
+                    gombaTestMeghalTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("8.fonalElhalBogarMiattTeszt");
+                    fonalElhalBogarMiattTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("9.fonalElhalGombatestMiattTeszt");
+                    fonalElhalGombatestMiattTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("10.FonalElhalSzetesesMiattTeszt");
+                    fonalElhalSzetesesMiattTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("11.BogarLepTeszt");
+                    BogarLepTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("12.BogarRagTeszt");
+                    BogarRagTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("13.BogarEszikTeszt");
+                    BogarEszikTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("14.BogarEmesztGyorsitoTeszt");
+                    BogarEmesztGyorsitoTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("15.BogarEmesztBenitoTeszt");
+                    BogarEmesztBenitoTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("16.BogarEmesztKeseruTeszt");
+                    BogarEmesztkeseruTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("17.BogarEmesztLassitoTeszt");
+                    BogarEmesztlassitoTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("18.tektonSzetesesFonalNelkulTeszt");
+                    tektonSzetesesFonalNelkulTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("19.fonalFelszivTeszt");
+                    fonalFelszivTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("20.egyFonalasHonnanTeszt");
+                    egyFonalasHonnanTeszt();
+
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("21.egyFonalasHovaTeszt");
+                    egyFonalasHovaTeszt();
+                    */
+                    tart = false;
+                    break;
+                default:
+                    
+            }
+            
+            
+        }while(tart);
+    }
+
+    void PalyaLogikaTeszteles()
+    {
+        System.out.println("\nTesztelheto Palya logikak:\n1:JatekInditasa\n2:FonalElhalSzetesesMiatt\n3:TektonSzetesesFonalNelkul\n4:FonalFelsziv");
+        int valaszt = InputHandler.getScanner().nextInt();
+        switch (valaszt) {
+            case 1:
+                    jatekInditasTeszt();
+                break;
+            case 2:
+                    fonalElhalSzetesesMiattTeszt();
+                break;
+            case 3:
+                    tektonSzetesesFonalNelkulTeszt();
+                break;
+            case 4:
+                    fonalFelszivTeszt();
+                break;
+            default:
+                
+        }
+    }
+
+    void GombaszLogikaTeszteles()
+    {
+        System.out.println("\nTesztelheto Gombasz logikak:\n1:FonalLerakSima\n2:SporaSzorSima\n3:SporaSzorFejlett\n4:GombatestEpitFonallal\n5:GombatestEpitSporaval\n6:GombatestMeghal\n7:fonalElhalGombatestMiatt\n8:EgyFonalasHonnan\n9:EgyFonalasHova");
+        
+        int valaszt = InputHandler.getScanner().nextInt();
+        switch (valaszt) {
+            case 1:
+                this.fonalLerakSimaTeszt();
+                break;
+            case 2:
+                this.sporaSzorSimaTeszt();
+                break;
+            case 3:
+                this.sporaSzorFejlettTeszt();
+                break;
+            case 4:
+                this.GombatestEpitFonallalTeszt();
+                break;
+            case 5:
+                this.GombatestEpitSporavalTeszt();
+                break;
+            case 6:
+                this.gombaTestMeghalTeszt();
+                break;
+            case 7:
+                this.fonalElhalGombatestMiattTeszt();
+                break;
+            case 8:
+                this.egyFonalasHonnanTeszt();
+                break;
+            case 9:
+                this.egyFonalasHovaTeszt();
+                break;
+            default:
+                
+        }
+    }
+
+    void BogarLogikaTeszteles()
+    {
+        System.out.println("\nTesztelheto Bogarasz logikak:\n1:FonalElhalBogarMiatt\n2:BogarLep\n3:BogarRag\n4:BogarEszik\n5:BogarEmeszt");
+        int valaszt = InputHandler.getScanner().nextInt();
+        switch (valaszt) {
+            case 1:
+                    fonalElhalBogarMiattTeszt();
+                break;
+            case 2:
+                    BogarLepTeszt();
+                break;
+            case 3:
+                    BogarRagTeszt();
+                break;
+            case 4:
+                    BogarEszikTeszt();
+                break;
+            case 5:
+                    BogarEmesztTeszteles();
+                break;
+            default:
+                
+        }
+    }
+
+    void BogarEmesztTeszteles()
+    {
+        System.out.println("\nTesztelheto Spora fajta emesztesek:\n1:Gyorsito\n2:Benito\n3:Keseru\n4:Lassito");
+        int valaszt = InputHandler.getScanner().nextInt();
+        switch (valaszt) {
+            case 1:
+                    BogarEmesztGyorsitoTeszt();
+                break;
+            case 2:
+                    BogarEmesztBenitoTeszt();
+                break;
+            case 3:
+                    BogarEmesztkeseruTeszt();
+                break;
+            case 4:
+                    BogarEmesztlassitoTeszt();
+                break;
+            default:
+                
+        }
+    }
+
+//---------------------------------------------------------------------------------------------------------------------------------
+    void jatekInditasTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+
+        Jatek tesztJatek = new Jatek(10);
+        addToMap(tesztJatek, "tesztJatek");
+
+        gyujtemeny = new ArrayList<>();
+
+        szkeleton.logMethodEntry(tesztJatek, "jatekIndit");
+        tesztJatek.jatekIndit();
+        szkeleton.logMethodExit(tesztJatek, "");
+
+        gyujtemenyKiiratas();
+    }
+
+    void fonalLerakSimaTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+
+        Tekton hely = new Tekton();
+        Tekton t2 = new Tekton();
+        addToMap(hely, "hely");
+        addToMap(t2, "t2");
+        hely.addSzomszed(t2);
+        t2.addSzomszed(hely);
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(hely);
+        Gombasz karakter = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(hely,karakter);
+        addToMap(karakter, "karakter");
+        addToMap(test, "test");
+        karakter.gombatestHozzaad(test);
+        hely.setGombatest(test);
+
+        gyujtemeny = new ArrayList<>();
+
+        szkeleton.logMethodEntry(karakter, "fonalLerak");
+        karakter.fonalLerak();
+        szkeleton.logMethodExit(karakter, "");
+
+
+        gyujtemenyKiiratas();
+    }
+
+    void sporaSzorSimaTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(t1);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito spora = new Lassito(jatekos);
+        addToMap(spora, "spora");
+        spora.setTartozik(jatekos);
+        test.setSpora(spora);
+        
+        gyujtemeny = new ArrayList<>();
+
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
+        jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
+
+        gyujtemenyKiiratas();
+    }
+
+    void sporaSzorFejlettTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        t3.addSzomszed(t2);
+        t2.addSzomszed(t3);
+
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(t3);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito spora = new Lassito(jatekos);
+        addToMap(spora, "spora");
+        spora.setTartozik(jatekos);
+        test.setSpora(spora);
+        test.setMaradt(2);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
+        jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
+        gyujtemenyKiiratas();
+    }
+
+
+    void GombatestEpitFonallalTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito s1 = new Lassito(jatekos);
+        addToMap(s1, "s1");
+        s1.setTartozik(jatekos);
+        t2.addSpora(s1);
+
+        Lassito s2 = new Lassito(jatekos);
+        addToMap(s2, "s2");
+        s2.setTartozik(jatekos);
+        t2.addSpora(s2);
+
+        Lassito s3 = new Lassito(jatekos);
+        addToMap(s3, "s3");
+        s3.setTartozik(jatekos);
+        t2.addSpora(s3);
+
+        Lassito s4 = new Lassito(jatekos);
+        addToMap(s4, "s4");
+        s4.setTartozik(jatekos);
+        t2.addSpora(s4);
+
+        Lassito s5 = new Lassito(jatekos);
+        addToMap(s5, "s5");
+        s5.setTartozik(jatekos);
+        t2.addSpora(s5);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "fonalLerak");
+        jatekos.fonalLerak();
+        szkeleton.logMethodExit(jatekos, "");
+        gyujtemenyKiiratas();
+    }
+
+
+    void GombatestEpitSporavalTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        Palya jatekter = new Palya();
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito s1 = new Lassito(jatekos);
+        addToMap(s1, "s1");
+        s1.setTartozik(jatekos);
+        t2.addSpora(s1);
+
+        Lassito s2 = new Lassito(jatekos);
+        addToMap(s2, "s2");
+        s2.setTartozik(jatekos);
+        t2.addSpora(s2);
+
+        Lassito s3 = new Lassito(jatekos);
+        addToMap(s3, "s3");
+        t2.addSpora(s3);
+
+        Lassito s4 = new Lassito(jatekos);
+        addToMap(s4, "s4");
+        t2.addSpora(s4);
+
+
+        Lassito s5 = new Lassito(jatekos);
+        addToMap(s5, "s5");
+        test.setSpora(s5);
+        
+        Fonal fon1 = new Fonal(t2,jatekos);
+        addToMap(fon1, "fon1");
+        t1.addFonal(fon1);
+        Fonal fon2 = new Fonal(t1,jatekos);
+        addToMap(fon2, "fon2");
+        t2.addFonal(fon2);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
+        jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
+        gyujtemenyKiiratas();
+    }
+
+
+    void gombaTestMeghalTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito spora = new Lassito(jatekos);
+        addToMap(spora, "spora");
+        test.setSpora(spora);
+        test.setMaradt(1);
+
+        Fonal fon1 = new Fonal(t2,jatekos);
+        addToMap(fon1, "fon1");
+        t1.addFonal(fon1);
+        Fonal fon2 = new Fonal(t1,jatekos);
+        t2.addFonal(fon2);
+        addToMap(fon2, "fon2");
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
+        jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
+        gyujtemenyKiiratas();
+    }
+
+
+    void fonalElhalBogarMiattTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+        Tekton t4 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
+        addToMap(t4, "t4");
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        t3.addSzomszed(t2);
+        t2.addSzomszed(t3);
+        t3.addSzomszed(t4);
+        t4.addSzomszed(t3);
+
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(t3);
+        jatekter.tektonHozzaad(t4);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
+
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+
+        Fonal fon20 = new Fonal(t2,jatekos);
+        Fonal fon21 = new Fonal(t3,jatekos);
+        addToMap(fon21, "fon21");
+        addToMap(fon20, "fon20");
+        t2.addFonal(fon21);
+        t3.addFonal(fon20);
+
+        Fonal fon30 = new Fonal(t4,jatekos);
+        Fonal fon31 = new Fonal(t3,jatekos);
+        addToMap(fon31, "fon31");
+        addToMap(fon30, "fon30");
+        t4.addFonal(fon31);
+        t3.addFonal(fon30);
+
+        Bogarasz jatekos1 = new Bogarasz();
+        Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+        jatekos1.bogarHozzaad(bogar, t1);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos1, "ragas");
+        jatekos1.ragas();
+        szkeleton.logMethodExit(jatekos1, "");
+        gyujtemenyKiiratas();
+    }
+
+
+    void fonalElhalGombatestMiattTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+        Tekton t4 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
+        addToMap(t3, "t3");
+        addToMap(t4, "t4");
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        t3.addSzomszed(t2);
+        t2.addSzomszed(t3);
+        t3.addSzomszed(t4);
+        t4.addSzomszed(t3);
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(t3);
+        jatekter.tektonHozzaad(t4);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test"); 
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+
+        Fonal fon20 = new Fonal(t2,jatekos);
+        Fonal fon21 = new Fonal(t3,jatekos);
+        addToMap(fon21, "fon21");
+        addToMap(fon20, "fon20");
+        t2.addFonal(fon21);
+        t3.addFonal(fon20);
+
+        Fonal fon30 = new Fonal(t4,jatekos);
+        Fonal fon31 = new Fonal(t3,jatekos);
+        addToMap(fon31, "fon31");
+        addToMap(fon30, "fon30");
+        t4.addFonal(fon31);
+        t3.addFonal(fon30);
+
+        Lassito spora = new Lassito(jatekos);
+        spora.setTartozik(jatekos);
+        test.setSpora(spora);
+        test.setMaradt(1);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "sporaSzor");
+        jatekos.sporaSzor();
+        szkeleton.logMethodExit(jatekos, "");
+        gyujtemenyKiiratas();
+
+    }
+
+    void fonalElhalSzetesesMiattTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+        Tekton t4 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
+        addToMap(t3, "t3");
+        addToMap(t4, "t4");
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        t3.addSzomszed(t2);
+        t2.addSzomszed(t3);
+        t3.addSzomszed(t4);
+        t4.addSzomszed(t3);
+
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(t3);
+        jatekter.tektonHozzaad(t4);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(jatekos, "jatekos");
+        addToMap(test, "test");
+
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+
+        Fonal fon20 = new Fonal(t2,jatekos);
+        Fonal fon21 = new Fonal(t3,jatekos);
+        addToMap(fon21, "fon21");
+        addToMap(fon20, "fon20");
+        t2.addFonal(fon21);
+        t3.addFonal(fon20);
+
+        Fonal fon30 = new Fonal(t4,jatekos);
+        Fonal fon31 = new Fonal(t3,jatekos);
+        addToMap(fon31, "fon31");
+        addToMap(fon30, "fon30");
+        t4.addFonal(fon31);
+        t3.addFonal(fon30);
+
+        gyujtemeny = new ArrayList<>();
+        t2.setEletkorMegadas(30);
+        t1.setEletkorMegadas(-10);
+        t3.setEletkorMegadas(-10);
+        t4.setEletkorMegadas(-10);
+        szkeleton.logMethodEntry( jatekter, "tores");
+        jatekter.tores();
+        szkeleton.logMethodExit(jatekter, "");
+        gyujtemenyKiiratas();
+
+    }
+
+    void BogarLepTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+
+        Bogarasz jatekos1 = new Bogarasz();
+        Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+
+        jatekos1.bogarHozzaad(bogar, t1);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos1, "lep");
+        jatekos1.lep();
+        szkeleton.logMethodExit(jatekos1, "");
+        gyujtemenyKiiratas();
+    }
+
+    void BogarRagTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+
+        Bogarasz jatekos1 = new Bogarasz();
+        Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+
+        jatekos1.bogarHozzaad(bogar, t1);
+        
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos1, "ragas");
+        jatekos1.ragas();
+        szkeleton.logMethodExit(jatekos1, "");
+        gyujtemenyKiiratas();
+    }
+
+    void BogarEszikTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        addToMap(t1, "t1");
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+        Sima s = new Sima(jatekos);
+        addToMap(s, "s");
+        Bogarasz jatekos1 = new Bogarasz();
+        Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+        jatekos1.bogarHozzaad(bogar, t1);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos1, "eves");
+        jatekos1.eves();
+        szkeleton.logMethodExit(jatekos1, "");
+        gyujtemenyKiiratas();
+    }
+
+    void BogarEmesztGyorsitoTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        addToMap(t1, "t1");
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+        Spora s = new Gyorsito(jatekos);
+        addToMap(s, "s");
+        Bogarasz jatekos1 = new Bogarasz();
+        Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+        jatekos1.bogarHozzaad(bogar, t1);
+        bogar.setElozo(s);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
+        bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(bogar, "");
+        gyujtemenyKiiratas();
+
+    }
+
+    void BogarEmesztBenitoTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        addToMap(t1, "t1");
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+        Spora s = new Benito(jatekos);
+        addToMap(s, "s");
+        Bogarasz jatekos1 = new Bogarasz();
+        Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+        jatekos1.bogarHozzaad(bogar, t1);
+        bogar.setElozo(s);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
+        bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(bogar, "");
+        gyujtemenyKiiratas();
+
+    }
+
+    void BogarEmesztkeseruTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        addToMap(t1, "t1");
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+        Spora s = new Keseru(jatekos);
+        addToMap(s, "s");
+        Bogarasz jatekos1 = new Bogarasz();
+        Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+        jatekos1.bogarHozzaad(bogar, t1);
+        bogar.setElozo(s);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
+        bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(bogar, "");
+        gyujtemenyKiiratas();
+
+    }
+
+    void BogarEmesztlassitoTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        addToMap(t1, "t1");
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+        Spora s = new Lassito(jatekos);
+        addToMap(s, "s");
+        Bogarasz jatekos1 = new Bogarasz();
+        Bogar bogar = new Bogar();
+        addToMap(jatekos1, "jatekos1");
+        addToMap(bogar, "bogar");
+        jatekos1.bogarHozzaad(bogar, t1);
+        bogar.setElozo(s);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
+        bogar.sporaMegemesztes();
+        szkeleton.logMethodExit(bogar, "");
+        gyujtemenyKiiratas();
+    }
+
+    void tektonSzetesesFonalNelkulTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Palya jatekter = new Palya(0);
+        addToMap(jatekter, "jatekter");
+        Tekton palya = new Tekton();
+        addToMap(palya, "palya");
+        //palya.setEletkorMegadas(30);
+       // Tekton szomszed1 = new Tekton();
+       // Tekton szomszed2 = new Tekton();
+       // addToMap(szomszed1, "szomszed1");
+       // addToMap(szomszed2, "szomszed2");
+       // palya.addSzomszed(szomszed1);
+        //palya.addSzomszed(szomszed2);
+
+        jatekter.tektonHozzaad(palya);
+       // jatekter.tektonHozzaad(szomszed1);
+        //jatekter.tektonHozzaad(szomszed2);
+        palya.setEletkorMegadas(30);
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekter, "tores");
+        jatekter.tores();//itt bekene adni egy 0 erteket, hogy biztosan szettorjon, mert tamas megoldasaval nem megoldhato az, ami miatt direkt ugy csinatuk ahogy akartuk
+        szkeleton.logMethodExit(jatekter, "");
+        gyujtemenyKiiratas();
+    }
+
+
+    void fonalFelszivTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Felszivo();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekter, "felszivodik");
+        jatekter.felszivodik();
+        szkeleton.logMethodExit(jatekter, "");
+        gyujtemenyKiiratas();
+     
+    }
+
+    void egyFonalasHonnanTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Egyfonalas();
+        Tekton t2 = new Egyfonalas();
+        Tekton t3 = new Tekton();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        addToMap(t3, "t3");
+
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(t3);
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        t1.addSzomszed(t3);
+        t3.addSzomszed(t1);
+        t2.addSzomszed(t3);
+        t3.addSzomszed(t2);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        addToMap(fon10, "fon10");
+        t1.addFonal(fon10);
+        t2.addFonal(fon11);
+
+        Gombatest test = new Gombatest(t1,jatekos);
+        addToMap(test, "test");
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito s1 = new Lassito(jatekos);
+        addToMap(s1, "s1");
+        s1.setTartozik(jatekos);
+        test.setSpora(s1);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "fonalLerak");
+        jatekos.fonalLerak();
+        szkeleton.logMethodExit(jatekos, "");
+        gyujtemenyKiiratas();
+     
+    }
+
+    void egyFonalasHovaTeszt()
+    {
+        objectToStringMap = new IdentityHashMap<>();
+        stringToObjectMap = new IdentityHashMap<>();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Egyfonalas();
+        addToMap(t1, "t1");
+        addToMap(t2, "t2");
+        Palya jatekter = new Palya();
+        addToMap(jatekter, "jatekter");
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        addToMap(jatekos, "jatekos");
+
+        //Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        //addToMap(fon10, "fon10");
+        addToMap(fon11, "fon11");
+        t2.addFonal(fon11);
+        //t1.addFonal(fon10);
+
+        Gombatest test = new Gombatest(t1,jatekos);
+        jatekos.gombatestHozzaad(test);
+        addToMap(test, "test");
+        t1.setGombatest(test);
+
+        Lassito s1 = new Lassito(jatekos);
+        addToMap(s1, "s1");
+        s1.setTartozik(jatekos);
+        test.setSpora(s1);
+
+        gyujtemeny = new ArrayList<>();
+        szkeleton.logMethodEntry(jatekos, "fonalLerak");
+        jatekos.fonalLerak();
+        szkeleton.logMethodExit(jatekos, "");
+        gyujtemenyKiiratas();
+     
+    }
+}
+
+---------------------------------------------------------------------------------------------
+
+
+import java.util.ArrayList;
+import java.util.Random;
+
+/*
+ * @class Tekton
+ * @brief A egy-egy tekton adatainak taroljasa, es a tekton esemenyeinek kezeleset vegzi.
+ */
+public class Tekton
+{
+	Gombatest gombatest;			///Tarolja ha van gombatest az adott tektonon
+	ArrayList<Spora> sporak;		///Tarolja a sporakat a tektonon
+	ArrayList<Fonal> osszekoto;		///Tarolja hogy milyen fonalak vannak a tektonon
+	ArrayList<Tekton> szomszed;		///Tarolja a tektonok szomszedait
+	int eletkor;					///Tarolja a tektonok eletkorat (noveli a tektonok szetesesenek eselyet)
+	int pluszPont;					///Tarolja hogy az adott tektonon epitett gombatest hany plusz pontot er
+	int id;							///Tarolja a tekton id-jat
+
+
+	/*
+	 * @brief Konstruktor
+	 * @param spo -> A tekton spora listaja (tekton szetesesekor a tektonon maradnak sporak)
+	 * @param szom -> A tekton szomszed listaja. Megadja a tekton szomszedait
+	 */
+	Tekton(ArrayList<Spora> spo, ArrayList<Tekton> szom ){
+		this.gombatest=null;
+		this.sporak=spo;
+		this.osszekoto=new ArrayList<Fonal>();
+		this.szomszed=szom;
+		eletkor=1;
+		this.id=-1;
+		Random random = new Random();
+		pluszPont=random.nextInt(5);
+		
+	}
+
+
+	/*
+	* @brief Parameter nelkuli konstruktor teszteleshez
+	*/
+	Tekton(){
+		gombatest = null;
+		sporak=new ArrayList<Spora>();
+		osszekoto=new ArrayList<Fonal>();
+		szomszed=new ArrayList<Tekton>();
+		eletkor=1;
+		pluszPont=0;
+		id=-1;
+
+	}
+
+
+
+
+
+
+	/*
+ 	* @brief Setter
+	* @param idd -> A beallitani kivant id
+ 	*/
+	void setId(int idd){
+		//szkeleton.logMethodEntry(this, "setId");   ///Szkeleton kiiratas fuggveny kezdetekor
+		id=idd;
+		//szkeleton.logMethodExit(this, "");		///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+
+
+
+
+
+
+	/*
+	 * @brief Getter
+	 * @return Visszaadja a tekton id-jat
+	 */
+	int getId(){
+
+		//szkeleton.logMethodEntry(this, "getId");	///Szkeleton kiiratas fuggveny kezdetekor
+		//szkeleton.logMethodExit(this, id);			///Szkeleton kiiratas fuggveny vegen
+		return id;
+		
+	}
+
+
+
+	/*
+	 * @brief A fuggveny megnezi/eldonti hogy az adott tekton az eletkora, es a random faktor alapjan szetessen-e
+	 * @return true -> szetesik
+	 * @return false -> nem esik szet 
+	 */
+	boolean torikE(){
+
+		//szkeleton.logMethodEntry(this, "torikE");	///Szkeleton kiiratas fuggveny kezdetekor
+
+		int toresarany=eletkor*3+10;	///toresre az esely: (eletkor*5 + kezdeti esely). Azt jelenti hogy kezdeti esely, koronkent 5%-al no.
+		Random random = new Random();	
+		int toresEsely=random.nextInt(100);	///tenyleges toresei esely: (toresre az esely / 100)
+		if(toresEsely<=toresarany){
+
+			//szkeleton.logMethodExit(this, true);			///Szkeleton kiiratas fuggveny vegen
+			
+			return true;
+		}
+		//szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen
+
+		return false;
+	}
+
+
+
+	/*
+	 * @brief Minden tektonon levo fonalat elszakitjuk, szeteseskor
+	 */
+	void mindenFonalElszakad(){
+
+		//szkeleton.logMethodEntry(this, "mindenFonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
+		/*
+		for(Fonal elem : osszekoto){		///Minden fonalunkra meghivjuk az elszakadast
+			fonalElszakad(elem);
+		}
+*/
+		for(int i=0;i<osszekoto.size();i++){
+			fonalElszakad(osszekoto.get(i));
+		}
+
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+
+	/*
+	 * @brief Letrehozzuk a listat , ami majd a szeteseskor letrejott uj tekton szomszedait fogja tartalmazni. A szomszedokat random valasztjuk ki.
+	 * @return uj -> Az uj tektonnak beallitani kivant szomszed lista.
+	 */
+	ArrayList<Tekton> ujTektonSzomszedListajanakBeallitasa(){
+
+		//szkeleton.logMethodEntry(this, "ujTektonSzomszedListajanakBeallitasa");	///Szkeleton kiiratas fuggveny kezdetekor
+
+		ArrayList<Tekton>uj=new ArrayList<>();
+		for(Tekton elem:szomszed){								///Minden szomszedon vegig megyunk
+			Random random = new Random();		
+			int szomszedEsely=random.nextInt(100);			
+			
+			if(szomszedEsely%2==0){							///50% eselyel hozza adja az adott szomszedot az uj tekton szomszed listajaba
+				uj.add(elem);
+			}
+		}
+
+		//szkeleton.logMethodExit(this, "ArrayList<Tekton>");			///Szkeleton kiiratas fuggveny vegen
+
+		return uj;											///Ha nem adunk hozza semmit, akkor az ures listat adjuk vissza
+	}
+
+
+
+
+
+
+
+	/*
+	* @brief Hozzaadunk egy szomszedot a szomszed listahoz
+	*/
+	void szomszedHozzaadasa(Tekton a){
+		//szkeleton.logMethodEntry(this, "szomszedHozzaadasa");	///Szkeleton kiiratas fuggveny kezdetekor
+
+		szomszed.add(a);
+
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+	/*
+	 * @brief A kapott tekton szomszed listajahoz hozza adjuk a kapott uj tekton. Beallitjuk hogy a lista minden elemenek szomszedja legyen az uj tekton.
+	 */
+	void ujTektonSzomszedainakListainakBeallitasa(ArrayList<Tekton> szomszedok1, Tekton uj){
+
+		//szkeleton.logMethodEntry(this, "ujTektonSzomszedainakListainakBeallitasa");	///Szkeleton kiiratas fuggveny kezdetekor
+
+		for(Tekton egyszomszed:szomszedok1){
+			egyszomszed.szomszedHozzaadasa(uj);
+		}
+
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+	/*
+	 * @brief Eltavolitja a szomszed listabol a megadott indexu elemet
+	 * @param index -> torolni kivan index
+	 */
+	void szomszedTorol(int index){
+		//szkeleton.logMethodEntry(this, "szomszedTorol");	///Szkeleton kiiratas fuggveny kezdetekor
+		szomszed.remove(index);
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+
+
+	/*
+	 * @brief Getter
+	 * @return szomszed -> vissza adja a szomszed listat
+	 */
+	ArrayList<Tekton> getSzomszed(){
+		//szkeleton.logMethodEntry(this, "getSzomszed");	///Szkeleton kiiratas fuggveny kezdetekor
+		//szkeleton.logMethodExit(this, "ArrayList<Tekton>");			///Szkeleton kiiratas fuggveny vegen
+		return szomszed;
+	}
+
+
+	/*
+	 * @brief Ezen tekton szomszed listajabol veletlenszeruen kivalasztunk elemeket, amik a szomszedaik maradnak, a tobbi szomszedot toroljuk
+	 */
+	void ujSzomszedaimBeallaitasa(){
+		//szkeleton.logMethodEntry(this, "ujSzomszedaimBeallaitasa");	///Szkeleton kiiratas fuggveny kezdetekor
+
+		ArrayList<Tekton>uj=new ArrayList<>();
+		for(Tekton elem:szomszed){									///Kivalasztunk a szomszedok kozul veletlenszeruen elemeket
+			Random random = new Random();
+			int szomszedEsely=random.nextInt(100);
+			if(szomszedEsely%2==0){
+				uj.add(elem);										///A kivalasztott elemeket hozza eltaroljuk
+			}
+
+		}
+		for(Tekton egyszomszed:szomszed){								///Vegig megyunk a szomszedos tektonokon
+			int index=0;
+			int keresett=1000;
+			for(Tekton szomszedSzomszedja:egyszomszed.getSzomszed()){			///Vegig megyunk a tektonok szomszedainak szomszedain
+				if(szomszedSzomszedja==this && !uj.contains(egyszomszed)){		///Ha van olyan elem amit torolni szeretnenk, akkor az kigyultjuk
+					keresett=index;
+				}
+				index++;
+			}
+			if(keresett!=1000){
+				egyszomszed.szomszedTorol(keresett);							///A torlendo indexekhez tarozo elemeket toroljuk
+			}
+		}
+
+		szomszed=uj;														///Beallitjuk az uj szomszedokat
+
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+		
+
+
+
+/*
+ * @brief Letre hozunk egy uj tektont , a tekton szetesesekor
+ * @return Keletkezett uj tekton
+ */
+Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+	//szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	/szkeleton kiiratas fuggveny kezdetekor
+	//szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
+	return new Tekton(spo,szom);
+}
+
+
+
+
+	/*
+	 * @brief A tektonok szetesesenek teljes kezelese, amit koronkent meghivhatunk
+	 * @return ujTekton -> A kesz uj tekton, ha ez szettorik.
+	 */
+	Tekton tores(){
+		////szkeleton.logMethodEntry(this, "tores");	///Szkeleton kiiratas fuggveny kezdetekor
+
+		//ha szettorik a tekton
+		if(torikE()){											///Ha szettorik a tekton
+			//ha a tekton van fonal
+			if(osszekoto.size()!=0 ||osszekoto!=null){
+				mindenFonalElszakad();							///Minden fonalat elszakitunk
+			}
+			ArrayList<Spora> ujSporak=new ArrayList<>();
+			ujSporak=ujTektonSporakListaja();						///Uj tektonnak beallitjuk a soporait
+			ArrayList<Tekton>ujSzomszedok=new ArrayList<>();
+			ujSzomszedok=ujTektonSzomszedListajanakBeallitasa();			///Uj tekton szomszedainak beallitasa
+
+			Tekton ujTekton=ujTektonLetrehozasa(ujSporak,ujSzomszedok);		///Letrehozzuk az uj tektont,megadjuk a szomszedait
+			sajatSporaimBeallitasa(ujSporak);														///Beallitom a sajat sporaimat
+			ujSzomszedaimBeallaitasa();
+			//szkeleton.logMethodEntry(this, "ujTektonSzomszedainakListainakBeallitasa");	///Szkeleton kiiratas fuggveny kezdetekor																///Beallitja az en uj szomszedaimat, mindket oldalról torlom azokat akik nem a szomszedaim
+			ujTektonSzomszedainakListainakBeallitasa(ujSzomszedok, ujTekton);						///Az uj tekton szomszedainak szomszed listajahoz hozza adjuk az uj tektont
+			//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+			eletkor=1;
+
+			//szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
+			return ujTekton;	
+		}
+
+		//szkeleton.logMethodExit(this, "null");			///Szkeleton kiiratas fuggveny vegen
+		return null;
+	}
+
+
+
+
+	/*
+	 * @brief Megcsinalja a listat ami szeteseskor letrejott tekton sporait fogja tartalmazni
+	 * @return uj -> Vissza adja a tombot ami a sporakat tartalmazza.
+	 */
+	ArrayList<Spora> ujTektonSporakListaja(){
+		//szkeleton.logMethodEntry(this, "ujTektonSporakListaja");	///Szkeleton kiiratas fuggveny kezdetekor
+		ArrayList<Spora>uj=new ArrayList<>();						
+		Random random = new Random();								
+		if(sporak.size()!=0){
+			int sporaEsely=random.nextInt(sporak.size());				///Generalunk egy random szamot, ami max akkora mint ennek a tektonnak a spora listaja
+			for(int i=0;i<sporaEsely;i++){								
+				uj.add(sporak.get(i));									///Vegig megyunk ezen tekton spora listajan, es elso random szamu elemet kigyujtjuk, hogy atadhassuk
+			}
+			//szkeleton.logMethodExit(this, "ArrayList<Spora>");			///Szkeleton kiiratas fuggveny vegen
+			return uj;
+		}
+		//szkeleton.logMethodExit(this, "null");			///Szkeleton kiiratas fuggveny vegen
+		return null;
+	}
+
+	/*
+	* @brief Ezen tekton szetesesekor a sporak beallitasa
+	* @param ujSporaja -> Lista amit az uj tekton megkap, tehat ami tobbe nem lesz ezen tekton sporaja
+	*/
+	void sajatSporaimBeallitasa(ArrayList<Spora> ujSporaja){
+		//szkeleton.logMethodEntry(this, "sajatSporaimBeallitasa");	///Szkeleton kiiratas fuggveny kezdetekor
+
+		ArrayList<Spora>uj=new ArrayList<>();
+		if(sporak.size()!=0){
+			for(Spora elem: sporak){
+				if(!ujSporaja.contains(elem)){			///Kigyujtjuk a jelenlegi spora lista azon elemeit, ami az uj tekton spora listajanak nem eleme 
+					uj.add(elem);
+				}
+			}
+		}
+		sporak=uj;									///Beallitjuk a spora listat
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+		
+	}
+
+
+
+
+	/*
+	 * @brief  Elszakit egy fonalat
+	 * @param fonal -> A fonal amit el akarunk szakitani
+	 */
+	/*void fonalElszakad(Fonal fonal){
+		//szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
+		int	keresettIndexI=-1;
+		int keresettIndexJ=-1;
+		ArrayList<Fonal> szom= new ArrayList<>();
+		ArrayList<Fonal> elemek= new ArrayList<>();
+		int i=0;
+		for (Fonal elem : osszekoto) {
+			if(elem==fonal){					///Ha megtalaltuk a fonalat amit torolni akarunk 
+				int j=0;
+				elemek =elem.getHova().getOsszekoto();
+				for(Fonal elem1 : elemek){	///Megkeressuk a fonal listajaban a sajat tektonunkra vezetot
+					if(elem1.getHova()==this){
+						szom=elem1.getHova().getOsszekoto();
+						keresettIndexJ=j;							///Eltaraoljuk hogy a megtalalt fonal listajaban hol van a mi tektonukra vezeto fonal
+					}
+					j++;												
+				}
+				keresettIndexI=i;									///Eltaroljuk hogy hogy a fonal listanakban hol van a torlendo fonal
+			}
+			
+			i++;
+		}
+		
+		if(keresettIndexJ!=-1){
+			szom.remove(keresettIndexJ);
+			//osszekoto.get(keresettIndexI).getHova().getOsszekoto().remove(keresettIndexJ);	///Toroljuk a torlendo fonalat a szomszed listajabol
+		}	
+		if(keresettIndexI!=-1){
+			elemek.remove(keresettIndexI);									///Toroljuk a torlendo fonalat a fonal listankbol
+		}
+
+
+		fonal.getTartozik().elszakadasDfsKezeles();										///Minden torles utan meghivjuk a dfs szakadas kezelest
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+	}*/
+
+
+	void fonalElszakad(Fonal fonal){
+		//szkeleton.logMethodEntry(this, "fonalElszakad");
+		szkeleton.logMethodEntry(fonal, "getHova");
+		Tekton hova = fonal.getHova();
+		szkeleton.logMethodExit(fonal, "Hova");
+		szkeleton.logMethodEntry(fonal, "getTartozik");
+        Gombasz gombasz = fonal.getTartozik();
+        szkeleton.logMethodExit(fonal, "Gombasz");
+        this.osszekoto.remove(fonal);
+		szkeleton.logMethodEntry(hova, "getOsszekoto");
+        ArrayList<Fonal> fonalak = hova.getOsszekoto();
+		szkeleton.logMethodExit(hova, "Osszekoto[]");
+
+        for (Fonal fonali : fonalak) {
+            if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {
+                hova.osszekoto.remove(fonali);
+				break;
+            }
+        }
+		szkeleton.logMethodEntry(gombasz, "elszakadasDfsKezeles");
+    	gombasz.elszakadasDfsKezeles();
+		szkeleton.logMethodExit(gombasz, "");
+		//szkeleton.logMethodExit(this, "");
+	}
+
+
+
+
+	/*
+	 * @brief Meghatarozza hogy az adott tektonon hany daraab fonala van egy adott gombasznak
+	 * @param g -> Gombasz akit vizsgalunk
+	 * @return db -> Fonalak szama
+	 */
+	int hanyFonalaVanGombasznak(Gombasz g){
+		//szkeleton.logMethodEntry(this, "hanyFonalaVanGombasznak");	///Szkeleton kiiratas fuggveny kezdetekor
+		int db=0;
+		for(Fonal elem:osszekoto){
+			if(elem.getTartozik().equals(g)){
+				db++;
+			}
+		}
+		//szkeleton.logMethodExit(this, db);			///Szkeleton kiiratas fuggveny vegen	
+		return db;
+	}
+
+
+	/*
+	 * @brief Meghatarozza hogy hany sporaja van az adott tektonon egy gombasznak
+	 * @param g -> Gombasz
+	 * @return db -> Sporak szama 
+	 */
+	int hanySporajaVanGombasznak(Gombasz g){
+		//szkeleton.logMethodEntry(this, "hanySporajaVanGombasznak");	///Szkeleton kiiratas fuggveny kezdetekor
+		int db=0;
+		for(Spora elem:sporak){
+			if(elem.getTartozik().equals(g)){
+				db++;
+			}
+		}
+		//szkeleton.logMethodExit(this, db);			///Szkeleton kiiratas fuggveny vegen	
+		return db;
+	}
+
+
+
+	/*
+	 * @brief Meghatarozza hogy a gombasz tud-e gombatestet epiteni az adott tektonra
+	 * @param g -> Gombasz
+	 * @return true -> Tud epiteni
+	 * @return false -> Nem tud epiteni
+	 */
+	boolean tudEpulni(Gombasz g){
+		//szkeleton.logMethodEntry(this, "tudEpulni");	///Szkeleton kiiratas fuggveny kezdetekor
+		if(hanyFonalaVanGombasznak(g)>=1 && hanySporajaVanGombasznak(g)>=5 && gombatest==null ){	///Tudd epitani ha van legalabb egy fonala, 5 sporaja, es nincs meg gombatest a tektonon
+			//szkeleton.logMethodExit(this, true);			///Szkeleton kiiratas fuggveny vegen	
+			return true;
+		}
+		//szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen	
+		return false;
+	}
+
+
+
+	/*
+	 * @brief Fonal lehelyezes a tektonra
+	 * @param f -> Lehelyezni kivant fonal
+	 * @return true -> Le tud tenni
+	 * @return false -> Nem tud letenni
+	 */
+	boolean addFonal(Fonal f){
+		//szkeleton.logMethodEntry(this, "addFonal");	///Szkeleton kiiratas fuggveny kezdetekor
+		for(Fonal elem:osszekoto){
+			szkeleton.logMethodEntry(elem, "getTartozik");	///Szkeleton kiiratas fuggveny kezdetekor
+			boolean osszehasonlitas= elem.equals(f);
+			szkeleton.logMethodExit(elem, osszehasonlitas);			///Szkeleton kiiratas fuggveny vegen	
+			if(osszehasonlitas){
+				//szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen	
+				return false;									///Ha mar van egy tektonon fonala a gombasznak akkor nem tud tobbet letenni
+			}
+		}
+		
+		osszekoto.add(f);
+		if(tudEpulni(f.getTartozik()) ){					///Megvizsgaljuk hogy ezutan a fonal letetel utan, meg tud-e ott epulni a gombatest
+			gombaTestEpul(f.getTartozik());					///Ha meg tud epulni automatikusan megepul
+		}
+		//szkeleton.logMethodExit(this, true);			///Szkeleton kiiratas fuggveny vegen	
+		return true;
+	} 
+
+
+
+
+	/*
+	 * @brief Vissza adja hogy az adott tektonrol melyik tektonokra megy fonal
+	 * @return tektonok -> Azon tektonok listaja ahova megy fonal a tektonrol
+	 */
+	ArrayList<Tekton> fonalKeres(){
+		//szkeleton.logMethodEntry(this, "fonalKeres");	///Szkeleton kiiratas fuggveny kezdetekor
+		ArrayList<Tekton> tektonok=new ArrayList<>();
+		for(Fonal elem:osszekoto){						///Fonalak listabol kigyujtjuk azokat az osszes tektont ahova fonal megy
+			if(!tektonok.contains(elem.getHova())){
+				tektonok.add(elem.getHova());
+			}
+		}
+		//szkeleton.logMethodExit(this, "ArrayList<Tekton>");			///Szkeleton kiiratas fuggveny vegen	
+		return tektonok;		
+	}
+
+
+
+
+
+
+
+
+	/*
+	 * @brief Vissza adja hogy az adott tektonrol mely tektonokra megy egy adott gombasz fonala
+	 * @param g -> Gombasz
+	 * @return tektonok -> Tektonok listaja ahova a gombasz fonala megy 
+	 */
+	ArrayList<Tekton> fonalKeres(Gombasz g)	{
+
+		//szkeleton.logMethodEntry(this, "fonalKeres");	///Szkeleton kiiratas fuggveny kezdetekor
+		ArrayList<Tekton> tektonok=new ArrayList<>();
+		for(Fonal elem:osszekoto){
+			if(!tektonok.contains(elem.getHova()) && elem.getTartozik().equals(g)){
+				tektonok.add(elem.getHova());
+			}
+		}
+		//szkeleton.logMethodExit(this, "ArrayList<Tekton>");			///Szkeleton kiiratas fuggveny vegen	
+		return tektonok;
+
+	}
+
+
+	/*
+	 * @brief Getter
+	 * @return osszekoto -> Vissza adja a fonal listat
+	 */
+	ArrayList<Fonal> getOsszekoto(){
+		//szkeleton.logMethodEntry(this, "getOsszekoto");	///Szkeleton kiiratas fuggveny kezdetekor
+		//szkeleton.logMethodExit(this, "ArrayList<Fonal>");			///Szkeleton kiiratas fuggveny vegen
+		return osszekoto;
+			
+	}
+	
+
+
+
+
+
+	/*
+	 * @brief Spora hozzaadasa a tektonhoz
+	 * @param s -> Lehelyezett spora
+	 */
+	void addSpora(Spora s){
+		//szkeleton.logMethodEntry(this, "addSpora");	///Szkeleton kiiratas fuggveny kezdetekor
+		sporak.add(s);
+		if(tudEpulni(s.getTartozik()) ){			///Megnezzuk a spora lehelyezessel meg tud-e epulni gombatest
+			szkeleton.logMethodEntry(s, "getTartozik");	///Szkeleton kiiratas fuggveny kezdetekor
+			Gombasz temp=s.getTartozik();
+			szkeleton.logMethodExit(s, "Gombasz");			///Szkeleton kiiratas fuggveny vegen
+			gombaTestEpul(temp);			///Ha gombatest tud epulni, akkor megepul
+		}
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+
+	/*
+	 * @brief Gombatest epites utan a gombaszhoz tartozo sporakbol a legfelso 5 db eltunik a tektonrol
+	 * @param g -> Gombasz aki gombatestet epit
+	 */
+	void epitoanyagSporaEltunik(Gombasz g){
+		//az adott jatekos utolso 5 sporajat levesszuk a tektonrol
+		//szkeleton.logMethodEntry(this, "epitoanyagSporaEltunik");	///Szkeleton kiiratas fuggveny kezdetekor
+		ArrayList<Integer> indexek=new ArrayList<>();											
+		for(int i=sporak.size()-1;i>=0 ;i--){		
+			if(sporak.get(i).getTartozik().equals(g)){		
+				indexek.add(i);										///Kigyujtjuk hogy a gombaszhoz tartozo 5 spora hol talalhato a spora listaban
+			}
+		}
+		for(int i=0;i<indexek.size();i++){
+			sporak.remove(indexek.get(i));							///Kigyujtott indexeken levo sporak eltavolitasa
+		}
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
+	}
+
+
+
+	/*
+	 * @brief Letrehozzuk/megepitjuk a gombatestett a tektonon
+	 * @param g -> Melyik gombasz epit gombatestet
+	 */
+	void gombaTestEpul(Gombasz g){
+		//szkeleton.logMethodEntry(this, "gombaTestEpul");	///Szkeleton kiiratas fuggveny kezdetekor
+		Gombatest uj=new Gombatest(this, g);		///Letre hozzuk a gombatestet
+		setGombatest(uj);							///Beallitjuk a tekton gombatestjet
+		szkeleton.logMethodEntry(g, "gombatestHozzaad");	///Szkeleton kiiratas fuggveny kezdetekor
+		g.gombatestHozzaad(uj);						///Gombasznak oda adjuk az uj gombatestjet
+		szkeleton.logMethodExit(g, "");			///Szkeleton kiiratas fuggveny vegen	
+		epitoanyagSporaEltunik(g);					///Eltuntetjuk a sporakat mikbol epult a test
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen														
+	}
+
+
+
+
+
+	/*
+	* @brief Setter
+	* @param g -> Tektonnak beallitani kivant gombatest
+	*/
+	void setGombatest(Gombatest g){			
+		//szkeleton.logMethodEntry(this, "setGombatest");	///Szkeleton kiiratas fuggveny kezdetekor
+		this.gombatest=g;
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+	}
+
+
+
+
+
+
+	/*
+	 * @brief Szomszed hozzaadasa a tektonhoz
+	 * @param t -> Uj szomszed tekton
+	 */
+   void addSzomszed(Tekton t){
+	//szkeleton.logMethodEntry(this, "addSzomszed");	///Szkeleton kiiratas fuggveny kezdetekor
+	szomszed.add(t);
+	//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+   }
+
+
+
+   /*
+	* @brief A tekton legfelso sporajaval vissz terunk es toroljuk
+	* @retrun uj -> Legfelso spora a tektonon
+    */
+	Spora sporatEszik(){
+		//szkeleton.logMethodEntry(this, "sporatEszik");	///Szkeleton kiiratas fuggveny kezdetekor
+		if(sporak.size()!=0){
+			Spora uj=sporak.get(sporak.size()-1);		///Legfelso spora kivalasztasa
+			sporak.remove(sporak.size()-1);				///Spora torlese a tektonrol
+			//szkeleton.logMethodExit(this, "Spora");			///Szkeleton kiiratas fuggveny vegen	
+			return uj;									///Kivalasztott spora visszaadasa
+		}
+		//szkeleton.logMethodExit(this, "null");			///Szkeleton kiiratas fuggveny vegen	
+		return null;
+	}
+
+
+	/*
+	 * @brief Setter (tekton eletkoranak novelese +1-el)
+	 */
+	void setEletkorNoveles(){
+		//szkeleton.logMethodEntry(this, "sporatEszik");	///Szkeleton kiiratas fuggveny kezdetekor
+		eletkor++;
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+	}
+
+
+	/*
+	 * @brief Setter (tekton eletkoranak beallitasa barmely ertekre (teszteleshez))
+	 */
+	void setEletkorMegadas(int szam){
+		//szkeleton.logMethodEntry(this, "setEletkorMegadas");	///Szkeleton kiiratas fuggveny kezdetekor
+		eletkor=szam;
+		//szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+	}
+
+	/*
+	 * @brief kompatibilitas problema megoldas
+	 */
+	void fonalElszakadKoronkent(){}
+
+ 
+}
+
+-------------------------------------------------------------------------------------------------------------------
+
+import java.util.ArrayList;
+
+/*
+ * @class Testetlen
+ * @brief Testetlen tekton kezelese. (Erre a tektonra nem tud gombatest epulni)
+ */
+public class Testetlen extends Tekton
+{
+     /*
+    * @brief Parameter nelkuli konstruktor
+    */
+    Testetlen(){
+        super();    ///Az ososztaly parameter nelkuli konstruktorat hivja
+    }
+
+    /*
+     * @brief Parameteres konstruktor
+     * @param spo -> A tekton spora listaja
+     * @szom -> A tekton szomszed listaja
+     */
+    Testetlen(ArrayList<Spora> spo, ArrayList<Tekton> szom){
+        super(spo,szom); ///Az ososztaly parameteres konstruktorat hivja
+    }
+
+   /*
+    * @brief Meghatarozza hogy tud -e gombatest epulni az adott tektonra
+    * @retrun Mindig false
+    */
+    @Override
+    boolean tudEpulni(Gombasz g) {
+        //szkeleton.logMethodEntry(this, "tudEpulni");	///Szkeleton kiiratas fuggveny kezdetekor
+        //szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen
+        return false;
+    }
+
+    /*
+     * @brief A tekton szetesesekor egy masik Testetlen tektont hozz letre
+     * @return Letrehozott uj tekton
+     */
+    @Override
+    Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+        //szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
+        //szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
+        return new Testetlen(spo,szom);
+    }
+
+
+}

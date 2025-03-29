@@ -19,10 +19,6 @@ public class Gombatest
         spora = null;
     }
 
-    public void Round(){
-       
-    }
-
     public void termel(){
         //szkeleton.logMethodEntry(this, "termel");
         int randomSzam = random.nextInt(4);
