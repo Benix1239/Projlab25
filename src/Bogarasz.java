@@ -6,9 +6,11 @@ import java.util.ArrayList;
  */
 public class Bogarasz extends Jatekos
 {
-    private Bogar bogar;
+    private ArrayList<Bogar> bogarak;
 
-    public Bogarasz(){}
+    public Bogarasz(){
+        this.bogarak = new ArrayList<Bogar>();
+    }
 
     /**
      * A játékos köre, amely során döntéseket hozhat a bogár mozgásáról, evéséről és rágásáról.
@@ -16,56 +18,63 @@ public class Bogarasz extends Jatekos
      */
     public void round()
     {
-        //szkeleton.logMethodEntry(this, "round");
+
+        ArrayList<Bogar> tempbogarak = new ArrayList<>();
+        for(Bogar bogar : tempbogarak){
+            tempbogarak.add(bogar);
+        }
+        
         boolean vege=false;
-        while((bogar.getMozgaspont()!=0||bogar.getactionEves()==true|| bogar.getactionRagas()==true)&&(!vege)){
+        for(Bogar bogar: tempbogarak){
+            while((bogar.getMozgaspont()!=0||bogar.getactionEves()==true||bogar.getactionRagas()==true)&&(!vege)){
             
-            ArrayList<Fonal> fonalak= null;
-            Tekton helyzet= null;
-            System.out.println("Mit szeretnél csinálni");
-            System.out.println("1. Mozgás");
-            System.out.println("2. Evés");
-            System.out.println("3. Rágni");
-            System.out.println("4. Vége a körömnek");
-            
-            int actionValasztas =InputHandler.getScanner().nextInt();
-            
-            switch (actionValasztas) {
-                case 1:
-                    lep();
-                    break;
-                case 2:
-                    eves();
-                    break;
-                case 3:
-                    ragas();
-                    break;
-                case 4:
-                    vege=true;
-                    break;
-                default:
-                    System.out.println("Érvénytelen menüpontot választottál");
-                    break;
+                ArrayList<Fonal> fonalak= null;
+                Tekton helyzet= null;
+                System.out.println("Mit szeretnél csinálni");
+                System.out.println("1. Mozgás");
+                System.out.println("2. Evés");
+                System.out.println("3. Rágni");
+                System.out.println("4. Vége a körömnek");
+                
+                int actionValasztas =InputHandler.getScanner().nextInt();
+                
+                switch (actionValasztas) {
+                    case 1:
+                        lep(bogar);
+                        break;
+                    case 2:
+                        eves(bogar);
+                        break;
+                    case 3:
+                        ragas(bogar);
+                        break;
+                    case 4:
+                        vege=true;
+                        break;
+                    default:
+                        System.out.println("Érvénytelen menüpontot választottál");
+                        break;
+                }
             }
+    
+            szkeleton.logMethodEntry(bogar, "beallit");
+            bogar.beallit();
+            szkeleton.logMethodExit(bogar, "");
+    
+            if(bogar.getSpora()!=null){
+                pontok += bogar.getSpora().getPluszpont();
+            }
+            szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
+            bogar.sporaMegemesztes();
+            szkeleton.logMethodExit(bogar, "");
         }
-
-        szkeleton.logMethodEntry(bogar, "beallit");
-        bogar.beallit();
-        szkeleton.logMethodExit(bogar, "");
-
-        if(bogar.getSpora()!=null){
-            pontok += bogar.getSpora().getPluszpont();
-        }
-        szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
-        bogar.sporaMegemesztes();
-        szkeleton.logMethodExit(bogar, "");
         //szkeleton.logMethodExit(this, "");
     }
 
     /**
      * A bogarat egy másik Tektonra mozgatja, ha van elérhető mozgáspontja.
      */
-    public void lep(){
+    public void lep(Bogar bogar){
         //szkeleton.logMethodEntry(this, "lep");
         if(bogar.getMozgaspont()!=0){
             szkeleton.logMethodEntry(bogar, "getHelyzet");
@@ -109,7 +118,7 @@ public class Bogarasz extends Jatekos
     /**
      * A bogár megeszi a jelenlegi Tektonon található legkésőbb lerakot sporát ha van.
      */
-    public void eves(){
+    public void eves(Bogar bogar){
         //szkeleton.logMethodEntry(this, "eves");
         if(bogar.getactionEves()==true){
             if (bogar.getHelyzet().sporak!=null) {
@@ -130,7 +139,7 @@ public class Bogarasz extends Jatekos
     /**
      * A bogár elrág egy fonalat ami a jelenlegi tektonról elérhető és a játékos kiválasztott.
      */
-    public void ragas(){
+    public void ragas(Bogar bogar){
         //szkeleton.logMethodEntry(this, "ragas");
         if(bogar.getactionRagas()==true){
             Tekton helyzet= bogar.getHelyzet();
@@ -161,9 +170,16 @@ public class Bogarasz extends Jatekos
     public void bogarHozzaad(Bogar b,Tekton t)
     {
         ////szkeleton.logMethodEntry(this, "bogarHozzaad");
-        bogar=b;
-        bogar.setHelyzet(t);
+        bogarak.add(b);
+        bogarak.get(bogarak.size()-1).setHelyzet(t);
         //szkeleton.logMethodExit(this, "");
     }
     
+
+    public void bogarRemove(Bogar b)
+    {
+        ////szkeleton.logMethodEntry(this, "bogarHozzaad");
+        bogarak.remove(b);
+        //szkeleton.logMethodExit(this, "");
+    }
 }

@@ -2,6 +2,7 @@
 public class Fonal extends Osszekoto
 {
     private Gombasz tartozik;
+    private boolean elragva;
   
     /**
      * Konstruktor, amely l�trehozza a Fonal objektumot egy adott gomb�szhoz 
@@ -32,5 +33,12 @@ public class Fonal extends Osszekoto
     }
 
 
+    public boolean getElragva(){
+        return elragva;
+    }
+
+    public void setEkragva(boolean tempelragva){
+        this.elragva = tempelragva;
+    }
 
 }
