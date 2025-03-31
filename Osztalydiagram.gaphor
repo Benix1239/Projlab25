@@ -348,7 +348,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 1022.5330829937758, 376.6448762683148)</val>
 </matrix>
 <points>
-<val>[(382.4669170062242, -230.57100177680434), (382.4669170062242, 666.793686321394), (-643.7153588769397, 666.7936863213941), (-642.9588407263136, -10.643873592277203)]</val>
+<val>[(382.4669170062242, -212.5710017768043), (382.4669170062242, 666.793686321394), (-643.7153588769397, 666.7936863213941), (-642.9588407263136, -10.643873592277203)]</val>
 </points>
 <head-connection>
 <ref refid="aadc5b91-f5d4-11ef-801a-346f24c40848"/>
@@ -700,7 +700,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 887.0, 447.0)</val>
 </matrix>
 <points>
-<val>[(424.106254852466, -300.9261255084895), (424.106254852466, -138.99999999999994)]</val>
+<val>[(424.106254852466, -282.92612550848946), (424.106254852466, -138.99999999999994)]</val>
 </points>
 <head-connection>
 <ref refid="aadc5b91-f5d4-11ef-801a-346f24c40848"/>
@@ -1310,7 +1310,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 </UML:Class>
 <UML:ClassItem id="e58980dd-f5db-11ef-be4b-346f24c40848">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 119.4999999999997, 499.2302080163208)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 119.49999999999963, 499.2302080163208)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1375,7 +1375,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 </UML:Class>
 <UML:ClassItem id="aadc5b91-f5d4-11ef-801a-346f24c40848">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1008.0, 34.07387449151047)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1008.0, 34.07387449151051)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1384,7 +1384,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>397.0</val>
 </width>
 <height>
-<val>112.0</val>
+<val>130.0</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1403,17 +1403,21 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>Fonál</val>
 </name>
 <note>
-<val>bogarEves() nincs a kodban (még) egyaltalan</val>
+<val>- bogarEves() nincs a kodban (még) egyaltalan
+- korCsokkent() nincs implementálva (most már ez hívja majd a tekton fonalElszakad fv-ét, és nem a bogár)
+- elragva nincs a kódban</val>
 </note>
 <ownedAttribute>
 <reflist>
 <ref refid="546ec5ea-f6cf-11ef-a6c7-e848b8c82000"/>
+<ref refid="3e554b16-0d63-11f0-a030-38d57a12bf82"/>
 </reflist>
 </ownedAttribute>
 <ownedOperation>
 <reflist>
 <ref refid="fd8dfd8c-01de-11f0-bc33-1c1b0d73e11d"/>
 <ref refid="0e352c38-0ca5-11f0-9c24-04d9f583e7ad"/>
+<ref refid="37b0e58f-0d63-11f0-9ef4-38d57a12bf82"/>
 </reflist>
 </ownedOperation>
 <owningPackage>
@@ -5152,6 +5156,41 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <upperValue>
 <val>*</val>
 </upperValue>
+</UML:Property>
+<UML:Operation id="37b0e58f-0d63-11f0-9ef4-38d57a12bf82">
+<class_>
+<ref refid="aadbaaf6-f5d4-11ef-888a-346f24c40848"/>
+</class_>
+<name>
+<val>korCsokkent</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="37b3525e-0d63-11f0-82ed-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="37b3525e-0d63-11f0-82ed-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="37b0e58f-0d63-11f0-9ef4-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Property id="3e554b16-0d63-11f0-a030-38d57a12bf82">
+<class_>
+<ref refid="aadbaaf6-f5d4-11ef-888a-346f24c40848"/>
+</class_>
+<name>
+<val>elragva</val>
+</name>
+<typeValue>
+<val>bool</val>
+</typeValue>
 </UML:Property>
 </model>
 </gaphor>
