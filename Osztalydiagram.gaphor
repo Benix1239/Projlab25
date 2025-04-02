@@ -129,6 +129,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <ref refid="c345650c-0ca4-11f0-b886-04d9f583e7ad"/>
 <ref refid="26f98e2d-0ca5-11f0-ac18-04d9f583e7ad"/>
 <ref refid="15cf4236-0cb9-11f0-ae04-38d57a12bf82"/>
+<ref refid="1eabc02c-0e0d-11f0-84fc-38d57a12bf82"/>
 </reflist>
 </ownedType>
 <packagedElement>
@@ -166,6 +167,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <ref refid="c345650c-0ca4-11f0-b886-04d9f583e7ad"/>
 <ref refid="26f98e2d-0ca5-11f0-ac18-04d9f583e7ad"/>
 <ref refid="15cf4236-0cb9-11f0-ae04-38d57a12bf82"/>
+<ref refid="1eabc02c-0e0d-11f0-84fc-38d57a12bf82"/>
 </reflist>
 </packagedElement>
 </UML:Package>
@@ -258,6 +260,9 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <ref refid="3fa332bb-0ca5-11f0-ac23-04d9f583e7ad"/>
 <ref refid="eb61db8b-0cb8-11f0-8d0d-38d57a12bf82"/>
 <ref refid="11ef1d86-0cb9-11f0-984b-38d57a12bf82"/>
+<ref refid="e7e28471-0e0c-11f0-a893-38d57a12bf82"/>
+<ref refid="e8d83590-0e0c-11f0-b3eb-38d57a12bf82"/>
+<ref refid="13a98f8b-0e0d-11f0-8a3d-38d57a12bf82"/>
 </reflist>
 </ownedPresentation>
 </UML:Diagram>
@@ -316,7 +321,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 697.727009422286, 559.1868488262309)</val>
 </matrix>
 <points>
-<val>[(120.23997502705708, 73.37266516496152), (14.272990577713927, 73.37266516496152), (14.27299057771404, 140.35327669066078), (-131.00381100367366, 140.35327669066078), (-287.67113785981627, 140.35327669066078), (-286.9146197091902, -193.18584615019324)]</val>
+<val>[(120.23997502705708, 73.37266516496152), (14.272990577713927, 73.37266516496152), (14.27299057771404, 140.35327669066078), (-131.00381100367366, 140.35327669066078), (-287.67113785981627, 140.35327669066078), (-287.6746842325313, -175.18584615019324)]</val>
 </points>
 <head-connection>
 <ref refid="e6721478-f5dc-11ef-981b-346f24c40848"/>
@@ -348,7 +353,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 1022.5330829937758, 376.6448762683148)</val>
 </matrix>
 <points>
-<val>[(382.4669170062242, -212.5710017768043), (382.4669170062242, 666.793686321394), (-643.7153588769397, 666.7936863213941), (-642.9588407263136, -10.643873592277203)]</val>
+<val>[(382.4669170062242, -194.6438735922771), (382.4669170062242, 666.793686321394), (-643.7153588769397, 666.7936863213941), (-643.7189052496547, 7.3561264077227975)]</val>
 </points>
 <head-connection>
 <ref refid="aadc5b91-f5d4-11ef-801a-346f24c40848"/>
@@ -380,7 +385,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 713.7812844983931, 269.4883153681385)</val>
 </matrix>
 <points>
-<val>[(-594.2812844983935, 575.7418926481821), (-594.2812844983935, 808.8708821422055), (729.7530994557613, 808.8708821422055), (729.7530994557615, -261.1204217259507), (230.68569995094992, -261.1204217259508)]</val>
+<val>[(-594.2812844983935, 575.7418926481821), (-594.2812844983935, 808.8708821422055), (729.7530994557613, 808.8708821422055), (729.7530994557615, -261.1204217259507), (232.68569995094992, -258.38840464750797)]</val>
 </points>
 <head-connection>
 <ref refid="e58980dd-f5db-11ef-be4b-346f24c40848"/>
@@ -515,7 +520,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 436.52593805086883, 304.34608931840603)</val>
 </matrix>
 <points>
-<val>[(10.879533468046361, -231.05391058454165), (11.636051618672468, -140.34508664236844)]</val>
+<val>[(10.879533468046361, -231.05391058454165), (10.875987095331425, -140.34508664236844)]</val>
 </points>
 <tail-connection>
 <ref refid="93c6434d-f5d2-11ef-b8a5-346f24c40848"/>
@@ -590,7 +595,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 669.6612653234056, 141.06736777930197)</val>
 </matrix>
 <points>
-<val>[(133.3187377249102, -328.35909160189004), (133.3187377249102, -193.41096476917727)]</val>
+<val>[(132.8387346765944, -348.067367779302), (134.20026356363724, -193.41096476917727)]</val>
 </points>
 <head-connection>
 <ref refid="0577cef5-f5e0-11ef-a354-346f24c40848"/>
@@ -616,7 +621,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 634.351971636539, 150.06736777930143)</val>
 </matrix>
 <points>
-<val>[(217.49039995315763, -242.77518904543695), (217.49039995315752, -202.4109647691767)]</val>
+<val>[(217.49039995315763, -232.56736777930146), (218.75818957482034, -202.4109647691767)]</val>
 </points>
 <head-connection>
 <ref refid="5bed8e12-f5e0-11ef-b0d6-346f24c40848"/>
@@ -642,7 +647,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 636.4868187182285, 141.06736777930197)</val>
 </matrix>
 <points>
-<val>[(117.49078899981282, -424.3590916018899), (117.4907889998126, -193.41096476917727)]</val>
+<val>[(117.49078899981282, -450.3590916018901), (117.98494412446632, -193.41096476917727)]</val>
 </points>
 <head-connection>
 <ref refid="de270758-f5df-11ef-9101-346f24c40848"/>
@@ -674,7 +679,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 767.1515328087937, 458.49096119020584)</val>
 </matrix>
 <points>
-<val>[(50.81545164054933, -110.8345581800811), (50.81545164054944, 29.228135715003816)]</val>
+<val>[(51.81545164054933, -92.8345581800811), (50.81545164054944, 29.228135715003816)]</val>
 </points>
 <head-connection>
 <ref refid="db4601b3-f5d1-11ef-a38d-346f24c40848"/>
@@ -700,7 +705,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>(1.0, 0.0, 0.0, 1.0, 887.0, 447.0)</val>
 </matrix>
 <points>
-<val>[(424.106254852466, -282.92612550848946), (424.106254852466, -138.99999999999994)]</val>
+<val>[(424.106254852466, -264.99899732396227), (424.106254852466, -138.99999999999994)]</val>
 </points>
 <head-connection>
 <ref refid="aadc5b91-f5d4-11ef-801a-346f24c40848"/>
@@ -958,16 +963,16 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 </UML:Property>
 <UML:ClassItem id="5bed8e12-f5e0-11ef-b0d6-346f24c40848">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 851.8423715896967, -168.70782126613554)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 851.8423715896967, -194.50000000000003)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>206.0</val>
+<val>404.0</val>
 </width>
 <height>
-<val>76.0</val>
+<val>112.0</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -988,6 +993,8 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <ownedOperation>
 <reflist>
 <ref refid="f8a001e2-f79b-11ef-919f-1c1b0d73e11d"/>
+<ref refid="f6050ef7-0e06-11f0-a68c-38d57a12bf82"/>
+<ref refid="1545d2f1-0e07-11f0-be72-38d57a12bf82"/>
 </reflist>
 </ownedOperation>
 <owningPackage>
@@ -1004,16 +1011,16 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 </UML:Class>
 <UML:ClassItem id="0577cef5-f5e0-11ef-a354-346f24c40848">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 802.9800030483158, -263.29172382258804)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 802.5, -301.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>212.0</val>
+<val>404.0</val>
 </width>
 <height>
-<val>76.0</val>
+<val>94.0</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1034,6 +1041,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <ownedOperation>
 <reflist>
 <ref refid="4b47e611-f79b-11ef-85b5-1c1b0d73e11d"/>
+<ref refid="b4f7185d-0e06-11f0-879c-38d57a12bf82"/>
 </reflist>
 </ownedOperation>
 <owningPackage>
@@ -1050,16 +1058,16 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 </UML:Class>
 <UML:ClassItem id="de270758-f5df-11ef-9101-346f24c40848">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 753.9776077180412, -359.2917238225879)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 753.9776077180411, -403.2917238225881)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>160.0</val>
+<val>404.0</val>
 </width>
 <height>
-<val>76.0</val>
+<val>94.0</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1080,6 +1088,8 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <ownedOperation>
 <reflist>
 <ref refid="376fdfb0-f79b-11ef-87ca-1c1b0d73e11d"/>
+<ref refid="97bcef19-0e01-11f0-850a-38d57a12bf82"/>
+<ref refid="ae1aa9a6-0e06-11f0-8e88-38d57a12bf82"/>
 </reflist>
 </ownedOperation>
 <owningPackage>
@@ -1375,7 +1385,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 </UML:Class>
 <UML:ClassItem id="aadc5b91-f5d4-11ef-801a-346f24c40848">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1008.0, 34.07387449151051)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1008.0, 34.001002676037714)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1384,7 +1394,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>397.0</val>
 </width>
 <height>
-<val>130.0</val>
+<val>148.0</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1405,12 +1415,15 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <note>
 <val>- bogarEves() nincs a kodban (még) egyaltalan
 - korCsokkent() nincs implementálva (most már ez hívja majd a tekton fonalElszakad fv-ét, és nem a bogár)
-- elragva nincs a kódban</val>
+- elragva nincs a kódban
+- eletkor
+</val>
 </note>
 <ownedAttribute>
 <reflist>
 <ref refid="546ec5ea-f6cf-11ef-a6c7-e848b8c82000"/>
 <ref refid="3e554b16-0d63-11f0-a030-38d57a12bf82"/>
+<ref refid="8067fe13-0e0d-11f0-a135-38d57a12bf82"/>
 </reflist>
 </ownedAttribute>
 <ownedOperation>
@@ -1457,7 +1470,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>389.27807615830795</val>
 </width>
 <height>
-<val>116.002005352075</val>
+<val>78.1156711519809</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1712,7 +1725,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 </UML:Property>
 <UML:ClassItem id="93c6434d-f5d2-11ef-b8a5-346f24c40848">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 336.2565181506264, 164.0010026760376)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 335.4964536272853, 164.0010026760376)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1721,7 +1734,7 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <val>268.0</val>
 </width>
 <height>
-<val>202.0</val>
+<val>220.0</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1737,13 +1750,14 @@ class[name="&lt;&lt;Abstract&gt;&gt;Összekötő"] {
 <note>
 <val>Nincs kesz:
 	- round()
-</val>
+	- benitottak</val>
 </note>
 <ownedAttribute>
 <reflist>
 <ref refid="ab1ab2d9-f6ce-11ef-b41c-e848b8c82000"/>
 <ref refid="b324c163-f6ce-11ef-ba5c-e848b8c82000"/>
 <ref refid="87e63bfa-01ab-11f0-8ae6-1c1b0d73e11d"/>
+<ref refid="d9824fc9-0e0c-11f0-9e67-38d57a12bf82"/>
 </reflist>
 </ownedAttribute>
 <ownedOperation>
@@ -1954,10 +1968,10 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>253.0</val>
+<val>255.0</val>
 </width>
 <height>
-<val>400.0</val>
+<val>418.0</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1979,22 +1993,23 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <ref refid="6a808ab0-0100-11f0-8c66-1c1b0d73e11d"/>
 <ref refid="833568ca-0100-11f0-9e56-1c1b0d73e11d"/>
 <ref refid="e2c7bc37-0687-11f0-8df0-1c1b0d73e11d"/>
-<ref refid="00e5ebdb-0688-11f0-9270-1c1b0d73e11d"/>
 </reflist>
 </ownedAttribute>
 <ownedOperation>
 <reflist>
-<ref refid="2e96a59a-f6ce-11ef-bffa-e848b8c82000"/>
-<ref refid="3815fc2c-f6ce-11ef-8473-e848b8c82000"/>
-<ref refid="e963a180-f754-11ef-9d73-1c1b0d73e11d"/>
-<ref refid="f2bd6133-f754-11ef-940f-1c1b0d73e11d"/>
-<ref refid="8836b455-f795-11ef-9e4f-1c1b0d73e11d"/>
-<ref refid="89358b8a-f7ae-11ef-8132-1c1b0d73e11d"/>
-<ref refid="d1b72c33-f813-11ef-a3bd-1c1b0d73e11d"/>
-<ref refid="e0dce183-f814-11ef-8eda-1c1b0d73e11d"/>
-<ref refid="1788841e-01be-11f0-9123-1c1b0d73e11d"/>
-<ref refid="88c2d76b-0267-11f0-94ea-1c1b0d73e11d"/>
-<ref refid="eb2e71ec-027b-11f0-a5d1-1c1b0d73e11d"/>
+<ref refid="e1b15fb6-0e07-11f0-bf0e-38d57a12bf82"/>
+<ref refid="f6cda18e-0e07-11f0-a1ea-38d57a12bf82"/>
+<ref refid="2a7da233-0e09-11f0-abef-38d57a12bf82"/>
+<ref refid="381884e6-0e09-11f0-8e58-38d57a12bf82"/>
+<ref refid="456de7db-0e09-11f0-8a1e-38d57a12bf82"/>
+<ref refid="333b8671-0e0a-11f0-af93-38d57a12bf82"/>
+<ref refid="429a2d75-0e0a-11f0-b346-38d57a12bf82"/>
+<ref refid="54583efb-0e0a-11f0-852d-38d57a12bf82"/>
+<ref refid="75e00782-0e0a-11f0-85b2-38d57a12bf82"/>
+<ref refid="84c61906-0e0a-11f0-a91e-38d57a12bf82"/>
+<ref refid="928989d5-0e0a-11f0-b601-38d57a12bf82"/>
+<ref refid="29c66e09-0e0c-11f0-ac79-38d57a12bf82"/>
+<ref refid="94b1b356-0e0c-11f0-8569-38d57a12bf82"/>
 </reflist>
 </ownedOperation>
 <owningPackage>
@@ -2017,55 +2032,6 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 </reflist>
 </specialization>
 </UML:Class>
-<UML:Operation id="3815fc2c-f6ce-11ef-8473-e848b8c82000">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>fonalElszakad</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="38183252-f6ce-11ef-b98e-e848b8c82000"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="38183252-f6ce-11ef-b98e-e848b8c82000">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="3815fc2c-f6ce-11ef-8473-e848b8c82000"/>
-</ownerFormalParam>
-<typeValue>
-<val>void</val>
-</typeValue>
-</UML:Parameter>
-<UML:Operation id="2e96a59a-f6ce-11ef-bffa-e848b8c82000">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>tores</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="2e98bf1a-f6ce-11ef-9e68-e848b8c82000"/>
-<ref refid="9854706c-f792-11ef-bac6-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="2e98bf1a-f6ce-11ef-9e68-e848b8c82000">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="2e96a59a-f6ce-11ef-bffa-e848b8c82000"/>
-</ownerFormalParam>
-<typeValue>
-<val>Tekton</val>
-</typeValue>
-</UML:Parameter>
 <UML:Property id="139696e7-f6ce-11ef-8e59-e848b8c82000">
 <class_>
 <ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
@@ -2085,7 +2051,7 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
 </class_>
 <name>
-<val>kor</val>
+<val>eletkor</val>
 </name>
 <typeValue>
 <val>int</val>
@@ -3398,84 +3364,6 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 </reflist>
 </ownedParameter>
 </UML:Operation>
-<UML:Operation id="e963a180-f754-11ef-9d73-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>addFonal</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="e9684272-f754-11ef-8297-1c1b0d73e11d"/>
-<ref refid="e96add59-f754-11ef-9ed1-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="e9684272-f754-11ef-8297-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="e963a180-f754-11ef-9d73-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>void</val>
-</typeValue>
-</UML:Parameter>
-<UML:Parameter id="e96add59-f754-11ef-9ed1-1c1b0d73e11d">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>f</val>
-</name>
-<ownerFormalParam>
-<ref refid="e963a180-f754-11ef-9d73-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>Fonal</val>
-</typeValue>
-</UML:Parameter>
-<UML:Operation id="f2bd6133-f754-11ef-940f-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>addSpora</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="f2bfd90d-f754-11ef-9a85-1c1b0d73e11d"/>
-<ref refid="011efea1-f755-11ef-a320-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="f2bfd90d-f754-11ef-9a85-1c1b0d73e11d">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>s</val>
-</name>
-<ownerFormalParam>
-<ref refid="f2bd6133-f754-11ef-940f-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>Spora</val>
-</typeValue>
-</UML:Parameter>
-<UML:Parameter id="011efea1-f755-11ef-a320-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="f2bd6133-f754-11ef-940f-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>void</val>
-</typeValue>
-</UML:Parameter>
 <UML:Parameter id="caf93592-f765-11ef-a728-1c1b0d73e11d">
 <direction>
 <val>return</val>
@@ -3493,83 +3381,20 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <val>*</val>
 </upperValue>
 </UML:Parameter>
-<UML:Parameter id="9854706c-f792-11ef-bac6-1c1b0d73e11d">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>toresarany</val>
-</name>
-<ownerFormalParam>
-<ref refid="2e96a59a-f6ce-11ef-bffa-e848b8c82000"/>
-</ownerFormalParam>
-<typeValue>
-<val>int</val>
-</typeValue>
-</UML:Parameter>
-<UML:Operation id="8836b455-f795-11ef-9e4f-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>fonalElszakad</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="8882b1a0-f795-11ef-a953-1c1b0d73e11d"/>
-<ref refid="9731d766-f795-11ef-a250-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="8882b1a0-f795-11ef-a953-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="8836b455-f795-11ef-9e4f-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>void</val>
-</typeValue>
-</UML:Parameter>
-<UML:Parameter id="9731d766-f795-11ef-a250-1c1b0d73e11d">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>koto</val>
-</name>
-<ownerFormalParam>
-<ref refid="8836b455-f795-11ef-9e4f-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>Osszekoto</val>
-</typeValue>
-</UML:Parameter>
 <UML:Operation id="376fdfb0-f79b-11ef-87ca-1c1b0d73e11d">
 <class_>
 <ref refid="de26cd95-f5df-11ef-ae46-346f24c40848"/>
 </class_>
 <name>
-<val>gombatestEpul</val>
+<val>tudEpulni</val>
 </name>
 <ownedParameter>
 <reflist>
-<ref refid="3772d2f9-f79b-11ef-a759-1c1b0d73e11d"/>
+<ref refid="87714278-0e01-11f0-8db6-38d57a12bf82"/>
+<ref refid="87734617-0e01-11f0-b841-38d57a12bf82"/>
 </reflist>
 </ownedParameter>
 </UML:Operation>
-<UML:Parameter id="3772d2f9-f79b-11ef-a759-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="376fdfb0-f79b-11ef-87ca-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>void</val>
-</typeValue>
-</UML:Parameter>
 <UML:Operation id="4b47e611-f79b-11ef-85b5-1c1b0d73e11d">
 <class_>
 <ref refid="057777f5-f5e0-11ef-bc01-346f24c40848"/>
@@ -3606,6 +3431,9 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <ref refid="f8a2bb43-f79b-11ef-b981-1c1b0d73e11d"/>
 </reflist>
 </ownedParameter>
+<visibility>
+<val>private</val>
+</visibility>
 </UML:Operation>
 <UML:Parameter id="f8a2bb43-f79b-11ef-b981-1c1b0d73e11d">
 <direction>
@@ -3615,31 +3443,7 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <ref refid="f8a001e2-f79b-11ef-919f-1c1b0d73e11d"/>
 </ownerFormalParam>
 <typeValue>
-<val>Boolean</val>
-</typeValue>
-</UML:Parameter>
-<UML:Operation id="89358b8a-f7ae-11ef-8132-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>gombatestEpul</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="91bcc8a0-f7ae-11ef-8f74-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="91bcc8a0-f7ae-11ef-8f74-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="89358b8a-f7ae-11ef-8132-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>void</val>
+<val>boolean</val>
 </typeValue>
 </UML:Parameter>
 <UML:Operation id="091e292f-f7af-11ef-8136-1c1b0d73e11d">
@@ -3798,60 +3602,6 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <val>void</val>
 </typeValue>
 </UML:Parameter>
-<UML:Operation id="d1b72c33-f813-11ef-a3bd-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>fonalKeres</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="dd7e078e-f813-11ef-8c5e-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="dd7e078e-f813-11ef-8c5e-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="d1b72c33-f813-11ef-a3bd-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>Osszekoto</val>
-</typeValue>
-<upperValue>
-<val>*</val>
-</upperValue>
-<upperValue>
-<val>*</val>
-</upperValue>
-</UML:Parameter>
-<UML:Operation id="e0dce183-f814-11ef-8eda-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>sporatEszik</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="e0e4695c-f814-11ef-bc97-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="e0e4695c-f814-11ef-bc97-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="e0dce183-f814-11ef-8eda-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>Spora</val>
-</typeValue>
-</UML:Parameter>
 <UML:Class id="f4d98f2f-fccf-11ef-b165-04d9f583e7ad"/>
 <UML:Class id="f581dd44-fccf-11ef-8a34-04d9f583e7ad"/>
 <UML:Class id="f59f05d2-fccf-11ef-994b-04d9f583e7ad"/>
@@ -3925,10 +3675,10 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
 </class_>
 <name>
-<val>koto</val>
+<val>osszekoto</val>
 </name>
 <typeValue>
-<val>Osszekoto</val>
+<val>Fonal</val>
 </typeValue>
 <upperValue>
 <val>*</val>
@@ -4036,19 +3786,6 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <val>Tekton</val>
 </typeValue>
 </UML:Parameter>
-<UML:Operation id="1788841e-01be-11f0-9123-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>fonalElszakadKoronkent</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="3eb7f2fd-01dd-11f0-b6a9-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
 <UML:Parameter id="9ea0c5f2-01c1-11f0-b3a0-1c1b0d73e11d">
 <direction>
 <val>in</val>
@@ -4063,17 +3800,6 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <val>Tekton</val>
 </typeValue>
 </UML:Parameter>
-<UML:Parameter id="3eb7f2fd-01dd-11f0-b6a9-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="1788841e-01be-11f0-9123-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>void</val>
-</typeValue>
-</UML:Parameter>
 <UML:Operation id="fd8dfd8c-01de-11f0-bc33-1c1b0d73e11d">
 <class_>
 <ref refid="aadbaaf6-f5d4-11ef-888a-346f24c40848"/>
@@ -4082,45 +3808,6 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <val></val>
 </name>
 </UML:Operation>
-<UML:Operation id="88c2d76b-0267-11f0-94ea-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>addSzomszed</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="965933b9-0267-11f0-9f9e-1c1b0d73e11d"/>
-<ref refid="965b7f2b-0267-11f0-aa69-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="965933b9-0267-11f0-9f9e-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="88c2d76b-0267-11f0-94ea-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>void</val>
-</typeValue>
-</UML:Parameter>
-<UML:Parameter id="965b7f2b-0267-11f0-aa69-1c1b0d73e11d">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>t</val>
-</name>
-<ownerFormalParam>
-<ref refid="88c2d76b-0267-11f0-94ea-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>Tekton</val>
-</typeValue>
-</UML:Parameter>
 <UML:AssociationItem id="1cde5947-026c-11f0-8301-1c1b0d73e11d">
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -4144,7 +3831,7 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <val>(1.0, 0.0, 0.0, 1.0, 466.0, 345.0)</val>
 </matrix>
 <points>
-<val>[(4.256518150626562, 21.001002676037587), (3.496453627285291, 35.23020801632077)]</val>
+<val>[(3.4964536272855185, 39.001002676037615), (3.496453627285291, 35.23020801632077)]</val>
 </points>
 <head-connection>
 <ref refid="93c6434d-f5d2-11ef-b8a5-346f24c40848"/>
@@ -4369,45 +4056,6 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <ref refid="e130ec3d-0270-11f0-9d13-1c1b0d73e11d"/>
 </tail-connection>
 </UML:InterfaceRealizationItem>
-<UML:Operation id="eb2e71ec-027b-11f0-a5d1-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>fonalKeres</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="eb356aaf-027b-11f0-9746-1c1b0d73e11d"/>
-<ref refid="eb380277-027b-11f0-9701-1c1b0d73e11d"/>
-</reflist>
-</ownedParameter>
-</UML:Operation>
-<UML:Parameter id="eb356aaf-027b-11f0-9746-1c1b0d73e11d">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="eb2e71ec-027b-11f0-a5d1-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>void</val>
-</typeValue>
-</UML:Parameter>
-<UML:Parameter id="eb380277-027b-11f0-9701-1c1b0d73e11d">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>g</val>
-</name>
-<ownerFormalParam>
-<ref refid="eb2e71ec-027b-11f0-a5d1-1c1b0d73e11d"/>
-</ownerFormalParam>
-<typeValue>
-<val>Gombasz</val>
-</typeValue>
-</UML:Parameter>
 <UML:Operation id="0863788e-027c-11f0-9f2a-1c1b0d73e11d">
 <class_>
 <ref refid="ceb2c5c0-f5d1-11ef-93fc-346f24c40848"/>
@@ -4536,20 +4184,6 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <val>private</val>
 </visibility>
 </UML:Property>
-<UML:Property id="00e5ebdb-0688-11f0-9270-1c1b0d73e11d">
-<class_>
-<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
-</class_>
-<name>
-<val>nev</val>
-</name>
-<typeValue>
-<val>string</val>
-</typeValue>
-<visibility>
-<val>private</val>
-</visibility>
-</UML:Property>
 <UML:Operation id="0dd79dee-071b-11f0-84c4-1c1b0d73e11d">
 <class_>
 <ref refid="86babf22-f5d2-11ef-83fd-346f24c40848"/>
@@ -4660,9 +4294,16 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <note>
 <val>Meg nincs implementalva</val>
 </note>
+<ownedAttribute>
+<reflist>
+<ref refid="6fbf9479-0e0c-11f0-8582-38d57a12bf82"/>
+</reflist>
+</ownedAttribute>
 <ownedOperation>
 <reflist>
 <ref refid="dbb44b7e-0ca4-11f0-9a23-04d9f583e7ad"/>
+<ref refid="52d7fa75-0e07-11f0-a6b4-38d57a12bf82"/>
+<ref refid="67d67261-0e0d-11f0-ba5c-38d57a12bf82"/>
 </reflist>
 </ownedOperation>
 <owningPackage>
@@ -4679,16 +4320,16 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 </UML:Class>
 <UML:ClassItem id="c345b81c-0ca4-11f0-af5b-04d9f583e7ad">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1097.0, -167.0)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1261.4999999999995, -130.0)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>148.0</val>
+<val>404.0</val>
 </width>
 <height>
-<val>76.0</val>
+<val>130.0</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -4738,7 +4379,7 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <val>(1.0, 0.0, 0.0, 1.0, 1130.5, -73.74598744831081)</val>
 </matrix>
 <points>
-<val>[(-33.5, -17.254012551689186), (-33.5, 21.40239045843549), (-186.03301555065696, 21.40239045843623)]</val>
+<val>[(130.99999999999955, 60.86995239395219), (-184.03301555065696, 61.44268235887703)]</val>
 </points>
 <head-connection>
 <ref refid="c345b81c-0ca4-11f0-af5b-04d9f583e7ad"/>
@@ -5191,6 +4832,980 @@ A bogar most mar tombkent van jelolve itt, de a kodban meg csak egy sima Bogar v
 <typeValue>
 <val>bool</val>
 </typeValue>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Property>
+<UML:Parameter id="87714278-0e01-11f0-8db6-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="376fdfb0-f79b-11ef-87ca-1c1b0d73e11d"/>
+</ownerFormalParam>
+<typeValue>
+<val>boolean</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="87734617-0e01-11f0-b841-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>g</val>
+</name>
+<ownerFormalParam>
+<ref refid="376fdfb0-f79b-11ef-87ca-1c1b0d73e11d"/>
+</ownerFormalParam>
+<typeValue>
+<val>Gombasz</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="97bcef19-0e01-11f0-850a-38d57a12bf82">
+<class_>
+<ref refid="de26cd95-f5df-11ef-ae46-346f24c40848"/>
+</class_>
+<name>
+<val></val>
+</name>
+</UML:Operation>
+<UML:Operation id="ae1aa9a6-0e06-11f0-8e88-38d57a12bf82">
+<class_>
+<ref refid="de26cd95-f5df-11ef-ae46-346f24c40848"/>
+</class_>
+<name>
+<val>ujTetktonLetrehozasa</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="ae1d3a21-0e06-11f0-906f-38d57a12bf82"/>
+<ref refid="ae1f09ef-0e06-11f0-9daa-38d57a12bf82"/>
+<ref refid="ae205609-0e06-11f0-8d85-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Operation>
+<UML:Parameter id="ae1d3a21-0e06-11f0-906f-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="ae1aa9a6-0e06-11f0-8e88-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="ae1f09ef-0e06-11f0-9daa-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>spo</val>
+</name>
+<ownerFormalParam>
+<ref refid="ae1aa9a6-0e06-11f0-8e88-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Spora</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Parameter id="ae205609-0e06-11f0-8d85-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>szom</val>
+</name>
+<ownerFormalParam>
+<ref refid="ae1aa9a6-0e06-11f0-8e88-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Operation id="b4f7185d-0e06-11f0-879c-38d57a12bf82">
+<class_>
+<ref refid="057777f5-f5e0-11ef-bc01-346f24c40848"/>
+</class_>
+<name>
+<val>ujTetktonLetrehozasa</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="b4f9d4ad-0e06-11f0-8cec-38d57a12bf82"/>
+<ref refid="b4fbb2ed-0e06-11f0-a5a5-38d57a12bf82"/>
+<ref refid="b4fd0303-0e06-11f0-acdf-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Operation>
+<UML:Parameter id="b4f9d4ad-0e06-11f0-8cec-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="b4f7185d-0e06-11f0-879c-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="b4fbb2ed-0e06-11f0-a5a5-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>spo</val>
+</name>
+<ownerFormalParam>
+<ref refid="b4f7185d-0e06-11f0-879c-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Spora</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Parameter id="b4fd0303-0e06-11f0-acdf-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>szom</val>
+</name>
+<ownerFormalParam>
+<ref refid="b4f7185d-0e06-11f0-879c-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Operation id="f6050ef7-0e06-11f0-a68c-38d57a12bf82">
+<class_>
+<ref refid="5bed3ac7-f5e0-11ef-888c-346f24c40848"/>
+</class_>
+<name>
+<val>addFonal</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="f607f83e-0e06-11f0-baf5-38d57a12bf82"/>
+<ref refid="f609e37a-0e06-11f0-870b-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="f607f83e-0e06-11f0-baf5-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="f6050ef7-0e06-11f0-a68c-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>boolean</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="f609e37a-0e06-11f0-870b-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>f</val>
+</name>
+<ownerFormalParam>
+<ref refid="f6050ef7-0e06-11f0-a68c-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Fonal</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="1545d2f1-0e07-11f0-be72-38d57a12bf82">
+<class_>
+<ref refid="5bed3ac7-f5e0-11ef-888c-346f24c40848"/>
+</class_>
+<name>
+<val>ujTetktonLetrehozasa</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="1548813d-0e07-11f0-b4df-38d57a12bf82"/>
+<ref refid="154a6cf9-0e07-11f0-b076-38d57a12bf82"/>
+<ref refid="154bde7c-0e07-11f0-998c-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Operation>
+<UML:Parameter id="1548813d-0e07-11f0-b4df-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="1545d2f1-0e07-11f0-be72-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="154a6cf9-0e07-11f0-b076-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>spo</val>
+</name>
+<ownerFormalParam>
+<ref refid="1545d2f1-0e07-11f0-be72-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Spora</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Parameter id="154bde7c-0e07-11f0-998c-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>szom</val>
+</name>
+<ownerFormalParam>
+<ref refid="1545d2f1-0e07-11f0-be72-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Operation id="52d7fa75-0e07-11f0-a6b4-38d57a12bf82">
+<class_>
+<ref refid="c345650c-0ca4-11f0-b886-04d9f583e7ad"/>
+</class_>
+<name>
+<val>ujTetktonLetrehozasa</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="52daaafc-0e07-11f0-86b9-38d57a12bf82"/>
+<ref refid="52dcaed6-0e07-11f0-9b81-38d57a12bf82"/>
+<ref refid="52de4c26-0e07-11f0-a073-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Operation>
+<UML:Parameter id="52daaafc-0e07-11f0-86b9-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="52d7fa75-0e07-11f0-a6b4-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="52dcaed6-0e07-11f0-9b81-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>spo</val>
+</name>
+<ownerFormalParam>
+<ref refid="52d7fa75-0e07-11f0-a6b4-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Spora</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Parameter id="52de4c26-0e07-11f0-a073-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>szom</val>
+</name>
+<ownerFormalParam>
+<ref refid="52d7fa75-0e07-11f0-a6b4-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Operation id="e1b15fb6-0e07-11f0-bf0e-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>mindenFonalElszakad</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="e1b54db9-0e07-11f0-ae7d-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="e1b54db9-0e07-11f0-ae7d-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="e1b15fb6-0e07-11f0-bf0e-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="f6cda18e-0e07-11f0-a1ea-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>szomszedHozzaadasa</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="f6d08ee1-0e07-11f0-815b-38d57a12bf82"/>
+<ref refid="f6d2a453-0e07-11f0-b245-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="f6d08ee1-0e07-11f0-815b-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="f6cda18e-0e07-11f0-a1ea-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="f6d2a453-0e07-11f0-b245-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>a</val>
+</name>
+<ownerFormalParam>
+<ref refid="f6cda18e-0e07-11f0-a1ea-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="2a7da233-0e09-11f0-abef-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>tores</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="2a80c7d5-0e09-11f0-9fa2-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="2a80c7d5-0e09-11f0-9fa2-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="2a7da233-0e09-11f0-abef-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="381884e6-0e09-11f0-8e58-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>fonalElszakad</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="381b8128-0e09-11f0-bf4d-38d57a12bf82"/>
+<ref refid="381dadc2-0e09-11f0-9270-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="381b8128-0e09-11f0-bf4d-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="381884e6-0e09-11f0-8e58-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="381dadc2-0e09-11f0-9270-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>f</val>
+</name>
+<ownerFormalParam>
+<ref refid="381884e6-0e09-11f0-8e58-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Fonal</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="456de7db-0e09-11f0-8a1e-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>addFonal</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="4570f1be-0e09-11f0-801d-38d57a12bf82"/>
+<ref refid="45731f54-0e09-11f0-bb0d-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="4570f1be-0e09-11f0-801d-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="456de7db-0e09-11f0-8a1e-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>boolean</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="45731f54-0e09-11f0-bb0d-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>f</val>
+</name>
+<ownerFormalParam>
+<ref refid="456de7db-0e09-11f0-8a1e-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Fonal</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="333b8671-0e0a-11f0-af93-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>szomszedTorol</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="333e500e-0e0a-11f0-9497-38d57a12bf82"/>
+<ref refid="334095b4-0e0a-11f0-8373-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="333e500e-0e0a-11f0-9497-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="333b8671-0e0a-11f0-af93-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="334095b4-0e0a-11f0-8373-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>index</val>
+</name>
+<ownerFormalParam>
+<ref refid="333b8671-0e0a-11f0-af93-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>int</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="429a2d75-0e0a-11f0-b346-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>fonalKeres</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="4b602ffd-0e0a-11f0-bd9a-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="4b602ffd-0e0a-11f0-bd9a-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="429a2d75-0e0a-11f0-b346-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Operation id="54583efb-0e0a-11f0-852d-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>fonalKeres</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="545e4c62-0e0a-11f0-ab40-38d57a12bf82"/>
+<ref refid="54617194-0e0a-11f0-8f00-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="545e4c62-0e0a-11f0-ab40-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="54583efb-0e0a-11f0-852d-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+</UML:Parameter>
+<UML:Parameter id="54617194-0e0a-11f0-8f00-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>g</val>
+</name>
+<ownerFormalParam>
+<ref refid="54583efb-0e0a-11f0-852d-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Gombasz</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="75e00782-0e0a-11f0-85b2-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>addSpora</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="75e30e9a-0e0a-11f0-a165-38d57a12bf82"/>
+<ref refid="75e548a6-0e0a-11f0-8df9-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="75e30e9a-0e0a-11f0-a165-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="75e00782-0e0a-11f0-85b2-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="75e548a6-0e0a-11f0-8df9-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>s</val>
+</name>
+<ownerFormalParam>
+<ref refid="75e00782-0e0a-11f0-85b2-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Spora</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="84c61906-0e0a-11f0-a91e-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>addSzomszed</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="84c922c3-0e0a-11f0-a694-38d57a12bf82"/>
+<ref refid="8765bab0-0e0a-11f0-8baf-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="84c922c3-0e0a-11f0-a694-38d57a12bf82">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>t</val>
+</name>
+<ownerFormalParam>
+<ref refid="84c61906-0e0a-11f0-a91e-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+</UML:Parameter>
+<UML:Parameter id="8765bab0-0e0a-11f0-8baf-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="84c61906-0e0a-11f0-a91e-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="928989d5-0e0a-11f0-b601-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>sporatEszik</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="928cd91c-0e0a-11f0-a3ca-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="928cd91c-0e0a-11f0-a3ca-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="928989d5-0e0a-11f0-b601-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>Spora</val>
+</typeValue>
+</UML:Parameter>
+<UML:Operation id="29c66e09-0e0c-11f0-ac79-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>fonalElszakadKoronkent</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="29c99db0-0e0c-11f0-8fd6-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="29c99db0-0e0c-11f0-8fd6-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="29c66e09-0e0c-11f0-ac79-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Property id="6fbf9479-0e0c-11f0-8582-38d57a12bf82">
+<class_>
+<ref refid="c345650c-0ca4-11f0-b886-04d9f583e7ad"/>
+</class_>
+<name>
+<val>elozoSzomszed</val>
+</name>
+<typeValue>
+<val>Tekton</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Property>
+<UML:Operation id="94b1b356-0e0c-11f0-8569-38d57a12bf82">
+<class_>
+<ref refid="db457226-f5d1-11ef-8227-346f24c40848"/>
+</class_>
+<name>
+<val>megseHalMeg</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="94b4fc25-0e0c-11f0-8bc0-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="94b4fc25-0e0c-11f0-8bc0-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="94b1b356-0e0c-11f0-8569-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Property id="d9824fc9-0e0c-11f0-9e67-38d57a12bf82">
+<class_>
+<ref refid="93c599ee-f5d2-11ef-878c-346f24c40848"/>
+</class_>
+<name>
+<val>benitottak</val>
+</name>
+<typeValue>
+<val>Bogar</val>
+</typeValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<upperValue>
+<val>*</val>
+</upperValue>
+<visibility>
+<val>private</val>
+</visibility>
+</UML:Property>
+<UML:AssociationItem id="e7e28471-0e0c-11f0-a893-38d57a12bf82">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)</val>
+</matrix>
+<points>
+<val>[(0.0, 0.0), (10.0, 10.0)]</val>
+</points>
+</UML:AssociationItem>
+<UML:AssociationItem id="e8d83590-0e0c-11f0-b3eb-38d57a12bf82">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)</val>
+</matrix>
+<points>
+<val>[(0.0, 0.0), (10.0, 10.0)]</val>
+</points>
+</UML:AssociationItem>
+<UML:AssociationItem id="13a98f8b-0e0d-11f0-8a3d-38d57a12bf82">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<head_subject>
+<ref refid="1eac4e03-0e0d-11f0-ac45-38d57a12bf82"/>
+</head_subject>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="1eabc02c-0e0d-11f0-84fc-38d57a12bf82"/>
+</subject>
+<tail_subject>
+<ref refid="1eac58ed-0e0d-11f0-a5df-38d57a12bf82"/>
+</tail_subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 237.5, 516.5)</val>
+</matrix>
+<points>
+<val>[(97.99645362728529, -146.5), (48.5, -146.5), (48.5, -17.269791983679227)]</val>
+</points>
+<head-connection>
+<ref refid="93c6434d-f5d2-11ef-b8a5-346f24c40848"/>
+</head-connection>
+<tail-connection>
+<ref refid="e58980dd-f5db-11ef-be4b-346f24c40848"/>
+</tail-connection>
+</UML:AssociationItem>
+<UML:Association id="1eabc02c-0e0d-11f0-84fc-38d57a12bf82">
+<memberEnd>
+<reflist>
+<ref refid="1eac4e03-0e0d-11f0-ac45-38d57a12bf82"/>
+<ref refid="1eac58ed-0e0d-11f0-a5df-38d57a12bf82"/>
+</reflist>
+</memberEnd>
+<ownedEnd>
+<reflist>
+<ref refid="1eac4e03-0e0d-11f0-ac45-38d57a12bf82"/>
+<ref refid="1eac58ed-0e0d-11f0-a5df-38d57a12bf82"/>
+</reflist>
+</ownedEnd>
+<owningPackage>
+<ref refid="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed"/>
+</owningPackage>
+<package>
+<ref refid="58d6c2e8-66f8-11ec-b4c8-0456e5e540ed"/>
+</package>
+<presentation>
+<reflist>
+<ref refid="13a98f8b-0e0d-11f0-8a3d-38d57a12bf82"/>
+</reflist>
+</presentation>
+</UML:Association>
+<UML:Property id="1eac4e03-0e0d-11f0-ac45-38d57a12bf82">
+<association>
+<ref refid="1eabc02c-0e0d-11f0-84fc-38d57a12bf82"/>
+</association>
+<owningAssociation>
+<ref refid="1eabc02c-0e0d-11f0-84fc-38d57a12bf82"/>
+</owningAssociation>
+<type>
+<ref refid="93c599ee-f5d2-11ef-878c-346f24c40848"/>
+</type>
+</UML:Property>
+<UML:Property id="1eac58ed-0e0d-11f0-a5df-38d57a12bf82">
+<aggregation>
+<val>shared</val>
+</aggregation>
+<association>
+<ref refid="1eabc02c-0e0d-11f0-84fc-38d57a12bf82"/>
+</association>
+<owningAssociation>
+<ref refid="1eabc02c-0e0d-11f0-84fc-38d57a12bf82"/>
+</owningAssociation>
+<type>
+<ref refid="e5890a91-f5db-11ef-b106-346f24c40848"/>
+</type>
+</UML:Property>
+<UML:Operation id="67d67261-0e0d-11f0-ba5c-38d57a12bf82">
+<class_>
+<ref refid="c345650c-0ca4-11f0-b886-04d9f583e7ad"/>
+</class_>
+<name>
+<val>megseHalMeg</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="67da47a0-0e0d-11f0-b585-38d57a12bf82"/>
+</reflist>
+</ownedParameter>
+</UML:Operation>
+<UML:Parameter id="67da47a0-0e0d-11f0-b585-38d57a12bf82">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="67d67261-0e0d-11f0-ba5c-38d57a12bf82"/>
+</ownerFormalParam>
+<typeValue>
+<val>void</val>
+</typeValue>
+</UML:Parameter>
+<UML:Property id="8067fe13-0e0d-11f0-a135-38d57a12bf82">
+<class_>
+<ref refid="aadbaaf6-f5d4-11ef-888a-346f24c40848"/>
+</class_>
+<name>
+<val>eletkor</val>
+</name>
+<typeValue>
+<val>int</val>
+</typeValue>
+<visibility>
+<val>private</val>
+</visibility>
 </UML:Property>
 </model>
 </gaphor>
