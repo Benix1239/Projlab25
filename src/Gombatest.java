@@ -20,7 +20,7 @@ public class Gombatest
     }
 
     public void termel(){
-        int randomSzam = random.nextInt(4);
+        int randomSzam = random.nextInt(5);
         switch (randomSzam) {
             case 0:
                 spora = new Gyorsito(tartozik);
@@ -35,18 +35,26 @@ public class Gombatest
                 spora = new Lassito(tartozik);
                 break;
             case 4:
-                spora = new Sima(tartozik);     
+                spora = new Sima(tartozik);
+                break;
+            case 5:
+                spora = new Szaporodo(tartozik);
+                break;     
         }
     }
 
-    public void elszor(Tekton c){
-        c.addSpora(spora);
-        maradt--;
-        if(maradt == 0){
-
-            this.gombatestMeghal();
+    public boolean elszor(Tekton c){
+        Set<Tekton> szomszedok = hovaSzorhat();
+        if(szomszedok != null && szomszedok.contains(c)){
+            c.addSpora(spora);
+            maradt--;
+            if(maradt == 0){
+                this.gombatestMeghal();
+            }
+            spora = null;
+            return true;
         }
-        spora = null;
+        return false;
     }
 
     private void gombatestMeghal(){
@@ -69,14 +77,10 @@ public class Gombatest
             
             if(!vissza2){
                 honnan.fonalElszakad(f2);
-                
-                System.out.println("Sikertelen lerakas, mert a hova tekton EgyFonalas");
                 return false;
             }
-            System.out.println("Sikeres lerakas!");
             return true;
         }
-        System.out.println("Sikertelen lerakas, mert a honnan tekton EgyFonalas");
         return false;
     }
 
@@ -89,9 +93,9 @@ public class Gombatest
         if (megtalalt.contains(tekton)) {
             return;
         }
-         megtalalt.add(tekton);
+        megtalalt.add(tekton);
 
-         for(Fonal f : tekton.getOsszekoto()){
+        for(Fonal f : tekton.getOsszekoto()){
             if(f.getTartozik() == tartozik){
                 dfsRekurzio(f.getHova(), megtalalt);
             }
@@ -102,6 +106,23 @@ public class Gombatest
         Set<Tekton> megtalalt = new HashSet<>();
         dfsRekurzio(hely, megtalalt);
         return megtalalt;
+    }
+
+    public Set<Tekton> hovaSzorhat(){
+        Set<Tekton> szomszedok = new HashSet<>(hely.getSzomszed());
+        if(this.maradt <= 3){
+            Set<Tekton> szomszedokSzomszedai = new HashSet<>();
+            for(Tekton t : szomszedok){
+                szomszedokSzomszedai.addAll(t.getSzomszed());
+            }
+            szomszedok.addAll(szomszedokSzomszedai);
+        }
+
+        if(szomszedok.size() != 0){
+            return szomszedok;
+        }else{
+            return null;
+        }
     }
 
     public int getMaradt(){
