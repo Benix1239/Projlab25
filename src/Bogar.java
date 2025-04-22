@@ -9,6 +9,7 @@ public class Bogar
     private Boolean actionEves;
     private Spora elozo;
     private Tekton helyzet;
+    private int Id;
    
     /**
      * Alapértelmezett konstruktor, amely beállítja az alapértékeket.
@@ -78,13 +79,13 @@ public class Bogar
         //szkeleton.logMethodEntry(this, "ragas");
         //Tekton hova = fonal.getHova();
         
-        szkeleton.logMethodEntry(fonal, "getTartozik");
+        //szkeleton.logMethodEntry(fonal, "getTartozik");
         Gombasz gombasz = fonal.getTartozik();
-        szkeleton.logMethodExit(fonal, "Gombasz");
+        //szkeleton.logMethodExit(fonal, "Gombasz");
 
-        szkeleton.logMethodEntry(helyzet, "fonalElszakad");
+        //szkeleton.logMethodEntry(helyzet, "fonalElszakad");
         helyzet.fonalElszakad(fonal);
-        szkeleton.logMethodExit(helyzet, "");
+        //szkeleton.logMethodExit(helyzet, "");
         /*ArrayList<Fonal> fonalak = hova.getOsszekoto();   
 
         for (Fonal fonali : fonalak) {
@@ -104,9 +105,9 @@ public class Bogar
      */
     public void eves() {
         //szkeleton.logMethodEntry(this, "eves");
-        szkeleton.logMethodEntry(helyzet, "sporatEszik");
+        //szkeleton.logMethodEntry(helyzet, "sporatEszik");
         elozo = helyzet.sporatEszik();
-        szkeleton.logMethodExit(helyzet, "Spora");
+        //szkeleton.logMethodExit(helyzet, "Spora");
         actionRagas = false;
         actionEves = false;
         //szkeleton.logMethodExit(this, "");
@@ -130,9 +131,9 @@ public class Bogar
     public void sporaMegemesztes() {
         //szkeleton.logMethodEntry(this, "sporaMegemesztes");
         if (elozo != null) {
-            szkeleton.logMethodEntry(elozo, "hatas");
+            //szkeleton.logMethodEntry(elozo, "hatas");
             elozo.hatas(this);
-            szkeleton.logMethodExit(elozo, "");
+            //szkeleton.logMethodExit(elozo, "");
             this.elozo = null;
         }
         //szkeleton.logMethodExit(this, "");
@@ -213,5 +214,13 @@ public class Bogar
         ////szkeleton.logMethodEntry(this, "setElozo");
         ////szkeleton.logMethodExit(this, "spora");
         return elozo;
+    }
+
+    public void setId(int i){
+        this.Id=i;
+    }
+
+    public int getId(){
+        return Id;
     }
 }
