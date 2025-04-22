@@ -92,36 +92,17 @@ public class Bogarasz extends Jatekos
      * @return true, ha a lépés sikeres volt, különben false.
      */
     public boolean lep(Bogar bogar, Tekton tekton){
-        //szkeleton.logMethodEntry(this, "lep");
         if(bogar.getMozgaspont()!=0){
-            //szkeleton.logMethodEntry(bogar, "getHelyzet");
             Tekton helyzet= bogar.getHelyzet();
-            //szkeleton.logMethodExit(bogar, "Helyzet");
-            //szkeleton.logMethodEntry(helyzet, "getOsszekoto");
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
-            //szkeleton.logMethodExit(helyzet, "Osszekoto[]");
             ArrayList<Tekton> lehetsegesLepes=new ArrayList<>();
             
             
             for (Fonal fonal : fonalak) {
-                //szkeleton.logMethodEntry(fonal, "getHova");
                 Tekton hova = fonal.getHova();
-                //szkeleton.logMethodExit(fonal, "Lehetseges helyek");
                 lehetsegesLepes.add(hova);
             }
-            
-
-            
-            /*System.out.println("Melyik tektonra szeretnél lépni?");
-            
-            for (int i=0;i<lehetsegesLepes.size();i++) {
-                System.out.println((i+1)+". Tekton"+lehetsegesLepes.get(i).getId());
-    
-            }
-            int lepesValasztas = InputHandler.getScanner().nextInt();
-            Tekton hova= lehetsegesLepes.get(lepesValasztas-1);*/
-            
-            //szkeleton.logMethodEntry(bogar, "mozgas");
+      
             int mozgas=bogar.getMozgaspont();
             if(lehetsegesLepes.contains(tekton)){
                 bogar.mozgas(tekton);
@@ -132,14 +113,11 @@ public class Bogarasz extends Jatekos
             else{
                 return false;
             }
-            //szkeleton.logMethodExit(bogar, "");
         }
 
         else{
             return false;
-            //System.out.println("Már nem tudsz mozogni a körben");
         }
-        //szkeleton.logMethodExit(this, "");
     }
 
     /**
@@ -150,10 +128,8 @@ public class Bogarasz extends Jatekos
      * @return true, ha a bogár sikeresen evett egy spórát, különben false.
      */
     public boolean eves(Bogar bogar){
-        //szkeleton.logMethodEntry(this, "eves");
         if(bogar.getactionEves()==true){
             if (bogar.getHelyzet().sporak!=null) {
-                //szkeleton.logMethodEntry(bogar, "eves");
                 bogar.eves();
                 if(bogar.getactionEves()==false && bogar.getSpora()!=null){
                     return true;
@@ -161,18 +137,14 @@ public class Bogarasz extends Jatekos
                 else{
                     return false;
                 }
-                //szkeleton.logMethodExit(bogar, "");
             }
             else{
                 return false;
-                //System.out.println("Nincs a tektonon spóra");
             }
         }
         else{
             return false;
-            //System.out.println("Már ettél a körben");
         }
-        //szkeleton.logMethodExit(this, "");
     }
 
     /**
@@ -184,19 +156,9 @@ public class Bogarasz extends Jatekos
      * @return true, ha a fonalat sikeresen elrágta, különben false.
      */
     public boolean ragas(Bogar bogar,Fonal fonal){
-        //szkeleton.logMethodEntry(this, "ragas");
         if(bogar.getactionRagas()==true){
             Tekton helyzet= bogar.getHelyzet();
-            //szkeleton.logMethodEntry(helyzet, "getOsszekoto");
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
-            //szkeleton.logMethodExit(helyzet, "Osszekoto[]");
-            /*System.out.println("Melyik fonalat szeretnéd elrágni?");
-            for (int i=0;i<fonalak.size();i++) {
-                System.out.println((i+1)+". fonal amely a Tekton"+ fonalak.get(i).getHova().getId()+"ra ér");
-            }
-            int ragasValasztas = InputHandler.getScanner().nextInt();
-            //szkeleton.logMethodEntry(bogar, "ragas");
-            bogar.ragas(fonalak.get(ragasValasztas-1));*/
             if(fonalak.contains(fonal)){
                 bogar.ragas(fonal);
             }
@@ -207,13 +169,10 @@ public class Bogarasz extends Jatekos
             else{
                 return false;
             }
-            //szkeleton.logMethodExit(bogar, "");
         }
         else{
             return false;
-            //System.out.println("Már rágtál a körben");
         }
-        //szkeleton.logMethodExit(this, "");
     }
 
     /**
@@ -225,7 +184,6 @@ public class Bogarasz extends Jatekos
      */
     public boolean bogarHozzaad(Bogar b,Tekton t)
     {
-        ////szkeleton.logMethodEntry(this, "bogarHozzaad");
         bogarak.add(b);
         bogarak.get(bogarak.size()-1).setHelyzet(t);
         b.beallit();
@@ -237,7 +195,6 @@ public class Bogarasz extends Jatekos
         else{
             return false;
         }
-        //szkeleton.logMethodExit(this, "");
     }
     
     /**
@@ -248,7 +205,6 @@ public class Bogarasz extends Jatekos
      */
     public boolean bogarRemove(Bogar b)
     {
-        ////szkeleton.logMethodEntry(this, "bogarHozzaad");
         if(b!=null){
             bogarak.remove(b);
         }
@@ -258,6 +214,5 @@ public class Bogarasz extends Jatekos
         else{
             return true;
         }
-        //szkeleton.logMethodExit(this, "");
     }
 }
