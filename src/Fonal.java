@@ -32,6 +32,9 @@ public class Fonal extends Osszekoto
         
     }
 
+    public boolean bogarEves(Bogar b){
+        return b.megEve();
+    }
 
     public boolean getElragva(){
         return elragva;

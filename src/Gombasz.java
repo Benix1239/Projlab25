@@ -8,17 +8,29 @@ public class Gombasz extends Jatekos
 {
     private ArrayList<Gombatest> testek;
     private ArrayList<Tekton> palya;
-
+    private ArrayList<Bogar> benitottak;
     
 
     //valtozas: megkapja a palyat is konstruktorban es nincs Tekton kezdo parametere
     public Gombasz(ArrayList<Tekton> palya){
         testek = new ArrayList<>();
         this.palya = palya;
+        benitottak = new ArrayList<>();
     }
 
     public void gombatestHozzaad(Gombatest g){
         testek.add(g);
+    }
+
+    public boolean bogarEves(Bogar b){
+        if(benitottak.contains(b)){
+            Tekton bogarHelyzet = b.getHelyzet();
+            ArrayList<Fonal> fonalakHelyzeten = bogarHelyzet.getOsszekoto(this);
+            if(fonalakHelyzeten.size() != 0){
+                return fonalakHelyzeten.get(0).bogarEves(b);
+            }
+        }
+        return false;
     }
 
     //torli a fonalakat, amik már nem elérhetőek a gombász egyik testjéből sem
