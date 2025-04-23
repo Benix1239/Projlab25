@@ -8,16 +8,16 @@ import java.util.ArrayList;
 public class Bogarasz extends Jatekos
 {
     private ArrayList<Bogar> bogarak;
-    private ArrayList<String> azonosito;
-    private int Id;
+    //private ArrayList<String> azonosito;
+    //private int Id;
 
-    public void setId(int i){
+    /*public void setId(int i){
         this.Id=i;
     }
 
     public int getId(){
         return Id;
-    }
+    }*/
 
     public Bogarasz(){
         this.bogarak = new ArrayList<Bogar>();
@@ -212,8 +212,8 @@ public class Bogarasz extends Jatekos
         bogarak.get(bogarak.size()-1).setHelyzet(t);
         b.beallit();
         b.setTartozik(this);
-        b.setId(bogarak.size());
-        azonosito.add("Bogar"+b.getId());
+        //b.setId(bogarak.size());
+        //azonosito.add("Bogar"+b.getId());
         if(bogarak.contains(b) && b.getHelyzet()==t){
             return true;
         }

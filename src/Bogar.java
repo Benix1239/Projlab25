@@ -9,7 +9,7 @@ public class Bogar
     private Boolean actionEves;
     private Spora elozo;
     private Tekton helyzet;
-    private int Id;
+    //private int Id;
     private boolean korVege;
     private Bogarasz tartozik;
    
@@ -79,7 +79,7 @@ public class Bogar
     public void ragas(Fonal fonal) {
         Gombasz gombasz = fonal.getTartozik();
         helyzet.fonalElszakad(fonal);
-        
+        helyzet.nemHalMegListaTorles();
         actionRagas = false;
         actionEves = false;
     }
@@ -181,13 +181,13 @@ public class Bogar
         return elozo;
     }
 
-    public void setId(int i){
+    /*public void setId(int i){
         this.Id=i;
     }
 
     public int getId(){
         return Id;
-    }
+    }*/
 
     public void setkorVege(boolean i){
         this.korVege=i;
