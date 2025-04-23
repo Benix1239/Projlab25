@@ -182,6 +182,7 @@ public class Jatek {
         return returnValue;
     }
 
+    //simi
     public boolean passzGombasz(String gombasz) {
         Bogarasz gombaszObj = bogaraszFromString(gombasz);
 
@@ -189,6 +190,30 @@ public class Jatek {
         if (jelenlegiJatekos_e(gombaszObj)) {
             gombaszObj.setKorvege(true);
             returnValue = gombaszObj.getKorvege();
+        }
+
+        jatekosKorvege();
+        return returnValue;
+    }
+
+    public boolean infoGombasz(String gombasz) {
+        Bogarasz gombaszObj = bogaraszFromString(gombasz);
+
+        boolean returnValue = false;
+        if (jelenlegiJatekos_e(gombaszObj)) {
+            
+        }
+
+        jatekosKorvege();
+        return returnValue;
+    }
+
+    public boolean infoBogarasz(String bogarasz) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+
+        boolean returnValue = false;
+        if (jelenlegiJatekos_e(bogaraszObj)) {
+            
         }
 
         jatekosKorvege();

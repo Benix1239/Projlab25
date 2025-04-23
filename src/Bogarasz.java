@@ -32,6 +32,23 @@ public class Bogarasz extends Jatekos
         return true;
     }
 
+    public boolean mitLehetCsinalni(){
+        for(Bogar bogar : bogarak){
+            System.out.println("Bogar"+bogarak.indexOf(bogar)+ "Megmaradt lepesek száma: " + bogar.getMozgaspont()+ "\t");
+            if (bogar.getactionEves()) {
+                System.out.println("Tud meg enni\t");
+            } else {
+                System.out.println("Nem tud meg enni\t");
+            }
+            if (bogar.getactionRagas()) {
+                System.out.println("Tud meg ragni\t");
+            } else {
+                System.out.println("Nem tud meg ragni\t");
+            }
+        }
+        return true; 
+    }
+
     /**
      * Megpróbálja a megadott bogarat átléptetni egy másik Tektonra, ha van még mozgáspontja
      * és a cél Tekton elérhető a jelenlegi helyzetéből kiindulva.

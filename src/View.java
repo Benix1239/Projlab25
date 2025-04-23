@@ -33,6 +33,25 @@ public class View
             case "korVege":
                 
                 break;
+            case "info":
+                if(tordel[1].contains("bogarasz"))
+                {
+                    ertek=menet.infoBogarasz(tordel[1]);
+                }
+                else
+                {
+                    ertek=menet.infoGombasz(tordel[1]);
+                }
+                
+                if(ertek)
+                {
+                    System.out.println("Sikerult a muvelet");
+                }
+                else
+                {
+                    System.out.println("Sikertelen a muvelet");
+                }
+                break;
             case "passz":
                 
 

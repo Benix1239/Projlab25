@@ -38,4 +38,6 @@ public abstract class Jatekos implements Serializable
 
     public abstract void korElejeInicializalas();
 
+    public abstract boolean mitLehetCsinalni();
+
 }
