@@ -4,9 +4,8 @@ public class App {
     
     public static void main(String[] args) throws Exception 
     {
-       szkeleton Tesztprogram = new szkeleton();
-
-       Tesztprogram.tesztIndit();
+       View asd = new View();
+       asd.bemenetKezeles();
 
     }
 }
