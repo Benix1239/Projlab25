@@ -169,15 +169,26 @@ public class Jatek {
     }
 
     //simi
-    public boolean passzBogarasz(String bogarasz, String bogar) {
+    public boolean passzBogarasz(String bogarasz) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
-        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
-    
 
         boolean returnValue = false;
         if (jelenlegiJatekos_e(bogaraszObj)) {
-            bogarObj.setKorVege(true);
-            returnValue = bogarObj.getKorVege();
+            bogaraszObj.setKorvege(true);
+            returnValue = bogaraszObj.getKorvege();
+        }
+
+        jatekosKorvege();
+        return returnValue;
+    }
+
+    public boolean passzGombasz(String gombasz) {
+        Bogarasz gombaszObj = bogaraszFromString(gombasz);
+
+        boolean returnValue = false;
+        if (jelenlegiJatekos_e(gombaszObj)) {
+            gombaszObj.setKorvege(true);
+            returnValue = gombaszObj.getKorvege();
         }
 
         jatekosKorvege();

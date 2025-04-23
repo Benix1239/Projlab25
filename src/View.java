@@ -34,7 +34,25 @@ public class View
                 
                 break;
             case "passz":
-                ertek=menet.passzBogarasz(tordel[1], tordel[2]);
+                
+
+                if(tordel[1].contains("bogarasz"))
+                {
+                    ertek=menet.passzBogarasz(tordel[1]);
+                }
+                else
+                {
+                    ertek=menet.passzGombasz(tordel[1]);
+                }
+                
+                if(ertek)
+                {
+                    System.out.println("Sikerult a muvelet");
+                }
+                else
+                {
+                    System.out.println("Sikertelen a muvelet");
+                }
                 break;
             case "lepes":
                 ertek = menet.lepes(tordel[1], tordel[2], tordel[3]);
