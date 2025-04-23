@@ -240,4 +240,12 @@ public class Bogarasz extends Jatekos
             return true;
         }
     }
+
+    public void setNev(String nev) {
+        this.nev = nev;
+    }
+
+    public ArrayList<Bogar> getBogarak() {
+        return bogarak;
+    }
 }

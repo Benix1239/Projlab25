@@ -3,26 +3,26 @@ import java.io.Serializable;
 
 public abstract class Jatekos implements Serializable
 {
-    int id;
-    int pontok;
-    String Nev;
+    private int id;
+    private int pontok;
+    protected String nev;
 
     Jatekos()
     {
         
     }
 
-    void addPoint(int amount)
+    public void addPoint(int amount)
     {
         
     }
 
-    void round() 
+    public void round() 
     {
 
     }
 
-    void pontSzamlalo()
+    public void pontSzamlalo()
     {
         
     }
