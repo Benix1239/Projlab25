@@ -232,4 +232,7 @@ public class Gombasz extends Jatekos
         }
     }
     
+    public void setNev(String nev) {
+        this.nev = nev;
+    }
 }

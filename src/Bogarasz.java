@@ -182,4 +182,12 @@ public class Bogarasz extends Jatekos
         bogarak.remove(b);
         //szkeleton.logMethodExit(this, "");
     }
+
+    public void setNev(String nev) {
+        this.nev = nev;
+    }
+
+    public ArrayList<Bogar> getBogarak() {
+        return bogarak;
+    }
 }
