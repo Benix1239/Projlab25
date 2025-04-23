@@ -8,16 +8,16 @@ import java.util.ArrayList;
 public class Bogarasz extends Jatekos
 {
     private ArrayList<Bogar> bogarak;
-    private ArrayList<String> azonosito;
-    private int Id;
+    //private ArrayList<String> azonosito;
+    //private int Id;
 
-    public void setId(int i){
+    /*public void setId(int i){
         this.Id=i;
     }
 
     public int getId(){
         return Id;
-    }
+    }*/
 
     public Bogarasz(){
         this.bogarak = new ArrayList<Bogar>();
@@ -82,7 +82,31 @@ public class Bogarasz extends Jatekos
         //szkeleton.logMethodExit(this, "");
     }
  */
-    
+   
+    /**
+     * A bogar körének végén megemészti a körében megevett spórát
+     *
+     * @param bogar A bogár, amelyet mozgatni szeretnénk.
+     * @return true, ha a lépés emésztés sikeres volt, különben false.
+     */
+    public boolean korVege(Bogar bogar){
+        bogar.beallit();
+
+        if(bogar.getSpora()!=null){
+            pontok += bogar.getSpora().getPluszpont();
+        }
+
+        bogar.sporaMegemesztes();
+
+        if (bogar.getSpora()==null) {
+            bogar.setkorVege(true);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     /**
      * Megpróbálja a megadott bogarat átléptetni egy másik Tektonra, ha van még mozgáspontja
      * és a cél Tekton elérhető a jelenlegi helyzetéből kiindulva.
@@ -187,8 +211,9 @@ public class Bogarasz extends Jatekos
         bogarak.add(b);
         bogarak.get(bogarak.size()-1).setHelyzet(t);
         b.beallit();
-        b.setId(bogarak.size());
-        azonosito.add("Bogar"+b.getId());
+        b.setTartozik(this);
+        //b.setId(bogarak.size());
+        //azonosito.add("Bogar"+b.getId());
         if(bogarak.contains(b) && b.getHelyzet()==t){
             return true;
         }

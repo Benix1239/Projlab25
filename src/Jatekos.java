@@ -3,8 +3,8 @@ import java.io.Serializable;
 
 public abstract class Jatekos implements Serializable
 {
-    private int id;
-    private int pontok;
+    protected int id;
+    protected int pontok;
     protected String nev;
 
     Jatekos()

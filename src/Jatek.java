@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Jatek
 {
@@ -19,14 +21,18 @@ public class Jatek
      * 
      * @param palyaMeret A p�lya m�rete.
      */
-    public Jatek(int palyaMeret)
+    public Jatek()
     {
       
       gombaszok = new ArrayList<Gombasz>();
       bogaraszok = new ArrayList<Bogarasz>();
-      jatekter = new Palya(palyaMeret);
+      jatekter = new Palya();
     }
     
+    public Palya getJatekter() {
+        return jatekter;
+    }
+
     /**
      * Elind�tja a j�t�kot �s kezeli a f� j�t�kmenetet.
      */
@@ -120,34 +126,159 @@ public class Jatek
         return gombaszok.get(Integer.parseInt(gombasz.substring(6)));
     }
 
+    public Gombatest gombatestFromString(String gombatest, Gombasz gombasz) {
+        return gombasz.getTestek().get(Integer.parseInt(gombatest.substring(8)));
+    }
+
     public Fonal fonalFromString(String fonal, Tekton tekton) {
         return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(4)));
     }
 
-    public void lepes(String bogarasz, String bogar, String hova) {
+    public boolean lepes(String bogarasz, String bogar, String hova) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
         Tekton tektonObj = tektonFromString(hova);
-        bogaraszObj.lep(bogarObj,tektonObj);
+        return bogaraszObj.lep(bogarObj,tektonObj);
     }
 
-    public void evesSporat(String bogarasz, String bogar) {
+    public boolean evesSporat(String bogarasz, String bogar) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
-        bogaraszObj.eves(bogarObj);
+        return bogaraszObj.eves(bogarObj);
     }
 
-    public void evesBogarat(String tekton) {
+    ///
+    public void evesBogarat(String fonal, String tekton) {
         Tekton tektonObj = tektonFromString(tekton);
-        tektonObj.fonalElpusztit();
+        Fonal fonalObj = fonalFromString(fonal, tektonObj);
+        
     }
 
-    public void ragas(String bogarasz, String bogar, String fonal) {
+    public boolean ragas(String bogarasz, String bogar, String fonal) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
         Tekton tekton = bogarObj.getHelyzet();
         Fonal fonalObj = fonalFromString(fonal, tekton);
-        bogaraszObj.ragas(bogarObj, fonalObj);
+        return bogaraszObj.ragas(bogarObj, fonalObj);
     }
-   
+
+    public boolean fonalLerak(String gombasz, String gombatest, String t1, String t2) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+        Tekton t1Obj = tektonFromString(t1);
+        Tekton t2Obj = tektonFromString(t2);
+        return gombatestObj.elhelyez(t1Obj, t2Obj);
+    }
+
+    public boolean sporaSzor(String gombasz, String gombatest, String tekton) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+        Tekton tektonObj = tektonFromString(tekton);
+        return gombatestObj.elszor(tektonObj);
+    }
+
+    public Set<Tekton> gombaHovaRakhat(String gombasz, String gombatest) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+        Set<Tekton> hovaLehetosegek = gombaszObj.hovaLehetosegek(gombatestObj.getHely());
+        return hovaLehetosegek;
+    }
+
+    public Set<Tekton> gombaEler(String gombasz, String gombatest) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+        return gombatestObj.dfs();
+    }
+
+    public Set<Tekton> gombaszEler(String gombasz) {
+        Set<Tekton> acc = new HashSet<Tekton>();
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        for (Gombatest g : gombaszObj.getTestek()) {
+            Set<Tekton> dfs = g.dfs();
+            for (Tekton t : dfs) {
+                acc.add(t);
+            }
+        }
+        return acc;
+    }
+
+    public ArrayList<Tekton> fonallalOsszekotott(String tekton) {
+        Tekton tektonObj = tektonFromString(tekton);
+        return tektonObj.fonalKeres();
+    }
+
+    public Set<Tekton> gombaszHovaSzorhat(String gombasz, String gombatest) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+        return gombatestObj.hovaSzorhat();
+    }
+
+    public ArrayList<Fonal> tektononFonal(String tekton) {
+        Tekton tektonObj = tektonFromString(tekton);
+        return tektonObj.getOsszekoto();
+    }
+
+    public Tekton bogarTekton(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        return bogarObj.getHelyzet();
+    }
+
+    // A palyaKor, hozzaad parancsok nem kellnek elvileg, megemeszt se
+
+    public ArrayList<Gombasz> gombaszok() {
+        return gombaszok;
+    }
+
+    public ArrayList<Bogarasz> bogaraszok() {
+        return bogaraszok;
+    }
+
+    public Tekton helyzet(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        return bogarObj.getHelyzet();
+    }
+
+    public ArrayList<Gombatest> gombatestListazas(String gombasz) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        return gombaszObj.getTestek();
+    }
+
+    public ArrayList<Tekton> tektonSzomszedNincsFonal(String tekton) {
+        Tekton tektonObj = tektonFromString(tekton);
+        ArrayList<Tekton> acc = new ArrayList<>();
+        for (Tekton t : tektonObj.getSzomszed()) {
+            if (t == tektonObj) { // szomszédosak
+                for (Fonal f : tektonObj.getOsszekoto()) {
+                    if (!(f.getHova() == tektonObj)) { // de nem köti össze fonal
+                        acc.add(t);
+                    }
+                }
+            }
+            
+        }
+        
+        return acc;
+    }
+
+    public ArrayList<Bogar> benultBogar(String gombasz, String gombatest) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+        Tekton gombatestTektonja = gombatestObj.getHely();
+        ArrayList<Tekton> fonallalEler = gombatestTektonja.fonalKeres();
+        ArrayList<Bogar> acc = new ArrayList<>();
+
+        for (Bogarasz b : bogaraszok) {
+            for (Bogar bg : b.getBogarak()) {
+                for (Tekton t : fonallalEler) {
+                    if (t == bg.getHelyzet()) {
+                        acc.add(bg);
+                    }
+                }
+            }
+        }
+
+        return acc;
+    }
 }

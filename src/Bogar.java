@@ -9,7 +9,9 @@ public class Bogar
     private Boolean actionEves;
     private Spora elozo;
     private Tekton helyzet;
-    private int Id;
+    //private int Id;
+    private boolean korVege;
+    private Bogarasz tartozik;
    
     /**
      * Alapértelmezett konstruktor, amely beállítja az alapértékeket.
@@ -28,6 +30,7 @@ public class Bogar
         mozgasok = 1;
         actionRagas = true;
         actionEves = true;
+        korVege=false;
     }
 
     /**
@@ -61,6 +64,14 @@ public class Bogar
     }
 
     /**
+     * Létrehoz egy új bogarat és eltárolja a bogarásznál
+     */
+    public void szaporodo() {
+        Bogar uj = new Bogar();
+        this.tartozik.bogarHozzaad(uj, this.helyzet);
+    }
+
+    /**
      * A bogár rágási akciót hajt végre egy adott fonalon.
      * 
      * @param fonal A fonal, amelyet a bogár elrág.
@@ -68,7 +79,7 @@ public class Bogar
     public void ragas(Fonal fonal) {
         Gombasz gombasz = fonal.getTartozik();
         helyzet.fonalElszakad(fonal);
-        
+        helyzet.nemHalMegListaTorles();
         actionRagas = false;
         actionEves = false;
     }
@@ -100,6 +111,10 @@ public class Bogar
             elozo.hatas(this);
             this.elozo = null;
         }
+    }
+
+    public void megEve(){
+        tartozik.bogarRemove(this);
     }
 
     /**
@@ -165,11 +180,27 @@ public class Bogar
         return elozo;
     }
 
-    public void setId(int i){
+    /*public void setId(int i){
         this.Id=i;
     }
 
     public int getId(){
         return Id;
+    }*/
+
+    public void setkorVege(boolean i){
+        this.korVege=i;
+    }
+
+    public boolean getkorVege(){
+        return korVege;
+    }
+
+    public void setTartozik(Bogarasz i){
+        this.tartozik=i;
+    }
+
+    public Bogarasz getTartozik(){
+        return tartozik;
     }
 }

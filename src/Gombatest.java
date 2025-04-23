@@ -136,4 +136,8 @@ public class Gombatest
     public void setMaradt(int i){
         maradt = i;
     }
+
+    public Tekton getHely() {
+        return hely;
+    }
 }
