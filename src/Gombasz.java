@@ -17,6 +17,12 @@ public class Gombasz extends Jatekos
         this.palya = palya;
         benitottak = new ArrayList<>();
     }
+
+    public void korElejeInicializalas(){
+        for(Gombatest gt : testek){
+            gt.korElejeInicializalas();
+        }
+    }
     
     public void gombatestHozzaad(Gombatest g){
         testek.add(g);
@@ -51,7 +57,7 @@ public class Gombasz extends Jatekos
 
         for(Tekton t : palya){
             if(!elerhetok.contains(t)){
-                t.megseHalMeg();
+                t.megSeHalMeg();
             }
         }
     }
@@ -84,10 +90,21 @@ public class Gombasz extends Jatekos
         return null;
     }
 
+    private boolean mindenGombaKorVege(){
+        for(Gombatest gt : testek){
+            if(!gt.getKorvege()){
+                return false;
+            }
+        }
+        return true;
+    }
 
     public boolean fonalLerak(Gombatest g, Tekton honnan, Tekton hova){
         if(testek.contains(g) && honnanLehetosegek(g).contains(honnan) && hovaLehetosegek(honnan).contains(hova)){
             return g.elhelyez(honnan, hova);
+        }
+        if(mindenGombaKorVege()){
+            korVege = true;
         }
         return false;
     }

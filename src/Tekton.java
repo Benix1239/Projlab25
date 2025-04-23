@@ -391,7 +391,7 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @param g -> Gombasz akit vizsgalunk
 	 * @return db -> Fonalak szama
 	 */
-	private int hanyFonalaVanGombasznak(Gombasz g){
+	public int hanyFonalaVanGombasznak(Gombasz g){
 		////szkeleton.logMethodEntry(this, "hanyFonalaVanGombasznak");	///Szkeleton kiiratas fuggveny kezdetekor
 		int db=0;
 		for(Fonal elem:osszekoto){

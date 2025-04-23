@@ -10,6 +10,8 @@ public class Gombatest
     private Spora spora;
     private int maradt;
     private Gombasz tartozik;
+    private boolean korVege;
+    private int action;
     private static final Random random = new Random();
 
     public Gombatest(Tekton hely, Gombasz tartozik) {
@@ -17,9 +19,18 @@ public class Gombatest
         this.tartozik = tartozik;
         maradt = 20;
         spora = null;
+        korVege = false;
+        action = 2;
     }
 
-    public void termel(){
+    public void korElejeInicializalas(){
+        action = 2;
+        korVege = false;
+        termel();
+        checkKorvege();
+    }
+
+    private void termel(){
         int randomSzam = random.nextInt(5);
         switch (randomSzam) {
             case 0:
@@ -43,17 +54,34 @@ public class Gombatest
         }
     }
 
+    private void checkKorvege(){
+        if(action == 0){
+            korVege = true;
+        }
+
+        if(hovaSzorhat().size() == 0 && tartozik.hovaLehetosegek(hely).size() == 0){
+            korVege = true;
+        }
+
+        if(action == 1 && tartozik.hovaLehetosegek(hely).size() == 0 && spora == null){
+            korVege = true;
+        }
+    }
+
     public boolean elszor(Tekton c){
         Set<Tekton> szomszedok = hovaSzorhat();
-        if(szomszedok != null && szomszedok.contains(c)){
+        if(szomszedok != null && szomszedok.contains(c) && spora != null){
             c.addSpora(spora);
+            action--;
             maradt--;
             if(maradt == 0){
                 this.gombatestMeghal();
             }
             spora = null;
+            checkKorvege();
             return true;
         }
+        checkKorvege();
         return false;
     }
 
@@ -77,10 +105,13 @@ public class Gombatest
             
             if(!vissza2){
                 honnan.fonalElszakad(f2);
+                checkKorvege();
                 return false;
             }
+            checkKorvege();
             return true;
         }
+        checkKorvege();
         return false;
     }
 
@@ -139,5 +170,9 @@ public class Gombatest
 
     public Tekton getHely() {
         return hely;
+    }
+
+    public boolean getKorvege(){
+        return korVege;
     }
 }

@@ -6,6 +6,7 @@ public abstract class Jatekos implements Serializable
     protected int id;
     protected int pontok;
     protected String nev;
+    protected boolean korVege = false;
 
     Jatekos()
     {
@@ -26,5 +27,15 @@ public abstract class Jatekos implements Serializable
     {
         
     }
+
+    public boolean getKorvege(){
+        return korVege;
+    }
+
+    public void setKorvege(boolean ertek){
+        korVege = ertek;
+    }
+
+    public abstract void korElejeInicializalas();
 
 }
