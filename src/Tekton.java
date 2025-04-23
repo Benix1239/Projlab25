@@ -671,7 +671,7 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	/*
 	 * @biref Getter (vissza adja a tektonon levo egy gombaszhoz tartozo fonalakat)
 	 */
-	public ArrayList<Foanl> getOsszekoto(Gombasz a){
+	public ArrayList<Fonal> getOsszekoto(Gombasz a){
 			ArrayList<Fonal>uj = new ArrayList();
 			for(int i=0;i<osszekoto.size();i++){
 				if(osszekoto.get(i).getTartozik()==a){
