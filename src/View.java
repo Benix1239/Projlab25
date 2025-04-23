@@ -134,7 +134,7 @@ public class View
                 System.out.println(tordel[1] +" tektonon az alabbi fonalak vannak: ");
                 for(Fonal a : fonallista)
                 {
-                    System.out.println("fonal"+ menet.tektonFromString(tordel[1]).osszekoto.indexOf(a) + " ");
+                    System.out.println("fonal"+ menet.tektonFromString(tordel[1]).getOsszekoto().indexOf(a) + " ");
                 }
                 break;
             case "bogarTekton":
