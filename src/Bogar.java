@@ -10,6 +10,8 @@ public class Bogar
     private Spora elozo;
     private Tekton helyzet;
     private int Id;
+    private boolean korVege;
+    private Bogarasz tartozik;
    
     /**
      * Alapértelmezett konstruktor, amely beállítja az alapértékeket.
@@ -28,6 +30,7 @@ public class Bogar
         mozgasok = 1;
         actionRagas = true;
         actionEves = true;
+        korVege=false;
     }
 
     /**
@@ -58,6 +61,14 @@ public class Bogar
      */
     public void lassul() {
         mozgasok--;
+    }
+
+    /**
+     * Létrehoz egy új bogarat és eltárolja a bogarásznál
+     */
+    public void szaporodo() {
+        Bogar uj = new Bogar();
+        this.tartozik.bogarHozzaad(uj, this.helyzet);
     }
 
     /**
@@ -171,5 +182,21 @@ public class Bogar
 
     public int getId(){
         return Id;
+    }
+
+    public void setkorVege(boolean i){
+        this.korVege=i;
+    }
+
+    public boolean getkorVege(){
+        return korVege;
+    }
+
+    public void setTartozik(Bogarasz i){
+        this.tartozik=i;
+    }
+
+    public Bogarasz getTartozik(){
+        return tartozik;
     }
 }

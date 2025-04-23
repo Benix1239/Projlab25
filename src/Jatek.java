@@ -10,7 +10,9 @@ public class Jatek
 {
     
     private Palya jatekter;
-    private ArrayList<Jatekos> karakterek;
+
+    private ArrayList<Gombasz> gombaszok;
+    private ArrayList<Bogarasz> bogaraszok;
 
     /*
      * Konstruktor, amely l�trehozza a j�t�kteret �s a karakterek list�j�t.
@@ -19,98 +21,133 @@ public class Jatek
      */
     public Jatek(int palyaMeret)
     {
-      karakterek = new ArrayList<Jatekos>();
+      
+      gombaszok = new ArrayList<Gombasz>();
+      bogaraszok = new ArrayList<Bogarasz>();
       jatekter = new Palya(palyaMeret);
     }
     
     /**
      * Elind�tja a j�t�kot �s kezeli a f� j�t�kmenetet.
      */
-    public void jatekIndit()
-    {
-        //szkeleton.logMethodEntry(this, "jatekIndit");
-        boolean gameRunning = true;
-        int turnCount = 0;
+    // public void jatekIndit()
+    // {
+    //     boolean gameRunning = true;
+    //     int turnCount = 0;
 
-        System.out.println("Hány gombász van?");   
-        int gombaszszam = InputHandler.getScanner().nextInt();
+    //     System.out.println("Hány gombász van?");   
+    //     int gombaszszam = InputHandler.getScanner().nextInt();
 
                 
-        for(int i=0;i<gombaszszam;i++){
-            Jatekos jatekos=null;
-            jatekos = new Gombasz(jatekter.getPalya());
-            szkeleton.addToMap(jatekos, "gombasz" + (i+1));
-            szkeleton.logMethodEntry(jatekos, "Gombasz()");
-            szkeleton.logMethodExit(jatekos, "");
-            karakterek.add(jatekos);
-        }
+    //     for(int i=0;i<gombaszszam;i++){
+    //         Jatekos jatekos=null;
+    //         jatekos = new Gombasz(jatekter.getPalya());
 
-        System.out.println("Hány bogarasz van?");   
-        int bogaraszszam = InputHandler.getScanner().nextInt();
+    //         karakterek.add(jatekos);
+    //     }
 
-        for(int i=0;i<bogaraszszam;i++){
-            Jatekos jatekos=null;
-            jatekos = new Bogarasz();
-            szkeleton.addToMap(jatekos, "bogarasz" + (i+1));
-            szkeleton.logMethodEntry(jatekos, "Bogarasz");
-            szkeleton.logMethodExit(jatekos, "");
-            karakterek.add(jatekos);
-        }
+    //     System.out.println("Hány bogarasz van?");   
+    //     int bogaraszszam = InputHandler.getScanner().nextInt();
 
-        jatekter = new Palya(gombaszszam + 10);
-        szkeleton.addToMap(jatekter, "jatekter");
-        szkeleton.logMethodEntry(jatekter, "Palya");
-        szkeleton.logMethodExit(jatekter, "");
-       
+    //     for(int i=0;i<bogaraszszam;i++){
+    //         Jatekos jatekos=null;
+    //         jatekos = new Bogarasz();
+ 
 
-        /*while (gameRunning) {
-            for (Jatekos karakter : karakterek) {
-                karakter.round();
-                jatekter.tores();
-            }
-            turnCount++;  // kilepesi feltetel?
-        }*/
-        //szkeleton.logMethodExit(this, "");
+    //         karakterek.add(jatekos);
+    //     }
+
+    //     jatekter = new Palya(gombaszszam + 10);
+ 
+    // }
+
+    public void gombaszHozzaad(Gombasz g) {
+        g.setNev("Gombasz" + (gombaszok.size()));
+        gombaszok.add(g);
     }
 
-    /**
-     * Felvesz egy �j j�t�kost a karakterek list�j�ba.
-     */
-    public void jatekosHozzaad(Jatekos karakter)
-    {
-        szkeleton.logMethodEntry(this, "jatekosHozzaad");
-       // Jatekos karakter = new Jatekos();
-        karakterek.add(karakter);
-        szkeleton.logMethodExit(this, "");
+    public void bogaraszHozzaad(Bogarasz b) {
+        b.setNev("Bogarasz" + (bogaraszok.size()));
+        bogaraszok.add(b);
     }
 
-    /**
-     * Szerializ�l�ssal bet�lti az adatokat egy f�jlb�l, bele�rtve a j�t�kteret �s a j�t�kosokat.
+     /**
+     * Szerializálással betölti az adatokat egy fájlból, beleértve a játékteret és a játékosokat.
      * 
-     * @param filePath A f�jl el�r�si �tvonala, ahonnan a j�t�k �llapota bet�lt�sre ker�l.
+     * @param filePath A fájl elérési útja, ahonnan a játék állapota betöltésre kerül.
      */
-    public void betoltes(String filePath)
-    {
+    public void betolt(String filePath) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
             jatekter = (Palya) ois.readObject();
-            karakterek = (ArrayList<Jatekos>) ois.readObject();
+        
+            gombaszok = (ArrayList<Gombasz>) ois.readObject();
+            bogaraszok = (ArrayList<Bogarasz>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Szerializ�l�ssal elmenti az adatokat egy f�jlba, bele�rtve a j�t�kteret �s a j�t�kosokat.
+     /**
+     * Szerializálással elmenti az adatokat egy fájlba, beleértve a játékteret és a játékosokat.
      * 
-     * @param filepath A f�jl el�r�si �tvonala, ahov� a j�t�k �llapota ment�sre ker�l.
+     * @param filePath A fájl elérési útja, ahová a játék állapota mentésre kerül.
      */
-    public void mentes(String filePath)
-    {
+    public void ment(String filePath) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
             oos.writeObject(jatekter);
-            oos.writeObject(karakterek);
+        
+            oos.writeObject(gombaszok);
+            oos.writeObject(bogaraszok);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    //hibakezelés
+    public Bogarasz bogaraszFromString(String bogarasz) {
+        return bogaraszok.get(Integer.parseInt(bogarasz.substring(7)));
+    }
+
+    public Bogar bogarFromString(Bogarasz bogarasz, String bogar) {
+        return bogarasz.getBogarak().get(Integer.parseInt(bogar.substring(4)));
+    }
+
+    public Tekton tektonFromString(String tekton) {
+        return jatekter.getPalya().get(Integer.parseInt(tekton.substring(5)));
+    }
+
+    public Gombasz gombaszFromString(String gombasz) {
+        return gombaszok.get(Integer.parseInt(gombasz.substring(6)));
+    }
+
+    public Fonal fonalFromString(String fonal, Tekton tekton) {
+        return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(4)));
+    }
+
+    public void lepes(String bogarasz, String bogar, String hova) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        Tekton tektonObj = tektonFromString(hova);
+        bogaraszObj.lep(bogarObj,tektonObj);
+    }
+
+    public void evesSporat(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        bogaraszObj.eves(bogarObj);
+    }
+
+    public void evesBogarat(String tekton) {
+        Tekton tektonObj = tektonFromString(tekton);
+        tektonObj.fonalElpusztit();
+    }
+
+    public void ragas(String bogarasz, String bogar, String fonal) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        Tekton tekton = bogarObj.getHelyzet();
+        Fonal fonalObj = fonalFromString(fonal, tekton);
+        bogaraszObj.ragas(bogarObj, fonalObj);
+    }
+   
 }
