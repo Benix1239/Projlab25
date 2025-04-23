@@ -8,7 +8,7 @@ public class Felszivo extends Tekton
     /*
     * @brief Parameter nelkuli konstruktor
     */
-   Felszivo(){
+   public Felszivo(){
         super();    ///Az ososztaly parameter nelkuli konstruktorat hivja
     }
 
@@ -17,7 +17,7 @@ public class Felszivo extends Tekton
      * @param spo -> A tekton spora listaja
      * @szom -> A tekton szomszed listaja
      */
-    Felszivo(ArrayList<Spora> spo, ArrayList<Tekton> szom){
+    public Felszivo(ArrayList<Spora> spo, ArrayList<Tekton> szom){
         super(spo,szom);    ///Az ososztaly parameteres konstruktorat hivja
     }
 
@@ -25,13 +25,13 @@ public class Felszivo extends Tekton
      * @brief Minden korben meghivjuk. Elszakitja a legutobb erre a tektonra letett fonalat
      */
     @Override
-    void fonalElszakadKoronkent(){
-        //szkeleton.logMethodEntry(this, "fonalElszakadKoronkent");	///Szkeleton kiiratas fuggveny kezdetekor
+    public void fonalElszakadKoronkent(){
+        ////szkeleton.logMethodEntry(this, "fonalElszakadKoronkent");	///Szkeleton kiiratas fuggveny kezdetekor
         if(osszekoto.size()!=0){
             Fonal szakitjuk=osszekoto.get(osszekoto.size()-1);
-            szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
+            //szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
            fonalElszakad(szakitjuk);
-           szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
+           //szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
     
         }
         //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
@@ -41,9 +41,9 @@ public class Felszivo extends Tekton
      * @brief Ez a tekton szeteseskor, egy masik felszivo tektont hozz letre
      */
     @Override
-    Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
-       // szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
-        //szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen	
+    private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+       // //szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
+        ////szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen	
         return new Felszivo(spo,szom);
     }
 
