@@ -17,7 +17,7 @@ public class Gombasz extends Jatekos
         this.palya = palya;
         benitottak = new ArrayList<>();
     }
-
+    
     public void gombatestHozzaad(Gombatest g){
         testek.add(g);
     }
@@ -113,5 +113,10 @@ public class Gombasz extends Jatekos
 
     public ArrayList<Gombatest> getTestek() {
         return testek;
+    }
+
+    public ArrayList<Bogar> getBenitottak()
+    {
+        return benitottak;
     }
 }

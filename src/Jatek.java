@@ -148,12 +148,15 @@ public class Jatek
     }
 
     ///
-    public void evesBogarat(String fonal, String tekton) {
-        Tekton tektonObj = tektonFromString(tekton);
-        Fonal fonalObj = fonalFromString(fonal, tektonObj);
-        
+    public boolean evesBogarat(String gombasz, String bogar) {
+        Gombasz gobj = gombaszFromString(gombasz);
+        Bogar bobj = bogarFromBenitott(gobj, bogar);
+        return gobj.bogarEves(bobj);
     }
-
+    private Bogar bogarFromBenitott(Gombasz g, String bogar)
+    {
+        return g.getBenitottak().get(Integer.parseInt(bogar.substring(4)));
+    }
     public boolean ragas(String bogarasz, String bogar, String fonal) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
@@ -226,11 +229,11 @@ public class Jatek
 
     // A palyaKor, hozzaad parancsok nem kellnek elvileg, megemeszt se
 
-    public ArrayList<Gombasz> gombaszok() {
+    public ArrayList<Gombasz> getGombaszok() {
         return gombaszok;
     }
 
-    public ArrayList<Bogarasz> bogaraszok() {
+    public ArrayList<Bogarasz> getBogaraszok() {
         return bogaraszok;
     }
 
@@ -262,23 +265,10 @@ public class Jatek
         return acc;
     }
 
-    public ArrayList<Bogar> benultBogar(String gombasz, String gombatest) {
+    public ArrayList<Bogar> benultBogar(String gombasz) {
         Gombasz gombaszObj = gombaszFromString(gombasz);
-        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
-        Tekton gombatestTektonja = gombatestObj.getHely();
-        ArrayList<Tekton> fonallalEler = gombatestTektonja.fonalKeres();
-        ArrayList<Bogar> acc = new ArrayList<>();
-
-        for (Bogarasz b : bogaraszok) {
-            for (Bogar bg : b.getBogarak()) {
-                for (Tekton t : fonallalEler) {
-                    if (t == bg.getHelyzet()) {
-                        acc.add(bg);
-                    }
-                }
-            }
-        }
-
+        ArrayList<Bogar> acc = gombaszObj.getBenitottak();
+      
         return acc;
     }
 }

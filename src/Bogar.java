@@ -113,8 +113,9 @@ public class Bogar
         }
     }
 
-    public void megeve(){
+    public boolean megEve(){
         tartozik.bogarRemove(this);
+        return true;
     }
 
     /**

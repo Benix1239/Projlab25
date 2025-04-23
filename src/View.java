@@ -16,6 +16,7 @@ public class View
         boolean ertek = true;
         Set<Tekton> tektonok;
         ArrayList<Tekton> tektonlista;
+        ArrayList<Fonal> fonallista;
         switch (tordel[0]) {
             case "jatekIndit":
                 
@@ -93,7 +94,7 @@ public class View
                 System.out.println(tordel[1] +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokra rakhat: ");
                 for(Tekton a : tektonok)
                 {
-                    System.out.println("tekton"+ menet.getjatekter.getPalya().indexOf(a) + " ");
+                    System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
                 }
                 break;
             case "gombaEler":
@@ -101,7 +102,7 @@ public class View
                 System.out.println(tordel[1] +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokat eri el: ");
                 for(Tekton a : tektonok)
                 {
-                    System.out.println("tekton"+ menet.getjatekter.getPalya().indexOf(a) + " ");
+                    System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
                 }
                 break;
             case "gombaszEler":
@@ -109,7 +110,7 @@ public class View
                 System.out.println(tordel[1] +" gombasz, az alabbi tektonokat eri el: ");
                 for(Tekton a : tektonok)
                 {
-                    System.out.println("tekton"+ menet.getjatekter.getPalya().indexOf(a) + " ");
+                    System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
                 }
                 break;
             case "fonallalOsszekotott":
@@ -117,59 +118,66 @@ public class View
                 System.out.println(tordel[1] +" tektonrol, az alabbi tektonok erhetoek el fonalakon keresztul: ");
                 for(Tekton a : tektonlista)
                 {
-                    System.out.println("tekton"+ menet.getjatekter.getPalya().indexOf(a) + " ");
+                    System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
                 }
                 break;
             case "gombaszHovaSzorhat":
-                
+               tektonok = menet.gombaszHovaSzorhat(tordel[1], tordel[2]);
+               System.out.println(tordel[1] +"gombasz az alabbi tektonokra szorhat: ");
+                for(Tekton a : tektonok)
+                {
+                    System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                }
                 break;
             case "tektononFonal":
-                
+                fonallista = menet.tektononFonal(tordel[1]);
+                System.out.println(tordel[1] +" tektonon az alabbi fonalak vannak: ");
+                for(Fonal a : fonallista)
+                {
+                    System.out.println("fonal"+ menet.tektonFromString(tordel[1]).osszekoto.indexOf(a) + " ");
+                }
                 break;
             case "bogarTekton":
-                
-                break;
-            case "palyaKor":
-                
-                break;
-            case "gombaszHozzad":
-                
-                break;
-            case "bogaraszHozzad":
-                
-                break;
-            case "tetkonHozzad":
-                
-                break;
-            case "gombatestHozzaad":
-                
-                break;
-            case "bogarHozzad":
-                
-                break;
-            case "sporaHozzad":
-                
+              Tekton t =  menet.bogarTekton(tordel[1], tordel[2]);
+              System.out.println(tordel[1] +"-nek a " + tordel[2] + " bogara, a tekton" + menet.getJatekter().getPalya().indexOf(t) + "tektonon all.");
                 break;
             case "gombaszok":
-                
+                System.out.println("gombasz jatekosok: ");
+                for(Gombasz g : menet.getGombaszok())
+                {
+                    System.out.println("gombasz" + menet.getGombaszok().indexOf(g));
+                }
                 break;
             case "bogaraszok":
-                
-                break;
-            case "helyzet":
-                
-                break;
-            case "megemeszt":
-                
+            System.out.println("bogarasz jatekosok: ");
+            for(Bogarasz g : menet.getBogaraszok())
+            {
+                System.out.println("bogarasz" + menet.getBogaraszok().indexOf(g));
+            }
                 break;
             case "gombatestListazas":
-                
+               ArrayList<Gombatest> gt = menet.gombatestListazas(tordel[1]);
+                System.out.println(tordel[1] + " gombatestjei: ");
+                for(Gombatest g : gt)
+                {
+                    System.out.println("gombatest" + gt.indexOf(g));
+                }
                 break;
             case "tektonSzomszedNincsFonal":
-                
+                tektonlista = menet.tektonSzomszedNincsFonal(tordel[1]);
+                System.out.println(tordel[1] + "tekton szomszedai amikre nem megy fonal: ");
+                for(Tekton a : tektonlista)
+                {
+                    System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                }
                 break;
             case "benultBogar":
-                
+                ArrayList<Bogar> bogarLista = menet.benultBogar(tordel[1]);
+                System.out.println("A " + tordel[1] + " altal elert benitott bogarak: ");
+                for(Bogar b : bogarLista)
+                {
+                    System.out.println("bogar" + bogarLista.indexOf(b));
+                }
                 break;
             
             default:
