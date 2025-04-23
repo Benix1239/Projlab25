@@ -21,12 +21,12 @@ public class Jatek
      * 
      * @param palyaMeret A p�lya m�rete.
      */
-    public Jatek(int palyaMeret)
+    public Jatek()
     {
       
       gombaszok = new ArrayList<Gombasz>();
       bogaraszok = new ArrayList<Bogarasz>();
-      jatekter = new Palya(palyaMeret);
+      jatekter = new Palya();
     }
     
     public Palya getJatekter() {
