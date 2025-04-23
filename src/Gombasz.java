@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -17,20 +18,12 @@ public class Gombasz extends Jatekos
     }
 
     public void gombatestHozzaad(Gombatest g){
-        //szkeleton.logMethodEntry(this, "gombatestHozzaad");
         testek.add(g);
-        //szkeleton.logMethodExit(this, "");
     }
 
-    public void Round(){
-     
-    }
-
-    //osszegyujti, hogy a hozza tartozo testekbol melyik tektonok erhetoek el es ha talal olyat, ami nem erheto el,
-    //de hozza tartozo fonal van rajta, akkor azt a fonalat torli a tektonrol
+    //torli a fonalakat, amik már nem elérhetőek a gombász egyik testjéből sem
     public void elszakadasDfsKezeles(){
-        //szkeleton.logMethodEntry(this, "elszakadasDfsKezeles");
-        HashSet<Tekton> elerhetok = new HashSet<>();
+        Set<Tekton> elerhetok = new HashSet<>();
         for(Gombatest test : testek){
             Set<Tekton> elerhetoTektonok = test.dfs();
             for(Tekton t : elerhetoTektonok){
@@ -40,196 +33,66 @@ public class Gombasz extends Jatekos
 
         for(Tekton t : palya){
             if(!elerhetok.contains(t)){
-               ArrayList<Fonal> fonalak = new ArrayList<>();
-               for(Fonal f : t.getOsszekoto())
-               {
-                    fonalak.add(f);
-               }
-               for(Fonal f : fonalak){
-                    if(f.getTartozik() == this){
-                        t.getOsszekoto().remove(f);
-                    }
-               }
+                t.fonalElpusztit(this);
             }
         }
-        //szkeleton.logMethodExit(this, "");
+
+        for(Tekton t : palya){
+            if(!elerhetok.contains(t)){
+                t.megseHalMeg();
+            }
+        }
     }
 
     public void removeGombatest(Gombatest g){
-        //szkeleton.logMethodEntry(this, "removeGombatest");
         testek.remove(g);
-        //szkeleton.logMethodExit(this, "");
     }
 
-    public void fonalLerak(){
-        //szkeleton.logMethodEntry(this, "fonalLerak");
-        ArrayList<Gombatest> temptestek = new ArrayList<>();
-        for(Gombatest gombatest : testek){
-            temptestek.add(gombatest);
+    Set<Tekton> honnanLehetosegek(Gombatest g){
+        if(testek.contains(g)){
+            return g.dfs();
         }
-
-        for(Gombatest gombatest : temptestek){
-            Set<Tekton> honnanLehetosegek = new HashSet<>();
-
-            szkeleton.logMethodEntry(gombatest, "dfs");
-            Set<Tekton> ujMegtalaltak = gombatest.dfs();
-            szkeleton.logMethodExit(gombatest, "megtalaltak");
-
-
-            for(Tekton t : ujMegtalaltak){
-                honnanLehetosegek.add(t);
-            }
-
-            System.out.println("Honnan szeretnel fonalat lerakni? Lehetosegek: ");
-            Set<Integer> ervenyesErtekek = new HashSet<>();
-            for(Tekton t : honnanLehetosegek){
-                System.out.println(t.getId());
-                ervenyesErtekek.add(t.getId());
-            }
-            int szam;
-            while (true) {
-                if(InputHandler.getScanner().hasNextInt()){
-                    szam = InputHandler.getScanner().nextInt();
-                    if (ervenyesErtekek.contains(szam)) {
-                        break;
-                    } else {
-                        System.out.println("Hibas bemenet!");
-                    }
-                }else {
-                    System.out.println("Hibas bemenet!");
-                    InputHandler.getScanner().next();
-                }
-            }
-
-            Tekton honnan = null;
-            for(Tekton t : honnanLehetosegek){
-                if(t.getId() == szam){
-                    honnan = t;
-                }
-            }
-
-            szkeleton.logMethodEntry(honnan, "getSzomszed");
-            ArrayList<Tekton> hovaLehetosegek = new ArrayList<>();
-            for(Tekton f : honnan.getSzomszed())
-            {
-
-                hovaLehetosegek.add(f);
-            }
-            szkeleton.logMethodExit(honnan, "hovaLehetosegek");
-
-            ArrayList<Fonal> honnanFonaljai = new ArrayList<>();
-            for(Fonal f : honnan.getOsszekoto())
-            {
-                honnanFonaljai.add(f);
-            }
-
-            ArrayList<Tekton> torlendo = new ArrayList<>();
-            for(Tekton t : hovaLehetosegek){
-                for(Fonal f : honnanFonaljai){
-                    if(f.getTartozik() == this && f.getHova() == t){
-                        torlendo.add(t);
-                    }
-                }
-            }
-
-            hovaLehetosegek.removeAll(torlendo);
-
-            System.out.println("Hova szeretnel fonalat lerakni? Lehetosegek: ");
-            ervenyesErtekek = new HashSet<>();
-            for(Tekton t : hovaLehetosegek){
-                System.out.println(t.getId());
-                ervenyesErtekek.add(t.getId());
-            }
-            while (true) {
-                if(InputHandler.getScanner().hasNextInt()){
-                    szam = InputHandler.getScanner().nextInt();
-                    if (ervenyesErtekek.contains(szam)) {
-                        break;
-                    } else {
-                        System.out.println("Hibas bemenet!");
-                    }
-                }else {
-                    System.out.println("Hibas bemenet!");
-                    InputHandler.getScanner().next();
-                }
-            }
-
-            Tekton hova = null;
-            for(Tekton t : hovaLehetosegek){
-                if(t.getId() == szam){
-                    hova = t;
-                }
-            }
-
-            szkeleton.logMethodEntry(gombatest, "elhelyez");
-            boolean vissza = gombatest.elhelyez(honnan, hova);
-            szkeleton.logMethodExit(gombatest, vissza);
-
-        }
-        //szkeleton.logMethodExit(this, "");
+        return null;
     }
 
-    public void sporaSzor(){
-        //szkeleton.logMethodEntry(this, "sporaSzor");
-        ArrayList<Gombatest> temptestek = new ArrayList<>();
-        for(Gombatest gombatest : testek){
-            temptestek.add(gombatest);
+    //visszaadja, hogy a honnan tektonról melyik Tektonokra tud még a gombász fonalat rakni
+    Set<Tekton> hovaLehetosegek(Tekton honnan){
+        if(honnan.hanyFonalaVanGombasznak(this) != 0){
+            ArrayList<Tekton> honnanSzomszedok = honnan.getSzomszed();
+            ArrayList<Tekton> honnanOsszekotve = honnan.fonalKeres(this);
+            Set<Tekton> hovaLehetoseg = new HashSet<>();
+
+            for(Tekton t : honnanSzomszedok){
+                if(!honnanOsszekotve.contains(t)){
+                    hovaLehetoseg.add(t);
+                }
+            }
+            return hovaLehetoseg;
         }
+        return null;
+    }
 
-        for(Gombatest gombatest : temptestek){
 
-            szkeleton.logMethodEntry(gombatest, "szomszedKeres");
-            ArrayList<Tekton> szomszedokList = gombatest.szomszedKeres();
-            szkeleton.logMethodExit(gombatest, "szomszedok");
-
-            HashSet<Tekton> szomszedok = new HashSet<>(szomszedokList);
-            if(gombatest.getMaradt() < 3){
-                for(Tekton t : szomszedokList){
-
-                    szkeleton.logMethodEntry(t, "getSzomszed");
-                    ArrayList<Tekton> vmi = t.getSzomszed();
-                    szkeleton.logMethodExit(t, "szomszedok");
-
-                    szomszedok.addAll(vmi);
-                }
-            }
-
-            System.out.println("Hova szeretnel sporat szorni? Lehetosegek: ");
-            Set<Integer> ervenyesErtekek = new HashSet<>();
-            for(Tekton t : szomszedok){
-                int id = t.getId();
-                System.out.println(id);
-                ervenyesErtekek.add(id);
-            }
-
-            int szam = 1;
-            while (true) {
-                if(InputHandler.getScanner().hasNextInt()){
-                    szam = InputHandler.getScanner().nextInt();
-                    if (ervenyesErtekek.contains(szam)) {
-                        break;
-                    } else {
-                        System.out.println("Hibas bemenet!");
-                    }
-                }else {
-                    System.out.println("Hibas bemenet!");
-                    InputHandler.getScanner().next();
-                }
-            }
-
-            Tekton hova = null;
-            for(Tekton t : szomszedok){
-                if(t.getId() == szam){
-                    hova = t;
-                }
-            }
-
-            szkeleton.logMethodEntry(gombatest, "elszor");
-            gombatest.elszor(hova);
-            szkeleton.logMethodExit(gombatest, "");
-
-            //szkeleton.logMethodExit(this, "");
+    public boolean fonalLerak(Gombatest g, Tekton honnan, Tekton hova){
+        if(testek.contains(g) && honnanLehetosegek(g).contains(honnan) && hovaLehetosegek(honnan).contains(hova)){
+            return g.elhelyez(honnan, hova);
         }
+        return false;
+    }
+
+    public Set<Tekton> hovaSzorhat(Gombatest g){
+        if(testek.contains(g)){
+            return g.hovaSzorhat();
+        }
+        return null;       
+    }
+
+    public boolean sporaSzor(Gombatest g, Tekton hova){
+        if(testek.contains(g) && hovaSzorhat(g).contains(hova)){
+            return g.elszor(hova);
+        }
+        return false; 
+        
     }
     
     public void setNev(String nev) {
