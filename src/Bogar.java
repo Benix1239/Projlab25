@@ -23,6 +23,40 @@ public class Bogar
         elozo = null;
     }
 
+    private void checkKorvege(){
+        if(mozgasok == 0 && actionEves==false && actionRagas==false){
+            korVege = true;
+        }
+
+        if(mozgasok <= 1 && helyzet.fonalKeres()==null){
+            korVege = true;
+        }
+
+        if(actionRagas == true  && helyzet.getOsszekoto()==null){
+            korVege = true;
+        }
+        if(actionEves == true && helyzet.getSporak()==null){
+            korVege = true;
+        }
+    }
+
+    public boolean korVegeEmeszt(){
+        //bogar.beallit();
+
+        if(this.elozo!=null){
+            this.getTartozik().pontok += this.getSpora().getPluszpont();
+        }
+
+        this.sporaMegemesztes();
+
+        if (this.elozo==null) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     /**
      * Visszaállítja az alapértelmezett értékeket.
      */
@@ -82,6 +116,7 @@ public class Bogar
         helyzet.nemHalMegListaTorles();
         actionRagas = false;
         actionEves = false;
+        checkKorvege();
     }
 
     /**
@@ -91,6 +126,7 @@ public class Bogar
         elozo = helyzet.sporatEszik();
         actionRagas = false;
         actionEves = false;
+        checkKorvege();
     }
 
     /**
@@ -101,6 +137,7 @@ public class Bogar
     public void mozgas(Tekton t) {
         helyzet = t;
         mozgasok--;
+        checkKorvege();
     }
 
     /**
@@ -189,11 +226,11 @@ public class Bogar
         return Id;
     }*/
 
-    public void setkorVege(boolean i){
+    public void setKorVege(boolean i){
         this.korVege=i;
     }
 
-    public boolean getkorVege(){
+    public boolean getKorVege(){
         return korVege;
     }
 

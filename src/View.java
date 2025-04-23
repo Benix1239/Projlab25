@@ -33,6 +33,9 @@ public class View
             case "korVege":
                 
                 break;
+            case "passz":
+                ertek=menet.passzBogarasz(tordel[1], tordel[2]);
+                break;
             case "lepes":
                 ertek = menet.lepes(tordel[1], tordel[2], tordel[3]);
                 break;

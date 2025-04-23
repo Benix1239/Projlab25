@@ -168,6 +168,22 @@ public class Jatek {
         return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(4)));
     }
 
+    //simi
+    public boolean passzBogarasz(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+    
+
+        boolean returnValue = false;
+        if (jelenlegiJatekos_e(bogaraszObj)) {
+            bogarObj.setKorVege(true);
+            returnValue = bogarObj.getKorVege();
+        }
+
+        jatekosKorvege();
+        return returnValue;
+    }
+
     public boolean lepes(String bogarasz, String bogar, String hova) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);

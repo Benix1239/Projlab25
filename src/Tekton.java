@@ -17,7 +17,9 @@ public class Tekton
 	private int id;							///Tarolja a tekton id-jat
 
 
-
+	public ArrayList<Spora> getSporak(){
+		return sporak;
+	}
 
 	/*
 	 * @brief Konstruktor

@@ -8,103 +8,28 @@ import java.util.ArrayList;
 public class Bogarasz extends Jatekos
 {
     private ArrayList<Bogar> bogarak;
-    //private ArrayList<String> azonosito;
-    //private int Id;
-
-    /*public void setId(int i){
-        this.Id=i;
-    }
-
-    public int getId(){
-        return Id;
-    }*/
 
     public Bogarasz(){
         this.bogarak = new ArrayList<Bogar>();
     }
 
-    /**
-     * A játékos köre, amely során döntéseket hozhat a bogár mozgásáról, evéséről és rágásáról.
-     * A kör addig tart, amíg a bogárnak van mozgáspontja, vagy képes enni és rágni.
-     */
-    /*public void round()
-    {
-
-        ArrayList<Bogar> tempbogarak = new ArrayList<>();
-        for(Bogar bogar : tempbogarak){
-            tempbogarak.add(bogar);
-        }
-        
-        boolean vege=false;
-        for(Bogar bogar: tempbogarak){
-            while((bogar.getMozgaspont()!=0||bogar.getactionEves()==true||bogar.getactionRagas()==true)&&(!vege)){
-            
-                ArrayList<Fonal> fonalak= null;
-                Tekton helyzet= null;
-                System.out.println("Mit szeretnél csinálni");
-                System.out.println("1. Mozgás");
-                System.out.println("2. Evés");
-                System.out.println("3. Rágni");
-                System.out.println("4. Vége a körömnek");
-                
-                int actionValasztas =InputHandler.getScanner().nextInt();
-                
-                switch (actionValasztas) {
-                    case 1:
-                        lep(bogar);
-                        break;
-                    case 2:
-                        eves(bogar);
-                        break;
-                    case 3:
-                        ragas(bogar);
-                        break;
-                    case 4:
-                        vege=true;
-                        break;
-                    default:
-                        System.out.println("Érvénytelen menüpontot választottál");
-                        break;
-                }
-            }
     
-            szkeleton.logMethodEntry(bogar, "beallit");
+    public void korElejeInicializalas(){
+        for(Bogar bogar : bogarak){
             bogar.beallit();
-            szkeleton.logMethodExit(bogar, "");
-    
-            if(bogar.getSpora()!=null){
-                pontok += bogar.getSpora().getPluszpont();
-            }
-            szkeleton.logMethodEntry(bogar, "sporaMegemesztes");
-            bogar.sporaMegemesztes();
-            szkeleton.logMethodExit(bogar, "");
         }
-        //szkeleton.logMethodExit(this, "");
     }
- */
-   
-    /**
-     * A bogar körének végén megemészti a körében megevett spórát
-     *
-     * @param bogar A bogár, amelyet mozgatni szeretnénk.
-     * @return true, ha a lépés emésztés sikeres volt, különben false.
-     */
-    public boolean korVege(Bogar bogar){
-        bogar.beallit();
-
-        if(bogar.getSpora()!=null){
-            pontok += bogar.getSpora().getPluszpont();
+    
+    private boolean mindenBogarVege(){
+        for(Bogar bogar : bogarak){
+            if(!bogar.getKorVege()){
+                return false;
+            }
         }
-
-        bogar.sporaMegemesztes();
-
-        if (bogar.getSpora()==null) {
-            bogar.setkorVege(true);
-            return true;
+        for(Bogar bogar : bogarak){
+            bogar.korVegeEmeszt();
         }
-        else{
-            return false;
-        }
+        return true;
     }
 
     /**
@@ -132,14 +57,16 @@ public class Bogarasz extends Jatekos
                 bogar.mozgas(tekton);
             }
             if(bogar.getMozgaspont()==(mozgas-1) && bogar.getHelyzet()==tekton){
+                korVege=mindenBogarVege();
                 return true;
             }
             else{
+                korVege= mindenBogarVege();
                 return false;
             }
         }
-
         else{
+            korVege=mindenBogarVege();
             return false;
         }
     }
@@ -153,20 +80,18 @@ public class Bogarasz extends Jatekos
      */
     public boolean eves(Bogar bogar){
         if(bogar.getactionEves()==true){
-            if (bogar.getHelyzet().sporak!=null) {
-                bogar.eves();
-                if(bogar.getactionEves()==false && bogar.getSpora()!=null){
-                    return true;
-                }
-                else{
-                    return false;
-                }
+            bogar.eves();
+            if(bogar.getactionEves()==false && bogar.getSpora()!=null){
+                korVege=mindenBogarVege();
+                return true;
             }
             else{
+                korVege=mindenBogarVege();
                 return false;
             }
         }
         else{
+            korVege=mindenBogarVege();
             return false;
         }
     }
@@ -188,13 +113,16 @@ public class Bogarasz extends Jatekos
             }
             
             if (bogar.getactionRagas()==false && (!bogar.getHelyzet().getOsszekoto().contains(fonal))) {
+                korVege=mindenBogarVege();
                 return true;
             }
             else{
+                korVege=mindenBogarVege();
                 return false;
             }
         }
         else{
+            korVege=mindenBogarVege();
             return false;
         }
     }
@@ -212,8 +140,6 @@ public class Bogarasz extends Jatekos
         bogarak.get(bogarak.size()-1).setHelyzet(t);
         b.beallit();
         b.setTartozik(this);
-        //b.setId(bogarak.size());
-        //azonosito.add("Bogar"+b.getId());
         if(bogarak.contains(b) && b.getHelyzet()==t){
             return true;
         }
