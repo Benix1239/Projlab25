@@ -100,13 +100,14 @@ public class Gombasz extends Jatekos
     }
 
     public boolean fonalLerak(Gombatest g, Tekton honnan, Tekton hova){
+        boolean returnValue = false;
         if(testek.contains(g) && honnanLehetosegek(g).contains(honnan) && hovaLehetosegek(honnan).contains(hova)){
-            return g.elhelyez(honnan, hova);
+            returnValue = g.elhelyez(honnan, hova);
         }
         if(mindenGombaKorVege()){
             korVege = true;
         }
-        return false;
+        return returnValue;
     }
 
     public Set<Tekton> hovaSzorhat(Gombatest g){
@@ -117,10 +118,14 @@ public class Gombasz extends Jatekos
     }
 
     public boolean sporaSzor(Gombatest g, Tekton hova){
+        boolean returnValue = false;
         if(testek.contains(g) && hovaSzorhat(g).contains(hova)){
-            return g.elszor(hova);
+            returnValue = g.elszor(hova);
         }
-        return false; 
+        if(mindenGombaKorVege()){
+            korVege = true;
+        }
+        return returnValue; 
         
     }
     
