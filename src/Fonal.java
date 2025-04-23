@@ -32,6 +32,16 @@ public class Fonal extends Osszekoto
         
     }
 
+    public boolean bogarEves(Bogar b){
+        if(b.megEve()){
+            Gombatest g = new Gombatest(b.getHelyzet(), tartozik);
+            b.getHelyzet().setGombatest(g);
+            tartozik.gombatestHozzaad(g);
+            return true;
+        }
+        
+        return false;
+    }
 
     public boolean getElragva(){
         return elragva;
