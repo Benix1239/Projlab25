@@ -27,6 +27,21 @@ public class Jatek {
         bogaraszok = new ArrayList<Bogarasz>();
         jatekter = new Palya();
         jatekosIndex = 0;
+        inicializalas();
+    }
+
+    private void inicializalas(){
+        Tekton hely = new Tekton();
+        Tekton t2 = new Tekton();
+        hely.addSzomszed(t2);
+        t2.addSzomszed(hely);
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(hely);
+        Gombasz karakter = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(hely,karakter);
+        karakter.gombatestHozzaad(test);
+        hely.setGombatest(test);
+        gombaszok.add(karakter);
     }
 
     public Palya getJatekter() {
@@ -153,15 +168,15 @@ public class Jatek {
     }
 
     public Tekton tektonFromString(String tekton) {
-        return jatekter.getPalya().get(Integer.parseInt(tekton.substring(5)));
+        return jatekter.getPalya().get(Integer.parseInt(tekton.substring(6)));
     }
 
     public Gombasz gombaszFromString(String gombasz) {
-        return gombaszok.get(Integer.parseInt(gombasz.substring(6)));
+        return gombaszok.get(Integer.parseInt(gombasz.substring(7)));
     }
 
     public Gombatest gombatestFromString(String gombatest, Gombasz gombasz) {
-        return gombasz.getTestek().get(Integer.parseInt(gombatest.substring(8)));
+        return gombasz.getTestek().get(Integer.parseInt(gombatest.substring(9)));
     }
 
     public Fonal fonalFromString(String fonal, Tekton tekton) {

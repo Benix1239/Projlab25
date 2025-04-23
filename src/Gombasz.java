@@ -128,6 +128,10 @@ public class Gombasz extends Jatekos
         return returnValue; 
         
     }
+
+    public String mitLehetCsinalni(){
+        return "Meg nincs megvalositva";
+    }
     
     public void setNev(String nev) {
         this.nev = nev;

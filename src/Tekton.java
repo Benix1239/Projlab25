@@ -375,7 +375,7 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 
 	public void fonalElpusztit(Gombasz t){
 
-		ArrayList<Fonal> tomb=new ArrayLIst<>();
+		ArrayList<Fonal> tomb=new ArrayList<>();
 		tomb=fonalKeres(t);
 
 		for(int i=0;i<tomb.size();i++){

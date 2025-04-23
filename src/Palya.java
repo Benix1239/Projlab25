@@ -21,6 +21,7 @@ public class Palya implements Serializable
         palya = new ArrayList<>();
     }
 
+
     /**
      * Hozz�ad egy �j Tekton objektumot a p�ly�hoz.
      * 
