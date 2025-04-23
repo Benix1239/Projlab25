@@ -74,7 +74,7 @@ public class Gombasz extends Jatekos
 
 
     public boolean fonalLerak(Gombatest g, Tekton honnan, Tekton hova){
-        if(testek.contains(g)){
+        if(testek.contains(g) && honnanLehetosegek(g).contains(honnan) && hovaLehetosegek(honnan).contains(hova)){
             return g.elhelyez(honnan, hova);
         }
         return false;
@@ -88,7 +88,7 @@ public class Gombasz extends Jatekos
     }
 
     public boolean sporaSzor(Gombatest g, Tekton hova){
-        if(testek.contains(g)){
+        if(testek.contains(g) && hovaSzorhat(g).contains(hova)){
             return g.elszor(hova);
         }
         return false; 
