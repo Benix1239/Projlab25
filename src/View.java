@@ -34,36 +34,10 @@ public class View
                 
                 break;
             case "info":
-                if(tordel[1].contains("bogarasz"))
-                {
-                    ertek=menet.infoBogarasz(tordel[1]);
-                }
-                else
-                {
-                    ertek=menet.infoGombasz(tordel[1]);
-                }
-                
-                if(ertek)
-                {
-                    System.out.println("Sikerult a muvelet");
-                }
-                else
-                {
-                    System.out.println("Sikertelen a muvelet");
-                }
+                System.out.println(menet.info());
                 break;
             case "passz":
-                
-
-                if(tordel[1].contains("bogarasz"))
-                {
-                    ertek=menet.passzBogarasz(tordel[1]);
-                }
-                else
-                {
-                    ertek=menet.passzGombasz(tordel[1]);
-                }
-                
+                ertek = menet.passz();
                 if(ertek)
                 {
                     System.out.println("Sikerult a muvelet");

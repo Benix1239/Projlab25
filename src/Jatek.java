@@ -168,56 +168,23 @@ public class Jatek {
         return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(4)));
     }
 
-    //simi
-    public boolean passzBogarasz(String bogarasz) {
-        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
 
-        boolean returnValue = false;
-        if (jelenlegiJatekos_e(bogaraszObj)) {
-            bogaraszObj.setKorvege(true);
-            returnValue = bogaraszObj.getKorvege();
-        }
-
-        jatekosKorvege();
-        return returnValue;
-    }
 
     //simi
-    public boolean passzGombasz(String gombasz) {
-        Bogarasz gombaszObj = bogaraszFromString(gombasz);
-
+    public boolean passz(){
         boolean returnValue = false;
-        if (jelenlegiJatekos_e(gombaszObj)) {
-            gombaszObj.setKorvege(true);
-            returnValue = gombaszObj.getKorvege();
-        }
-
+        jelenlegiJatekos().setKorvege(true);
+        returnValue = jelenlegiJatekos().getKorvege();
         jatekosKorvege();
         return returnValue;
     }
 
-    public boolean infoGombasz(String gombasz) {
-        Bogarasz gombaszObj = bogaraszFromString(gombasz);
-
-        boolean returnValue = false;
-        if (jelenlegiJatekos_e(gombaszObj)) {
-            
-        }
-
+    public String info() {
+       
+        String s=null;
+        s= jelenlegiJatekos().mitLehetCsinalni();
         jatekosKorvege();
-        return returnValue;
-    }
-
-    public boolean infoBogarasz(String bogarasz) {
-        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
-
-        boolean returnValue = false;
-        if (jelenlegiJatekos_e(bogaraszObj)) {
-            
-        }
-
-        jatekosKorvege();
-        return returnValue;
+        return s;
     }
 
     public boolean lepes(String bogarasz, String bogar, String hova) {
