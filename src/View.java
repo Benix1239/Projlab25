@@ -1,5 +1,7 @@
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Set;
 
 public class View
 {
@@ -11,7 +13,9 @@ public class View
     {
         String beolvas = bemenet.nextLine();
         String tordel[] = beolvas.split(" ");
-
+        boolean ertek = true;
+        Set<Tekton> tektonok;
+        ArrayList<Tekton> tektonlista;
         switch (tordel[0]) {
             case "jatekIndit":
                 
@@ -29,40 +33,92 @@ public class View
                 
                 break;
             case "lepes":
-                menet.lepes(tordel[1], tordel[2], tordel[3]);
+                ertek = menet.lepes(tordel[1], tordel[2], tordel[3]);
                 break;
             case "eves":
                 
                 if(tordel[1].contains("bogarasz"))
                 {
-                    menet.evesSporat(tordel[1], tordel[2]);
+                    ertek = menet.evesSporat(tordel[1], tordel[2]);
                 }
                 else
                 {
-                    menet.evesBogarat(tordel[1], tordel[2]);
+                    ertek = menet.evesBogarat(tordel[1], tordel[2]);
                 }
-
+                
+                if(ertek)
+                {
+                    System.out.println("Sikerult a muvelet");
+                }
+                else
+                {
+                    System.out.println("Sikertelen a muvelet");
+                }
                 break;
             case "ragas":
-                menet.ragas(tordel[1],tordel[2],tordel[3]);
+                ertek = menet.ragas(tordel[1],tordel[2],tordel[3]);
+                if(ertek)
+                {
+                    System.out.println("Sikerult a muvelet");
+                }
+                else
+                {
+                    System.out.println("Sikertelen a muvelet");
+                }
                 break;
             case "fonalLerak":
-                menet.fonalLerak(tordel[1], tordel[2], tordel[3], tordel[4]);
+                ertek = menet.fonalLerak(tordel[1], tordel[2], tordel[3], tordel[4]);
+                if(ertek)
+                {
+                    System.out.println("Sikerult a muvelet");
+                }
+                else
+                {
+                    System.out.println("Sikertelen a muvelet");
+                }
                 break;
             case "sporaSzor":
-                menet.sporaSzor(tordel[1], tordel[2], tordel[3]);
+                ertek = menet.sporaSzor(tordel[1], tordel[2], tordel[3]);
+                if(ertek)
+                {
+                    System.out.println("Sikerult a muvelet");
+                }
+                else
+                {
+                    System.out.println("Sikertelen a muvelet");
+                }
                 break;
             case "gombaHovaRakhat":
-                menet.gombaHovaRakhat(tordel[1], tordel[2]);
+                tektonok = menet.gombaHovaRakhat(tordel[1], tordel[2]);
+                System.out.println(tordel[1] +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokra rakhat: ");
+                for(Tekton a : tektonok)
+                {
+                    System.out.println("tekton"+ menet.getjatekter.getPalya().indexOf(a) + " ");
+                }
                 break;
             case "gombaEler":
-                menet.gombaEler(tordel[1], tordel[2]);
+                tektonok = menet.gombaEler(tordel[1], tordel[2]);
+                System.out.println(tordel[1] +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokat eri el: ");
+                for(Tekton a : tektonok)
+                {
+                    System.out.println("tekton"+ menet.getjatekter.getPalya().indexOf(a) + " ");
+                }
                 break;
             case "gombaszEler":
-                menet.gombaszEler(tordel[1]);
+                tektonok = menet.gombaszEler(tordel[1]);
+                System.out.println(tordel[1] +" gombasz, az alabbi tektonokat eri el: ");
+                for(Tekton a : tektonok)
+                {
+                    System.out.println("tekton"+ menet.getjatekter.getPalya().indexOf(a) + " ");
+                }
                 break;
             case "fonallalOsszekotott":
-                menet.fonallalOsszekotott(tordel[1]);
+                tektonlista = menet.fonallalOsszekotott(tordel[1]);
+                System.out.println(tordel[1] +" tektonrol, az alabbi tektonok erhetoek el fonalakon keresztul: ");
+                for(Tekton a : tektonlista)
+                {
+                    System.out.println("tekton"+ menet.getjatekter.getPalya().indexOf(a) + " ");
+                }
                 break;
             case "gombaszHovaSzorhat":
                 
