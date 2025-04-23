@@ -32,21 +32,22 @@ public class Bogarasz extends Jatekos
         return true;
     }
 
-    public boolean mitLehetCsinalni(){
+    public String mitLehetCsinalni(){
+        String returnValue = null;
         for(Bogar bogar : bogarak){
-            System.out.println("Bogar"+bogarak.indexOf(bogar)+ "Megmaradt lepesek száma: " + bogar.getMozgaspont()+ "\t");
+            returnValue += "Bogar"+bogarak.indexOf(bogar) + ":\nMegmaradt lepesek száma: " + bogar.getMozgaspont()+ "\n";
             if (bogar.getactionEves()) {
-                System.out.println("Tud meg enni\t");
+                returnValue += "Tud meg enni\n";
             } else {
-                System.out.println("Nem tud meg enni\t");
+                returnValue += "Nem tud meg enni\n";
             }
             if (bogar.getactionRagas()) {
-                System.out.println("Tud meg ragni\t");
+                returnValue += "Tud meg ragni\n\n";
             } else {
-                System.out.println("Nem tud meg ragni\t");
+                returnValue += "Nem tud meg ragni\n\n";
             }
-        }
-        return true; 
+        } 
+        return returnValue;
     }
 
     /**
