@@ -113,6 +113,10 @@ public class Bogar
         }
     }
 
+    public void megeve(){
+        tartozik.bogarRemove(this);
+    }
+
     /**
      * Lekéri a bogár jelenlegi helyzetét.
      * 
