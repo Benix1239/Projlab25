@@ -47,7 +47,7 @@ public class Egyfonalas extends Tekton
     /*
      * @brief Elszakitj a tektonon levo osszes fonalat
      */
-    private void mindenFonalElszakad(){
+    protected  void mindenFonalElszakad(){
 		for(Fonal elem : osszekoto){
 			fonalElszakad(elem);
 		}
@@ -79,7 +79,7 @@ public class Egyfonalas extends Tekton
      * @return Letrehozott tekton
      */
  
-    private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+    protected  Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
         return new Egyfonalas(spo,szom);
     }
 

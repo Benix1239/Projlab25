@@ -272,7 +272,7 @@ public class Tekton
 	public void fonalElpusztit(Gombasz t){
 
 		ArrayList<Fonal> tomb=new ArrayList<>();
-		tomb=fonalKeres(t);
+		tomb=getOsszekoto(t);
 
 		for(int i=0;i<tomb.size();i++){
 			fonalElszakad(tomb.get(i));
@@ -497,13 +497,7 @@ public class Tekton
 	public ArrayList<Tekton> fonalNelkuliSzomzed(Gombasz g)
 	{
 		ArrayList<Tekton> eredmeny = new ArrayList<>();
-		ArrayList<Fonal> fonalak= getOsszekoto(g);
-		ArrayList<Tekton> temp = new ArrayList<>();
-		for(Fonal t : fonalak)
-		{
-			temp.add(t.getHova());
-		}
-		
+		ArrayList<Tekton> temp = fonalKeres(g);
 		for(Tekton t : szomszed)
 		{
 			if(!temp.contains(t))
@@ -516,4 +510,3 @@ public class Tekton
 	}
 
 }
-

@@ -1,5 +1,4 @@
-
-
+import java.util.Random;
 
 public abstract class Spora 
 {
@@ -14,6 +13,8 @@ public abstract class Spora
     public Spora(Gombasz tartozik)
     {
         this.tartozik = tartozik;
+        Random random = new Random();
+		pluszPont=random.nextInt(5);
     }
 
     public Gombasz getTartozik()
