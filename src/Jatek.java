@@ -29,10 +29,29 @@ public class Jatek {
         bogaraszok = new ArrayList<Bogarasz>();
         jatekter = new Palya();
         jatekosIndex = 0;
-        inicializalas();
+        inicializalasBogar();
     }
 
-    private void inicializalas(){
+    private void inicializalasBogar(){
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(t1);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+    }
+
+    private void inicializalasGombasz(){
         Tekton hely = new Tekton();
         Tekton t2 = new Tekton();
         hely.addSzomszed(t2);

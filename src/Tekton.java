@@ -74,7 +74,7 @@ public class Tekton
 	 * @return true -> szetesik
 	 * @return false -> nem esik szet 
 	 */
-	private boolean torikE(){
+	protected boolean torikE(){
 
 		int toresarany=eletkor*3+10;	///toresre az esely: (eletkor*5 + kezdeti esely). Azt jelenti hogy kezdeti esely, koronkent 5%-al no.
 		Random random = new Random();	
@@ -89,7 +89,7 @@ public class Tekton
 	/*
 	 * @brief Minden tektonon levo fonalat elszakitjuk, szeteseskor
 	 */
-	private void mindenFonalElszakad(){
+	protected void mindenFonalElszakad(){
 		for(int i=0;i<osszekoto.size();i++){
 			fonalElszakad(osszekoto.get(i));
 		}
@@ -99,7 +99,7 @@ public class Tekton
 	 * @brief Letrehozzuk a listat , ami majd a szeteseskor letrejott uj tekton szomszedait fogja tartalmazni. A szomszedokat random valasztjuk ki.
 	 * @return uj -> Az uj tektonnak beallitani kivant szomszed lista.
 	 */
-	private ArrayList<Tekton> ujTektonSzomszedListajanakBeallitasa(){
+	protected ArrayList<Tekton> ujTektonSzomszedListajanakBeallitasa(){
 
 		ArrayList<Tekton>uj=new ArrayList<>();
 		for(Tekton elem:szomszed){								///Minden szomszedon vegig megyunk
@@ -123,7 +123,7 @@ public class Tekton
 	/*
 	 * @brief A kapott tekton szomszed listajahoz hozza adjuk a kapott uj tekton. Beallitjuk hogy a lista minden elemenek szomszedja legyen az uj tekton.
 	 */
-	private void ujTektonSzomszedainakListainakBeallitasa(ArrayList<Tekton> szomszedok1, Tekton uj){
+	protected void ujTektonSzomszedainakListainakBeallitasa(ArrayList<Tekton> szomszedok1, Tekton uj){
 
 		for(Tekton egyszomszed:szomszedok1){
 			egyszomszed.szomszedHozzaadasa(uj);
@@ -149,7 +149,7 @@ public class Tekton
 	/*
 	 * @brief Ezen tekton szomszed listajabol veletlenszeruen kivalasztunk elemeket, amik a szomszedaik maradnak, a tobbi szomszedot toroljuk
 	 */
-	private void ujSzomszedaimBeallaitasa(){
+	protected void ujSzomszedaimBeallaitasa(){
 
 		ArrayList<Tekton>uj=new ArrayList<>();
 		for(Tekton elem:szomszed){									///Kivalasztunk a szomszedok kozul veletlenszeruen elemeket
@@ -181,7 +181,7 @@ public class Tekton
 	* @brief Letre hozunk egy uj tektont , a tekton szetesesekor
 	* @return Keletkezett uj tekton
 	*/
-	private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+	protected Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		return new Tekton(spo,szom);
 	}
 
@@ -219,7 +219,7 @@ public class Tekton
 	 * @brief Megcsinalja a listat ami szeteseskor letrejott tekton sporait fogja tartalmazni
 	 * @return uj -> Vissza adja a tombot ami a sporakat tartalmazza.
 	 */
-	private ArrayList<Spora> ujTektonSporakListaja(){
+	protected ArrayList<Spora> ujTektonSporakListaja(){
 		ArrayList<Spora>uj=new ArrayList<>();						
 		Random random = new Random();								
 		if(sporak.size()!=0){
@@ -236,7 +236,7 @@ public class Tekton
 	* @brief Ezen tekton szetesesekor a sporak beallitasa
 	* @param ujSporaja -> Lista amit az uj tekton megkap, tehat ami tobbe nem lesz ezen tekton sporaja
 	*/
-	private void sajatSporaimBeallitasa(ArrayList<Spora> ujSporaja){
+	protected void sajatSporaimBeallitasa(ArrayList<Spora> ujSporaja){
 
 		ArrayList<Spora>uj=new ArrayList<>();
 		if(sporak.size()!=0){
@@ -299,7 +299,7 @@ public class Tekton
 	 * @param g -> Gombasz
 	 * @return db -> Sporak szama 
 	 */
-	private int hanySporajaVanGombasznak(Gombasz g){
+	protected int hanySporajaVanGombasznak(Gombasz g){
 		int db=0;
 		for(Spora elem:sporak){
 			if(elem.getTartozik().equals(g)){
@@ -315,7 +315,7 @@ public class Tekton
 	 * @return true -> Tud epiteni
 	 * @return false -> Nem tud epiteni
 	 */
-	private boolean tudEpulni(Gombasz g){
+	protected boolean tudEpulni(Gombasz g){
 		if(hanyFonalaVanGombasznak(g)>=1 && hanySporajaVanGombasznak(g)>=5 && gombatest==null ){	///Tudd epitani ha van legalabb egy fonala, 5 sporaja, es nincs meg gombatest a tektonon
 			return true;
 		}
@@ -415,7 +415,7 @@ public class Tekton
 	 * @brief Letrehozzuk/megepitjuk a gombatestett a tektonon
 	 * @param g -> Melyik gombasz epit gombatestet
 	 */
-	private void gombaTestEpul(Gombasz g){
+	protected void gombaTestEpul(Gombasz g){
 		Gombatest uj=new Gombatest(this, g);		///Letre hozzuk a gombatestet
 		setGombatest(uj);							///Beallitjuk a tekton gombatestjet
 		g.gombatestHozzaad(uj);						///Gombasznak oda adjuk az uj gombatestjet
