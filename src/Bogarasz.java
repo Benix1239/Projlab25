@@ -57,7 +57,7 @@ public class Bogarasz extends Jatekos
      * @param tekton A cél Tekton, ahova a bogarat mozgatni szeretnénk.
      * @return true, ha a lépés sikeres volt, különben false.
      */
-    public boolean lep(Bogar bogar, Tekton tekton){
+    public String lep(Bogar bogar, Tekton tekton){
         if(bogar.getMozgaspont()!=0){
             Tekton helyzet= bogar.getHelyzet();
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
@@ -75,16 +75,16 @@ public class Bogarasz extends Jatekos
             }
             if(bogar.getMozgaspont()==(mozgas-1) && bogar.getHelyzet()==tekton){
                 korVege=mindenBogarVege();
-                return true;
+                return "Sikeres";
             }
             else{
                 korVege= mindenBogarVege();
-                return false;
+                return "Nem elerehto az a tekton amire lepni akarasz";
             }
         }
         else{
             korVege=mindenBogarVege();
-            return false;
+            return "Mar nem tudsz többet vele mozogni ebben a körben";
         }
     }
 

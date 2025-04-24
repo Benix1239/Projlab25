@@ -230,12 +230,12 @@ public class Jatek {
         return bogaraszObj.getBogarak();
     }
 
-    public boolean lepes(String bogarasz, String bogar, String hova) {
+    public String lepes(String bogarasz, String bogar, String hova) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
         Tekton tektonObj = tektonFromString(hova);
 
-        boolean returnValue = false;
+        String returnValue = null;
         if (jelenlegiJatekos_e(bogaraszObj)) {
             returnValue = bogaraszObj.lep(bogarObj, tektonObj);
         }
