@@ -19,12 +19,8 @@ public class Benito extends Spora
     @Override
     public void hatas(Bogar b) 
     {
-        //szkeleton.logMethodEntry(this, "hatas");
         if (b != null) {
-            szkeleton.logMethodEntry(b, "benul");
             b.benul();
-            szkeleton.logMethodExit(b, "");
         }
-        //szkeleton.logMethodExit(this, "");
     }
 }

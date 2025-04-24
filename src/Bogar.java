@@ -123,7 +123,9 @@ public class Bogar
      * A bogár megeszi az aktuális helyzetén található spórát.
      */
     public void eves() {
+        
         elozo = helyzet.sporatEszik();
+        this.tartozik.addPoint(elozo.getPluszpont());
         actionRagas = false;
         actionEves = false;
         checkKorvege();

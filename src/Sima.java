@@ -11,14 +11,14 @@ public class Sima extends Spora
     }
 
     /**
-         * A Sima sp�ra nem fejt ki hat�st a bogarakra.
-         * 
-         * @param b A bog�r, amelyre a sp�ra hat�ssal lehetne.
-         */
+    * A Sima sp�ra nem fejt ki hat�st a bogarakra.
+    * 
+    * @param b A bog�r, amelyre a sp�ra hat�ssal lehetne.
+    */
        
-        public void hatas(Bogar b)
-        {
-            // nincs hatas
-        }
+    public void hatas(Bogar b)
+    {
+        // nincs hatas
+    }
     
 }

@@ -36,12 +36,8 @@ public class Felszivo extends Tekton
      * @brief Ez a tekton szeteseskor, egy masik felszivo tektont hozz letre
      */
     
-    private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){	
+    protected  Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){	
         return new Felszivo(spo,szom);
     }
 
-
-
-
-    
 }

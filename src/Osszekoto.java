@@ -26,5 +26,4 @@ public abstract class Osszekoto
 
     protected abstract Gombasz getTartozik();
     
-    
 }
