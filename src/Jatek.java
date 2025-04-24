@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +30,7 @@ public class Jatek {
         bogaraszok = new ArrayList<Bogarasz>();
         jatekter = new Palya();
         jatekosIndex = 0;
-        inicializalasGombasz();
+        inicializalasBogar();
     }
 
     private void inicializalasBogar(){
@@ -37,18 +38,21 @@ public class Jatek {
         Tekton t2 = new Tekton();
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
-        jatekter.tektonHozzaad(t2);
+        
         jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        bogaraszok.add(karakter);
 
         Gombasz jatekos = new Gombasz(jatekter.getPalya());
         Fonal fon10 = new Fonal(t2,jatekos);
         Fonal fon11 = new Fonal(t1,jatekos);
         t2.addFonal(fon11);
         t1.addFonal(fon10);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
+        gombaszok.add(jatekos);
     }
 
     private void inicializalasGombasz(){
@@ -63,7 +67,6 @@ public class Jatek {
         karakter.gombatestHozzaad(test);
         hely.setGombatest(test);
         gombaszok.add(karakter);
-        //bogaraszok.add(new Bogarasz());
     }
 
     public Palya getJatekter() {
@@ -155,11 +158,11 @@ public class Jatek {
 
     // hibakezelés
     public Bogarasz bogaraszFromString(String bogarasz) {
-        return bogaraszok.get(Integer.parseInt(bogarasz.substring(7)));
+        return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
     }
 
     public Bogar bogarFromString(Bogarasz bogarasz, String bogar) {
-        return bogarasz.getBogarak().get(Integer.parseInt(bogar.substring(4)));
+        return bogarasz.getBogarak().get(Integer.parseInt(bogar.substring(5)));
     }
 
     public Tekton tektonFromString(String tekton) {
@@ -219,6 +222,11 @@ public class Jatek {
         s= jelenlegiJatekos().mitLehetCsinalni();
         jatekosKorvege();
         return s;
+    }
+
+    public ArrayList<Bogar> bogarakListazas(String bogarasz) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        return bogaraszObj.getBogarak();
     }
 
     public boolean lepes(String bogarasz, String bogar, String hova) {
