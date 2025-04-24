@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -260,13 +261,13 @@ public class Jatek {
     }
 
 
-    public boolean fonalLerak(String gombatest, String t1, String t2) {
+    public String fonalLerak(String gombatest, String t1, String t2) {
         Gombasz gombaszObj = jelenlegiGombasz();
         Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
         Tekton t1Obj = tektonFromString(t1);
         Tekton t2Obj = tektonFromString(t2);
 
-        boolean returnValue = gombaszObj.fonalLerak(gombatestObj, t1Obj, t2Obj);
+        String returnValue = gombaszObj.fonalLerak(gombatestObj, t1Obj, t2Obj);
 
         jatekosKorvege();
         return returnValue;

@@ -85,23 +85,14 @@ public class View
                 break;
             case "fonalLerak":
                 try {
+                    String kiirniValo = "Hibas bemenet";
                     if(tordel.length == 4){
-                        ertek = menet.fonalLerak(tordel[1], tordel[2], tordel[3]);
-                    }
-                    else{
-                        System.out.println("Hibas bemenet");
+                        kiirniValo = menet.fonalLerak(tordel[1], tordel[2], tordel[3]);
                     }
                     
-                    if(ertek)
-                    {
-                        kimenet.println("Sikerult a muvelet");
-                    }
-                    else
-                    {
-                        kimenet.println("Sikertelen a muvelet");
-                    }
+                    kimenet.println(kiirniValo);
                 } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    kimenet.println(e.getMessage());
                 }
                 
                 break;
