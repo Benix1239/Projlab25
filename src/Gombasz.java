@@ -96,8 +96,8 @@ public class Gombasz extends Jatekos
         return true;
     }
 
-    public boolean fonalLerak(Gombatest g, Tekton honnan, Tekton hova){
-        boolean returnValue = false;
+    public String fonalLerak(Gombatest g, Tekton honnan, Tekton hova){
+        String returnValue = "Hibas parameter";
         if(testek.contains(g) && honnanLehetosegek(g).contains(honnan) && hovaLehetosegek(honnan).contains(hova)){
             returnValue = g.elhelyez(honnan, hova);
         }

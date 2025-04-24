@@ -21,6 +21,7 @@ public class Gombatest
         spora = null;
         korVege = false;
         action = 2;
+        tartozik.addPoint(hely.pluszPont);
     }
 
     public void korElejeInicializalas(){
@@ -94,7 +95,7 @@ public class Gombatest
     }
 
     //legjobb minta erre az EgyFonalasHova szekvenciadiagram
-    public boolean elhelyez(Tekton honnan, Tekton hova){
+    public String elhelyez(Tekton honnan, Tekton hova){
         Fonal f1 = new Fonal(honnan, this.tartozik);
         Fonal f2 = new Fonal(hova, this.tartozik);
 
@@ -106,13 +107,14 @@ public class Gombatest
             if(!vissza2){
                 honnan.fonalElszakad(f2);
                 checkKorvege();
-                return false;
+                return "Fonal elhelyezese sikertelen, mert a hova tekton egyfonalas";
             }
+            action--;
             checkKorvege();
-            return true;
+            return "Siker";
         }
         checkKorvege();
-        return false;
+        return "Fonal elhelyezese sikertelen, mert a honnan tekton egyfonalas";
     }
 
     //ez miert itt van, miert nem a tektonban?
