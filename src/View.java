@@ -14,34 +14,39 @@ public class View
 
     View()
     {
-        try
+        kimenet.println("Filebol [f], vagy Konzolrol [k] szeretned beolvasni a parancsokat?");
+        String valaszt = bemenet.next();
+        if(valaszt.charAt(0) == 'f')
         {
-            File file = new File("tesztek/kimenet.txt");
-            file.getParentFile().mkdirs();
-            file.createNewFile();
-
-            OutputHandler.setKimenet(new PrintStream(file));
-            kimenet = OutputHandler.getKimenet();
+            try
+            {
+                File file = new File("tesztek/kimenet.txt");
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+    
+                OutputHandler.setKimenet(new PrintStream(file));
+                kimenet = OutputHandler.getKimenet();
+            }
+            catch(Exception e)
+            {
+               
+            }
+    
+            try 
+            {
+                File file = new File("tesztek/bemenet.txt");
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+    
+                Scanner s = new Scanner(new File("tesztek/bemenet.txt"));
+                InputHandler.setScanner(s);
+                bemenet = InputHandler.getScanner();
+            } catch (Exception e) 
+            {
+                
+            }
         }
-        catch(Exception e)
-        {
-           
-        }
-
-        try 
-        {
-            File file = new File("tesztek/bemenet.txt");
-            file.getParentFile().mkdirs();
-            file.createNewFile();
-
-            Scanner s = new Scanner(new File("tesztek/bemenet.txt"));
-            InputHandler.setScanner(s);
-            bemenet = InputHandler.getScanner();
-        } catch (Exception e) 
-        {
-            
-        }
-        
+       
     }
 
     void bemenetKezeles()
@@ -103,9 +108,9 @@ public class View
                 break;
             case "lepes":
             
-                s=menet.lepes(tordel[1], tordel[2], tordel[3]);
+               String  s=menet.lepes(tordel[1], tordel[2], tordel[3]);
                 kimenet.println(s);
-                if(s=="Sikeres"){
+                if(s.equals("Sikeres")){
                     kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar a " + tordel[3] + " tektonra lepett");
                 }
                 break;
