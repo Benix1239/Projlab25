@@ -21,10 +21,7 @@ public abstract class Osszekoto
      */
     public Tekton getHova()
     {
-        //szkeleton.logMethodEntry(this, "getHova");
-        //szkeleton.logMethodExit(this, "hova");
         return hova;
-        
     }
 
     protected abstract Gombasz getTartozik();

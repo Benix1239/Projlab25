@@ -1,4 +1,5 @@
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,13 +9,13 @@ import java.util.Random;
  */
 public class Tekton
 {
-	private Gombatest gombatest;			///Tarolja ha van gombatest az adott tektonon
-	private ArrayList<Spora> sporak;		///Tarolja a sporakat a tektonon
-	private ArrayList<Fonal> osszekoto;		///Tarolja hogy milyen fonalak vannak a tektonon
-	private ArrayList<Tekton> szomszed;		///Tarolja a tektonok szomszedait
-	private int eletkor;					///Tarolja a tektonok eletkorat (noveli a tektonok szetesesenek eselyet)
-	private int pluszPont;					///Tarolja hogy az adott tektonon epitett gombatest hany plusz pontot er
-	private int id;							///Tarolja a tekton id-jat
+	protected Gombatest gombatest;			///Tarolja ha van gombatest az adott tektonon
+	protected  ArrayList<Spora> sporak;		///Tarolja a sporakat a tektonon
+	protected  ArrayList<Fonal> osszekoto;		///Tarolja hogy milyen fonalak vannak a tektonon
+	protected  ArrayList<Tekton> szomszed;		///Tarolja a tektonok szomszedait
+	protected  int eletkor;					///Tarolja a tektonok eletkorat (noveli a tektonok szetesesenek eselyet)
+	protected  int pluszPont;					///Tarolja hogy az adott tektonon epitett gombatest hany plusz pontot er
+	protected  int id;							///Tarolja a tekton id-jat
 
 
 	public ArrayList<Spora> getSporak(){
@@ -38,7 +39,6 @@ public class Tekton
 		
 	}
 
-
 	/*
 	* @brief Parameter nelkuli konstruktor teszteleshez
 	*/
@@ -53,11 +53,6 @@ public class Tekton
 
 	}
 
-
-
-
-
-
 	/*
  	* @brief Setter
 	* @param idd -> A beallitani kivant id
@@ -66,13 +61,6 @@ public class Tekton
 		id=idd;
 	}
 
-
-
-
-
-
-
-
 	/*
 	 * @brief Getter
 	 * @return Visszaadja a tekton id-jat
@@ -80,8 +68,6 @@ public class Tekton
 	public int getId(){
 		return id;
 	}
-
-
 
 	/*
 	 * @brief A fuggveny megnezi/eldonti hogy az adott tekton az eletkora, es a random faktor alapjan szetessen-e
@@ -100,8 +86,6 @@ public class Tekton
 		return false;
 	}
 
-
-
 	/*
 	 * @brief Minden tektonon levo fonalat elszakitjuk, szeteseskor
 	 */
@@ -110,8 +94,6 @@ public class Tekton
 			fonalElszakad(osszekoto.get(i));
 		}
 	}
-
-
 
 	/*
 	 * @brief Letrehozzuk a listat , ami majd a szeteseskor letrejott uj tekton szomszedait fogja tartalmazni. A szomszedokat random valasztjuk ki.
@@ -131,20 +113,12 @@ public class Tekton
 
 		return uj;											///Ha nem adunk hozza semmit, akkor az ures listat adjuk vissza
 	}
-
-
-
-
-
-
-
 	/*
 	* @brief Hozzaadunk egy szomszedot a szomszed listahoz
 	*/
 	public void szomszedHozzaadasa(Tekton a){
 		szomszed.add(a);
 	}
-
 
 	/*
 	 * @brief A kapott tekton szomszed listajahoz hozza adjuk a kapott uj tekton. Beallitjuk hogy a lista minden elemenek szomszedja legyen az uj tekton.
@@ -156,7 +130,6 @@ public class Tekton
 		}
 	}
 
-
 	/*
 	 * @brief Eltavolitja a szomszed listabol a megadott indexu elemet
 	 * @param index -> torolni kivan index
@@ -165,9 +138,6 @@ public class Tekton
 		szomszed.remove(index);
 	}
 
-
-
-
 	/*
 	 * @brief Getter
 	 * @return szomszed -> vissza adja a szomszed listat
@@ -175,7 +145,6 @@ public class Tekton
 	public ArrayList<Tekton> getSzomszed(){
 		return szomszed;
 	}
-
 
 	/*
 	 * @brief Ezen tekton szomszed listajabol veletlenszeruen kivalasztunk elemeket, amik a szomszedaik maradnak, a tobbi szomszedot toroljuk
@@ -207,17 +176,14 @@ public class Tekton
 
 		szomszed=uj;														///Beallitjuk az uj szomszedokat
 	}
-		
-
-
-
-/*
- * @brief Letre hozunk egy uj tektont , a tekton szetesesekor
- * @return Keletkezett uj tekton
- */
-private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
-	return new Tekton(spo,szom);
-}
+	
+	/*
+	* @brief Letre hozunk egy uj tektont , a tekton szetesesekor
+	* @return Keletkezett uj tekton
+	*/
+	private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
+		return new Tekton(spo,szom);
+	}
 
 
 	/*
@@ -248,9 +214,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 
 		return null;
 	}
-
-
-
 
 	/*
 	 * @brief Megcsinalja a listat ami szeteseskor letrejott tekton sporait fogja tartalmazni
@@ -287,8 +250,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		
 	}
 
-
-
 	/*
 	 * @brief  Elszakit egy fonalat
 	 * @param fonal -> A fonal amit el akarunk szakitani
@@ -308,7 +269,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
     	gombasz.elszakadasDfsKezeles();
 	}
 
-
 	public void fonalElpusztit(Gombasz t){
 
 		ArrayList<Fonal> tomb=new ArrayList<>();
@@ -318,11 +278,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 			fonalElszakad(tomb.get(i));
 		}
 	}
-
-
-
-
-
 
 	/*
 	 * @brief Meghatarozza hogy az adott tektonon hany daraab fonala van egy adott gombasznak
@@ -339,7 +294,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		return db;
 	}
 
-
 	/*
 	 * @brief Meghatarozza hogy hany sporaja van az adott tektonon egy gombasznak
 	 * @param g -> Gombasz
@@ -355,8 +309,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		return db;
 	}
 
-
-
 	/*
 	 * @brief Meghatarozza hogy a gombasz tud-e gombatestet epiteni az adott tektonra
 	 * @param g -> Gombasz
@@ -369,8 +321,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		}
 		return false;
 	}
-
-
 
 	/*
 	 * @brief Fonal lehelyezes a tektonra
@@ -393,9 +343,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		return true;
 	} 
 
-
-
-
 	/*
 	 * @brief Vissza adja hogy az adott tektonrol melyik tektonokra megy fonal
 	 * @return tektonok -> Azon tektonok listaja ahova megy fonal a tektonrol
@@ -409,13 +356,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		}	
 		return tektonok;		
 	}
-
-
-
-
-
-
-
 
 	/*
 	 * @brief Vissza adja hogy az adott tektonrol mely tektonokra megy egy adott gombasz fonala
@@ -434,7 +374,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 
 	}
 
-
 	/*
 	 * @brief Getter
 	 * @return osszekoto -> Vissza adja a fonal listat
@@ -443,11 +382,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		return osszekoto;
 	}
 	
-
-
-
-
-
 	/*
 	 * @brief Spora hozzaadasa a tektonhoz
 	 * @param s -> Lehelyezett spora
@@ -459,8 +393,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 			gombaTestEpul(temp);			///Ha gombatest tud epulni, akkor megepul
 		}
 	}
-
-
 
 	/*
 	 * @brief Gombatest epites utan a gombaszhoz tartozo sporakbol a legfelso 5 db eltunik a tektonrol
@@ -479,8 +411,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		}
 	}
 
-
-
 	/*
 	 * @brief Letrehozzuk/megepitjuk a gombatestett a tektonon
 	 * @param g -> Melyik gombasz epit gombatestet
@@ -492,10 +422,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		epitoanyagSporaEltunik(g);					///Eltuntetjuk a sporakat mikbol epult a test													
 	}
 
-
-
-
-
 	/*
 	* @brief Setter
 	* @param g -> Tektonnak beallitani kivant gombatest
@@ -504,11 +430,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		this.gombatest=g;
 	}
 
-
-
-
-
-
 	/*
 	 * @brief Szomszed hozzaadasa a tektonhoz
 	 * @param t -> Uj szomszed tekton
@@ -516,8 +437,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
    public void addSzomszed(Tekton t){
 	szomszed.add(t);
    }
-
-
 
    /*
 	* @brief A tekton legfelso sporajaval vissz terunk es toroljuk
@@ -532,14 +451,12 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		return null;
 	}
 
-
 	/*
 	 * @brief Setter (tekton eletkoranak novelese +1-el)
 	 */
 	public void setEletkorNoveles(){
 		eletkor++;
 	}
-
 
 	/*
 	 * @brief Setter (tekton eletkoranak beallitasa barmely ertekre (teszteleshez))
@@ -558,13 +475,10 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 */
 	void megSeHalMeg(){}
 
-
 	/*
 	* @brief Eletbentarto tektonban felul irva
 	*/
 	void nemHalMegListaTorles(){};
-
-	
 
 	/*
 	 * @biref Getter (vissza adja a tektonon levo egy gombaszhoz tartozo fonalakat)
@@ -578,6 +492,27 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 			}
 			return uj;
 
+	}
+
+	public ArrayList<Tekton> fonalNelkuliSzomzed(Gombasz g)
+	{
+		ArrayList<Tekton> eredmeny = new ArrayList<>();
+		ArrayList<Fonal> fonalak= getOsszekoto(g);
+		ArrayList<Tekton> temp = new ArrayList<>();
+		for(Fonal t : fonalak)
+		{
+			temp.add(t.getHova());
+		}
+		
+		for(Tekton t : szomszed)
+		{
+			if(!temp.contains(t))
+			{
+				eredmeny.add(t);
+			}
+		}
+
+		return eredmeny;
 	}
 
 }
