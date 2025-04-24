@@ -60,9 +60,6 @@ public class Palya implements Serializable
             }
         }
     }
-
-
-
     
     /**
      * A Testetlen tektonokon a fonal felsz�v�d�st v�gzi.
