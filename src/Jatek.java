@@ -63,7 +63,6 @@ public class Jatek {
         karakter.gombatestHozzaad(test);
         hely.setGombatest(test);
         gombaszok.add(karakter);
-        //bogaraszok.add(new Bogarasz());
     }
 
     public Palya getJatekter() {
