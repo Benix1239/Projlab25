@@ -194,7 +194,7 @@ public class Tekton
 
 		//ha szettorik a tekton
 		if(torikE()){											///Ha szettorik a tekton
-			//ha a tekton van fonal
+			//ha a tektonon van fonal
 			if(osszekoto.size()!=0 ||osszekoto!=null){
 				mindenFonalElszakad();							///Minden fonalat elszakitunk
 			}

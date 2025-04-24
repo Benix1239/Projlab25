@@ -21,6 +21,7 @@ public class Gombatest
         spora = null;
         korVege = false;
         action = 2;
+        tartozik.addPoint(hely.pluszPont);
     }
 
     public void korElejeInicializalas(){

@@ -21,4 +21,9 @@ public class OutputHandler
         return kimenet;
     }
 
+    public static void Close()
+    {
+        kimenet.close();
+    }
+
 }
