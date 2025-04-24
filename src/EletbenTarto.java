@@ -11,7 +11,7 @@ public class EletbenTarto extends Tekton {
      */
      public EletbenTarto(){
         super();    ///Az ososztaly parameter nelkuli konstruktorat hivja
-        nemHalMegLista=new ArrayList<>(Fonal);
+        nemHalMegLista=new ArrayList<Fonal>();
     }
 
      /*
@@ -21,7 +21,7 @@ public class EletbenTarto extends Tekton {
      */
     public EletbenTarto(ArrayList<Spora> spo, ArrayList<Tekton> szom){
         super(spo,szom);
-        nemHalMegLista=new ArrayList<>(Fonal);
+        nemHalMegLista=new ArrayList<Fonal>();
     }
 
     /*
@@ -30,17 +30,10 @@ public class EletbenTarto extends Tekton {
     @Override
     public void fonalElszakad(Fonal fonal){
         nemHalMegLista.add(fonal);
-		////szkeleton.logMethodEntry(this, "fonalElszakad");
-		//szkeleton.logMethodEntry(fonal, "getHova");
 		Tekton hova = fonal.getHova();
-		//szkeleton.logMethodExit(fonal, "Hova");
-		//szkeleton.logMethodEntry(fonal, "getTartozik");
         Gombasz gombasz = fonal.getTartozik();
-        //szkeleton.logMethodExit(fonal, "Gombasz");
         this.osszekoto.remove(fonal);
-		//szkeleton.logMethodEntry(hova, "getOsszekoto");
         ArrayList<Fonal> fonalak = hova.getOsszekoto();
-		//szkeleton.logMethodExit(hova, "Osszekoto[]");
 
         for (Fonal fonali : fonalak) {
             if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {
@@ -48,11 +41,7 @@ public class EletbenTarto extends Tekton {
 				break;
             }
         }
-		//szkeleton.logMethodEntry(gombasz, "elszakadasDfsKezeles");
     	gombasz.elszakadasDfsKezeles();
-		//szkeleton.logMethodExit(gombasz, "");
-		
-
 	}
 
     /*
@@ -67,15 +56,12 @@ public class EletbenTarto extends Tekton {
 
                 osszekoto.add(nemHalMegLista.get(i));
                 Gombasz g = nemHalMegLista.get(i).getTartozik();
-                Tekton hova= nemHalMeglista.get(i).getHova();
+                Tekton hova= nemHalMegLista.get(i).getHova();
 
                 hova.addFonal(new Fonal(this, g));
-                
-            
             }
-
-         }
-         nemHalMegLista.clear();
+        }
+        nemHalMegLista.clear();
     }
 
     /*
@@ -86,36 +72,23 @@ public class EletbenTarto extends Tekton {
         nemHalMegLista.clear();
     }
 
-
     /*
      * @brief Elszakitj a tektonon levo osszes fonalat
      */
-    @Override
+    
     private void mindenFonalElszakad(){
-        //szkeletonlogMethodEntry(this, "mindenFonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
 		for(Fonal elem : osszekoto){
-            //szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
 			fonalElszakad(elem);
-            //szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 		}
-        //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
-        nemHalMegListaTorles()
-
+        nemHalMegListaTorles();
 	}
-
-
-
-
      /*
      * @brief Szeteseskor szinten egy Eletbentarto tektont hozz letre
      * @return Letrehozott tekton
      */
-  @Override
-  private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
-       //szkeletonlogMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
-      ////szkeletonlogMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
+  
+    private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
       return new EletbenTarto(spo,szom);
-  }
-
-
+    }
+    
 }

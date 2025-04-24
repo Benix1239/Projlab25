@@ -24,7 +24,6 @@ public class Egyfonalas extends Tekton
         super(spo,szom);
     }
 
-
     /*
      * @brief Megepiti a fonalat a tektonra.
      * @param f -> Fonal amit a tektonra helyez
@@ -33,45 +32,26 @@ public class Egyfonalas extends Tekton
      */
     @Override
     public boolean addFonal(Fonal f){
-        //szkeletonlogMethodEntry(this, "addFonal");	///Szkeleton kiiratas fuggveny kezdetekor
         boolean sikerult = false;
 		if(osszekoto.size() == 0)
         {
             osszekoto.add(f);
             sikerult = true;
         }
-        //szkeleton.logMethodEntry(f, "getTartozik");	///Szkeleton kiiratas fuggveny kezdetekor
 		Gombasz temp=f.getTartozik();
-        //szkeleton.logMethodExit(f, "Gombasz");			///Szkeleton kiiratas fuggveny vegen
 		if(tudEpulni(temp) ){                    ///Ha tud gombatestet is epit
 			gombaTestEpul(f.getTartozik());
 		}
-                                
-        //szkeletonlogMethodExit(this, sikerult);			///Szkeleton kiiratas fuggveny vegen
 		return sikerult;
-
 	} 
-
-
-
-
-
-
     /*
      * @brief Elszakitj a tektonon levo osszes fonalat
      */
-    @Override
     private void mindenFonalElszakad(){
-        //szkeletonlogMethodEntry(this, "mindenFonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
 		for(Fonal elem : osszekoto){
-            //szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
 			fonalElszakad(elem);
-            //szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 		}
-        //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
-
-
 
     /*
      * @brief Elszakitja a tektonon levo adott fonalat
@@ -79,7 +59,6 @@ public class Egyfonalas extends Tekton
      */
     @Override
 	public void fonalElszakad(Fonal fonal){
-        //szkeletonlogMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
 		for (Fonal elem : osszekoto) {
 			if(elem==fonal || elem.equals(fonal)){
 				for(Fonal elem1 : elem.getHova().getOsszekoto()){
@@ -88,14 +67,10 @@ public class Egyfonalas extends Tekton
 					}
 				}
 				osszekoto.remove(elem);
-				
 			}
 		}
-        //szkeleton.logMethodEntry(fonal, "getTartozik");
         Gombasz gombasz = fonal.getTartozik();
-        //szkeleton.logMethodExit(fonal, "Gombasz");
 		gombasz.elszakadasDfsKezeles();                          
-        //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
 
@@ -103,10 +78,8 @@ public class Egyfonalas extends Tekton
      * @brief Szeteseskor szinten egy Egyfonalas tektont hozz letre
      * @return Letrehozott tekton
      */
-  @Override
+ 
     private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
-       // //szkeletonlogMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
-        ////szkeletonlogMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
         return new Egyfonalas(spo,szom);
     }
 

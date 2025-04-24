@@ -16,9 +16,7 @@ public class Fonal extends Osszekoto
         super(hova);
         this.tartozik = tartozik;
     }
-
-
-
+    
     /**
      * Visszaadja a gomb�szt, akihez a fonal tartozik.
      * 
@@ -26,8 +24,6 @@ public class Fonal extends Osszekoto
      */
     public Gombasz getTartozik()
     {
-        //szkeleton.logMethodEntry(this, "getTartozik");
-        //szkeleton.logMethodExit(this, "tartozik");
         return tartozik;
         
     }

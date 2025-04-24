@@ -1,18 +1,17 @@
-
-public class Gyorsito extends Spora
+public class Szaporodo extends Spora
 {
-    /**
-     * Konstruktor, amely l�trehozza a Gyorsito sp�r�t egy adott gomb�szhoz.
+     /**
+     * Konstruktor, amely l�trehozza a szaporodo sp�r�t egy adott gomb�szhoz.
      * 
      * @param tartozik A gomb�sz, akihez a sp�ra tartozik.
      */
-    Gyorsito(Gombasz tartozik) 
+    Szaporodo(Gombasz tartozik) 
     {
-      super(tartozik);
+        super(tartozik);
     }
     
     /**
-     * A Gyorsito sp�ra kifejti a hat�s�t.
+     * A szaporodo sp�ra kifejti a hat�s�t.
      * 
      * @param b A bog�r, amelyre kifejti a hat�s�t.
      */
@@ -20,8 +19,8 @@ public class Gyorsito extends Spora
     public void hatas(Bogar b) 
     {
         if (b != null) {
-            b.gyorsul();
+            b.szaporodo();
         }
     }
-    
+
 }

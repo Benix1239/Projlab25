@@ -39,9 +39,5 @@ public class Felszivo extends Tekton
     private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){	
         return new Felszivo(spo,szom);
     }
-
-
-
-
     
 }
