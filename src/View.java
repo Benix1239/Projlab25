@@ -201,11 +201,19 @@ public class View
                 }
                 break;
             case "tektonSzomszedNincsFonal":
-                tektonlista = menet.tektonSzomszedNincsFonal(tordel[1]);
-                System.out.println(tordel[1] + "tekton szomszedai amikre nem megy fonal: ");
-                for(Tekton a : tektonlista)
-                {
-                    System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                try{
+                    if(tordel.length != 2){
+                        System.out.println("Hibas bemenet");
+                        break;
+                    }
+                    tektonlista = menet.tektonSzomszedNincsFonal(tordel[1]);
+                    System.out.println(tordel[1] + " tekton szomszedai amikre nem megy fonal: ");
+                    for(Tekton a : tektonlista)
+                    {
+                        System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                    }
+                }catch(IllegalArgumentException e){
+                    System.out.println(e.getMessage());
                 }
                 break;
             case "benultBogar":

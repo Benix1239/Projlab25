@@ -178,7 +178,16 @@ public class Jatek {
     }
 
     public Tekton tektonFromString(String tekton) {
-        return jatekter.getPalya().get(Integer.parseInt(tekton.substring(6)));
+        Pattern pattern = Pattern.compile("^tekton(\\d+)$");
+        Matcher matcher = pattern.matcher(tekton);
+
+        if (matcher.matches()) {
+            int szam = Integer.parseInt(matcher.group(1));
+            if(szam >= 0 && szam < jatekter.getPalya().size()){
+                return jatekter.getPalya().get(szam);
+            }
+        } 
+        throw new IllegalArgumentException("Hibas bemenet");
     }
 
     public Gombasz gombaszFromString(String gombasz) {
