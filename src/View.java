@@ -108,15 +108,26 @@ public class View
                 }
                 break;
             case "fonalLerak":
-                ertek = menet.fonalLerak(tordel[2], tordel[3], tordel[4]);
-                if(ertek)
-                {
-                    kimenet.println("Sikerult a muvelet");
+                try {
+                    if(tordel.length == 4){
+                        ertek = menet.fonalLerak(tordel[1], tordel[2], tordel[3]);
+                    }
+                    else{
+                        System.out.println("Hibas bemenet");
+                    }
+                    
+                    if(ertek)
+                    {
+                        kimenet.println("Sikerult a muvelet");
+                    }
+                    else
+                    {
+                        kimenet.println("Sikertelen a muvelet");
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
                 }
-                else
-                {
-                    kimenet.println("Sikertelen a muvelet");
-                }
+                
                 break;
             case "sporaSzor":
                 ertek = menet.sporaSzor(tordel[1], tordel[2], tordel[3]);
@@ -227,11 +238,19 @@ public class View
                 }
                 break;
             case "tektonSzomszedNincsFonal":
-                tektonlista = menet.tektonSzomszedNincsFonal(tordel[1]);
-                kimenet.println(tordel[1] + "tekton szomszedai amikre nem megy fonal: ");
-                for(Tekton a : tektonlista)
-                {
-                    kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                try{
+                    if(tordel.length != 2){
+                        System.out.println("Hibas bemenet");
+                        break;
+                    }
+                    tektonlista = menet.tektonSzomszedNincsFonal(tordel[1]);
+                    kimenet.println(tordel[1] + " tekton szomszedai amikre nem megy fonal: ");
+                    for(Tekton a : tektonlista)
+                    {
+                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                    }
+                }catch(IllegalArgumentException e){
+                    System.out.println(e.getMessage());
                 }
                 break;
             case "benultBogar":
