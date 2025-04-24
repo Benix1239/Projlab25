@@ -26,7 +26,6 @@ public class Testetlen extends Tekton
     * @brief Meghatarozza hogy tud -e gombatest epulni az adott tektonra
     * @retrun Mindig false
     */
-    @Override
     private boolean tudEpulni(Gombasz g) {
         return false;
     }
@@ -35,7 +34,6 @@ public class Testetlen extends Tekton
      * @brief A tekton szetesesekor egy masik Testetlen tektont hozz letre
      * @return Letrehozott uj tekton
      */
-    @Override
     private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
         return new Testetlen(spo,szom);
     }
