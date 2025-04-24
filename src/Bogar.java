@@ -28,14 +28,14 @@ public class Bogar
             korVege = true;
         }
 
-        if(mozgasok <= 1 && helyzet.fonalKeres()==null){
+        if(mozgasok <= 1 && helyzet.fonalKeres()==null && actionEves==false && actionRagas==false){
             korVege = true;
         }
 
-        if(actionRagas == true  && helyzet.getOsszekoto()==null){
+        if(actionRagas == true  && helyzet.getOsszekoto()==null && mozgasok==0 && actionEves==false){
             korVege = true;
         }
-        if(actionEves == true && helyzet.getSporak()==null){
+        if(actionEves == true && helyzet.getSporak()==null && mozgasok==0 && actionRagas==false ){
             korVege = true;
         }
     }

@@ -35,6 +35,7 @@ public class View
             case "korVege":
                 
                 break;
+            
             case "info":
                 kimenet.println(menet.info());
                 break;
@@ -49,8 +50,31 @@ public class View
                     kimenet.println("Sikertelen a muvelet");
                 }
                 break;
+            case "bogarakListazasa":
+                try{
+                    String atadandoParameter = "Koron levo bogar";
+                    if(tordel.length >= 2){
+                        atadandoParameter = tordel[1];
+                    }
+                    ArrayList<Bogar> bogarak = menet.bogarakListazas(atadandoParameter);
+                    kimenet.println(atadandoParameter + " bogarai: ");
+                    for(Bogar bogar : bogarak)
+                    {
+                        kimenet.println("bogar" + bogarak.indexOf(bogar));
+                    }
+                }catch(IllegalArgumentException e){
+                    kimenet.println(e.getMessage());
+                }
+                break;
             case "lepes":
+            
                 ertek = menet.lepes(tordel[1], tordel[2], tordel[3]);
+                if(ertek){
+                    kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar a " + tordel[3] + " tektonra lepett");
+                }
+                else{
+                    kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar nem tudott a " + tordel[3] + " tektonra lepni");
+                }
                 break;
             case "eves":
                 
@@ -170,7 +194,7 @@ public class View
                 break;
             case "bogarTekton":
               Tekton t =  menet.bogarTekton(tordel[1], tordel[2]);
-              kimenet.println(tordel[1] +"-nek a " + tordel[2] + " bogara, a tekton" + menet.getJatekter().getPalya().indexOf(t) + "tektonon all.");
+              kimenet.println("A " + tordel[1] +"-nek a " + tordel[2] + " bogara, a tekton" + menet.getJatekter().getPalya().indexOf(t) + " tektonon all.");
                 break;
             case "gombaszok":
                 kimenet.println("gombasz jatekosok: ");
