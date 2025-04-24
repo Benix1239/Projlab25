@@ -12,7 +12,7 @@ public class View
    
     Jatek menet = new Jatek();
 
-    View()
+    /*View()
     {
         try
         {
@@ -42,7 +42,7 @@ public class View
             
         }
         
-    }
+    }*/
 
     void bemenetKezeles()
     {
@@ -54,6 +54,7 @@ public class View
             Set<Tekton> tektonok;
             ArrayList<Tekton> tektonlista;
             ArrayList<Fonal> fonallista;
+            String s=null;
             switch (tordel[0]) {
                 case "jatekIndit":
                     
@@ -71,75 +72,69 @@ public class View
                     
                     break;
                 
-            case "info":
+                case "info":
                     kimenet.println(menet.info());
                     break;
                 case "passz":
-                    ertek = menet.passz();
-                    if(ertek)
-                    {
-                        kimenet.println("Sikerult a muvelet");
-                    }
-                    else
-                    {
-                        kimenet.println("Sikertelen a muvelet");
-                    }
+                    kimenet.println(menet.passz());
+                    
                     break;
                 case "bogarakListazasa":
-                try{
-                    String atadandoParameter = "Koron levo bogar";
-                    if(tordel.length >= 2){
-                        atadandoParameter = tordel[1];
+                    try{
+                        String atadandoParameter = "Koron levo bogar";
+                        if(tordel.length >= 2){
+                            atadandoParameter = tordel[1];
+                        }
+                        ArrayList<Bogar> bogarak = menet.bogarakListazas(atadandoParameter);
+                        kimenet.println(atadandoParameter + " bogarai: ");
+                        for(Bogar bogar : bogarak)
+                        {
+                            kimenet.println("bogar" + bogarak.indexOf(bogar));
+                        }
+                    }catch(IllegalArgumentException e){
+                        kimenet.println(e.getMessage());
                     }
-                    ArrayList<Bogar> bogarak = menet.bogarakListazas(atadandoParameter);
-                    kimenet.println(atadandoParameter + " bogarai: ");
-                    for(Bogar bogar : bogarak)
-                    {
-                        kimenet.println("bogar" + bogarak.indexOf(bogar));
+                    break;
+                case "lepes":
+                    try{
+                        s=menet.lepes(tordel[1], tordel[2], tordel[3]);
+                        kimenet.println(s);
+                        if(s=="Sikeres"){
+                            kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar a " + tordel[3] + " tektonra lepett");
+                        }
+                    } catch (IllegalArgumentException e) {
+                        kimenet.println(e.getMessage());
                     }
-                }catch(IllegalArgumentException e){
-                    kimenet.println(e.getMessage());
-                }
-                break;
-            case "lepes":
-            
-                s=menet.lepes(tordel[1], tordel[2], tordel[3]);
-                kimenet.println(s);
-                if(s=="Sikeres"){
-                    kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar a " + tordel[3] + " tektonra lepett");
-                }
-                break;
-            case "eves":
-                
-                if(tordel[1].contains("bogarasz"))
-                {
-                    ertek = menet.evesSporat(tordel[1], tordel[2]);
-                }
-                else
-                {
-                    ertek = menet.evesBogarat(tordel[1], tordel[2]);
-                }
-                
-                if(ertek)
-                {
-                    kimenet.println("Sikerult a muvelet");
-                }
-                else
-                {
-                    kimenet.println("Sikertelen a muvelet");
-                }
-                break;
-            case "ragas":
-                ertek = menet.ragas(tordel[1],tordel[2],tordel[3]);
-                if(ertek)
-                {
-                    kimenet.println("Sikerult a muvelet");
-                }
-                else
-                {
-                    kimenet.println("Sikertelen a muvelet");
-                }
-                break;
+                    break;
+                case "eves":
+                    try{
+                        if(tordel[1].contains("bogarasz"))
+                        {
+                            s = menet.evesSporat(tordel[1], tordel[2]);
+                        }
+                        else
+                        {
+                            ertek = menet.evesBogarat(tordel[1], tordel[2]);
+                        }
+                        kimenet.println(s);
+                        if(s=="Sikeres"){
+                            kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " megevett egy sporat a tektonon");
+                        }    
+                    } catch (IllegalArgumentException e) {
+                        kimenet.println(e.getMessage());
+                    }
+                    break;
+                case "ragas":
+                    try{
+                        s = menet.ragas(tordel[1],tordel[2],tordel[3]);
+                        kimenet.println(s);
+                        if(s=="Sikeres"){
+                            kimenet.println(tordel[1]+"-hez tartozo "+ tordel[2] +" elragta a "+tordel[3]+"-t");
+                        }    
+                    } catch (IllegalArgumentException e) {
+                        kimenet.println(e.getMessage());
+                    }
+                    break;
             case "fonalLerak":
                 try {
                     String kiirniValo = "Hibas bemenet";

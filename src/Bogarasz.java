@@ -32,18 +32,18 @@ public class Bogarasz extends Jatekos
     }
 
     public String mitLehetCsinalni(){
-        String returnValue = null;
+        String returnValue = " bogarai:\n" ;
         for(Bogar bogar : bogarak){
-            returnValue += "Bogar"+bogarak.indexOf(bogar) + ":\nMegmaradt lepesek száma: " + bogar.getMozgaspont()+ "\n";
+            returnValue += "Bogar"+bogarak.indexOf(bogar) + ":\nMegmaradt lepesek szama: " + bogar.getMozgaspont()+ "\n";
             if (bogar.getactionEves()) {
                 returnValue += "Tud meg enni\n";
             } else {
                 returnValue += "Nem tud meg enni\n";
             }
             if (bogar.getactionRagas()) {
-                returnValue += "Tud meg ragni\n\n";
+                returnValue += "Tud meg ragni";
             } else {
-                returnValue += "Nem tud meg ragni\n\n";
+                returnValue += "Nem tud meg ragni";
             }
         } 
         return returnValue;
@@ -84,7 +84,7 @@ public class Bogarasz extends Jatekos
         }
         else{
             korVege=mindenBogarVege();
-            return "Mar nem tudsz többet vele mozogni ebben a körben";
+            return "Mar nem tudsz többet mozogni ebben a körben";
         }
     }
 
@@ -95,21 +95,27 @@ public class Bogarasz extends Jatekos
      * @param bogar A bogár, amelyik enni próbál.
      * @return true, ha a bogár sikeresen evett egy spórát, különben false.
      */
-    public boolean eves(Bogar bogar){
+    public String eves(Bogar bogar){
         if(bogar.getactionEves()==true){
-            bogar.eves();
-            if(bogar.getactionEves()==false && bogar.getSpora()!=null){
-                korVege=mindenBogarVege();
-                return true;
+            if (bogar.getHelyzet().getSporak().size()>0) {
+                    bogar.eves();
+                if(bogar.getactionEves()==false && bogar.getSpora()!=null){
+                    korVege=mindenBogarVege();
+                    return "Sikeres";
+                }
+                else{
+                    korVege=mindenBogarVege();
+                    return "Nem sikerült megenni a tektonon levo sporat";
+                }
             }
             else{
                 korVege=mindenBogarVege();
-                return false;
+                return "Nincs spora azon a tektonon amirol a bogar enni szeretne";
             }
         }
         else{
             korVege=mindenBogarVege();
-            return false;
+            return "Mar nem tudsz többet enni ebben a körben";
         }
     }
 
@@ -121,7 +127,7 @@ public class Bogarasz extends Jatekos
      * @param fonal Az a fonal, amelyet el szeretne rágni.
      * @return true, ha a fonalat sikeresen elrágta, különben false.
      */
-    public boolean ragas(Bogar bogar,Fonal fonal){
+    public String ragas(Bogar bogar,Fonal fonal){
         if(bogar.getactionRagas()==true){
             Tekton helyzet= bogar.getHelyzet();
             ArrayList<Fonal> fonalak = helyzet.getOsszekoto();
@@ -131,16 +137,16 @@ public class Bogarasz extends Jatekos
             
             if (bogar.getactionRagas()==false && (!bogar.getHelyzet().getOsszekoto().contains(fonal))) {
                 korVege=mindenBogarVege();
-                return true;
+                return "Sikeres";
             }
             else{
                 korVege=mindenBogarVege();
-                return false;
+                return "Nem sikerult elragni az adott fonalat";
             }
         }
         else{
             korVege=mindenBogarVege();
-            return false;
+            return "Mar nem tudsz többet ragni ebben a körben";
         }
     }
 
