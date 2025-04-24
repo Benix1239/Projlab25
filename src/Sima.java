@@ -18,8 +18,6 @@ public class Sima extends Spora
        
         public void hatas(Bogar b)
         {
-            szkeleton.logMethodEntry(this, "hatas");
-            szkeleton.logMethodExit(this, "");
             // nincs hatas
         }
     
