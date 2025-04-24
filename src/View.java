@@ -19,6 +19,7 @@ public class View
         Set<Tekton> tektonok;
         ArrayList<Tekton> tektonlista;
         ArrayList<Fonal> fonallista;
+        String s=null;
         switch (tordel[0]) {
             case "jatekIndit":
                 
@@ -68,12 +69,10 @@ public class View
                 break;
             case "lepes":
             
-                ertek = menet.lepes(tordel[1], tordel[2], tordel[3]);
-                if(ertek){
+                s=menet.lepes(tordel[1], tordel[2], tordel[3]);
+                kimenet.println(s);
+                if(s=="Sikeres"){
                     kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar a " + tordel[3] + " tektonra lepett");
-                }
-                else{
-                    kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar nem tudott a " + tordel[3] + " tektonra lepni");
                 }
                 break;
             case "eves":
