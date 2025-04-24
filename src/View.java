@@ -14,32 +14,37 @@ public class View
 
     /*View()
     {
-        try
+        kimenet.println("Filebol [f], vagy Konzolrol [k] szeretned beolvasni a parancsokat?");
+        String valaszt = bemenet.next();
+        if(valaszt.charAt(0) == 'f')
         {
-            File file = new File("tesztek/kimenet.txt");
-            file.getParentFile().mkdirs();
-            file.createNewFile();
-
-            OutputHandler.setKimenet(new PrintStream(file));
-            kimenet = OutputHandler.getKimenet();
-        }
-        catch(Exception e)
-        {
-           
-        }
-
-        try 
-        {
-            File file = new File("tesztek/bemenet.txt");
-            file.getParentFile().mkdirs();
-            file.createNewFile();
-
-            Scanner s = new Scanner(new File("tesztek/bemenet.txt"));
-            InputHandler.setScanner(s);
-            bemenet = InputHandler.getScanner();
-        } catch (Exception e) 
-        {
-            
+            try
+            {
+                File file = new File("tesztek/kimenet.txt");
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+    
+                OutputHandler.setKimenet(new PrintStream(file));
+                kimenet = OutputHandler.getKimenet();
+            }
+            catch(Exception e)
+            {
+               
+            }
+    
+            try 
+            {
+                File file = new File("tesztek/bemenet.txt");
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+    
+                Scanner s = new Scanner(new File("tesztek/bemenet.txt"));
+                InputHandler.setScanner(s);
+                bemenet = InputHandler.getScanner();
+            } catch (Exception e) 
+            {
+                
+            }
         }
         
     }*/
