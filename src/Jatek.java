@@ -7,6 +7,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Jatek {
 
@@ -42,6 +44,7 @@ public class Jatek {
         karakter.gombatestHozzaad(test);
         hely.setGombatest(test);
         gombaszok.add(karakter);
+        //bogaraszok.add(new Bogarasz());
     }
 
     public Palya getJatekter() {
@@ -92,6 +95,13 @@ public class Jatek {
         } else {
             return bogaraszok.get(jatekosIndex - gombaszok.size());
         }
+    }
+
+    private Gombasz jelenlegiGombasz(){
+        if(jatekosIndex >=0 && jatekosIndex < gombaszok.size()){
+            return gombaszok.get(jatekosIndex);
+        }
+        throw new IllegalArgumentException("Nem hasznalhato parancs, mert Bogarasz van koron eppen");
     }
 
     private void jatekosIndexLeptetes() {
@@ -172,7 +182,22 @@ public class Jatek {
     }
 
     public Gombasz gombaszFromString(String gombasz) {
-        return gombaszok.get(Integer.parseInt(gombasz.substring(7)));
+
+        if(gombasz == "Koron levo gombasz"){
+            return jelenlegiGombasz();
+        }
+        else{
+            Pattern pattern = Pattern.compile("^gombasz(\\d+)$");
+            Matcher matcher = pattern.matcher(gombasz);
+
+            if (matcher.matches()) {
+                int szam = Integer.parseInt(matcher.group(1));
+                if(szam >= 0 && szam < gombaszok.size()){
+                    return gombaszok.get(szam);
+                }
+            } 
+            throw new IllegalArgumentException("Hibas bemenet");
+        }
     }
 
     public Gombatest gombatestFromString(String gombatest, Gombasz gombasz) {
@@ -242,11 +267,16 @@ public class Jatek {
     }
 
     //kesz
-    public boolean fonalLerak(String gombasz, String gombatest, String t1, String t2) {
-        Gombasz gombaszObj = gombaszFromString(gombasz);
-        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
-        Tekton t1Obj = tektonFromString(t1);
-        Tekton t2Obj = tektonFromString(t2);
+    public boolean fonalLerak(String gombatest, String t1, String t2) {
+        if(jatekosIndex < gombaszok.size()){
+            Gombasz gombaszObj = gombaszok.get(jatekosIndex);
+            Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+            Tekton t1Obj = tektonFromString(t1);
+            Tekton t2Obj = tektonFromString(t2);
+
+            boolean returnValue = false;
+        }
+        
 
         boolean returnValue = false;
         if (jelenlegiJatekos_e(gombaszObj)) {
@@ -291,13 +321,7 @@ public class Jatek {
         Gombasz gombaszObj = gombaszFromString(gombasz);
         Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
 
-        Set<Tekton> returnValue = new HashSet<Tekton>();
-        if (jelenlegiJatekos_e(gombaszObj)){
-            returnValue = gombatestObj.dfs();
-        }
-
-        jatekosKorvege();
-        return returnValue;
+        return gombatestObj.dfs();
     }
 
     //kesz
@@ -367,14 +391,7 @@ public class Jatek {
     //kesz
     public ArrayList<Gombatest> gombatestListazas(String gombasz) {
         Gombasz gombaszObj = gombaszFromString(gombasz);
-
-        ArrayList<Gombatest> returnValue = new ArrayList<>();
-        if(jelenlegiJatekos_e(gombaszObj)){
-            returnValue = gombaszObj.getTestek();
-        }
-        jatekosKorvege();
-
-        return returnValue;
+        return gombaszObj.getTestek();
     }
 
     public ArrayList<Tekton> tektonSzomszedNincsFonal(String tekton) {

@@ -63,9 +63,7 @@ public class Tekton
 	* @param idd -> A beallitani kivant id
  	*/
 	public void setId(int idd){
-		//szkeleton.logMethodEntry(this, "setId");   ///Szkeleton kiiratas fuggveny kezdetekor
 		id=idd;
-		//szkeleton.logMethodExit(this, "");		///Szkeleton kiiratas fuggveny vegen
 	}
 
 
@@ -80,11 +78,7 @@ public class Tekton
 	 * @return Visszaadja a tekton id-jat
 	 */
 	public int getId(){
-
-		////szkeleton.logMethodEntry(this, "getId");	///Szkeleton kiiratas fuggveny kezdetekor
-		////szkeleton.logMethodExit(this, id);			///Szkeleton kiiratas fuggveny vegen
 		return id;
-		
 	}
 
 
@@ -96,18 +90,12 @@ public class Tekton
 	 */
 	private boolean torikE(){
 
-		////szkeleton.logMethodEntry(this, "torikE");	///Szkeleton kiiratas fuggveny kezdetekor
-
 		int toresarany=eletkor*3+10;	///toresre az esely: (eletkor*5 + kezdeti esely). Azt jelenti hogy kezdeti esely, koronkent 5%-al no.
 		Random random = new Random();	
 		int toresEsely=random.nextInt(100);	///tenyleges toresei esely: (toresre az esely / 100)
 		if(toresEsely<=toresarany){
-
-			////szkeleton.logMethodExit(this, true);			///Szkeleton kiiratas fuggveny vegen
-			
 			return true;
 		}
-		////szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen
 
 		return false;
 	}
@@ -118,18 +106,9 @@ public class Tekton
 	 * @brief Minden tektonon levo fonalat elszakitjuk, szeteseskor
 	 */
 	private void mindenFonalElszakad(){
-
-		////szkeleton.logMethodEntry(this, "mindenFonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
-		/*
-		for(Fonal elem : osszekoto){		///Minden fonalunkra meghivjuk az elszakadast
-			fonalElszakad(elem);
-		}
-*/
 		for(int i=0;i<osszekoto.size();i++){
 			fonalElszakad(osszekoto.get(i));
 		}
-
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
 
@@ -140,8 +119,6 @@ public class Tekton
 	 */
 	private ArrayList<Tekton> ujTektonSzomszedListajanakBeallitasa(){
 
-		////szkeleton.logMethodEntry(this, "ujTektonSzomszedListajanakBeallitasa");	///Szkeleton kiiratas fuggveny kezdetekor
-
 		ArrayList<Tekton>uj=new ArrayList<>();
 		for(Tekton elem:szomszed){								///Minden szomszedon vegig megyunk
 			Random random = new Random();		
@@ -151,8 +128,6 @@ public class Tekton
 				uj.add(elem);
 			}
 		}
-
-		////szkeleton.logMethodExit(this, "ArrayList<Tekton>");			///Szkeleton kiiratas fuggveny vegen
 
 		return uj;											///Ha nem adunk hozza semmit, akkor az ures listat adjuk vissza
 	}
@@ -167,11 +142,7 @@ public class Tekton
 	* @brief Hozzaadunk egy szomszedot a szomszed listahoz
 	*/
 	public void szomszedHozzaadasa(Tekton a){
-		////szkeleton.logMethodEntry(this, "szomszedHozzaadasa");	///Szkeleton kiiratas fuggveny kezdetekor
-
 		szomszed.add(a);
-
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
 
@@ -180,13 +151,9 @@ public class Tekton
 	 */
 	private void ujTektonSzomszedainakListainakBeallitasa(ArrayList<Tekton> szomszedok1, Tekton uj){
 
-		////szkeleton.logMethodEntry(this, "ujTektonSzomszedainakListainakBeallitasa");	///Szkeleton kiiratas fuggveny kezdetekor
-
 		for(Tekton egyszomszed:szomszedok1){
 			egyszomszed.szomszedHozzaadasa(uj);
 		}
-
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
 
@@ -195,9 +162,7 @@ public class Tekton
 	 * @param index -> torolni kivan index
 	 */
 	public void szomszedTorol(int index){
-		////szkeleton.logMethodEntry(this, "szomszedTorol");	///Szkeleton kiiratas fuggveny kezdetekor
 		szomszed.remove(index);
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
 
@@ -208,8 +173,6 @@ public class Tekton
 	 * @return szomszed -> vissza adja a szomszed listat
 	 */
 	public ArrayList<Tekton> getSzomszed(){
-		////szkeleton.logMethodEntry(this, "getSzomszed");	///Szkeleton kiiratas fuggveny kezdetekor
-		////szkeleton.logMethodExit(this, "ArrayList<Tekton>");			///Szkeleton kiiratas fuggveny vegen
 		return szomszed;
 	}
 
@@ -218,7 +181,6 @@ public class Tekton
 	 * @brief Ezen tekton szomszed listajabol veletlenszeruen kivalasztunk elemeket, amik a szomszedaik maradnak, a tobbi szomszedot toroljuk
 	 */
 	private void ujSzomszedaimBeallaitasa(){
-		////szkeleton.logMethodEntry(this, "ujSzomszedaimBeallaitasa");	///Szkeleton kiiratas fuggveny kezdetekor
 
 		ArrayList<Tekton>uj=new ArrayList<>();
 		for(Tekton elem:szomszed){									///Kivalasztunk a szomszedok kozul veletlenszeruen elemeket
@@ -244,8 +206,6 @@ public class Tekton
 		}
 
 		szomszed=uj;														///Beallitjuk az uj szomszedokat
-
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 		
 
@@ -256,12 +216,8 @@ public class Tekton
  * @return Keletkezett uj tekton
  */
 private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
-	////szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	/szkeleton kiiratas fuggveny kezdetekor
-	////szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
 	return new Tekton(spo,szom);
 }
-
-
 
 
 	/*
@@ -269,7 +225,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @return ujTekton -> A kesz uj tekton, ha ez szettorik.
 	 */
 	public Tekton tores(){
-		//////szkeleton.logMethodEntry(this, "tores");	///Szkeleton kiiratas fuggveny kezdetekor
 
 		//ha szettorik a tekton
 		if(torikE()){											///Ha szettorik a tekton
@@ -284,17 +239,13 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 
 			Tekton ujTekton=ujTektonLetrehozasa(ujSporak,ujSzomszedok);		///Letrehozzuk az uj tektont,megadjuk a szomszedait
 			sajatSporaimBeallitasa(ujSporak);														///Beallitom a sajat sporaimat
-			ujSzomszedaimBeallaitasa();
-			////szkeleton.logMethodEntry(this, "ujTektonSzomszedainakListainakBeallitasa");	///Szkeleton kiiratas fuggveny kezdetekor																///Beallitja az en uj szomszedaimat, mindket oldalról torlom azokat akik nem a szomszedaim
+			ujSzomszedaimBeallaitasa();																///Beallitja az en uj szomszedaimat, mindket oldalról torlom azokat akik nem a szomszedaim
 			ujTektonSzomszedainakListainakBeallitasa(ujSzomszedok, ujTekton);						///Az uj tekton szomszedainak szomszed listajahoz hozza adjuk az uj tektont
-			////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 			eletkor=1;
 
-			////szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen
 			return ujTekton;	
 		}
 
-		////szkeleton.logMethodExit(this, "null");			///Szkeleton kiiratas fuggveny vegen
 		return null;
 	}
 
@@ -306,7 +257,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @return uj -> Vissza adja a tombot ami a sporakat tartalmazza.
 	 */
 	private ArrayList<Spora> ujTektonSporakListaja(){
-		////szkeleton.logMethodEntry(this, "ujTektonSporakListaja");	///Szkeleton kiiratas fuggveny kezdetekor
 		ArrayList<Spora>uj=new ArrayList<>();						
 		Random random = new Random();								
 		if(sporak.size()!=0){
@@ -314,10 +264,8 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 			for(int i=0;i<sporaEsely;i++){								
 				uj.add(sporak.get(i));									///Vegig megyunk ezen tekton spora listajan, es elso random szamu elemet kigyujtjuk, hogy atadhassuk
 			}
-			////szkeleton.logMethodExit(this, "ArrayList<Spora>");			///Szkeleton kiiratas fuggveny vegen
 			return uj;
 		}
-		////szkeleton.logMethodExit(this, "null");			///Szkeleton kiiratas fuggveny vegen
 		return null;
 	}
 
@@ -326,7 +274,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	* @param ujSporaja -> Lista amit az uj tekton megkap, tehat ami tobbe nem lesz ezen tekton sporaja
 	*/
 	private void sajatSporaimBeallitasa(ArrayList<Spora> ujSporaja){
-		////szkeleton.logMethodEntry(this, "sajatSporaimBeallitasa");	///Szkeleton kiiratas fuggveny kezdetekor
 
 		ArrayList<Spora>uj=new ArrayList<>();
 		if(sporak.size()!=0){
@@ -337,7 +284,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 			}
 		}
 		sporak=uj;									///Beallitjuk a spora listat
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 		
 	}
 
@@ -348,17 +294,10 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @param fonal -> A fonal amit el akarunk szakitani
 	 */
 	public void fonalElszakad(Fonal fonal){
-		////szkeleton.logMethodEntry(this, "fonalElszakad");
-		//szkeleton.logMethodEntry(fonal, "getHova");
 		Tekton hova = fonal.getHova();
-		//szkeleton.logMethodExit(fonal, "Hova");
-		//szkeleton.logMethodEntry(fonal, "getTartozik");
         Gombasz gombasz = fonal.getTartozik();
-        //szkeleton.logMethodExit(fonal, "Gombasz");
         this.osszekoto.remove(fonal);
-		//szkeleton.logMethodEntry(hova, "getOsszekoto");
         ArrayList<Fonal> fonalak = hova.getOsszekoto();
-		//szkeleton.logMethodExit(hova, "Osszekoto[]");
 
         for (Fonal fonali : fonalak) {
             if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {
@@ -366,10 +305,7 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 				break;
             }
         }
-		//szkeleton.logMethodEntry(gombasz, "elszakadasDfsKezeles");
     	gombasz.elszakadasDfsKezeles();
-		//szkeleton.logMethodExit(gombasz, "");
-		////szkeleton.logMethodExit(this, "");
 	}
 
 
@@ -394,14 +330,12 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @return db -> Fonalak szama
 	 */
 	public int hanyFonalaVanGombasznak(Gombasz g){
-		////szkeleton.logMethodEntry(this, "hanyFonalaVanGombasznak");	///Szkeleton kiiratas fuggveny kezdetekor
 		int db=0;
 		for(Fonal elem:osszekoto){
 			if(elem.getTartozik().equals(g)){
 				db++;
 			}
 		}
-		////szkeleton.logMethodExit(this, db);			///Szkeleton kiiratas fuggveny vegen	
 		return db;
 	}
 
@@ -412,14 +346,12 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @return db -> Sporak szama 
 	 */
 	private int hanySporajaVanGombasznak(Gombasz g){
-		////szkeleton.logMethodEntry(this, "hanySporajaVanGombasznak");	///Szkeleton kiiratas fuggveny kezdetekor
 		int db=0;
 		for(Spora elem:sporak){
 			if(elem.getTartozik().equals(g)){
 				db++;
 			}
 		}
-		////szkeleton.logMethodExit(this, db);			///Szkeleton kiiratas fuggveny vegen	
 		return db;
 	}
 
@@ -432,12 +364,9 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @return false -> Nem tud epiteni
 	 */
 	private boolean tudEpulni(Gombasz g){
-		////szkeleton.logMethodEntry(this, "tudEpulni");	///Szkeleton kiiratas fuggveny kezdetekor
 		if(hanyFonalaVanGombasznak(g)>=1 && hanySporajaVanGombasznak(g)>=5 && gombatest==null ){	///Tudd epitani ha van legalabb egy fonala, 5 sporaja, es nincs meg gombatest a tektonon
-			////szkeleton.logMethodExit(this, true);			///Szkeleton kiiratas fuggveny vegen	
 			return true;
 		}
-		////szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen	
 		return false;
 	}
 
@@ -450,13 +379,9 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @return false -> Nem tud letenni
 	 */
 	public boolean addFonal(Fonal f){
-		////szkeleton.logMethodEntry(this, "addFonal");	///Szkeleton kiiratas fuggveny kezdetekor
 		for(Fonal elem:osszekoto){
-			//szkeleton.logMethodEntry(elem, "getTartozik");	///Szkeleton kiiratas fuggveny kezdetekor
 			boolean osszehasonlitas= elem.equals(f);
-			//szkeleton.logMethodExit(elem, osszehasonlitas);			///Szkeleton kiiratas fuggveny vegen	
 			if(osszehasonlitas){
-				////szkeleton.logMethodExit(this, false);			///Szkeleton kiiratas fuggveny vegen	
 				return false;									///Ha mar van egy tektonon fonala a gombasznak akkor nem tud tobbet letenni
 			}
 		}
@@ -465,7 +390,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		if(tudEpulni(f.getTartozik()) ){					///Megvizsgaljuk hogy ezutan a fonal letetel utan, meg tud-e ott epulni a gombatest
 			gombaTestEpul(f.getTartozik());					///Ha meg tud epulni automatikusan megepul
 		}
-		////szkeleton.logMethodExit(this, true);			///Szkeleton kiiratas fuggveny vegen	
 		return true;
 	} 
 
@@ -477,14 +401,12 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @return tektonok -> Azon tektonok listaja ahova megy fonal a tektonrol
 	 */
 	public ArrayList<Tekton> fonalKeres(){
-		////szkeleton.logMethodEntry(this, "fonalKeres");	///Szkeleton kiiratas fuggveny kezdetekor
 		ArrayList<Tekton> tektonok=new ArrayList<>();
 		for(Fonal elem:osszekoto){						///Fonalak listabol kigyujtjuk azokat az osszes tektont ahova fonal megy
 			if(!tektonok.contains(elem.getHova())){
 				tektonok.add(elem.getHova());
 			}
-		}
-		////szkeleton.logMethodExit(this, "ArrayList<Tekton>");			///Szkeleton kiiratas fuggveny vegen	
+		}	
 		return tektonok;		
 	}
 
@@ -502,14 +424,12 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 */
 	public ArrayList<Tekton> fonalKeres(Gombasz g)	{
 
-		////szkeleton.logMethodEntry(this, "fonalKeres");	///Szkeleton kiiratas fuggveny kezdetekor
 		ArrayList<Tekton> tektonok=new ArrayList<>();
 		for(Fonal elem:osszekoto){
 			if(!tektonok.contains(elem.getHova()) && elem.getTartozik().equals(g)){
 				tektonok.add(elem.getHova());
 			}
 		}
-		////szkeleton.logMethodExit(this, "ArrayList<Tekton>");			///Szkeleton kiiratas fuggveny vegen	
 		return tektonok;
 
 	}
@@ -520,10 +440,7 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @return osszekoto -> Vissza adja a fonal listat
 	 */
 	public ArrayList<Fonal> getOsszekoto(){
-		////szkeleton.logMethodEntry(this, "getOsszekoto");	///Szkeleton kiiratas fuggveny kezdetekor
-		////szkeleton.logMethodExit(this, "ArrayList<Fonal>");			///Szkeleton kiiratas fuggveny vegen
 		return osszekoto;
-			
 	}
 	
 
@@ -536,15 +453,11 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @param s -> Lehelyezett spora
 	 */
 	public void addSpora(Spora s){
-		////szkeleton.logMethodEntry(this, "addSpora");	///Szkeleton kiiratas fuggveny kezdetekor
 		sporak.add(s);
 		if(tudEpulni(s.getTartozik()) ){			///Megnezzuk a spora lehelyezessel meg tud-e epulni gombatest
-			//szkeleton.logMethodEntry(s, "getTartozik");	///Szkeleton kiiratas fuggveny kezdetekor
 			Gombasz temp=s.getTartozik();
-			//szkeleton.logMethodExit(s, "Gombasz");			///Szkeleton kiiratas fuggveny vegen
 			gombaTestEpul(temp);			///Ha gombatest tud epulni, akkor megepul
 		}
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
 
@@ -555,7 +468,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 */
 	private void epitoanyagSporaEltunik(Gombasz g){
 		//az adott jatekos utolso 5 sporajat levesszuk a tektonrol
-		////szkeleton.logMethodEntry(this, "epitoanyagSporaEltunik");	///Szkeleton kiiratas fuggveny kezdetekor
 		ArrayList<Integer> indexek=new ArrayList<>();											
 		for(int i=sporak.size()-1;i>=0 ;i--){		
 			if(sporak.get(i).getTartozik().equals(g)){		
@@ -565,7 +477,6 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 		for(int i=0;i<indexek.size();i++){
 			sporak.remove(indexek.get(i));							///Kigyujtott indexeken levo sporak eltavolitasa
 		}
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen
 	}
 
 
@@ -575,14 +486,10 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @param g -> Melyik gombasz epit gombatestet
 	 */
 	private void gombaTestEpul(Gombasz g){
-		////szkeleton.logMethodEntry(this, "gombaTestEpul");	///Szkeleton kiiratas fuggveny kezdetekor
 		Gombatest uj=new Gombatest(this, g);		///Letre hozzuk a gombatestet
 		setGombatest(uj);							///Beallitjuk a tekton gombatestjet
-		//szkeleton.logMethodEntry(g, "gombatestHozzaad");	///Szkeleton kiiratas fuggveny kezdetekor
 		g.gombatestHozzaad(uj);						///Gombasznak oda adjuk az uj gombatestjet
-		//szkeleton.logMethodExit(g, "");			///Szkeleton kiiratas fuggveny vegen	
-		epitoanyagSporaEltunik(g);					///Eltuntetjuk a sporakat mikbol epult a test
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen														
+		epitoanyagSporaEltunik(g);					///Eltuntetjuk a sporakat mikbol epult a test													
 	}
 
 
@@ -594,9 +501,7 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	* @param g -> Tektonnak beallitani kivant gombatest
 	*/
 	public void setGombatest(Gombatest g){			
-		////szkeleton.logMethodEntry(this, "setGombatest");	///Szkeleton kiiratas fuggveny kezdetekor
 		this.gombatest=g;
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
 	}
 
 
@@ -609,9 +514,7 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @param t -> Uj szomszed tekton
 	 */
    public void addSzomszed(Tekton t){
-	////szkeleton.logMethodEntry(this, "addSzomszed");	///Szkeleton kiiratas fuggveny kezdetekor
 	szomszed.add(t);
-	////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
    }
 
 
@@ -621,14 +524,11 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	* @retrun uj -> Legfelso spora a tektonon
     */
 	public Spora sporatEszik(){
-		////szkeleton.logMethodEntry(this, "sporatEszik");	///Szkeleton kiiratas fuggveny kezdetekor
 		if(sporak.size()!=0){
 			Spora uj=sporak.get(sporak.size()-1);		///Legfelso spora kivalasztasa
 			sporak.remove(sporak.size()-1);				///Spora torlese a tektonrol
-			////szkeleton.logMethodExit(this, "Spora");			///Szkeleton kiiratas fuggveny vegen	
 			return uj;									///Kivalasztott spora visszaadasa
 		}
-		////szkeleton.logMethodExit(this, "null");			///Szkeleton kiiratas fuggveny vegen	
 		return null;
 	}
 
@@ -637,9 +537,7 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @brief Setter (tekton eletkoranak novelese +1-el)
 	 */
 	public void setEletkorNoveles(){
-		////szkeleton.logMethodEntry(this, "sporatEszik");	///Szkeleton kiiratas fuggveny kezdetekor
 		eletkor++;
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
 	}
 
 
@@ -647,9 +545,7 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 	 * @brief Setter (tekton eletkoranak beallitasa barmely ertekre (teszteleshez))
 	 */
 	public void setEletkorMegadas(int szam){
-		////szkeleton.logMethodEntry(this, "setEletkorMegadas");	///Szkeleton kiiratas fuggveny kezdetekor
 		eletkor=szam;
-		////szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
 	}
 
 	/*
@@ -684,10 +580,5 @@ private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
 
 	}
 
-
-
-
-
- 
 }
 

@@ -82,7 +82,7 @@ public class View
                 }
                 break;
             case "fonalLerak":
-                ertek = menet.fonalLerak(tordel[1], tordel[2], tordel[3], tordel[4]);
+                ertek = menet.fonalLerak(tordel[2], tordel[3], tordel[4]);
                 if(ertek)
                 {
                     System.out.println("Sikerult a muvelet");
@@ -112,11 +112,26 @@ public class View
                 }
                 break;
             case "gombaEler":
-                tektonok = menet.gombaEler(tordel[1], tordel[2]);
-                System.out.println(tordel[1] +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokat eri el: ");
-                for(Tekton a : tektonok)
-                {
-                    System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                try{
+                    String atadandoParameter = "Koron levo gombasz";
+                    
+                    if(tordel.length >= 3){
+                        atadandoParameter = tordel[1];
+                        tektonok = menet.gombaEler(atadandoParameter, tordel[2]);
+                        System.out.println(atadandoParameter +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokat eri el: ");
+                    }
+                    else{
+                        tektonok = menet.gombaEler(atadandoParameter, tordel[1]);
+                        System.out.println(atadandoParameter +", " + tordel[1]+" gombatestbol az alabbi tektonokat eri el: ");
+                    }
+                    
+                    for(Tekton a : tektonok)
+                    {
+                        System.out.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                    }
+
+                }catch(IllegalArgumentException e){
+                    System.out.println(e.getMessage());
                 }
                 break;
             case "gombaszEler":
@@ -170,11 +185,19 @@ public class View
             }
                 break;
             case "gombatestListazas":
-               ArrayList<Gombatest> gt = menet.gombatestListazas(tordel[1]);
-                System.out.println(tordel[1] + " gombatestjei: ");
-                for(Gombatest g : gt)
-                {
-                    System.out.println("gombatest" + gt.indexOf(g));
+                try{
+                    String atadandoParameter = "Koron levo gombasz";
+                    if(tordel.length >= 2){
+                        atadandoParameter = tordel[1];
+                    }
+                    ArrayList<Gombatest> gt = menet.gombatestListazas(atadandoParameter);
+                    System.out.println(atadandoParameter + " gombatestjei: ");
+                    for(Gombatest g : gt)
+                    {
+                        System.out.println("gombatest" + gt.indexOf(g));
+                    }
+                }catch(IllegalArgumentException e){
+                    System.out.println(e.getMessage());
                 }
                 break;
             case "tektonSzomszedNincsFonal":
