@@ -82,15 +82,26 @@ public class View
                 }
                 break;
             case "fonalLerak":
-                ertek = menet.fonalLerak(tordel[2], tordel[3], tordel[4]);
-                if(ertek)
-                {
-                    System.out.println("Sikerult a muvelet");
+                try {
+                    if(tordel.length == 4){
+                        ertek = menet.fonalLerak(tordel[1], tordel[2], tordel[3]);
+                    }
+                    else{
+                        System.out.println("Hibas bemenet");
+                    }
+                    
+                    if(ertek)
+                    {
+                        System.out.println("Sikerult a muvelet");
+                    }
+                    else
+                    {
+                        System.out.println("Sikertelen a muvelet");
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
                 }
-                else
-                {
-                    System.out.println("Sikertelen a muvelet");
-                }
+                
                 break;
             case "sporaSzor":
                 ertek = menet.sporaSzor(tordel[1], tordel[2], tordel[3]);

@@ -75,19 +75,16 @@ public class Gombasz extends Jatekos
 
     //visszaadja, hogy a honnan tektonról melyik Tektonokra tud még a gombász fonalat rakni
     Set<Tekton> hovaLehetosegek(Tekton honnan){
-        if(honnan.hanyFonalaVanGombasznak(this) != 0){
-            ArrayList<Tekton> honnanSzomszedok = honnan.getSzomszed();
-            ArrayList<Tekton> honnanOsszekotve = honnan.fonalKeres(this);
-            Set<Tekton> hovaLehetoseg = new HashSet<>();
+        ArrayList<Tekton> honnanSzomszedok = honnan.getSzomszed();
+        ArrayList<Tekton> honnanOsszekotve = honnan.fonalKeres(this);
+        Set<Tekton> hovaLehetoseg = new HashSet<>();
 
-            for(Tekton t : honnanSzomszedok){
-                if(!honnanOsszekotve.contains(t)){
-                    hovaLehetoseg.add(t);
-                }
+        for(Tekton t : honnanSzomszedok){
+            if(!honnanOsszekotve.contains(t)){
+                hovaLehetoseg.add(t);
             }
-            return hovaLehetoseg;
         }
-        return null;
+        return hovaLehetoseg;
     }
 
     private boolean mindenGombaKorVege(){

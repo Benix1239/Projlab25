@@ -275,22 +275,14 @@ public class Jatek {
         return bogaraszObj.ragas(bogarObj, fonalObj);
     }
 
-    //kesz
+
     public boolean fonalLerak(String gombatest, String t1, String t2) {
-        if(jatekosIndex < gombaszok.size()){
-            Gombasz gombaszObj = gombaszok.get(jatekosIndex);
-            Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
-            Tekton t1Obj = tektonFromString(t1);
-            Tekton t2Obj = tektonFromString(t2);
+        Gombasz gombaszObj = jelenlegiGombasz();
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+        Tekton t1Obj = tektonFromString(t1);
+        Tekton t2Obj = tektonFromString(t2);
 
-            boolean returnValue = false;
-        }
-        
-
-        boolean returnValue = false;
-        if (jelenlegiJatekos_e(gombaszObj)) {
-            returnValue = gombatestObj.elhelyez(t1Obj, t2Obj);
-        }
+        boolean returnValue = gombaszObj.fonalLerak(gombatestObj, t1Obj, t2Obj);
 
         jatekosKorvege();
         return returnValue;
