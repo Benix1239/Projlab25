@@ -37,9 +37,8 @@ public class Jatek {
         Tekton t2 = new Tekton();
         hely.addSzomszed(t2);
         t2.addSzomszed(hely);
-        jatekter.tektonHozzaad(hely);
         jatekter.tektonHozzaad(t2);
-        
+        jatekter.tektonHozzaad(hely);
         Gombasz karakter = new Gombasz(jatekter.getPalya());
         Gombatest test = new Gombatest(hely,karakter);
         karakter.gombatestHozzaad(test);
