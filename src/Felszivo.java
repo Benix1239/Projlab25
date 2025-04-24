@@ -26,24 +26,17 @@ public class Felszivo extends Tekton
      */
     @Override
     public void fonalElszakadKoronkent(){
-        ////szkeleton.logMethodEntry(this, "fonalElszakadKoronkent");	///Szkeleton kiiratas fuggveny kezdetekor
         if(osszekoto.size()!=0){
             Fonal szakitjuk=osszekoto.get(osszekoto.size()-1);
-            //szkeleton.logMethodEntry(this, "fonalElszakad");	///Szkeleton kiiratas fuggveny kezdetekor
            fonalElszakad(szakitjuk);
-           //szkeleton.logMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
-    
         }
-        //szkeletonlogMethodExit(this, "");			///Szkeleton kiiratas fuggveny vegen	
     }
 
     /*
      * @brief Ez a tekton szeteseskor, egy masik felszivo tektont hozz letre
      */
-    @Override
-    private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){
-       // //szkeleton.logMethodEntry(this, "ujTektonLetrehozasa");	///Szkeleton kiiratas fuggveny kezdetekor
-        ////szkeleton.logMethodExit(this, "Tekton");			///Szkeleton kiiratas fuggveny vegen	
+    
+    private Tekton ujTektonLetrehozasa(ArrayList<Spora> spo, ArrayList<Tekton>szom){	
         return new Felszivo(spo,szom);
     }
 

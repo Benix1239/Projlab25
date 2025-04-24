@@ -396,18 +396,7 @@ public class Jatek {
 
     public ArrayList<Tekton> tektonSzomszedNincsFonal(String tekton) {
         Tekton tektonObj = tektonFromString(tekton);
-        ArrayList<Tekton> acc = new ArrayList<>();
-        for (Tekton t : tektonObj.getSzomszed()) {
-            if (t == tektonObj) { // szomszédosak
-                for (Fonal f : tektonObj.getOsszekoto()) {
-                    if (!(f.getHova() == tektonObj)) { // de nem köti össze fonal
-                        acc.add(t);
-                    }
-                }
-            }
-
-        }
-
+        ArrayList<Tekton> acc = tektonObj.fonalNelkuliSzomzed(jelenlegiGombasz());
         return acc;
     }
 
