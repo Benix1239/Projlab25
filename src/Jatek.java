@@ -29,7 +29,7 @@ public class Jatek {
         bogaraszok = new ArrayList<Bogarasz>();
         jatekter = new Palya();
         jatekosIndex = 0;
-        inicializalasBogar();
+        inicializalasGombasz();
     }
 
     private void inicializalasBogar(){
@@ -69,40 +69,6 @@ public class Jatek {
     public Palya getJatekter() {
         return jatekter;
     }
-
-    /**
-     * Elind�tja a j�t�kot �s kezeli a f� j�t�kmenetet.
-     */
-    // public void jatekIndit()
-    // {
-    // boolean gameRunning = true;
-    // int turnCount = 0;
-
-    // System.out.println("Hány gombász van?");
-    // int gombaszszam = InputHandler.getScanner().nextInt();
-
-    // for(int i=0;i<gombaszszam;i++){
-    // Jatekos jatekos=null;
-    // jatekos = new Gombasz(jatekter.getPalya());
-
-    // karakterek.add(jatekos);
-    // }
-
-    // System.out.println("Hány bogarasz van?");
-    // int bogaraszszam = InputHandler.getScanner().nextInt();
-
-    // for(int i=0;i<bogaraszszam;i++){
-    // Jatekos jatekos=null;
-    // jatekos = new Bogarasz();
-
-    // karakterek.add(jatekos);
-    // }
-
-    // jatekter = new Palya(gombaszszam + 10);
-
-    // }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private boolean jelenlegiJatekos_e(Jatekos jatekos) {
         return jatekos == jelenlegiJatekos();
