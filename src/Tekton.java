@@ -509,4 +509,14 @@ public class Tekton
 		return eredmeny;
 	}
 
+	public int hanySporajaVan(Gombasz g){
+		int szam = 0;
+		for(Spora s : sporak){
+			if(s.getTartozik() == g){
+				szam++;
+			}
+		}
+		return szam;
+	}
+
 }

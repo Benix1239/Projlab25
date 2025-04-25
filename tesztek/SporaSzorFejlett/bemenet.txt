@@ -1,0 +1,6 @@
+teszt SporaSzorFejlett
+gombaszok
+gombatestListazas 
+gombaszHovaSzorhat gombatest0
+sporaSzor gombatest0 tekton2
+sporakTektonon tekton2

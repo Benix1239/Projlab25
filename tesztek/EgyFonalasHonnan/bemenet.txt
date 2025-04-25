@@ -1,0 +1,7 @@
+teszt EgyFonalasHonnan
+gombaszok
+gombatestListazas 
+gombaEler gombatest0
+tektonSzomszedNincsFonal tekton1
+fonalLerak gombatest0 tekton1 tekton2
+gombaEler gombatest0

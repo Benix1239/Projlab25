@@ -204,7 +204,7 @@ public class Jatek {
         return jatekos == jelenlegiJatekos();
     }
 
-    private Jatekos jelenlegiJatekos() {
+    public Jatekos jelenlegiJatekos() {
         if (jatekosIndex < gombaszok.size()) {
             return gombaszok.get(jatekosIndex);
         } else {
@@ -552,5 +552,11 @@ public class Jatek {
             }
         }
         return null;
+    }
+
+    public int tektonSpora(String gombasz, String tekton){
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Tekton tektonObj = tektonFromString(tekton);
+        return tektonObj.hanySporajaVan(gombaszObj);
     }
 }

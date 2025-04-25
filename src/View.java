@@ -287,7 +287,7 @@ public class View
                 case "tektonSzomszedNincsFonal":
                     try{
                         if(tordel.length != 2){
-                            System.out.println("Hibas bemenet");
+                            kimenet.println("Hibas bemenet");
                             break;
                         }
                         tektonlista = menet.tektonSzomszedNincsFonal(tordel[1]);
@@ -297,7 +297,7 @@ public class View
                             kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) );
                         }
                     }catch(IllegalArgumentException e){
-                        System.out.println(e.getMessage());
+                        kimenet.println(e.getMessage());
                     }
                     break;
                 case "benultBogar":
@@ -315,6 +315,27 @@ public class View
                 case "jelenlegiJatekos":
                     kimenet.println(menet.getJelenlegiJatekosNev());
                     break;
+
+                case "sporakTektonon":
+                    try {
+                        String atadandoParameter = "Koron levo gombasz";
+                        int sporaSzam = 0;
+
+                        if(tordel.length == 2){
+                            sporaSzam = menet.tektonSpora(atadandoParameter, tordel[1]);
+                            kimenet.println(sporaSzam);
+                        }else if(tordel.length == 3){
+                            sporaSzam = menet.tektonSpora(tordel[1], tordel[2]);
+                            kimenet.println(sporaSzam);
+                        }else {
+                            kimenet.println("Hibas bemenet");
+                        }
+
+                    }catch(IllegalArgumentException e){
+                        kimenet.println(e);
+                    }
+
+                break;
 
                 case "kilepes":
                     return;
