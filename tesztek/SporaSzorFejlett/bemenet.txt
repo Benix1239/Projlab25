@@ -2,5 +2,6 @@ teszt SporaSzorFejlett
 gombaszok
 gombatestListazas 
 gombaszHovaSzorhat gombatest0
+sporakTektonon tekton2
 sporaSzor gombatest0 tekton2
 sporakTektonon tekton2

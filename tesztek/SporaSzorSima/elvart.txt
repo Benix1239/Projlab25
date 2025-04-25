@@ -4,5 +4,6 @@ Koron levo gombasz gombatestjei:
 gombatest0
 Koron levo gombasz, gombatest0 gombatestbol az alabbi tektonokra szorhat: 
 tekton0
+0
 Siker
 1
