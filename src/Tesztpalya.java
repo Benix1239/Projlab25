@@ -102,6 +102,14 @@ public class Tesztpalya
         tesztvilag.getBogaraszok().add(karakter);
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+        Fonal fon20 = new Fonal(t2,jatekos);
+        Fonal fon21 = new Fonal(t1,jatekos);
+        t2.addFonal(fon21);
+        t1.addFonal(fon20);
         tesztvilag.getGombaszok().add(jatekos);
 
         return tesztvilag;

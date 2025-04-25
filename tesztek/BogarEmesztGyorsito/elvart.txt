@@ -1,12 +1,13 @@
-gombasz jatekosok: 
-gombasz0
-Koron levo gombasz gombatestjei: 
-gombatest0
-Koron levo gombasz, gombatest0 gombatestbol az alabbi tektonokat eri el: 
-tekton1 
-tekton1 tekton szomszedai amikre nem megy fonal: 
-tekton0 
-Siker
-Koron levo gombasz, gombatest0 gombatestbol az alabbi tektonokat eri el: 
-tekton0
-tekton1 
+A Gombasz0 jatekos passzolta a koret
+bogarasz jatekosok: 
+bogarasz0
+bogarasz0 bogarai: 
+bogar0
+bogarasz0-hez tartozo bogar0 megevett egy sporat a tektonon
+A Bogarasz0 jatekos passzolta a koret
+A Gombasz0 jatekos passzolta a koret
+A jelenlegi jatekos: Bogarasz0
+Bogar0:
+Megmaradt lepesek szama: 2
+Tud meg enni
+Tud meg ragni

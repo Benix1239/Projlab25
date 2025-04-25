@@ -293,11 +293,32 @@ public class Jatek {
 //string leforditas objektumra----------------------------------------------------------------------------
 
     public Bogarasz bogaraszFromString(String bogarasz) {
-        return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
+        //return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
+
+        Pattern pattern = Pattern.compile("^bogarasz(\\d+)$");
+        Matcher matcher = pattern.matcher(bogarasz);
+
+        if (matcher.matches()) {
+            int szam = Integer.parseInt(matcher.group(1));
+            if(szam >= 0 && szam <bogaraszok.size()){
+                return bogaraszok.get(szam);
+            }
+        } 
+        throw new IllegalArgumentException("Hibas bemenet");
     }
 
     public Bogar bogarFromString(Bogarasz bogarasz, String bogar) {
-        return bogarasz.getBogarak().get(Integer.parseInt(bogar.substring(5)));
+        //return bogarasz.getBogarak().get(Integer.parseInt(bogar.substring(5)));
+        Pattern pattern = Pattern.compile("^bogar(\\d+)$");
+        Matcher matcher = pattern.matcher(bogar);
+
+        if (matcher.matches()) {
+            int szam = Integer.parseInt(matcher.group(1));
+            if(szam >= 0 && szam<bogarasz.getBogarak().size()){
+                return bogarasz.getBogarak().get(szam);
+            }
+        } 
+        throw new IllegalArgumentException("Hibas bemenet");
     }
 
     public Tekton tektonFromString(String tekton) {
@@ -333,11 +354,32 @@ public class Jatek {
     }
 
     public Gombatest gombatestFromString(String gombatest, Gombasz gombasz) {
-        return gombasz.getTestek().get(Integer.parseInt(gombatest.substring(9)));
+        //return gombasz.getTestek().get(Integer.parseInt(gombatest.substring(9)));
+        Pattern pattern = Pattern.compile("^gombatest(\\d+)$");
+        Matcher matcher = pattern.matcher(gombatest);
+
+        if (matcher.matches()) {
+            int szam = Integer.parseInt(matcher.group(1));
+            if(szam >= 0 && szam<gombasz.getTestek().size()){
+                return gombasz.getTestek().get(szam);
+            }
+        } 
+        throw new IllegalArgumentException("Hibas bemenet");
     }
 
     public Fonal fonalFromString(String fonal, Tekton tekton) {
-        return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(5)));
+        //return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(5)));
+
+        Pattern pattern = Pattern.compile("^fonal(\\d+)$");
+        Matcher matcher = pattern.matcher(fonal);
+
+        if (matcher.matches()) {
+            int szam = Integer.parseInt(matcher.group(1));
+            if(szam >= 0 && szam<tekton.getOsszekoto().size()){
+                return tekton.getOsszekoto().get(szam);
+            }
+        } 
+        throw new IllegalArgumentException("Nem letezik ilyen fonal");
     }
 
 //parancsok---------------------------------------------------------------------------------------------
