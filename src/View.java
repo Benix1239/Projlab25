@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,12 +13,13 @@ public class View
    
     Jatek menet = new Jatek();
 
-    /*View()
+    View()
     {
         kimenet.println("Filebol [f], vagy Konzolrol [k] szeretned beolvasni a parancsokat?");
         String valaszt = bemenet.next();
         if(valaszt.charAt(0) == 'f')
         {
+            /* 
             try
             {
                 File file = new File("tesztek/kimenet.txt");
@@ -44,9 +47,11 @@ public class View
             {
                 
             }
+            */
+            fileValaszto();
         }
         
-    }*/
+    }
 
     void bemenetKezeles()
     {
@@ -306,71 +311,114 @@ public class View
     {
         switch (tordel[1]) {
             case "BogarLep":
-                Tesztpalya.bogarLep();
+                menet = Tesztpalya.bogarLep();
                 break;
             case "BogarEszik":
-                Tesztpalya.bogarEszik();
+                menet = Tesztpalya.bogarEszik();
                 break;
             case "BogarNemEszik":
-                Tesztpalya.bogarNemEszik();
+                menet = Tesztpalya.bogarNemEszik();
                 break;
             case "BogarRagas":
-                Tesztpalya.bogarRagas();
+                menet = Tesztpalya.bogarRagas();
                 break;
             case "BogarNemRagas":
-                Tesztpalya.bogarNemRagas();
+                menet = Tesztpalya.bogarNemRagas();
                 break;
             case "FonalLerakSima":
-                Tesztpalya.fonalLerakSima();
+                menet = Tesztpalya.fonalLerakSima();
                 break;
             case "EgyFonalasHonnan":
-                Tesztpalya.egyFonalasHonnan();
+                menet = Tesztpalya.egyFonalasHonnan();
                 break;
             case "EgyFonalasHova":
-                Tesztpalya.egyFonalasHova();
+                menet = Tesztpalya.egyFonalasHova();
                 break;
             case "SporaSzorSima":
-                Tesztpalya.sporaSzorSima();
+                menet = Tesztpalya.sporaSzorSima();
                 break;
             case "SporaSzorFejlett":
-                Tesztpalya.sporaSzorFejlett();
+                menet = Tesztpalya.sporaSzorFejlett();
                 break;
             case "GombatestEpitFonallal":
-                Tesztpalya.gombatestEpitFonallal();
+                menet = Tesztpalya.gombatestEpitFonallal();
                 break;
             case "GombatestEpitSporaval":
-                Tesztpalya.gombatestEpitSporaval();
+                menet = Tesztpalya.gombatestEpitSporaval();
                 break;
             case "GombatestMeghal":
-                Tesztpalya.gombatestMeghal();
+                menet = Tesztpalya.gombatestMeghal();
                 break;
             case "FonalElhalGombatestMiatt":
-                Tesztpalya.fonalElhalGombatestMiatt();
+                menet = Tesztpalya.fonalElhalGombatestMiatt();
                 break;
             case "FonalEvesBogar":
-                Tesztpalya.fonalEvesBogar();
+                menet = Tesztpalya.fonalEvesBogar();
                 break;
             case "FonalElhalSzetesesMiatt":
-                Tesztpalya.fonalElhalSzetesesMiatt();
+                menet = Tesztpalya.fonalElhalSzetesesMiatt();
                 break;
             case "GombatestEpitTestetlenre":
-                Tesztpalya.gombatestEpitTestetlenre();
+                menet = Tesztpalya.gombatestEpitTestetlenre();
                 break;
             case "FonalElhalBogarMiatt":
-                Tesztpalya.fonalElhalBogarMiatt();
+                menet = Tesztpalya.fonalElhalBogarMiatt();
                 break;
             case "EletbenTart":
-                Tesztpalya.eletbenTart();
+                menet = Tesztpalya.eletbenTart();
                 break;
             case "TektonSzetesesFonalNelkul":
-                Tesztpalya.tektonSzetesesFonalNelkul();
+                menet = Tesztpalya.tektonSzetesesFonalNelkul();
                 break;
             case "FonalFelsziv":
-                Tesztpalya.fonalFelsziv();
+                menet = Tesztpalya.fonalFelsziv();
                 break;
             default:
                kimenet.print("nem ismert teszt");
         }
+    }
+
+    void fileValaszto()
+    {
+        kimenet.print("melyik file-t alkalmaznad?\n");
+        File tesztekFolder = new File("tesztek");
+        File[] files = tesztekFolder.listFiles();
+
+        if (files != null && files.length > 0) 
+        {
+            for (File file : files) 
+            {
+                if (file.isDirectory()) 
+                {
+                    kimenet.print(file.getName() + "\n");
+                }
+            }
+
+            String valaszt = bemenet.nextLine();
+            for (File file : files) 
+            {
+                if (file.isDirectory() && valaszt.equals(file.getName())) 
+                {
+                    Scanner s;
+                    try {
+                        s = new Scanner(file);
+                        InputHandler.setScanner(s);
+                        bemenet = InputHandler.getScanner();
+                    } catch (FileNotFoundException e) {
+                       
+                    }
+                    
+                }
+            }
+        }
+        else
+        {
+            kimenet.print("Nincsenek megfelelo fileok.\nHelyes file struktura:\nTesztek.dir\n\ttesztnev.dir\n\t\tbemenet.txt\n\t\tkimenet.txt\n\t\telvart.txt");
+        }
+
+        
+
+
     }
 
 }
