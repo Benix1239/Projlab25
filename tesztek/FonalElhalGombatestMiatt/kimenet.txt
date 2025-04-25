@@ -1,8 +1,10 @@
 gombasz jatekosok: 
 gombasz0
-gombasz0 gombatestjei: 
+Koron levo gombasz gombatestjei: 
 gombatest0
-gombasz0 gombasz, gombatest0 gombatestbol az alabbi tektonokra szorhat: 
+tekton0 tektonrol, az alabbi tektonok erhetoek el fonalakon keresztul: 
+tekton1
+Koron levo gombasz, gombatest0 gombatestbol az alabbi tektonokra szorhat: 
 tekton0
 tekton1
 Siker
