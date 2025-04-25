@@ -83,7 +83,7 @@ public class Jatek {
         gombaszok.add(jatekos);*/
 
         //BogarRagas
-        Tekton t1 = new Tekton();
+        /*Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
@@ -101,26 +101,91 @@ public class Jatek {
         Fonal fon11 = new Fonal(t1,jatekos);
         t2.addFonal(fon11);
         t1.addFonal(fon10);
+        gombaszok.add(jatekos);*/
+
+        //Gyorsito
+        /*Tekton t1 = new Tekton();
+        jatekter.tektonHozzaad(t1);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        bogaraszok.add(karakter);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Spora s= new Gyorsito(jatekos);
+        t1.addSpora(s);
+        gombaszok.add(jatekos);*/
+
+        //Benito
+        /*Tekton t1 = new Tekton();
+        jatekter.tektonHozzaad(t1);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        bogaraszok.add(karakter);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Spora s= new Benito(jatekos);
+        t1.addSpora(s);
+        gombaszok.add(jatekos);*/
+
+        //Keseru
+        /*Tekton t1 = new Tekton();
+        jatekter.tektonHozzaad(t1);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        bogaraszok.add(karakter);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Spora s= new Keseru(jatekos);
+        t1.addSpora(s);
+        gombaszok.add(jatekos);*/
+
+        //Lassito
+        /*Tekton t1 = new Tekton();
+        jatekter.tektonHozzaad(t1);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        bogaraszok.add(karakter);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Spora s= new Lassito(jatekos);
+        t1.addSpora(s);
+        gombaszok.add(jatekos);*/
+
+        Tekton t1 = new Tekton();
+        jatekter.tektonHozzaad(t1);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        bogaraszok.add(karakter);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Spora s= new Szaporodo(jatekos);
+        t1.addSpora(s);
         gombaszok.add(jatekos);
     }
 
     private void inicializalasGombasz(){
-        Tekton t1 = new Tekton();
+        Tekton hely = new Tekton();
         Tekton t2 = new Tekton();
-        t1.addSzomszed(t2);
-        t2.addSzomszed(t1);
-        
+        hely.addSzomszed(t2);
+        t2.addSzomszed(hely);
         jatekter.tektonHozzaad(t2);
-        jatekter.tektonHozzaad(t1);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Gombatest test = new Gombatest(t1,jatekos);
-        jatekos.gombatestHozzaad(test);
-        t1.setGombatest(test);
-
-        gombaszok.add(jatekos);
-
-        jelenlegiJatekos().korElejeInicializalas();
+        jatekter.tektonHozzaad(hely);
+        Gombasz karakter = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(hely,karakter);
+        karakter.gombatestHozzaad(test);
+        hely.setGombatest(test);
+        gombaszok.add(karakter);
+	jelenlegiJatekos().korElejeInicializalas();
     }
 
     public Palya getJatekter() {

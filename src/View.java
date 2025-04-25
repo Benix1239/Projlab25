@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -9,7 +10,9 @@ public class View
 {
 
     Scanner bemenet = InputHandler.getScanner();
-    PrintStream kimenet = OutputHandler.getKimenet();
+    PrintStream kimenet = OutputHandler.getKonzol();
+    Scanner elvart;
+    Scanner eredmeny; 
    
     Jatek menet = new Jatek();
 
@@ -57,7 +60,16 @@ public class View
     {
         while (true) 
         {
-            String beolvas = bemenet.nextLine();
+            String beolvas;
+            try {
+                beolvas = bemenet.nextLine();
+            } catch (Exception e) 
+            {
+                eredmenyHasonlitas();
+                beolvas = "kilepes";
+            }
+            
+            
             String tordel[] = beolvas.split(" ");
             boolean ertek = true;
             Set<Tekton> tektonok;
@@ -189,7 +201,7 @@ public class View
                 kimenet.println(tordel[1] +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokra rakhat: ");
                 for(Tekton a : tektonok)
                 {
-                    kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                    kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) );
                 }
                 break;
             case "gombaEler":
@@ -208,7 +220,7 @@ public class View
                     
                     for(Tekton a : tektonok)
                     {
-                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) );
                     }
 
                     }catch(IllegalArgumentException e){
@@ -220,7 +232,7 @@ public class View
                     kimenet.println(tordel[1] +" gombasz, az alabbi tektonokat eri el: ");
                     for(Tekton a : tektonok)
                     {
-                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) );
                     }
                     break;
                 case "fonallalOsszekotott":
@@ -228,7 +240,7 @@ public class View
                     kimenet.println(tordel[1] +" tektonrol, az alabbi tektonok erhetoek el fonalakon keresztul: ");
                     for(Tekton a : tektonlista)
                     {
-                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a));
                     }
                     break;
                 case "gombaszHovaSzorhat":
@@ -247,7 +259,7 @@ public class View
                         
                         for(Tekton a : tektonok)
                         {
-                            kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                            kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a));
                         }
     
                         }catch(IllegalArgumentException e){
@@ -259,7 +271,7 @@ public class View
                     kimenet.println(tordel[1] +" tektonon az alabbi fonalak vannak: ");
                     for(Fonal a : fonallista)
                     {
-                        kimenet.println("fonal"+ menet.tektonFromString(tordel[1]).getOsszekoto().indexOf(a) + " ");
+                        kimenet.println("fonal"+ menet.tektonFromString(tordel[1]).getOsszekoto().indexOf(a));
                     }
                     break;
                 case "bogarTekton":
@@ -306,7 +318,7 @@ public class View
                         kimenet.println(tordel[1] + " tekton szomszedai amikre nem megy fonal: ");
                         for(Tekton a : tektonlista)
                         {
-                            kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                            kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) );
                         }
                     }catch(IllegalArgumentException e){
                         System.out.println(e.getMessage());
@@ -439,11 +451,18 @@ public class View
                                 s = new Scanner(belso);
                                 InputHandler.setScanner(s);
                                 bemenet = InputHandler.getScanner();
+                                InputHandler.setForras(belso);
                             }
-                            if(belso.getName().equals("kimenet.txt"))
+                            else if(belso.getName().equals("kimenet.txt"))
                             {
                                 OutputHandler.setKimenet(new PrintStream(belso));
                                 kimenet = OutputHandler.getKimenet();
+                                OutputHandler.setForras(belso);
+                                eredmeny = new Scanner(belso);
+                            }
+                            else if(belso.getName().equals("elvart.txt"))
+                            {
+                               elvart = new Scanner(belso);
                             }
                         }
                        
@@ -451,6 +470,7 @@ public class View
                     } catch (FileNotFoundException e) {
                        
                     }
+                    break;
                 }
             }
         }
@@ -458,10 +478,53 @@ public class View
         {
             kimenet.print("Nincsenek megfelelo fileok.\nHelyes file struktura:\nTesztek.dir\n\ttesztnev.dir\n\t\tbemenet.txt\n\t\tkimenet.txt\n\t\telvart.txt");
         }
+    }
 
+    void eredmenyHasonlitas()
+    {
         
+        kimenet = OutputHandler.getKonzol();
+        List<String> elvartList = new ArrayList<>();
+        List<String> eredmenyList = new ArrayList<>();
 
+        while (elvart.hasNextLine()) {
+            elvartList.add(elvart.nextLine());
+        }
 
+        while (eredmeny.hasNextLine()) {
+            eredmenyList.add(eredmeny.nextLine());
+        }
+        String elvartSor = String.format("%-20s", "Elvart");
+        String eredmenySor = String.format("%20s", "Eredmeny");
+        kimenet.print(elvartSor + "||" + eredmenySor + "\n");
+        boolean egyeznek = true;
+        if(elvartList.size() != eredmenyList.size())
+        {
+            kimenet.print("a ket file merete nem egyezik meg.");
+            return;
+        }
+        for(int i = 0; i < elvartList.size(); i++)
+        {
+            elvartSor = String.format("%-20s", elvartList.get(i));
+            eredmenySor = String.format("%20s", eredmenyList.get(i));
+            kimenet.print(elvartSor + "||" + eredmenySor);
+            if(!elvartList.get(i).equals(eredmenyList.get(i)))
+            {
+                egyeznek = false;
+                kimenet.print(" *HIBAS*");
+            }
+            kimenet.print("\n");
+        }
+
+        if(egyeznek)
+        {
+            kimenet.print("\naz eredmeny megegyezik az elvarttal.\n");
+        }
+        else
+        {
+            kimenet.print("\naz eredmeny nem egyezik meg az elvarttal\n");
+        }
+        return;
     }
 
 }

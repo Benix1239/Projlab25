@@ -21,6 +21,7 @@ public class Bogar
         actionRagas = true;
         actionEves = true;
         elozo = null;
+        korVege=false;
     }
 
     private void checkKorvege(){
@@ -41,11 +42,10 @@ public class Bogar
     }
 
     public boolean korVegeEmeszt(){
-        //bogar.beallit();
 
-        if(this.elozo!=null){
-            this.getTartozik().pontok += this.getSpora().getPluszpont();
-        }
+      
+
+        this.beallit();
 
         this.sporaMegemesztes();
 
