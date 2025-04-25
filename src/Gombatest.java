@@ -60,13 +60,23 @@ public class Gombatest
             korVege = true;
         }
 
-        if(hovaSzorhat().size() == 0 && tartozik.hovaLehetosegek(hely).size() == 0){
+        if(hovaSzorhat().size() == 0 && !tudFonalatRakni()){
             korVege = true;
         }
 
-        if(action == 1 && tartozik.hovaLehetosegek(hely).size() == 0 && spora == null){
+        if(!tudFonalatRakni() && spora == null){
             korVege = true;
         }
+    }
+
+    private boolean tudFonalatRakni(){
+        Set<Tekton> dfsEredmeny = dfs();
+        for(Tekton t : dfsEredmeny){
+            if(tartozik.hovaLehetosegek(t).size() != 0){
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean elszor(Tekton c){
@@ -158,6 +168,29 @@ public class Gombatest
         }else{
             return null;
         }
+    }
+
+    public String mitLehetCsinalni(){
+        String returnValue = "";
+        if(action == 0){
+            return returnValue;
+        }
+
+        if(korVege){
+            return returnValue;
+        }
+
+        if(hovaSzorhat().size() != 0 && spora != null){
+            returnValue += "Szoras ";
+        }
+        
+        if(tudFonalatRakni()){
+            returnValue += "Fonalrakas";
+        }
+
+        returnValue += "\n";
+
+        return returnValue;
     }
 
     public int getMaradt(){

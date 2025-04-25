@@ -164,16 +164,26 @@ public class View
                 
                 break;
             case "sporaSzor":
-                ertek = menet.sporaSzor(tordel[1], tordel[2], tordel[3]);
-                if(ertek)
-                {
-                    kimenet.println("Sikerult a muvelet");
-                }
-                else
-                {
-                    kimenet.println("Sikertelen a muvelet");
+                try {
+                    String kiirniValo = "Hibas bemenet";
+                    ertek = false;
+                    if(tordel.length == 3){
+                        ertek = menet.sporaSzor(tordel[1], tordel[2]);
+                        if(ertek){
+                            kiirniValo = "Siker";
+                        }
+                        else{
+                            kiirniValo = "Sikertelen";
+                        }
+                    }
+                    
+                    kimenet.println(kiirniValo);
+
+                } catch (IllegalArgumentException e) {
+                    kimenet.println(e.getMessage());
                 }
                 break;
+
             case "gombaHovaRakhat":
                 tektonok = menet.gombaHovaRakhat(tordel[1], tordel[2]);
                 kimenet.println(tordel[1] +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokra rakhat: ");
@@ -222,13 +232,28 @@ public class View
                     }
                     break;
                 case "gombaszHovaSzorhat":
-                tektonok = menet.gombaszHovaSzorhat(tordel[1], tordel[2]);
-                kimenet.println(tordel[1] +"gombasz az alabbi tektonokra szorhat: ");
-                    for(Tekton a : tektonok)
-                    {
-                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
-                    }
-                    break;
+                    try{
+                        String atadandoParameter = "Koron levo gombasz";
+                        
+                        if(tordel.length >= 3){
+                            atadandoParameter = tordel[1];
+                            tektonok = menet.gombaszHovaSzorhat(atadandoParameter, tordel[2]);
+                            kimenet.println(atadandoParameter +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokra szorhat: ");
+                        }
+                        else{
+                            tektonok = menet.gombaszHovaSzorhat(atadandoParameter, tordel[1]);
+                            kimenet.println(atadandoParameter +", " + tordel[1]+" gombatestbol az alabbi tektonokra szorhat: ");
+                        }
+                        
+                        for(Tekton a : tektonok)
+                        {
+                            kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                        }
+    
+                        }catch(IllegalArgumentException e){
+                            kimenet.println(e.getMessage());
+                        }
+                        break;
                 case "tektononFonal":
                     fonallista = menet.tektononFonal(tordel[1]);
                     kimenet.println(tordel[1] +" tektonon az alabbi fonalak vannak: ");
@@ -298,9 +323,14 @@ public class View
                 case "teszt":
                     tesztfvek(tordel);
                     break;
+
+                case "jelenlegiJatekos":
+                    kimenet.println(menet.getJelenlegiJatekosNev());
+                    break;
+
                 case "kilepes":
                     return;
-                
+
                 default:
                     kimenet.println("\nnem ismert parancs\n");
             }
