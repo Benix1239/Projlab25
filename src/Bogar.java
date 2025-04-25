@@ -42,9 +42,6 @@ public class Bogar
     }
 
     public boolean korVegeEmeszt(){
-
-      
-
         this.beallit();
 
         this.sporaMegemesztes();

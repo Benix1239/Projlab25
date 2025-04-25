@@ -580,8 +580,6 @@ public class Tesztpalya
     public static Jatek tektonSzetesesFonalNelkul() {
         tesztvilag = new Jatek();
 
-        tesztvilag = new Jatek();
-
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
 
@@ -593,10 +591,12 @@ public class Tesztpalya
         tesztvilag.getJatekter().tektonHozzaad(t1);
         tesztvilag.getJatekter().tektonHozzaad(t2);
 
+        Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        tesztvilag.getGombaszok().add(jatekos);
+
         tesztvilag.jelenlegiJatekos().korElejeInicializalas();
 
         return tesztvilag;
-
     }
     
     public static Jatek fonalFelsziv() {
