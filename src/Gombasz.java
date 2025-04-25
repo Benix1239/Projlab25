@@ -127,7 +127,13 @@ public class Gombasz extends Jatekos
     }
 
     public String mitLehetCsinalni(){
-        return "Meg nincs megvalositva";
+        String returnValue = "";
+        int szamlalo = 0;
+        for(Gombatest gt : testek){
+            returnValue += "gombatest" + szamlalo + ": " + gt.mitLehetCsinalni();
+            szamlalo++;
+        }
+        return returnValue;
     }
     
     public void setNev(String nev) {
