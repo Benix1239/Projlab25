@@ -16,7 +16,7 @@ public class View
     View()
     {
         kimenet.println("Filebol [f], vagy Konzolrol [k] szeretned beolvasni a parancsokat?");
-        String valaszt = bemenet.next();
+        String valaszt = bemenet.nextLine();
         if(valaszt.charAt(0) == 'f')
         {
             /* 
@@ -401,13 +401,26 @@ public class View
                 {
                     Scanner s;
                     try {
-                        s = new Scanner(file);
-                        InputHandler.setScanner(s);
-                        bemenet = InputHandler.getScanner();
+                        File[] tartalom = file.listFiles();
+                        for(File belso : tartalom)
+                        {
+                            if(belso.getName().equals("bemenet.txt"))
+                            {
+                                s = new Scanner(belso);
+                                InputHandler.setScanner(s);
+                                bemenet = InputHandler.getScanner();
+                            }
+                            if(belso.getName().equals("kimenet.txt"))
+                            {
+                                OutputHandler.setKimenet(new PrintStream(belso));
+                                kimenet = OutputHandler.getKimenet();
+                            }
+                        }
+                       
+                        
                     } catch (FileNotFoundException e) {
                        
                     }
-                    
                 }
             }
         }

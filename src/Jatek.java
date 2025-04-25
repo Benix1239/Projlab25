@@ -31,7 +31,7 @@ public class Jatek {
         bogaraszok = new ArrayList<Bogarasz>();
         jatekter = new Palya();
         jatekosIndex = 0;
-        inicializalasBogar();
+        inicializalasGombasz();
     }
 
     private void inicializalasBogar(){
@@ -105,41 +105,18 @@ public class Jatek {
     }
 
     private void inicializalasGombasz(){
-        Tekton t1 = new Egyfonalas();
+        Tekton hely = new Tekton();
         Tekton t2 = new Tekton();
-        Tekton t3 = new Tekton();
-
-        jatekter.tektonHozzaad(t1);
+        hely.addSzomszed(t2);
+        t2.addSzomszed(hely);
         jatekter.tektonHozzaad(t2);
-        jatekter.tektonHozzaad(t3);
-        t1.addSzomszed(t2);
-        t2.addSzomszed(t1);
-        t1.addSzomszed(t3);
-        t3.addSzomszed(t1);
-        t2.addSzomszed(t3);
-        t3.addSzomszed(t2);
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Gombasz jatekos2 = new Gombasz(jatekter.getPalya());
-
-        Fonal fon10 = new Fonal(t2,jatekos2);
-        Fonal fon11 = new Fonal(t1,jatekos2);
-        Fonal fon12 = new Fonal(t2, jatekos);
-        Fonal fon13 = new Fonal(t3, jatekos);
-        t1.addFonal(fon10);
-        t2.addFonal(fon11);
-        t2.addFonal(fon13);
-        t3.addFonal(fon12);
-
-        Gombatest test = new Gombatest(t2,jatekos2);
-        jatekos2.gombatestHozzaad(test);
-        t2.setGombatest(test);
-
-        Gombatest test2 = new Gombatest(t3, jatekos);
-        jatekos.gombatestHozzaad(test2);
-        t3.setGombatest(test2);
-
-        gombaszok.add(jatekos);
-        gombaszok.add(jatekos2);
+        jatekter.tektonHozzaad(hely);
+        Gombasz karakter = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(hely,karakter);
+        karakter.gombatestHozzaad(test);
+        hely.setGombatest(test);
+        gombaszok.add(karakter);
+	jelenlegiJatekos().korElejeInicializalas();
     }
 
 //getterek---------------------------------------------------------
