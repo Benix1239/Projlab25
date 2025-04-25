@@ -22,42 +22,18 @@ public class View
         String valaszt = bemenet.nextLine();
         if(valaszt.charAt(0) == 'f')
         {
-            /* 
-            try
-            {
-                File file = new File("tesztek/kimenet.txt");
-                file.getParentFile().mkdirs();
-                file.createNewFile();
-    
-                OutputHandler.setKimenet(new PrintStream(file));
-                kimenet = OutputHandler.getKimenet();
-            }
-            catch(Exception e)
-            {
-               
-            }
-    
-            try 
-            {
-                File file = new File("tesztek/bemenet.txt");
-                file.getParentFile().mkdirs();
-                file.createNewFile();
-    
-                Scanner s = new Scanner(new File("tesztek/bemenet.txt"));
-                InputHandler.setScanner(s);
-                bemenet = InputHandler.getScanner();
-            } catch (Exception e) 
-            {
-                
-            }
-            */
             fileValaszto();
+        }
+        else
+        {
+            kimenet.print("Kezdheti a parancsok megadasat:\n");
         }
         
     }
 
     void bemenetKezeles()
     {
+        
         while (true) 
         {
             String beolvas;

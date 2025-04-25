@@ -1,6 +1,6 @@
 public class Tesztpalya 
 {
-    static Jatek tesztvilag;
+   public  static Jatek tesztvilag = new Jatek();
 
     public static Jatek bogarLep()
     {

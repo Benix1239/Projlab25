@@ -2,4 +2,3 @@ gombaszok
 gombatestListazas 
 gombaszHovaSzorhat gombatest0
 sporaSzor gombatest0 tekton0
-kilepes
