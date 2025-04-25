@@ -54,7 +54,7 @@ public class View
             String s=null;
             switch (tordel[0]) {
                 case "jatekIndit":
-                    
+                    menet.alapJatekPalya();
                     break;
                 case "ment":
                     

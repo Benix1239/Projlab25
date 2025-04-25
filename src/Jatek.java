@@ -595,4 +595,110 @@ public class Jatek {
         }
         return null;
     }
+
+    public void alapJatekPalya()
+    {
+        jatekter = new Palya();
+        Gombasz gombaszEgy = new Gombasz(jatekter.getPalya());
+        Gombasz gombaszKet = new Gombasz(jatekter.getPalya());
+
+        Bogarasz bogaraszEgy = new Bogarasz();
+        Bogarasz bogaraszKet = new Bogarasz();
+
+        Tekton elso = new Tekton();
+        Tekton ketto = new Tekton();
+        Tekton harom = new Tekton();
+        Tekton negy = new Tekton();
+        Tekton ot = new Tekton();
+        Tekton hat = new Testetlen();
+        Tekton het = new Testetlen();
+        Tekton nyolc = new EletbenTarto();
+        Tekton kilenc = new EletbenTarto();
+        Tekton tiz = new Felszivo();
+        Tekton tizenegy = new Felszivo();
+        Tekton tizenketto = new Egyfonalas();
+        Tekton tizenharom = new Egyfonalas();
+
+        jatekter.getPalya().add(elso);
+        jatekter.getPalya().add(ketto);
+        jatekter.getPalya().add(harom);
+        jatekter.getPalya().add(negy);
+        jatekter.getPalya().add(ot);
+        jatekter.getPalya().add(hat);
+        jatekter.getPalya().add(het);
+        jatekter.getPalya().add(nyolc);
+        jatekter.getPalya().add(kilenc);
+        jatekter.getPalya().add(tiz);
+        jatekter.getPalya().add(tizenegy);
+        jatekter.getPalya().add(tizenketto);
+        jatekter.getPalya().add(tizenharom);
+
+        elso.szomszed.add(ketto);
+        elso.szomszed.add(hat);
+        elso.szomszed.add(tizenketto);
+        elso.szomszed.add(tizenharom);
+
+        ketto.szomszed.add(elso);
+        ketto.szomszed.add(tizenketto);
+        ketto.szomszed.add(harom);
+
+        harom.szomszed.add(ketto);
+        harom.szomszed.add(hat);
+        harom.szomszed.add(het);
+
+        negy.szomszed.add(het);
+        negy.szomszed.add(nyolc);
+        negy.szomszed.add(tizenegy);
+
+        ot.szomszed.add(tizenegy);
+        ot.szomszed.add(tizenharom);
+
+        hat.szomszed.add(elso);
+        hat.szomszed.add(harom);
+        hat.szomszed.add(nyolc);
+
+        het.szomszed.add(harom);
+        het.szomszed.add(negy);
+        het.szomszed.add(tizenegy);
+        het.szomszed.add(tizenketto);
+
+        nyolc.szomszed.add(negy);
+        nyolc.szomszed.add(hat);
+
+        kilenc.szomszed.add(tizenketto);
+
+        tiz.szomszed.add(tizenketto);
+        tiz.szomszed.add(tizenharom);
+
+        tizenegy.szomszed.add(negy);
+        tizenegy.szomszed.add(ot);
+        tizenegy.szomszed.add(het);
+
+        tizenketto.szomszed.add(elso);
+        tizenketto.szomszed.add(ketto);
+        tizenketto.szomszed.add(het);
+        tizenketto.szomszed.add(kilenc);
+        tizenketto.szomszed.add(tiz);
+
+        tizenharom.szomszed.add(elso);
+        tizenharom.szomszed.add(ot);
+        tizenharom.szomszed.add(tiz);
+
+        Gombatest gtEgy = new Gombatest(elso, gombaszEgy);
+        gombaszEgy.gombatestHozzaad(gtEgy);
+        gombaszok.add(gombaszEgy);
+
+        Gombatest gtKet = new Gombatest(negy, gombaszKet);
+        gombaszKet.gombatestHozzaad(gtKet);
+        gombaszok.add(gombaszKet);
+
+        Bogar bEgy = new Bogar();
+        bogaraszEgy.bogarHozzaad(bEgy, ketto);
+        bogaraszok.add(bogaraszEgy);
+
+        Bogar bKet = new Bogar();
+        bogaraszKet.bogarHozzaad(bKet, het);
+        bogaraszok.add(bogaraszKet);
+
+    }
 }
