@@ -12,7 +12,7 @@ public class View
    
     Jatek menet = new Jatek();
 
-    /*View()
+    View()
     {
         kimenet.println("Filebol [f], vagy Konzolrol [k] szeretned beolvasni a parancsokat?");
         String valaszt = bemenet.next();
@@ -47,7 +47,7 @@ public class View
             }
         }
         
-    }*/
+    }
 
     void bemenetKezeles()
     {

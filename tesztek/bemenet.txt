@@ -1,7 +1,7 @@
-gombaszok
-gombatestListazas 
-gombaEler gombatest0
-tektonSzomszedNincsFonal tekton1
-fonalLerak gombatest0 tekton1 tekton0
-gombaEler gombatest0
+passz
+bogaraszok
+bogarakListazasa bogarasz0
+bogarTekton bogarasz0 bogar0
+tektononFonal tekton0
+ragas bogarasz0 bogar0 fonal0
 kilepes
