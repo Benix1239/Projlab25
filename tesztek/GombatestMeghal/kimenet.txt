@@ -3,5 +3,7 @@ gombasz0
 gombasz0 gombatestjei: 
 gombatest0
 gombasz0 gombasz, gombatest0 gombatestbol az alabbi tektonokra szorhat: 
-tekton1
 tekton0
+tekton1
+Siker
+gombasz0 gombatestjei: 

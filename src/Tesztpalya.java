@@ -387,6 +387,7 @@ public class Tesztpalya
         t1.setGombatest(test);
         tesztvilag.getGombaszok().add(jatekos);
 
+        tesztvilag.jelenlegiJatekos().korElejeInicializalas();
         return tesztvilag;
     }
     
