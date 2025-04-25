@@ -1,0 +1,13 @@
+gombasz jatekosok: 
+gombasz0
+tekton0 tektonon az alabbi fonalak vannak: 
+fonal0
+A jelenlegi palya: 
+tekton0
+tekton1
+A Gombasz0 jatekos passzolta a koret
+tekton0 tektonon az alabbi fonalak vannak: 
+A jelenlegi palya: 
+tekton0
+tekton1
+tekton2

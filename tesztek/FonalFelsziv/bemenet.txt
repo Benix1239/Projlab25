@@ -1,6 +1,4 @@
 teszt FonalFelsziv
-bogaraszok
-bogarakListazasa bogarasz0
 tektononFonal tekton0
 passz
 tektononFonal tekton0

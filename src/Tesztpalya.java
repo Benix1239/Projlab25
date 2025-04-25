@@ -128,8 +128,6 @@ public class Tesztpalya
         Fonal fon21 = new Fonal(t1,jatekos);
         t3.addFonal(fon21);
         t1.addFonal(fon20);
-        
-
         tesztvilag.getGombaszok().add(jatekos);
 
         return tesztvilag;
@@ -496,13 +494,81 @@ public class Tesztpalya
     
     public static Jatek fonalElhalSzetesesMiatt() {
         tesztvilag = new Jatek();
+
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+
+        t1.setEletkorMegadas(10);
+
+        t2.addSzomszed(t1);
+        t1.addSzomszed(t2);
+
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+        tesztvilag.getJatekter().tektonHozzaad(t2);
+
+        Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+        Fonal fon20 = new Fonal(t3,jatekos);
+        Fonal fon21 = new Fonal(t1,jatekos);
+        t3.addFonal(fon21);
+        t1.addFonal(fon20);
+        tesztvilag.getGombaszok().add(jatekos);
+
+        tesztvilag.jelenlegiJatekos().korElejeInicializalas();
+
         return tesztvilag;
     }
     
     public static Jatek gombatestEpitTestetlenre() {
         tesztvilag = new Jatek();
+
+        Tekton t1 = new Tekton();
+        Testetlen t2 = new Testetlen();
+        
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+       
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+        tesztvilag.getJatekter().tektonHozzaad(t2);
+
+        Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+
+        Gombatest test = new Gombatest(t1,jatekos);
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito s1 = new Lassito(jatekos);
+        s1.setTartozik(jatekos);
+        t2.addSpora(s1);
+
+        Lassito s2 = new Lassito(jatekos);
+        s2.setTartozik(jatekos);
+        t2.addSpora(s2);
+
+        Lassito s3 = new Lassito(jatekos);
+        s3.setTartozik(jatekos);
+        t2.addSpora(s3);
+
+        Lassito s4 = new Lassito(jatekos);
+        s4.setTartozik(jatekos);
+        t2.addSpora(s4);
+
+        Lassito s5 = new Lassito(jatekos);
+        s5.setTartozik(jatekos);
+        t2.addSpora(s5);
+
+        tesztvilag.getGombaszok().add(jatekos);
+
+        tesztvilag.jelenlegiJatekos().korElejeInicializalas();
+
         return tesztvilag;
     }
+
+    
     
     public static Jatek fonalElhalBogarMiatt() {
         tesztvilag = new Jatek();
@@ -511,12 +577,62 @@ public class Tesztpalya
     
     public static Jatek eletbenTart() {
         tesztvilag = new Jatek();
+        Tekton t1 = new EletbenTarto();
+        Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+        
+        t1.addSzomszed(t2);
+        t1.addSzomszed(t3);
+        t2.addSzomszed(t1);
+        t3.addSzomszed(t1);
+        
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+        tesztvilag.getJatekter().tektonHozzaad(t2);
+        tesztvilag.getJatekter().tektonHozzaad(t3);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        tesztvilag.getBogaraszok().add(karakter);
+
+        Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        Gombatest test = new Gombatest(t2,jatekos);
+        jatekos.gombatestHozzaad(test);
+        t2.setGombatest(test);
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+        Fonal fon20 = new Fonal(t3,jatekos);
+        Fonal fon21 = new Fonal(t1,jatekos);
+        t3.addFonal(fon21);
+        t1.addFonal(fon20);
+
+        tesztvilag.getGombaszok().add(jatekos);
         return tesztvilag;
     }
     
     public static Jatek tektonSzetesesFonalNelkul() {
         tesztvilag = new Jatek();
+
+        tesztvilag = new Jatek();
+
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+
+        t1.setEletkorMegadas(10);
+
+        t2.addSzomszed(t1);
+        t1.addSzomszed(t2);
+
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+        tesztvilag.getJatekter().tektonHozzaad(t2);
+
+        tesztvilag.jelenlegiJatekos().korElejeInicializalas();
+
         return tesztvilag;
+
     }
     
     public static Jatek fonalFelsziv() {
