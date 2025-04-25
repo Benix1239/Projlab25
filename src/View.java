@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,9 +16,10 @@ public class View
     View()
     {
         kimenet.println("Filebol [f], vagy Konzolrol [k] szeretned beolvasni a parancsokat?");
-        String valaszt = bemenet.next();
+        String valaszt = bemenet.nextLine();
         if(valaszt.charAt(0) == 'f')
         {
+            /* 
             try
             {
                 File file = new File("tesztek/kimenet.txt");
@@ -45,8 +47,10 @@ public class View
             {
                 
             }
+            */
+            fileValaszto();
         }
-       
+        
     }
 
     void bemenetKezeles()
@@ -59,6 +63,7 @@ public class View
             Set<Tekton> tektonok;
             ArrayList<Tekton> tektonlista;
             ArrayList<Fonal> fonallista;
+            String s=null;
             switch (tordel[0]) {
                 case "jatekIndit":
                     
@@ -76,75 +81,75 @@ public class View
                     
                     break;
                 
-            case "info":
+                case "info":
                     kimenet.println(menet.info());
                     break;
                 case "passz":
-                    ertek = menet.passz();
-                    if(ertek)
-                    {
-                        kimenet.println("Sikerult a muvelet");
-                    }
-                    else
-                    {
-                        kimenet.println("Sikertelen a muvelet");
-                    }
+                    kimenet.println(menet.passz());
+                    
                     break;
                 case "bogarakListazasa":
-                try{
-                    String atadandoParameter = "Koron levo bogar";
-                    if(tordel.length >= 2){
-                        atadandoParameter = tordel[1];
+                    try{
+                        String atadandoParameter = "Koron levo bogar";
+                        if(tordel.length >= 2){
+                            atadandoParameter = tordel[1];
+                        }
+                        ArrayList<Bogar> bogarak = menet.bogarakListazas(atadandoParameter);
+                        kimenet.println(atadandoParameter + " bogarai: ");
+                        for(Bogar bogar : bogarak)
+                        {
+                            kimenet.println("bogar" + bogarak.indexOf(bogar));
+                        }
+                    }catch(IllegalArgumentException e){
+                        kimenet.println(e.getMessage());
                     }
-                    ArrayList<Bogar> bogarak = menet.bogarakListazas(atadandoParameter);
-                    kimenet.println(atadandoParameter + " bogarai: ");
-                    for(Bogar bogar : bogarak)
-                    {
-                        kimenet.println("bogar" + bogarak.indexOf(bogar));
+                    break;
+                case "lepes":
+                    try{
+                        s=menet.lepes(tordel[1], tordel[2], tordel[3]);
+                        if(s=="Sikeres"){
+                            kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar a " + tordel[3] + " tektonra lepett");
+                        }
+                        else{
+                            kimenet.println(s);
+                        }
+                    } catch (IllegalArgumentException e) {
+                        kimenet.println(e.getMessage());
                     }
-                }catch(IllegalArgumentException e){
-                    kimenet.println(e.getMessage());
-                }
-                break;
-            case "lepes":
-            
-               String  s=menet.lepes(tordel[1], tordel[2], tordel[3]);
-                kimenet.println(s);
-                if(s.equals("Sikeres")){
-                    kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar a " + tordel[3] + " tektonra lepett");
-                }
-                break;
-            case "eves":
-                
-                if(tordel[1].contains("bogarasz"))
-                {
-                    ertek = menet.evesSporat(tordel[1], tordel[2]);
-                }
-                else
-                {
-                    ertek = menet.evesBogarat(tordel[1], tordel[2]);
-                }
-                
-                if(ertek)
-                {
-                    kimenet.println("Sikerult a muvelet");
-                }
-                else
-                {
-                    kimenet.println("Sikertelen a muvelet");
-                }
-                break;
-            case "ragas":
-                ertek = menet.ragas(tordel[1],tordel[2],tordel[3]);
-                if(ertek)
-                {
-                    kimenet.println("Sikerult a muvelet");
-                }
-                else
-                {
-                    kimenet.println("Sikertelen a muvelet");
-                }
-                break;
+                    break;
+                case "eves":
+                    try{
+                        if(tordel[1].contains("bogarasz"))
+                        {
+                            s = menet.evesSporat(tordel[1], tordel[2]);
+                        }
+                        else
+                        {
+                            ertek = menet.evesBogarat(tordel[1], tordel[2]);
+                        }
+                        
+                        if(s=="Sikeres"){
+                            kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " megevett egy sporat a tektonon");
+                        }else{
+                            kimenet.println(s);
+                        } 
+                    } catch (IllegalArgumentException e) {
+                        kimenet.println(e.getMessage());
+                    }
+                    break;
+                case "ragas":
+                    try{
+                        s = menet.ragas(tordel[1],tordel[2],tordel[3]);
+                        if(s=="Sikeres"){
+                            kimenet.println(tordel[1]+"-hez tartozo "+ tordel[2] +" elragta a "+tordel[3]+"-t");
+                        } 
+                        else{
+                            kimenet.println(s);
+                        }  
+                    } catch (IllegalArgumentException e) {
+                        kimenet.println(e.getMessage());
+                    }
+                    break;
             case "fonalLerak":
                 try {
                     String kiirniValo = "Hibas bemenet";
@@ -315,6 +320,9 @@ public class View
                         kimenet.println("bogar" + bogarLista.indexOf(b));
                     }
                     break;
+                case "teszt":
+                    tesztfvek(tordel);
+                    break;
 
                 case "jelenlegiJatekos":
                     kimenet.println(menet.getJelenlegiJatekosNev());
@@ -327,6 +335,133 @@ public class View
                     kimenet.println("\nnem ismert parancs\n");
             }
         }
+    }
+
+    void tesztfvek(String tordel[])
+    {
+        switch (tordel[1]) {
+            case "BogarLep":
+                menet = Tesztpalya.bogarLep();
+                break;
+            case "BogarEszik":
+                menet = Tesztpalya.bogarEszik();
+                break;
+            case "BogarNemEszik":
+                menet = Tesztpalya.bogarNemEszik();
+                break;
+            case "BogarRagas":
+                menet = Tesztpalya.bogarRagas();
+                break;
+            case "BogarNemRagas":
+                menet = Tesztpalya.bogarNemRagas();
+                break;
+            case "FonalLerakSima":
+                menet = Tesztpalya.fonalLerakSima();
+                break;
+            case "EgyFonalasHonnan":
+                menet = Tesztpalya.egyFonalasHonnan();
+                break;
+            case "EgyFonalasHova":
+                menet = Tesztpalya.egyFonalasHova();
+                break;
+            case "SporaSzorSima":
+                menet = Tesztpalya.sporaSzorSima();
+                break;
+            case "SporaSzorFejlett":
+                menet = Tesztpalya.sporaSzorFejlett();
+                break;
+            case "GombatestEpitFonallal":
+                menet = Tesztpalya.gombatestEpitFonallal();
+                break;
+            case "GombatestEpitSporaval":
+                menet = Tesztpalya.gombatestEpitSporaval();
+                break;
+            case "GombatestMeghal":
+                menet = Tesztpalya.gombatestMeghal();
+                break;
+            case "FonalElhalGombatestMiatt":
+                menet = Tesztpalya.fonalElhalGombatestMiatt();
+                break;
+            case "FonalEvesBogar":
+                menet = Tesztpalya.fonalEvesBogar();
+                break;
+            case "FonalElhalSzetesesMiatt":
+                menet = Tesztpalya.fonalElhalSzetesesMiatt();
+                break;
+            case "GombatestEpitTestetlenre":
+                menet = Tesztpalya.gombatestEpitTestetlenre();
+                break;
+            case "FonalElhalBogarMiatt":
+                menet = Tesztpalya.fonalElhalBogarMiatt();
+                break;
+            case "EletbenTart":
+                menet = Tesztpalya.eletbenTart();
+                break;
+            case "TektonSzetesesFonalNelkul":
+                menet = Tesztpalya.tektonSzetesesFonalNelkul();
+                break;
+            case "FonalFelsziv":
+                menet = Tesztpalya.fonalFelsziv();
+                break;
+            default:
+               kimenet.print("nem ismert teszt");
+        }
+    }
+
+    void fileValaszto()
+    {
+        kimenet.print("melyik file-t alkalmaznad?\n");
+        File tesztekFolder = new File("tesztek");
+        File[] files = tesztekFolder.listFiles();
+
+        if (files != null && files.length > 0) 
+        {
+            for (File file : files) 
+            {
+                if (file.isDirectory()) 
+                {
+                    kimenet.print(file.getName() + "\n");
+                }
+            }
+
+            String valaszt = bemenet.nextLine();
+            for (File file : files) 
+            {
+                if (file.isDirectory() && valaszt.equals(file.getName())) 
+                {
+                    Scanner s;
+                    try {
+                        File[] tartalom = file.listFiles();
+                        for(File belso : tartalom)
+                        {
+                            if(belso.getName().equals("bemenet.txt"))
+                            {
+                                s = new Scanner(belso);
+                                InputHandler.setScanner(s);
+                                bemenet = InputHandler.getScanner();
+                            }
+                            if(belso.getName().equals("kimenet.txt"))
+                            {
+                                OutputHandler.setKimenet(new PrintStream(belso));
+                                kimenet = OutputHandler.getKimenet();
+                            }
+                        }
+                       
+                        
+                    } catch (FileNotFoundException e) {
+                       
+                    }
+                }
+            }
+        }
+        else
+        {
+            kimenet.print("Nincsenek megfelelo fileok.\nHelyes file struktura:\nTesztek.dir\n\ttesztnev.dir\n\t\tbemenet.txt\n\t\tkimenet.txt\n\t\telvart.txt");
+        }
+
+        
+
+
     }
 
 }

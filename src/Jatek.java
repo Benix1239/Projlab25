@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class Jatek {
 
-    private Palya jatekter;
+    private Palya jatekter; 
 
     private ArrayList<Gombasz> gombaszok;
     private ArrayList<Bogarasz> bogaraszok;
@@ -35,6 +35,54 @@ public class Jatek {
     }
 
     private void inicializalasBogar(){
+        //BogarLep
+        /*Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+        
+        jatekter.tektonHozzaad(t1);
+        jatekter.tektonHozzaad(t2);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        bogaraszok.add(karakter);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+        gombaszok.add(jatekos);*/
+
+        //BogarEszik
+        /*Tekton t1 = new Tekton();
+        jatekter.tektonHozzaad(t1);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        bogaraszok.add(karakter);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        Spora s= new Sima(jatekos);
+        t1.addSpora(s);
+        gombaszok.add(jatekos);*/
+
+        //BogarNemEszik
+        /*Tekton t1 = new Tekton();
+        jatekter.tektonHozzaad(t1);
+
+        Bogarasz karakter =new Bogarasz();
+        Bogar bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        bogaraszok.add(karakter);
+
+        Gombasz jatekos = new Gombasz(jatekter.getPalya());
+        gombaszok.add(jatekos);*/
+
+        //BogarRagas
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         t1.addSzomszed(t2);
@@ -78,6 +126,15 @@ public class Jatek {
     public Palya getJatekter() {
         return jatekter;
     }
+    public ArrayList<Gombasz> getGombaszok() {
+        return gombaszok;
+    }
+
+    public ArrayList<Bogarasz> getBogaraszok() {
+        return bogaraszok;
+    }
+
+//jateklogika-----------------------------------------------------------------------------------
 
     private boolean jelenlegiJatekos_e(Jatekos jatekos) {
         return jatekos == jelenlegiJatekos();
@@ -115,7 +172,14 @@ public class Jatek {
             jatekosIndexLeptetes();
         }
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    public String jelenlegiJatekosNeve() {
+        if (jatekosIndex < gombaszok.size()) {
+            return "Gombasz" + jatekosIndex;
+        } else {
+            return "Bogarasz" + (jatekosIndex - gombaszok.size());
+        }
+    }
 
     public void gombaszHozzaad(Gombasz g) {
         g.setNev("Gombasz" + (gombaszok.size()));
@@ -162,7 +226,8 @@ public class Jatek {
         }
     }
 
-    // hibakezelés
+//string leforditas objektumra----------------------------------------------------------------------------
+
     public Bogarasz bogaraszFromString(String bogarasz) {
         return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
     }
@@ -208,24 +273,22 @@ public class Jatek {
     }
 
     public Fonal fonalFromString(String fonal, Tekton tekton) {
-        return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(4)));
+        return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(5)));
     }
 
-
-
-    //simi
-    public boolean passz(){
-        boolean returnValue = false;
+//parancsok---------------------------------------------------------------------------------------------
+    public String passz(){
+        String returnValue = null;
         jelenlegiJatekos().setKorvege(true);
-        returnValue = jelenlegiJatekos().getKorvege();
+        returnValue = "A "+jelenlegiJatekosNeve()+" jatekos passzolta a koret";
         jatekosKorvege();
         return returnValue;
     }
 
     public String info() {
-       
-        String s=null;
-        s= jelenlegiJatekos().mitLehetCsinalni();
+
+        String s;
+        s="A " +jelenlegiJatekosNeve() +jelenlegiJatekos().mitLehetCsinalni();
         jatekosKorvege();
         return s;
     }
@@ -240,7 +303,7 @@ public class Jatek {
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
         Tekton tektonObj = tektonFromString(hova);
 
-        String returnValue = null;
+        String returnValue = "Nem ennek jatekosnak a kore van";
         if (jelenlegiJatekos_e(bogaraszObj)) {
             returnValue = bogaraszObj.lep(bogarObj, tektonObj);
         }
@@ -249,10 +312,32 @@ public class Jatek {
         return returnValue;
     }
 
-    public boolean evesSporat(String bogarasz, String bogar) {
+    public String evesSporat(String bogarasz, String bogar) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
-        return bogaraszObj.eves(bogarObj);
+
+        String returnValue = "Nem ennek jatekosnak a kore van";
+        if (jelenlegiJatekos_e(bogaraszObj)) { 
+            returnValue =bogaraszObj.eves(bogarObj);
+        }
+
+        jatekosKorvege();
+        return returnValue;
+    }
+
+    public String ragas(String bogarasz, String bogar, String fonal) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        Tekton tekton = bogarObj.getHelyzet();
+        Fonal fonalObj = fonalFromString(fonal, tekton);
+
+        String returnValue = "Nem ennek jatekosnak a kore van";
+        if (jelenlegiJatekos_e(bogaraszObj)) { 
+            returnValue=bogaraszObj.ragas(bogarObj, fonalObj);
+        }
+
+        jatekosKorvege();
+        return returnValue;
     }
 
     ///
@@ -265,15 +350,6 @@ public class Jatek {
     private Bogar bogarFromBenitott(Gombasz g, String bogar) {
         return g.getBenitottak().get(Integer.parseInt(bogar.substring(4)));
     }
-
-    public boolean ragas(String bogarasz, String bogar, String fonal) {
-        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
-        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
-        Tekton tekton = bogarObj.getHelyzet();
-        Fonal fonalObj = fonalFromString(fonal, tekton);
-        return bogaraszObj.ragas(bogarObj, fonalObj);
-    }
-
 
     public String fonalLerak(String gombatest, String t1, String t2) {
         Gombasz gombaszObj = jelenlegiGombasz();
@@ -366,13 +442,7 @@ public class Jatek {
 
     // A palyaKor, hozzaad parancsok nem kellnek elvileg, megemeszt se
 
-    public ArrayList<Gombasz> getGombaszok() {
-        return gombaszok;
-    }
-
-    public ArrayList<Bogarasz> getBogaraszok() {
-        return bogaraszok;
-    }
+  
 
     public Tekton helyzet(String bogarasz, String bogar) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
