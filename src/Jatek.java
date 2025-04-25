@@ -57,41 +57,22 @@ public class Jatek {
     }
 
     private void inicializalasGombasz(){
-        Tekton t1 = new Egyfonalas();
+        Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
-        Tekton t3 = new Tekton();
-
-        jatekter.tektonHozzaad(t1);
-        jatekter.tektonHozzaad(t2);
-        jatekter.tektonHozzaad(t3);
         t1.addSzomszed(t2);
         t2.addSzomszed(t1);
-        t1.addSzomszed(t3);
-        t3.addSzomszed(t1);
-        t2.addSzomszed(t3);
-        t3.addSzomszed(t2);
+        
+        jatekter.tektonHozzaad(t2);
+        jatekter.tektonHozzaad(t1);
+
         Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Gombasz jatekos2 = new Gombasz(jatekter.getPalya());
-
-        Fonal fon10 = new Fonal(t2,jatekos2);
-        Fonal fon11 = new Fonal(t1,jatekos2);
-        Fonal fon12 = new Fonal(t2, jatekos);
-        Fonal fon13 = new Fonal(t3, jatekos);
-        t1.addFonal(fon10);
-        t2.addFonal(fon11);
-        t2.addFonal(fon13);
-        t3.addFonal(fon12);
-
-        Gombatest test = new Gombatest(t2,jatekos2);
-        jatekos2.gombatestHozzaad(test);
-        t2.setGombatest(test);
-
-        Gombatest test2 = new Gombatest(t3, jatekos);
-        jatekos.gombatestHozzaad(test2);
-        t3.setGombatest(test2);
+        Gombatest test = new Gombatest(t1,jatekos);
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
 
         gombaszok.add(jatekos);
-        gombaszok.add(jatekos2);
+
+        jelenlegiJatekos().korElejeInicializalas();
     }
 
     public Palya getJatekter() {
@@ -307,15 +288,13 @@ public class Jatek {
     }
 
     //kesz
-    public boolean sporaSzor(String gombasz, String gombatest, String tekton) {
-        Gombasz gombaszObj = gombaszFromString(gombasz);
+    public boolean sporaSzor(String gombatest, String tekton) {
+        Gombasz gombaszObj = jelenlegiGombasz();
         Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
         Tekton tektonObj = tektonFromString(tekton);
 
         boolean returnValue = false;
-        if (jelenlegiJatekos_e(gombaszObj)) {
-            returnValue = gombatestObj.elszor(tektonObj);
-        }
+        returnValue = gombaszObj.sporaSzor(gombatestObj, tektonObj);
 
         jatekosKorvege();
         return returnValue;
@@ -371,13 +350,7 @@ public class Jatek {
         Gombasz gombaszObj = gombaszFromString(gombasz);
         Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
 
-        Set<Tekton> returnValue = new HashSet<Tekton>();
-        if (jelenlegiJatekos_e(gombaszObj)){
-            returnValue = gombatestObj.hovaSzorhat();
-        }
-        jatekosKorvege();
-
-        return returnValue;
+        return gombatestObj.hovaSzorhat();
     }
 
     public ArrayList<Fonal> tektononFonal(String tekton) {
@@ -430,5 +403,20 @@ public class Jatek {
         jatekosKorvege();
 
         return returnValue;
+    }
+
+    public String getJelenlegiJatekosNev(){
+        for(Gombasz g : gombaszok){
+            if(jelenlegiJatekos_e(g)){
+                return "gombasz" + gombaszok.indexOf(g);
+            }
+        }
+
+        for(Bogarasz b : bogaraszok){
+            if(jelenlegiJatekos_e(b)){
+                return "bogarasz" + bogaraszok.indexOf(b);
+            }
+        }
+        return null;
     }
 }

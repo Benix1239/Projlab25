@@ -1,7 +1,5 @@
 gombaszok
 gombatestListazas 
-gombaEler gombatest0
-tektonSzomszedNincsFonal tekton1
-fonalLerak gombatest0 tekton1 tekton0
-gombaEler gombatest0
+gombaszHovaSzorhat gombatest0
+sporaSzor gombatest0 tekton0
 kilepes
