@@ -33,7 +33,10 @@ public class Gombasz extends Jatekos
             Tekton bogarHelyzet = b.getHelyzet();
             ArrayList<Fonal> fonalakHelyzeten = bogarHelyzet.getOsszekoto(this);
             if(fonalakHelyzeten.size() != 0){
-                return fonalakHelyzeten.get(0).bogarEves(b);
+                if(fonalakHelyzeten.get(0).bogarEves(b)){
+                    benitottak.remove(b);
+                    return true;
+                }
             }
         }
         return false;
@@ -43,10 +46,7 @@ public class Gombasz extends Jatekos
     public void elszakadasDfsKezeles(){
         Set<Tekton> elerhetok = new HashSet<>();
         for(Gombatest test : testek){
-            Set<Tekton> elerhetoTektonok = test.dfs();
-            for(Tekton t : elerhetoTektonok){
-                elerhetok.add(t);
-            }
+            elerhetok.addAll(test.dfs());
         }
 
         for(Tekton t : palya){
@@ -93,6 +93,8 @@ public class Gombasz extends Jatekos
                 return false;
             }
         }
+
+        benitottak = new ArrayList<>();
         return true;
     }
 
@@ -146,6 +148,21 @@ public class Gombasz extends Jatekos
 
     public ArrayList<Bogar> getBenitottak()
     {
-        return benitottak;
+        Set<Tekton> elerhetok = new HashSet<>();
+        for(Gombatest test : testek){
+            elerhetok.addAll(test.dfs());
+        }
+
+        ArrayList<Bogar> returnValue = new ArrayList<>();
+        for(Bogar b : benitottak){
+            if(b.elerhetoFonallal(elerhetok)){
+                returnValue.add(b);
+            }
+        }
+        return returnValue;
+    }
+
+    public void benultBogarHozzaad(Bogar b){
+        benitottak.add(b);
     }
 }

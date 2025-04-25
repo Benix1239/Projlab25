@@ -1,0 +1,13 @@
+teszt FonalEvesBogar
+passz
+jelenlegiJatekos
+bogarakListazasa bogarasz0
+eves bogarasz0 bogar0
+passz
+jelenlegiJatekos
+benultBogar
+eves bogar0
+benultBogar
+passz
+jelenlegiJatekos
+info

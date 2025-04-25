@@ -1,3 +1,5 @@
+import java.util.HashSet;
+import java.util.Set;
 
 /** 
  * A Bogar osztály egy bogarat reprezentál, amely képes mozogni, rágni és enni.
@@ -78,6 +80,8 @@ public class Bogar
      * Csökkenti a mozgási pontok számát és letiltja az evést és rágást.
      */
     public void benul() {
+        Gombasz gombasz = elozo.getTartozik();
+        gombasz.benultBogarHozzaad(this);
         mozgasok--;
         actionEves = false;
         actionRagas = false;
@@ -242,5 +246,12 @@ public class Bogar
 
     public Bogarasz getTartozik(){
         return tartozik;
+    }
+
+    public boolean elerhetoFonallal(Set<Tekton> elerhetok){
+        if(elerhetok.contains(this.helyzet)){
+            return true;
+        }
+        return false;
     }
 }
