@@ -201,7 +201,7 @@ public class View
                 kimenet.println(tordel[1] +" gombasz, " + tordel[2]+" gombatestbol az alabbi tektonokra rakhat: ");
                 for(Tekton a : tektonok)
                 {
-                    kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                    kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) );
                 }
                 break;
             case "gombaEler":
@@ -220,7 +220,7 @@ public class View
                     
                     for(Tekton a : tektonok)
                     {
-                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) );
                     }
 
                     }catch(IllegalArgumentException e){
@@ -232,7 +232,7 @@ public class View
                     kimenet.println(tordel[1] +" gombasz, az alabbi tektonokat eri el: ");
                     for(Tekton a : tektonok)
                     {
-                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) );
                     }
                     break;
                 case "fonallalOsszekotott":
@@ -240,7 +240,7 @@ public class View
                     kimenet.println(tordel[1] +" tektonrol, az alabbi tektonok erhetoek el fonalakon keresztul: ");
                     for(Tekton a : tektonlista)
                     {
-                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                        kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a));
                     }
                     break;
                 case "gombaszHovaSzorhat":
@@ -259,7 +259,7 @@ public class View
                         
                         for(Tekton a : tektonok)
                         {
-                            kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                            kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a));
                         }
     
                         }catch(IllegalArgumentException e){
@@ -271,7 +271,7 @@ public class View
                     kimenet.println(tordel[1] +" tektonon az alabbi fonalak vannak: ");
                     for(Fonal a : fonallista)
                     {
-                        kimenet.println("fonal"+ menet.tektonFromString(tordel[1]).getOsszekoto().indexOf(a) + " ");
+                        kimenet.println("fonal"+ menet.tektonFromString(tordel[1]).getOsszekoto().indexOf(a));
                     }
                     break;
                 case "bogarTekton":
@@ -318,7 +318,7 @@ public class View
                         kimenet.println(tordel[1] + " tekton szomszedai amikre nem megy fonal: ");
                         for(Tekton a : tektonlista)
                         {
-                            kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) + " ");
+                            kimenet.println("tekton"+ menet.getJatekter().getPalya().indexOf(a) );
                         }
                     }catch(IllegalArgumentException e){
                         System.out.println(e.getMessage());
@@ -503,11 +503,15 @@ public class View
         }
         for(int i = 0; i < elvartList.size(); i++)
         {
-            kimenet.print(elvartList.get(i) + "\t||\t" + eredmenyList.get(i) + "\n");
+            String elvartSor = String.format("%-20s", elvartList.get(i));
+            String eredmenySor = String.format("%20s", eredmenyList.get(i));
+            kimenet.print(elvartSor + "||" + eredmenySor);
             if(!elvartList.get(i).equals(eredmenyList.get(i)))
             {
                 egyeznek = false;
+                kimenet.print(" *HIBAS*");
             }
+            kimenet.print("\n");
         }
 
         if(egyeznek)
