@@ -542,10 +542,23 @@ public class Tesztpalya
     public static Jatek tektonSzetesesFonalNelkul() {
         tesztvilag = new Jatek();
 
+        tesztvilag = new Jatek();
 
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
 
+        t1.setEletkorMegadas(10);
+
+        t2.addSzomszed(t1);
+        t1.addSzomszed(t2);
+
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+        tesztvilag.getJatekter().tektonHozzaad(t2);
+
+        tesztvilag.jelenlegiJatekos().korElejeInicializalas();
 
         return tesztvilag;
+
     }
     
     public static Jatek fonalFelsziv() {
