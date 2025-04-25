@@ -393,6 +393,27 @@ public class Tesztpalya
     
     public static Jatek fonalElhalGombatestMiatt() {
         tesztvilag = new Jatek();
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+
+        t2.addSzomszed(t1);
+        t1.addSzomszed(t2);
+
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+        tesztvilag.getJatekter().tektonHozzaad(t2);
+
+        Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        Gombatest test = new Gombatest(t1,jatekos);
+        test.setMaradt(1);
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+        tesztvilag.getGombaszok().add(jatekos);
+
+        tesztvilag.jelenlegiJatekos().korElejeInicializalas();
         return tesztvilag;
     }
     

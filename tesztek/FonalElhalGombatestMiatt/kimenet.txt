@@ -1,0 +1,10 @@
+gombasz jatekosok: 
+gombasz0
+gombasz0 gombatestjei: 
+gombatest0
+gombasz0 gombasz, gombatest0 gombatestbol az alabbi tektonokra szorhat: 
+tekton0
+tekton1
+Siker
+gombasz0 gombatestjei: 
+tekton0 tektonrol, az alabbi tektonok erhetoek el fonalakon keresztul: 

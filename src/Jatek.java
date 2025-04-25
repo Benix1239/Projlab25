@@ -228,7 +228,9 @@ public class Jatek {
     }
 
     private void palyaKezeles() {
-        
+        for(Tekton t:jatekter.getPalya()){
+            
+        }
     }
 
     private void jatekosKorvege() {
