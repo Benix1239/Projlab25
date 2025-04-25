@@ -343,6 +343,9 @@ public class View
             case "BogarNemRagas":
                 menet = Tesztpalya.bogarNemRagas();
                 break;
+            case "BogarEmeszt":
+                menet = Tesztpalya.bogarEmeszt(tordel[2]);
+                break;
             case "FonalLerakSima":
                 menet = Tesztpalya.fonalLerakSima();
                 break;

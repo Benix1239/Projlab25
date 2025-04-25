@@ -114,80 +114,38 @@ public class Tesztpalya
         Bogar bogar;
         Gombasz jatekos;
         Spora spora;
+        t1 = new Tekton();
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+
+        karakter =new Bogarasz();
+        bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        tesztvilag.getBogaraszok().add(karakter);
+
+        jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        spora = new Sima(jatekos);
+        
         switch (fajta) {
             case "gyorsito":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Gyorsito(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             case "benito":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Benito(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             case "keseru":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Keseru(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             case "lassito":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Lassito(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             case "szaporodo":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Szaporodo(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             default:
             
         }
+        t1.addSpora(spora);
+        tesztvilag.getGombaszok().add(jatekos);
         return tesztvilag;
     }
     
