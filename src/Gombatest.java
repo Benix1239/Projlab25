@@ -19,8 +19,8 @@ public class Gombatest
         this.tartozik = tartozik;
         maradt = 20;
         spora = null;
-        korVege = false;
-        action = 2;
+        korVege = true;
+        action = 0;
         tartozik.addPoint(hely.pluszPont);
     }
 

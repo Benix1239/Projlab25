@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.IdentityHashMap;
+
 public class Tesztpalya 
 {
    public  static Jatek tesztvilag = new Jatek();
@@ -323,6 +326,46 @@ public class Tesztpalya
     
     public static Jatek gombatestEpitSporaval() {
         tesztvilag = new Jatek();
+
+        Tekton t1 = new Tekton();
+        Tekton t2 = new Tekton();
+        
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+       
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+        tesztvilag.getJatekter().tektonHozzaad(t2);
+
+        Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+
+        Gombatest test = new Gombatest(t1,jatekos);
+        jatekos.gombatestHozzaad(test);
+        t1.setGombatest(test);
+
+        Lassito s1 = new Lassito(jatekos);
+        s1.setTartozik(jatekos);
+        t2.addSpora(s1);
+
+        Lassito s2 = new Lassito(jatekos);
+        s2.setTartozik(jatekos);
+        t2.addSpora(s2);
+
+        Lassito s3 = new Lassito(jatekos);
+        s3.setTartozik(jatekos);
+        t2.addSpora(s3);
+
+        Lassito s4 = new Lassito(jatekos);
+        s4.setTartozik(jatekos);
+        t2.addSpora(s4);
+
+        Lassito s5 = new Lassito(jatekos);
+        s5.setTartozik(jatekos);
+        t2.addSpora(s5);
+
+        tesztvilag.getGombaszok().add(jatekos);
+
+        tesztvilag.jelenlegiJatekos().korElejeInicializalas();
+
         return tesztvilag;
     }
     
