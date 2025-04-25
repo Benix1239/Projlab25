@@ -1,3 +1,4 @@
+teszt BogarEmeszt szaporodo
 passz
 bogaraszok
 bogarakListazasa bogarasz0
@@ -5,4 +6,3 @@ eves bogarasz0 bogar0
 passz
 passz
 info
-kilepes

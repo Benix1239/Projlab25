@@ -293,11 +293,32 @@ public class Jatek {
 //string leforditas objektumra----------------------------------------------------------------------------
 
     public Bogarasz bogaraszFromString(String bogarasz) {
-        return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
+        //return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
+
+        Pattern pattern = Pattern.compile("^bogarasz(\\d+)$");
+        Matcher matcher = pattern.matcher(bogarasz);
+
+        if (matcher.matches()) {
+            int szam = Integer.parseInt(matcher.group(1));
+            if(szam >= 0 && szam <bogaraszok.size()){
+                return bogaraszok.get(szam);
+            }
+        } 
+        throw new IllegalArgumentException("Ilyen bogarasz nem letezik");
     }
 
     public Bogar bogarFromString(Bogarasz bogarasz, String bogar) {
-        return bogarasz.getBogarak().get(Integer.parseInt(bogar.substring(5)));
+        //return bogarasz.getBogarak().get(Integer.parseInt(bogar.substring(5)));
+        Pattern pattern = Pattern.compile("^bogar(\\d+)$");
+        Matcher matcher = pattern.matcher(bogar);
+
+        if (matcher.matches()) {
+            int szam = Integer.parseInt(matcher.group(1));
+            if(szam >= 0 && szam<bogarasz.getBogarak().size()){
+                return bogarasz.getBogarak().get(szam);
+            }
+        } 
+        throw new IllegalArgumentException("Ilyen bogar nem letezik");
     }
 
     public Tekton tektonFromString(String tekton) {
@@ -310,7 +331,7 @@ public class Jatek {
                 return jatekter.getPalya().get(szam);
             }
         } 
-        throw new IllegalArgumentException("Hibas bemenet");
+        throw new IllegalArgumentException("Ilyen tekton nem letezik");
     }
 
     public Gombasz gombaszFromString(String gombasz) {
@@ -328,16 +349,37 @@ public class Jatek {
                     return gombaszok.get(szam);
                 }
             } 
-            throw new IllegalArgumentException("Hibas bemenet");
+            throw new IllegalArgumentException("Ilyen gombasz nem letezik");
         }
     }
 
     public Gombatest gombatestFromString(String gombatest, Gombasz gombasz) {
-        return gombasz.getTestek().get(Integer.parseInt(gombatest.substring(9)));
+        //return gombasz.getTestek().get(Integer.parseInt(gombatest.substring(9)));
+        Pattern pattern = Pattern.compile("^gombatest(\\d+)$");
+        Matcher matcher = pattern.matcher(gombatest);
+
+        if (matcher.matches()) {
+            int szam = Integer.parseInt(matcher.group(1));
+            if(szam >= 0 && szam<gombasz.getTestek().size()){
+                return gombasz.getTestek().get(szam);
+            }
+        } 
+        throw new IllegalArgumentException("Ilyen gombatest nem letezik");
     }
 
     public Fonal fonalFromString(String fonal, Tekton tekton) {
-        return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(5)));
+        //return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(5)));
+
+        Pattern pattern = Pattern.compile("^fonal(\\d+)$");
+        Matcher matcher = pattern.matcher(fonal);
+
+        if (matcher.matches()) {
+            int szam = Integer.parseInt(matcher.group(1));
+            if(szam >= 0 && szam<tekton.getOsszekoto().size()){
+                return tekton.getOsszekoto().get(szam);
+            }
+        } 
+        throw new IllegalArgumentException("Ilyen fonal nem letezik");
     }
 
 //parancsok---------------------------------------------------------------------------------------------
@@ -552,6 +594,112 @@ public class Jatek {
             }
         }
         return null;
+    }
+
+    public void alapJatekPalya()
+    {
+        jatekter = new Palya();
+        Gombasz gombaszEgy = new Gombasz(jatekter.getPalya());
+        Gombasz gombaszKet = new Gombasz(jatekter.getPalya());
+
+        Bogarasz bogaraszEgy = new Bogarasz();
+        Bogarasz bogaraszKet = new Bogarasz();
+
+        Tekton elso = new Tekton();
+        Tekton ketto = new Tekton();
+        Tekton harom = new Tekton();
+        Tekton negy = new Tekton();
+        Tekton ot = new Tekton();
+        Tekton hat = new Testetlen();
+        Tekton het = new Testetlen();
+        Tekton nyolc = new EletbenTarto();
+        Tekton kilenc = new EletbenTarto();
+        Tekton tiz = new Felszivo();
+        Tekton tizenegy = new Felszivo();
+        Tekton tizenketto = new Egyfonalas();
+        Tekton tizenharom = new Egyfonalas();
+
+        jatekter.getPalya().add(elso);
+        jatekter.getPalya().add(ketto);
+        jatekter.getPalya().add(harom);
+        jatekter.getPalya().add(negy);
+        jatekter.getPalya().add(ot);
+        jatekter.getPalya().add(hat);
+        jatekter.getPalya().add(het);
+        jatekter.getPalya().add(nyolc);
+        jatekter.getPalya().add(kilenc);
+        jatekter.getPalya().add(tiz);
+        jatekter.getPalya().add(tizenegy);
+        jatekter.getPalya().add(tizenketto);
+        jatekter.getPalya().add(tizenharom);
+
+        elso.szomszed.add(ketto);
+        elso.szomszed.add(hat);
+        elso.szomszed.add(tizenketto);
+        elso.szomszed.add(tizenharom);
+
+        ketto.szomszed.add(elso);
+        ketto.szomszed.add(tizenketto);
+        ketto.szomszed.add(harom);
+
+        harom.szomszed.add(ketto);
+        harom.szomszed.add(hat);
+        harom.szomszed.add(het);
+
+        negy.szomszed.add(het);
+        negy.szomszed.add(nyolc);
+        negy.szomszed.add(tizenegy);
+
+        ot.szomszed.add(tizenegy);
+        ot.szomszed.add(tizenharom);
+
+        hat.szomszed.add(elso);
+        hat.szomszed.add(harom);
+        hat.szomszed.add(nyolc);
+
+        het.szomszed.add(harom);
+        het.szomszed.add(negy);
+        het.szomszed.add(tizenegy);
+        het.szomszed.add(tizenketto);
+
+        nyolc.szomszed.add(negy);
+        nyolc.szomszed.add(hat);
+
+        kilenc.szomszed.add(tizenketto);
+
+        tiz.szomszed.add(tizenketto);
+        tiz.szomszed.add(tizenharom);
+
+        tizenegy.szomszed.add(negy);
+        tizenegy.szomszed.add(ot);
+        tizenegy.szomszed.add(het);
+
+        tizenketto.szomszed.add(elso);
+        tizenketto.szomszed.add(ketto);
+        tizenketto.szomszed.add(het);
+        tizenketto.szomszed.add(kilenc);
+        tizenketto.szomszed.add(tiz);
+
+        tizenharom.szomszed.add(elso);
+        tizenharom.szomszed.add(ot);
+        tizenharom.szomszed.add(tiz);
+
+        Gombatest gtEgy = new Gombatest(elso, gombaszEgy);
+        gombaszEgy.gombatestHozzaad(gtEgy);
+        gombaszok.add(gombaszEgy);
+
+        Gombatest gtKet = new Gombatest(negy, gombaszKet);
+        gombaszKet.gombatestHozzaad(gtKet);
+        gombaszok.add(gombaszKet);
+
+        Bogar bEgy = new Bogar();
+        bogaraszEgy.bogarHozzaad(bEgy, ketto);
+        bogaraszok.add(bogaraszEgy);
+
+        Bogar bKet = new Bogar();
+        bogaraszKet.bogarHozzaad(bKet, het);
+        bogaraszok.add(bogaraszKet);
+
     }
 
     public int tektonSpora(String gombasz, String tekton){

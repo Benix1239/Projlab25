@@ -4,6 +4,7 @@ public class Tesztpalya
 
     public static Jatek bogarLep()
     {
+        tesztvilag = new Jatek();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         t1.addSzomszed(t2);
@@ -29,6 +30,7 @@ public class Tesztpalya
 
     public static Jatek bogarEszik()
     {
+        tesztvilag = new Jatek();
         Tekton t1 = new Tekton();
         tesztvilag.getJatekter().tektonHozzaad(t1);
 
@@ -47,6 +49,7 @@ public class Tesztpalya
 
     public static Jatek bogarNemEszik()
     {
+        tesztvilag = new Jatek();
         Tekton t1 = new Tekton();
         tesztvilag.getJatekter().tektonHozzaad(t1);
 
@@ -63,6 +66,7 @@ public class Tesztpalya
 
     public static Jatek bogarRagas()
     {
+        tesztvilag = new Jatek();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         t1.addSzomszed(t2);
@@ -88,13 +92,19 @@ public class Tesztpalya
 
     public static Jatek bogarNemRagas()
     {
+        tesztvilag = new Jatek();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+
         t1.addSzomszed(t2);
+        t1.addSzomszed(t3);
         t2.addSzomszed(t1);
+        t3.addSzomszed(t1);
         
         tesztvilag.getJatekter().tektonHozzaad(t1);
         tesztvilag.getJatekter().tektonHozzaad(t2);
+        tesztvilag.getJatekter().tektonHozzaad(t3);
 
         Bogarasz karakter =new Bogarasz();
         Bogar bogar = new Bogar();
@@ -102,6 +112,21 @@ public class Tesztpalya
         tesztvilag.getBogaraszok().add(karakter);
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        
+        Gombatest test = new Gombatest(t2,jatekos);
+        jatekos.gombatestHozzaad(test);
+        t2.setGombatest(test);
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+        Fonal fon20 = new Fonal(t3,jatekos);
+        Fonal fon21 = new Fonal(t1,jatekos);
+        t3.addFonal(fon21);
+        t1.addFonal(fon20);
+        
+
         tesztvilag.getGombaszok().add(jatekos);
 
         return tesztvilag;
@@ -109,89 +134,49 @@ public class Tesztpalya
 
     public static Jatek bogarEmeszt(String fajta)
     {
+        tesztvilag = new Jatek();
         Tekton t1;
         Bogarasz karakter;
         Bogar bogar;
         Gombasz jatekos;
         Spora spora;
+        t1 = new Tekton();
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+
+        karakter =new Bogarasz();
+        bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        tesztvilag.getBogaraszok().add(karakter);
+
+        jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        spora = new Sima(jatekos);
+
         switch (fajta) {
             case "gyorsito":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Gyorsito(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             case "benito":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Benito(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             case "keseru":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Keseru(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             case "lassito":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Lassito(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             case "szaporodo":
-                t1 = new Tekton();
-                tesztvilag.getJatekter().tektonHozzaad(t1);
-        
-                karakter =new Bogarasz();
-                bogar = new Bogar();
-                karakter.bogarHozzaad(bogar, t1);
-                tesztvilag.getBogaraszok().add(karakter);
-        
-                jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
                 spora= new Szaporodo(jatekos);
-                t1.addSpora(spora);
-                tesztvilag.getGombaszok().add(jatekos);
                 break;
             default:
             
         }
+        t1.addSpora(spora);
+        tesztvilag.getGombaszok().add(jatekos);
         return tesztvilag;
     }
     
     public static Jatek fonalLerakSima() {
+        tesztvilag = new Jatek();
         Tekton hely = new Tekton();
         Tekton t2 = new Tekton();
         hely.addSzomszed(t2);
@@ -247,10 +232,12 @@ public class Tesztpalya
 
 	    tesztvilag.jelenlegiJatekos().korElejeInicializalas();
 
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek egyFonalasHonnan() {
+        tesztvilag = new Jatek();
         Tekton t1 = new Egyfonalas();
         Tekton t2 = new Egyfonalas();
         Tekton t3 = new Tekton();
@@ -283,6 +270,7 @@ public class Tesztpalya
     }
     
     public static Jatek sporaSzorSima() {
+        tesztvilag = new Jatek();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         t1.addSzomszed(t2);
@@ -303,6 +291,7 @@ public class Tesztpalya
     }
     
     public static Jatek sporaSzorFejlett() {
+        tesztvilag = new Jatek();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
         Tekton t3 = new Tekton();
@@ -328,46 +317,57 @@ public class Tesztpalya
     }
     
     public static Jatek gombatestEpitFonallal() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek gombatestEpitSporaval() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek gombatestMeghal() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek fonalElhalGombatestMiatt() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek fonalEvesBogar() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek fonalElhalSzetesesMiatt() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek gombatestEpitTestetlenre() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek fonalElhalBogarMiatt() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek eletbenTart() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek tektonSzetesesFonalNelkul() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
     
     public static Jatek fonalFelsziv() {
+        tesztvilag = new Jatek();
         return tesztvilag;
     }
 }

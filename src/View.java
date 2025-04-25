@@ -54,7 +54,7 @@ public class View
             String s=null;
             switch (tordel[0]) {
                 case "jatekIndit":
-                    
+                    menet.alapJatekPalya();
                     break;
                 case "ment":
                     
@@ -363,6 +363,9 @@ public class View
                 break;
             case "BogarNemRagas":
                 menet = Tesztpalya.bogarNemRagas();
+                break;
+            case "BogarEmeszt":
+                menet = Tesztpalya.bogarEmeszt(tordel[2]);
                 break;
             case "FonalLerakSima":
                 menet = Tesztpalya.fonalLerakSima();

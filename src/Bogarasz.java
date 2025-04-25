@@ -31,23 +31,31 @@ public class Bogarasz extends Jatekos
         return true;
     }
 
-    public String mitLehetCsinalni(){
-        String returnValue = " bogarai:\n" ;
-        for(Bogar bogar : bogarak){
-            returnValue += "\nBogar"+bogarak.indexOf(bogar) + ":\nMegmaradt lepesek szama: " + bogar.getMozgaspont()+ "\n";
+    public String mitLehetCsinalni() {
+        String returnValue = "";
+        for (int i = 0; i < bogarak.size(); i++) {
+            Bogar bogar = bogarak.get(i);
+            returnValue += "Bogar" + i + ":\nMegmaradt lepesek szama: " + bogar.getMozgaspont() + "\n";
+            
             if (bogar.getactionEves()) {
                 returnValue += "Tud meg enni\n";
             } else {
                 returnValue += "Nem tud meg enni\n";
             }
+    
             if (bogar.getactionRagas()) {
                 returnValue += "Tud meg ragni";
             } else {
                 returnValue += "Nem tud meg ragni";
             }
-        } 
+    
+            if (i < bogarak.size() - 1) {
+                returnValue += "\n"; // Csak akkor adunk új sort, ha van még bogár
+            }
+        }
         return returnValue;
     }
+    
 
     /**
      * Megpróbálja a megadott bogarat átléptetni egy másik Tektonra, ha van még mozgáspontja
