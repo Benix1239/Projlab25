@@ -43,9 +43,7 @@ public class Bogar
     public boolean korVegeEmeszt(){
         //bogar.beallit();
 
-        if(this.elozo!=null){
-            this.getTartozik().pontok += this.getSpora().getPluszpont();
-        }
+      
 
         this.sporaMegemesztes();
 

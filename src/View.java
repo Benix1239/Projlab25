@@ -494,7 +494,9 @@ public class View
         while (eredmeny.hasNextLine()) {
             eredmenyList.add(eredmeny.nextLine());
         }
-
+        String elvartSor = String.format("%-20s", "Elvart");
+        String eredmenySor = String.format("%20s", "Eredmeny");
+        kimenet.print(elvartSor + "||" + eredmenySor + "\n");
         boolean egyeznek = true;
         if(elvartList.size() != eredmenyList.size())
         {
@@ -503,8 +505,8 @@ public class View
         }
         for(int i = 0; i < elvartList.size(); i++)
         {
-            String elvartSor = String.format("%-20s", elvartList.get(i));
-            String eredmenySor = String.format("%20s", eredmenyList.get(i));
+            elvartSor = String.format("%-20s", elvartList.get(i));
+            eredmenySor = String.format("%20s", eredmenyList.get(i));
             kimenet.print(elvartSor + "||" + eredmenySor);
             if(!elvartList.get(i).equals(eredmenyList.get(i)))
             {
