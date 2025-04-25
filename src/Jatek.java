@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class Jatek {
 
-    private Palya jatekter;
+    private Palya jatekter; 
 
     private ArrayList<Gombasz> gombaszok;
     private ArrayList<Bogarasz> bogaraszok;
@@ -31,7 +31,7 @@ public class Jatek {
         bogaraszok = new ArrayList<Bogarasz>();
         jatekter = new Palya();
         jatekosIndex = 0;
-        inicializalasBogar();
+        inicializalasGombasz();
     }
 
     private void inicializalasBogar(){
@@ -174,46 +174,34 @@ public class Jatek {
     }
 
     private void inicializalasGombasz(){
-        Tekton t1 = new Egyfonalas();
+        Tekton hely = new Tekton();
         Tekton t2 = new Tekton();
-        Tekton t3 = new Tekton();
-
-        jatekter.tektonHozzaad(t1);
+        hely.addSzomszed(t2);
+        t2.addSzomszed(hely);
         jatekter.tektonHozzaad(t2);
-        jatekter.tektonHozzaad(t3);
-        t1.addSzomszed(t2);
-        t2.addSzomszed(t1);
-        t1.addSzomszed(t3);
-        t3.addSzomszed(t1);
-        t2.addSzomszed(t3);
-        t3.addSzomszed(t2);
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Gombasz jatekos2 = new Gombasz(jatekter.getPalya());
-
-        Fonal fon10 = new Fonal(t2,jatekos2);
-        Fonal fon11 = new Fonal(t1,jatekos2);
-        Fonal fon12 = new Fonal(t2, jatekos);
-        Fonal fon13 = new Fonal(t3, jatekos);
-        t1.addFonal(fon10);
-        t2.addFonal(fon11);
-        t2.addFonal(fon13);
-        t3.addFonal(fon12);
-
-        Gombatest test = new Gombatest(t2,jatekos2);
-        jatekos2.gombatestHozzaad(test);
-        t2.setGombatest(test);
-
-        Gombatest test2 = new Gombatest(t3, jatekos);
-        jatekos.gombatestHozzaad(test2);
-        t3.setGombatest(test2);
-
-        gombaszok.add(jatekos);
-        gombaszok.add(jatekos2);
+        jatekter.tektonHozzaad(hely);
+        Gombasz karakter = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(hely,karakter);
+        karakter.gombatestHozzaad(test);
+        hely.setGombatest(test);
+        gombaszok.add(karakter);
+	jelenlegiJatekos().korElejeInicializalas();
     }
+
+//getterek---------------------------------------------------------
 
     public Palya getJatekter() {
         return jatekter;
     }
+    public ArrayList<Gombasz> getGombaszok() {
+        return gombaszok;
+    }
+
+    public ArrayList<Bogarasz> getBogaraszok() {
+        return bogaraszok;
+    }
+
+//jateklogika-----------------------------------------------------------------------------------
 
     private boolean jelenlegiJatekos_e(Jatekos jatekos) {
         return jatekos == jelenlegiJatekos();
@@ -259,7 +247,6 @@ public class Jatek {
             return "Bogarasz" + (jatekosIndex - gombaszok.size());
         }
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void gombaszHozzaad(Gombasz g) {
         g.setNev("Gombasz" + (gombaszok.size()));
@@ -306,7 +293,8 @@ public class Jatek {
         }
     }
 
-    // hibakezelés
+//string leforditas objektumra----------------------------------------------------------------------------
+
     public Bogarasz bogaraszFromString(String bogarasz) {
         return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
     }
@@ -355,7 +343,7 @@ public class Jatek {
         return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(5)));
     }
 
-
+//parancsok---------------------------------------------------------------------------------------------
     public String passz(){
         String returnValue = null;
         jelenlegiJatekos().setKorvege(true);
@@ -529,13 +517,7 @@ public class Jatek {
 
     // A palyaKor, hozzaad parancsok nem kellnek elvileg, megemeszt se
 
-    public ArrayList<Gombasz> getGombaszok() {
-        return gombaszok;
-    }
-
-    public ArrayList<Bogarasz> getBogaraszok() {
-        return bogaraszok;
-    }
+  
 
     public Tekton helyzet(String bogarasz, String bogar) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);

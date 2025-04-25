@@ -1,7 +1,6 @@
 public class Tesztpalya 
 {
-    
-    Jatek tesztvilag;
+    static Jatek tesztvilag;
 
     void bogarLep()
     {
@@ -177,87 +176,73 @@ public class Tesztpalya
                 tesztvilag.getGombaszok().add(jatekos);
                 break;
             default:
-                throw new AssertionError();
+            
         }
-    }
-
-    void fonalLerakSima()
-    {
-
-    }
-
-    void egyFonalasHonnan()
-    {
-
-    }
-
-    void egyFonalasHova()
-    {
-
-    }
-
-    void sporaSzorSima()
-    {
-
-    }
-
-    void sporaSzorFejlett()
-    {
-
-    }
-
-    void gombatestEpitFonallal()
-    {
-
-    }
-
-    void gombatestEpitSporaval()
-    {
-
-    }
-
-    void gombatestMeghal()
-    {
-
-    }
-
-    void fonalElhalGombatestMiatt()
-    {
-
+        return tesztvilag;
     }
     
-    void fonalEvesBogar()
-    {
-
+    public static Jatek fonalLerakSima() {
+        return tesztvilag;
     }
-
-    void fonalElhalSzetesesMiatt()
-    {
-
+    
+    public static Jatek egyFonalasHonnan() {
+        return tesztvilag;
     }
-
-    void gombatestEpitTestetlenre()
-    {
-
+    
+    public static Jatek egyFonalasHova() {
+        return tesztvilag;
     }
-
-    void fonalElhalBogarMiatt()
-    {
-
+    
+    public static Jatek sporaSzorSima() {
+        return tesztvilag;
     }
-
-    void eletbenTart()
-    {
-
+    
+    public static Jatek sporaSzorFejlett() {
+        return tesztvilag;
     }
-
-    void tektonSzetesesFonalNelkul()
-    {
-
+    
+    public static Jatek gombatestEpitFonallal() {
+        return tesztvilag;
     }
-
-    void fonalFelsziv()
-    {
-        
+    
+    public static Jatek gombatestEpitSporaval() {
+        return tesztvilag;
+    }
+    
+    public static Jatek gombatestMeghal() {
+        return tesztvilag;
+    }
+    
+    public static Jatek fonalElhalGombatestMiatt() {
+        return tesztvilag;
+    }
+    
+    public static Jatek fonalEvesBogar() {
+        return tesztvilag;
+    }
+    
+    public static Jatek fonalElhalSzetesesMiatt() {
+        return tesztvilag;
+    }
+    
+    public static Jatek gombatestEpitTestetlenre() {
+        return tesztvilag;
+    }
+    
+    public static Jatek fonalElhalBogarMiatt() {
+        return tesztvilag;
+    }
+    
+    public static Jatek eletbenTart() {
+        return tesztvilag;
+    }
+    
+    public static Jatek tektonSzetesesFonalNelkul() {
+        return tesztvilag;
+    }
+    
+    public static Jatek fonalFelsziv() {
+        return tesztvilag;
     }
 }
+    

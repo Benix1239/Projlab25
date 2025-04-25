@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,9 +16,10 @@ public class View
     View()
     {
         kimenet.println("Filebol [f], vagy Konzolrol [k] szeretned beolvasni a parancsokat?");
-        String valaszt = bemenet.next();
+        String valaszt = bemenet.nextLine();
         if(valaszt.charAt(0) == 'f')
         {
+            /* 
             try
             {
                 File file = new File("tesztek/kimenet.txt");
@@ -45,6 +47,8 @@ public class View
             {
                 
             }
+            */
+            fileValaszto();
         }
         
     }
@@ -291,6 +295,9 @@ public class View
                         kimenet.println("bogar" + bogarLista.indexOf(b));
                     }
                     break;
+                case "teszt":
+                    tesztfvek(tordel);
+                    break;
                 case "kilepes":
                     return;
                 
@@ -298,6 +305,133 @@ public class View
                     kimenet.println("\nnem ismert parancs\n");
             }
         }
+    }
+
+    void tesztfvek(String tordel[])
+    {
+        switch (tordel[1]) {
+            case "BogarLep":
+                menet = Tesztpalya.bogarLep();
+                break;
+            case "BogarEszik":
+                menet = Tesztpalya.bogarEszik();
+                break;
+            case "BogarNemEszik":
+                menet = Tesztpalya.bogarNemEszik();
+                break;
+            case "BogarRagas":
+                menet = Tesztpalya.bogarRagas();
+                break;
+            case "BogarNemRagas":
+                menet = Tesztpalya.bogarNemRagas();
+                break;
+            case "FonalLerakSima":
+                menet = Tesztpalya.fonalLerakSima();
+                break;
+            case "EgyFonalasHonnan":
+                menet = Tesztpalya.egyFonalasHonnan();
+                break;
+            case "EgyFonalasHova":
+                menet = Tesztpalya.egyFonalasHova();
+                break;
+            case "SporaSzorSima":
+                menet = Tesztpalya.sporaSzorSima();
+                break;
+            case "SporaSzorFejlett":
+                menet = Tesztpalya.sporaSzorFejlett();
+                break;
+            case "GombatestEpitFonallal":
+                menet = Tesztpalya.gombatestEpitFonallal();
+                break;
+            case "GombatestEpitSporaval":
+                menet = Tesztpalya.gombatestEpitSporaval();
+                break;
+            case "GombatestMeghal":
+                menet = Tesztpalya.gombatestMeghal();
+                break;
+            case "FonalElhalGombatestMiatt":
+                menet = Tesztpalya.fonalElhalGombatestMiatt();
+                break;
+            case "FonalEvesBogar":
+                menet = Tesztpalya.fonalEvesBogar();
+                break;
+            case "FonalElhalSzetesesMiatt":
+                menet = Tesztpalya.fonalElhalSzetesesMiatt();
+                break;
+            case "GombatestEpitTestetlenre":
+                menet = Tesztpalya.gombatestEpitTestetlenre();
+                break;
+            case "FonalElhalBogarMiatt":
+                menet = Tesztpalya.fonalElhalBogarMiatt();
+                break;
+            case "EletbenTart":
+                menet = Tesztpalya.eletbenTart();
+                break;
+            case "TektonSzetesesFonalNelkul":
+                menet = Tesztpalya.tektonSzetesesFonalNelkul();
+                break;
+            case "FonalFelsziv":
+                menet = Tesztpalya.fonalFelsziv();
+                break;
+            default:
+               kimenet.print("nem ismert teszt");
+        }
+    }
+
+    void fileValaszto()
+    {
+        kimenet.print("melyik file-t alkalmaznad?\n");
+        File tesztekFolder = new File("tesztek");
+        File[] files = tesztekFolder.listFiles();
+
+        if (files != null && files.length > 0) 
+        {
+            for (File file : files) 
+            {
+                if (file.isDirectory()) 
+                {
+                    kimenet.print(file.getName() + "\n");
+                }
+            }
+
+            String valaszt = bemenet.nextLine();
+            for (File file : files) 
+            {
+                if (file.isDirectory() && valaszt.equals(file.getName())) 
+                {
+                    Scanner s;
+                    try {
+                        File[] tartalom = file.listFiles();
+                        for(File belso : tartalom)
+                        {
+                            if(belso.getName().equals("bemenet.txt"))
+                            {
+                                s = new Scanner(belso);
+                                InputHandler.setScanner(s);
+                                bemenet = InputHandler.getScanner();
+                            }
+                            if(belso.getName().equals("kimenet.txt"))
+                            {
+                                OutputHandler.setKimenet(new PrintStream(belso));
+                                kimenet = OutputHandler.getKimenet();
+                            }
+                        }
+                       
+                        
+                    } catch (FileNotFoundException e) {
+                       
+                    }
+                }
+            }
+        }
+        else
+        {
+            kimenet.print("Nincsenek megfelelo fileok.\nHelyes file struktura:\nTesztek.dir\n\ttesztnev.dir\n\t\tbemenet.txt\n\t\tkimenet.txt\n\t\telvart.txt");
+        }
+
+        
+
+
     }
 
 }
