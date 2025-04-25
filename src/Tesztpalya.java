@@ -95,11 +95,16 @@ public class Tesztpalya
         tesztvilag = new Jatek();
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
+        Tekton t3 = new Tekton();
+
         t1.addSzomszed(t2);
+        t1.addSzomszed(t3);
         t2.addSzomszed(t1);
+        t3.addSzomszed(t1);
         
         tesztvilag.getJatekter().tektonHozzaad(t1);
         tesztvilag.getJatekter().tektonHozzaad(t2);
+        tesztvilag.getJatekter().tektonHozzaad(t3);
 
         Bogarasz karakter =new Bogarasz();
         Bogar bogar = new Bogar();
@@ -107,14 +112,21 @@ public class Tesztpalya
         tesztvilag.getBogaraszok().add(karakter);
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        
+        Gombatest test = new Gombatest(t2,jatekos);
+        jatekos.gombatestHozzaad(test);
+        t2.setGombatest(test);
+
         Fonal fon10 = new Fonal(t2,jatekos);
         Fonal fon11 = new Fonal(t1,jatekos);
         t2.addFonal(fon11);
         t1.addFonal(fon10);
-        Fonal fon20 = new Fonal(t2,jatekos);
+        Fonal fon20 = new Fonal(t3,jatekos);
         Fonal fon21 = new Fonal(t1,jatekos);
-        t2.addFonal(fon21);
+        t3.addFonal(fon21);
         t1.addFonal(fon20);
+        
+
         tesztvilag.getGombaszok().add(jatekos);
 
         return tesztvilag;

@@ -304,7 +304,7 @@ public class Jatek {
                 return bogaraszok.get(szam);
             }
         } 
-        throw new IllegalArgumentException("Hibas bemenet");
+        throw new IllegalArgumentException("Ilyen bogarasz nem letezik");
     }
 
     public Bogar bogarFromString(Bogarasz bogarasz, String bogar) {
@@ -318,7 +318,7 @@ public class Jatek {
                 return bogarasz.getBogarak().get(szam);
             }
         } 
-        throw new IllegalArgumentException("Hibas bemenet");
+        throw new IllegalArgumentException("Ilyen bogar nem letezik");
     }
 
     public Tekton tektonFromString(String tekton) {
@@ -331,7 +331,7 @@ public class Jatek {
                 return jatekter.getPalya().get(szam);
             }
         } 
-        throw new IllegalArgumentException("Hibas bemenet");
+        throw new IllegalArgumentException("Ilyen tekton nem letezik");
     }
 
     public Gombasz gombaszFromString(String gombasz) {
@@ -349,7 +349,7 @@ public class Jatek {
                     return gombaszok.get(szam);
                 }
             } 
-            throw new IllegalArgumentException("Hibas bemenet");
+            throw new IllegalArgumentException("Ilyen gombasz nem letezik");
         }
     }
 
@@ -364,7 +364,7 @@ public class Jatek {
                 return gombasz.getTestek().get(szam);
             }
         } 
-        throw new IllegalArgumentException("Hibas bemenet");
+        throw new IllegalArgumentException("Ilyen gombatest nem letezik");
     }
 
     public Fonal fonalFromString(String fonal, Tekton tekton) {
@@ -379,7 +379,7 @@ public class Jatek {
                 return tekton.getOsszekoto().get(szam);
             }
         } 
-        throw new IllegalArgumentException("Nem letezik ilyen fonal");
+        throw new IllegalArgumentException("Ilyen fonal nem letezik");
     }
 
 //parancsok---------------------------------------------------------------------------------------------
