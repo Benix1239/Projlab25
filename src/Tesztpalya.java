@@ -2,7 +2,7 @@ public class Tesztpalya
 {
     static Jatek tesztvilag;
 
-    void bogarLep()
+    public static Jatek bogarLep()
     {
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -23,9 +23,11 @@ public class Tesztpalya
         t2.addFonal(fon11);
         t1.addFonal(fon10);
         tesztvilag.getGombaszok().add(jatekos);
+
+        return tesztvilag;
     }
 
-    void bogarEszik()
+    public static Jatek bogarEszik()
     {
         Tekton t1 = new Tekton();
         tesztvilag.getJatekter().tektonHozzaad(t1);
@@ -39,9 +41,11 @@ public class Tesztpalya
         Spora s= new Sima(jatekos);
         t1.addSpora(s);
         tesztvilag.getGombaszok().add(jatekos);
+
+        return tesztvilag;
     }
 
-    void bogarNemEszik()
+    public static Jatek bogarNemEszik()
     {
         Tekton t1 = new Tekton();
         tesztvilag.getJatekter().tektonHozzaad(t1);
@@ -53,9 +57,11 @@ public class Tesztpalya
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
         tesztvilag.getGombaszok().add(jatekos);
+
+        return tesztvilag;
     }
 
-    void bogarRagas()
+    public static Jatek bogarRagas()
     {
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -76,9 +82,11 @@ public class Tesztpalya
         t2.addFonal(fon11);
         t1.addFonal(fon10);
         tesztvilag.getGombaszok().add(jatekos);
+
+        return tesztvilag;
     }
 
-    void bogarNemRagas()
+    public static Jatek bogarNemRagas()
     {
         Tekton t1 = new Tekton();
         Tekton t2 = new Tekton();
@@ -95,9 +103,11 @@ public class Tesztpalya
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
         tesztvilag.getGombaszok().add(jatekos);
+
+        return tesztvilag;
     }
 
-    void bogarEmeszt(String fajta)
+    public static Jatek bogarEmeszt(String fajta)
     {
         Tekton t1;
         Bogarasz karakter;
