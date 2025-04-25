@@ -105,22 +105,18 @@ public class Jatek {
     }
 
     private void inicializalasGombasz(){
-        Tekton t1 = new Tekton();
+        Tekton hely = new Tekton();
         Tekton t2 = new Tekton();
-        t1.addSzomszed(t2);
-        t2.addSzomszed(t1);
-        
+        hely.addSzomszed(t2);
+        t2.addSzomszed(hely);
         jatekter.tektonHozzaad(t2);
-        jatekter.tektonHozzaad(t1);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Gombatest test = new Gombatest(t1,jatekos);
-        jatekos.gombatestHozzaad(test);
-        t1.setGombatest(test);
-
-        gombaszok.add(jatekos);
-
-        jelenlegiJatekos().korElejeInicializalas();
+        jatekter.tektonHozzaad(hely);
+        Gombasz karakter = new Gombasz(jatekter.getPalya());
+        Gombatest test = new Gombatest(hely,karakter);
+        karakter.gombatestHozzaad(test);
+        hely.setGombatest(test);
+        gombaszok.add(karakter);
+	jelenlegiJatekos().korElejeInicializalas();
     }
 
     public Palya getJatekter() {
