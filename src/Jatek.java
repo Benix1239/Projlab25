@@ -228,6 +228,7 @@ public class Jatek {
     }
 
     private void palyaKezeles() {
+        
     }
 
     private void jatekosKorvege() {

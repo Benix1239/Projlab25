@@ -1,0 +1,6 @@
+teszt GombatestMeghal
+gombaszok
+gombatestListazas gombasz0
+gombaszHovaSzorhat gombasz0 gombatest0
+sporaSzor gombatest0 tekton1
+gombatestListazas gombasz0
