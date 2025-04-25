@@ -478,7 +478,7 @@ public class Jatek {
     }
 
     private Bogar bogarFromBenitott(Gombasz g, String bogar) {
-        return g.getBenitottak().get(Integer.parseInt(bogar.substring(4)));
+        return g.getBenitottak().get(Integer.parseInt(bogar.substring(5)));
     }
 
     public String fonalLerak(String gombatest, String t1, String t2) {

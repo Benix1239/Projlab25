@@ -110,13 +110,14 @@ public class View
                     break;
                 case "eves":
                     try{
+                        s = "";
                         if(tordel[1].contains("bogarasz"))
                         {
                             s = menet.evesSporat(tordel[1], tordel[2]);
                         }
                         else
                         {
-                            ertek = menet.evesBogarat(tordel[1], tordel[2]);
+                            ertek = menet.evesBogarat("Koron levo gombasz", tordel[1]);
                         }
                         
                         if(s=="Sikeres"){
@@ -304,8 +305,15 @@ public class View
                     }
                     break;
                 case "benultBogar":
-                    ArrayList<Bogar> bogarLista = menet.benultBogar(tordel[1]);
-                    kimenet.println("A " + tordel[1] + " altal elert benitott bogarak: ");
+                    ArrayList<Bogar> bogarLista;
+                    if(tordel.length > 1){
+                        bogarLista = menet.benultBogar(tordel[1]);
+                        kimenet.println("A " + tordel[1] + " altal elert benitott bogarak: ");
+                    }
+                    else{
+                        bogarLista = menet.benultBogar("Koron levo gombasz");
+                        kimenet.println("A " + "koron levo gombasz" + " altal elert benitott bogarak: ");
+                    }
                     for(Bogar b : bogarLista)
                     {
                         kimenet.println("bogar" + bogarLista.indexOf(b));

@@ -1,0 +1,8 @@
+teszt GombatestEpitTestetlenre
+gombaszok
+gombatestListazas 
+gombaEler gombatest0
+tektonSzomszedNincsFonal tekton0
+fonalLerak gombatest0 tekton0 tekton1
+gombaEler gombatest0
+gombatestListazas

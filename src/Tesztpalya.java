@@ -453,6 +453,42 @@ public class Tesztpalya
     
     public static Jatek fonalEvesBogar() {
         tesztvilag = new Jatek();
+        Tekton t1;
+        Tekton t2;
+        Bogarasz karakter;
+        Bogar bogar;
+        Gombasz jatekos;
+        Spora spora;
+        t1 = new Tekton();
+        t2 = new Tekton();
+        
+        t1.addSzomszed(t2);
+        t2.addSzomszed(t1);
+
+        tesztvilag.getJatekter().tektonHozzaad(t1);
+        tesztvilag.getJatekter().tektonHozzaad(t2);
+
+        karakter = new Bogarasz();
+        bogar = new Bogar();
+        karakter.bogarHozzaad(bogar, t1);
+        tesztvilag.getBogaraszok().add(karakter);
+
+        jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
+        Gombatest test = new Gombatest(t2,jatekos);
+        jatekos.gombatestHozzaad(test);
+        t2.setGombatest(test);
+
+        Fonal fon10 = new Fonal(t2,jatekos);
+        Fonal fon11 = new Fonal(t1,jatekos);
+        t2.addFonal(fon11);
+        t1.addFonal(fon10);
+
+        spora = new Benito(jatekos);
+        t1.addSpora(spora);
+        tesztvilag.getGombaszok().add(jatekos);
+
+        tesztvilag.jelenlegiJatekos().korElejeInicializalas();
+
         return tesztvilag;
     }
     

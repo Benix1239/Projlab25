@@ -67,6 +67,7 @@ public class Gombatest
         if(!tudFonalatRakni() && spora == null){
             korVege = true;
         }
+
     }
 
     private boolean tudFonalatRakni(){
