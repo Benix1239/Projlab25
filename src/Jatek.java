@@ -352,7 +352,7 @@ public class Jatek {
     public String info() {
 
         String s;
-        s="A " +jelenlegiJatekosNeve() +jelenlegiJatekos().mitLehetCsinalni();
+        s="A jelenlegi jatekos: " +jelenlegiJatekosNeve() + "\n" +jelenlegiJatekos().mitLehetCsinalni();
         jatekosKorvege();
         return s;
     }
