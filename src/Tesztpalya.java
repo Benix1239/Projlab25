@@ -319,12 +319,12 @@ public class Tesztpalya
         return tesztvilag;
     }
     
-    public static Jatek gombatestEpitFonallal() {
+    public static Jatek gombatestEpitSporaval() {
         tesztvilag = new Jatek();
         return tesztvilag;
     }
     
-    public static Jatek gombatestEpitSporaval() {
+    public static Jatek gombatestEpitFonallal() {
         tesztvilag = new Jatek();
 
         Tekton t1 = new Tekton();
