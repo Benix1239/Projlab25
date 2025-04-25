@@ -1,0 +1,14 @@
+gombasz jatekosok: 
+gombasz0
+gombasz1
+Koron levo gombasz gombatestjei: 
+gombatest0
+Koron levo gombasz, gombatest0 gombatestbol az alabbi tektonokat eri el: 
+tekton2
+tekton1
+tekton1 tekton szomszedai amikre nem megy fonal: 
+tekton0
+Fonal elhelyezese sikertelen, mert a hova tekton egyfonalas es van rajta mar fonal
+Koron levo gombasz, gombatest0 gombatestbol az alabbi tektonokat eri el: 
+tekton2
+tekton1
