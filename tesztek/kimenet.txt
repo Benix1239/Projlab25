@@ -3,7 +3,16 @@ bogarasz jatekosok:
 bogarasz0
 bogarasz0 bogarai: 
 bogar0
-A bogarasz0-nek a bogar0 bogara, a tekton0 tektonon all.
-tekton0 tektonon az alabbi fonalak vannak: 
-fonal0 
-bogarasz0-hez tartozo bogar0 elragta a fonal0-t
+bogarasz0-hez tartozo bogar0 megevett egy sporat a tektonon
+A Bogarasz0 jatekos passzolta a koret
+A Gombasz0 jatekos passzolta a koret
+A Bogarasz0 bogarai:
+
+Bogar0:
+Megmaradt lepesek szama: 1
+Tud meg enni
+Tud meg ragni
+Bogar1:
+Megmaradt lepesek szama: 1
+Tud meg enni
+Tud meg ragni

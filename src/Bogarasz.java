@@ -14,9 +14,9 @@ public class Bogarasz extends Jatekos
 
     
     public void korElejeInicializalas(){
-        for(Bogar bogar : bogarak){
+        /*for(Bogar bogar : bogarak){
             bogar.beallit();
-        }
+        }*/
     }
     
     private boolean mindenBogarVege(){
@@ -34,7 +34,7 @@ public class Bogarasz extends Jatekos
     public String mitLehetCsinalni(){
         String returnValue = " bogarai:\n" ;
         for(Bogar bogar : bogarak){
-            returnValue += "Bogar"+bogarak.indexOf(bogar) + ":\nMegmaradt lepesek szama: " + bogar.getMozgaspont()+ "\n";
+            returnValue += "\nBogar"+bogarak.indexOf(bogar) + ":\nMegmaradt lepesek szama: " + bogar.getMozgaspont()+ "\n";
             if (bogar.getactionEves()) {
                 returnValue += "Tud meg enni\n";
             } else {
@@ -196,5 +196,18 @@ public class Bogarasz extends Jatekos
 
     public ArrayList<Bogar> getBogarak() {
         return bogarak;
+    }
+
+    public void setKorvege(boolean ertek){
+        korVege = ertek;
+        if(ertek==true){
+            ArrayList<Bogar> regi = new ArrayList<>();
+            for (Bogar bogar : bogarak) {
+                regi.add(bogar);
+            }
+            for(Bogar bogar : regi){
+                bogar.korVegeEmeszt();
+            }
+        }
     }
 }
