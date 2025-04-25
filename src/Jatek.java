@@ -31,7 +31,7 @@ public class Jatek {
         bogaraszok = new ArrayList<Bogarasz>();
         jatekter = new Palya();
         jatekosIndex = 0;
-        inicializalasGombasz();
+        inicializalasBogar();
     }
 
     private void inicializalasBogar(){

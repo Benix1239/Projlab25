@@ -103,9 +103,11 @@ public class View
                 case "lepes":
                     try{
                         s=menet.lepes(tordel[1], tordel[2], tordel[3]);
-                        kimenet.println(s);
                         if(s=="Sikeres"){
                             kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " bogar a " + tordel[3] + " tektonra lepett");
+                        }
+                        else{
+                            kimenet.println(s);
                         }
                     } catch (IllegalArgumentException e) {
                         kimenet.println(e.getMessage());
@@ -121,10 +123,12 @@ public class View
                         {
                             ertek = menet.evesBogarat(tordel[1], tordel[2]);
                         }
-                        kimenet.println(s);
+                        
                         if(s=="Sikeres"){
                             kimenet.println(tordel[1]+"-hez tartozo " + tordel[2] + " megevett egy sporat a tektonon");
-                        }    
+                        }else{
+                            kimenet.println(s);
+                        } 
                     } catch (IllegalArgumentException e) {
                         kimenet.println(e.getMessage());
                     }
@@ -132,10 +136,12 @@ public class View
                 case "ragas":
                     try{
                         s = menet.ragas(tordel[1],tordel[2],tordel[3]);
-                        kimenet.println(s);
                         if(s=="Sikeres"){
                             kimenet.println(tordel[1]+"-hez tartozo "+ tordel[2] +" elragta a "+tordel[3]+"-t");
-                        }    
+                        } 
+                        else{
+                            kimenet.println(s);
+                        }  
                     } catch (IllegalArgumentException e) {
                         kimenet.println(e.getMessage());
                     }
