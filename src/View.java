@@ -10,7 +10,7 @@ public class View
 {
 
     Scanner bemenet = InputHandler.getScanner();
-    PrintStream kimenet = OutputHandler.getKimenet();
+    PrintStream kimenet = OutputHandler.getKonzol();
     Scanner elvart;
     Scanner eredmeny; 
    
@@ -482,8 +482,8 @@ public class View
 
     void eredmenyHasonlitas()
     {
-        OutputHandler.setKimenet(System.out);
-        kimenet = OutputHandler.getKimenet();
+        
+        kimenet = OutputHandler.getKonzol();
         List<String> elvartList = new ArrayList<>();
         List<String> eredmenyList = new ArrayList<>();
 
@@ -503,7 +503,7 @@ public class View
         }
         for(int i = 0; i < elvartList.size(); i++)
         {
-            kimenet.print(elvartList.get(i) + "\t" + eredmenyList.get(i) + "\n");
+            kimenet.print(elvartList.get(i) + "\t||\t" + eredmenyList.get(i) + "\n");
             if(!elvartList.get(i).equals(eredmenyList.get(i)))
             {
                 egyeznek = false;

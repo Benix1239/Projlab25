@@ -1,9 +1,5 @@
-passz
-bogaraszok
-bogarakListazasa bogarasz0
-eves bogarasz0 bogar0
-passz
-passz
-info
+gombaszok
+gombatestListazas 
+gombaszHovaSzorhat gombatest0
+sporaSzor gombatest0 tekton0
 kilepes
->>>>>>> b62ba2a6d51fbb06d363b8f9b02531c76e3052b6
