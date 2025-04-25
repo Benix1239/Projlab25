@@ -1,0 +1,10 @@
+teszt GombatestEpitSporaval
+gombaszok
+gombatestListazas
+gombaEler gombatest0
+tektonSzomszedNincsFonal tekton0
+fonalLerak gombatest0 tekton0 tekton1
+gombatestListazas
+gombaszHovaSzorhat gombatest0
+sporaSzor gombatest0 tekton1
+gombatestListazas
