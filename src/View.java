@@ -68,7 +68,10 @@ public class View
                 case "korVege":
                     
                     break;
-                
+                case "palyaListazasa":
+                    kimenet.println(menet.getPalya());
+                    break;
+
                 case "info":
                     kimenet.println(menet.info());
                     break;

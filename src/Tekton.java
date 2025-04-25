@@ -47,7 +47,8 @@ public class Tekton
 		sporak=new ArrayList<Spora>();
 		osszekoto=new ArrayList<Fonal>();
 		szomszed=new ArrayList<Tekton>();
-		eletkor=1;
+		//eletkor=1;
+		eletkor=0;
 		pluszPont=0;
 		id=-1;
 
@@ -76,7 +77,7 @@ public class Tekton
 	 */
 	protected boolean torikE(){
 
-		int toresarany=eletkor*3+10;	///toresre az esely: (eletkor*5 + kezdeti esely). Azt jelenti hogy kezdeti esely, koronkent 5%-al no.
+		int toresarany=eletkor*10/*+10*/;	///toresre az esely: (eletkor*5 + kezdeti esely). Azt jelenti hogy kezdeti esely, koronkent 5%-al no.
 		Random random = new Random();	
 		int toresEsely=random.nextInt(100);	///tenyleges toresei esely: (toresre az esely / 100)
 		if(toresEsely<=toresarany){

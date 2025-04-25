@@ -228,8 +228,16 @@ public class Jatek {
     }
 
     private void palyaKezeles() {
-        for(Tekton t:jatekter.getPalya()){
-            
+        ArrayList<Tekton> tmp=new ArrayList<>();
+        for (Tekton elem : jatekter.getPalya()) {
+            tmp.add(elem);
+        }
+        for(Tekton t:tmp){
+            t.fonalElszakadKoronkent();
+            Tekton uj = t.tores();
+            if(uj!=null){
+                jatekter.getPalya().add(uj);
+            }
         }
     }
 
@@ -386,6 +394,19 @@ public class Jatek {
     }
 
 //parancsok---------------------------------------------------------------------------------------------
+    
+    public String getPalya(){
+        String returnValue = "A jelenlegi palya: \n";
+        for(int i = 0; i < jatekter.getPalya().size(); i++){
+            Tekton t=jatekter.getPalya().get(i);
+            returnValue += "tekton"+ jatekter.getPalya().indexOf(t);
+            if (i < jatekter.getPalya().size() - 1) {
+                returnValue += "\n"; 
+            }
+        }
+        return returnValue;
+    }
+
     public String passz(){
         String returnValue = null;
         jelenlegiJatekos().setKorvege(true);
