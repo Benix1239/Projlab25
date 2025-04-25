@@ -6,3 +6,4 @@ passz
 passz
 info
 kilepes
+>>>>>>> b62ba2a6d51fbb06d363b8f9b02531c76e3052b6

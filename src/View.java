@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -10,6 +11,8 @@ public class View
 
     Scanner bemenet = InputHandler.getScanner();
     PrintStream kimenet = OutputHandler.getKimenet();
+    Scanner elvart;
+    Scanner eredmeny; 
    
     Jatek menet = new Jatek();
 
@@ -57,7 +60,16 @@ public class View
     {
         while (true) 
         {
-            String beolvas = bemenet.nextLine();
+            String beolvas;
+            try {
+                beolvas = bemenet.nextLine();
+            } catch (Exception e) 
+            {
+                eredmenyHasonlitas();
+                beolvas = "kilepes";
+            }
+            
+            
             String tordel[] = beolvas.split(" ");
             boolean ertek = true;
             Set<Tekton> tektonok;
@@ -439,11 +451,18 @@ public class View
                                 s = new Scanner(belso);
                                 InputHandler.setScanner(s);
                                 bemenet = InputHandler.getScanner();
+                                InputHandler.setForras(belso);
                             }
-                            if(belso.getName().equals("kimenet.txt"))
+                            else if(belso.getName().equals("kimenet.txt"))
                             {
                                 OutputHandler.setKimenet(new PrintStream(belso));
                                 kimenet = OutputHandler.getKimenet();
+                                OutputHandler.setForras(belso);
+                                eredmeny = new Scanner(belso);
+                            }
+                            else if(belso.getName().equals("elvart.txt"))
+                            {
+                               elvart = new Scanner(belso);
                             }
                         }
                        
@@ -451,6 +470,7 @@ public class View
                     } catch (FileNotFoundException e) {
                        
                     }
+                    break;
                 }
             }
         }
@@ -458,10 +478,47 @@ public class View
         {
             kimenet.print("Nincsenek megfelelo fileok.\nHelyes file struktura:\nTesztek.dir\n\ttesztnev.dir\n\t\tbemenet.txt\n\t\tkimenet.txt\n\t\telvart.txt");
         }
+    }
 
-        
+    void eredmenyHasonlitas()
+    {
+        OutputHandler.setKimenet(System.out);
+        kimenet = OutputHandler.getKimenet();
+        List<String> elvartList = new ArrayList<>();
+        List<String> eredmenyList = new ArrayList<>();
 
+        while (elvart.hasNextLine()) {
+            elvartList.add(elvart.nextLine());
+        }
 
+        while (eredmeny.hasNextLine()) {
+            eredmenyList.add(eredmeny.nextLine());
+        }
+
+        boolean egyeznek = true;
+        if(elvartList.size() != eredmenyList.size())
+        {
+            kimenet.print("a ket file merete nem egyezik meg.");
+            return;
+        }
+        for(int i = 0; i < elvartList.size(); i++)
+        {
+            kimenet.print(elvartList.get(i) + "\t" + eredmenyList.get(i) + "\n");
+            if(!elvartList.get(i).equals(eredmenyList.get(i)))
+            {
+                egyeznek = false;
+            }
+        }
+
+        if(egyeznek)
+        {
+            kimenet.print("\naz eredmeny megegyezik az elvarttal.\n");
+        }
+        else
+        {
+            kimenet.print("\naz eredmeny nem egyezik meg az elvarttal\n");
+        }
+        return;
     }
 
 }
