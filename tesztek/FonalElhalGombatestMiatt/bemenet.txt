@@ -1,7 +1,8 @@
 teszt FonalElhalGombatestMiatt
 gombaszok
-gombatestListazas gombasz0
-gombaszHovaSzorhat gombasz0 gombatest0
+gombatestListazas
+fonallalOsszekotott tekton0
+gombaszHovaSzorhat gombatest0
 sporaSzor gombatest0 tekton1
 gombatestListazas gombasz0
 fonallalOsszekotott tekton0
