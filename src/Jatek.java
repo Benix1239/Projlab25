@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class Jatek {
 
-    private Palya jatekter;
+    private Palya jatekter; 
 
     private ArrayList<Gombasz> gombaszok;
     private ArrayList<Bogarasz> bogaraszok;
@@ -142,9 +142,20 @@ public class Jatek {
         gombaszok.add(jatekos2);
     }
 
+//getterek---------------------------------------------------------
+
     public Palya getJatekter() {
         return jatekter;
     }
+    public ArrayList<Gombasz> getGombaszok() {
+        return gombaszok;
+    }
+
+    public ArrayList<Bogarasz> getBogaraszok() {
+        return bogaraszok;
+    }
+
+//jateklogika-----------------------------------------------------------------------------------
 
     private boolean jelenlegiJatekos_e(Jatekos jatekos) {
         return jatekos == jelenlegiJatekos();
@@ -190,7 +201,6 @@ public class Jatek {
             return "Bogarasz" + (jatekosIndex - gombaszok.size());
         }
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void gombaszHozzaad(Gombasz g) {
         g.setNev("Gombasz" + (gombaszok.size()));
@@ -237,7 +247,8 @@ public class Jatek {
         }
     }
 
-    // hibakezelés
+//string leforditas objektumra----------------------------------------------------------------------------
+
     public Bogarasz bogaraszFromString(String bogarasz) {
         return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
     }
@@ -286,7 +297,7 @@ public class Jatek {
         return tekton.getOsszekoto().get(Integer.parseInt(fonal.substring(5)));
     }
 
-
+//parancsok---------------------------------------------------------------------------------------------
     public String passz(){
         String returnValue = null;
         jelenlegiJatekos().setKorvege(true);
@@ -460,13 +471,7 @@ public class Jatek {
 
     // A palyaKor, hozzaad parancsok nem kellnek elvileg, megemeszt se
 
-    public ArrayList<Gombasz> getGombaszok() {
-        return gombaszok;
-    }
-
-    public ArrayList<Bogarasz> getBogaraszok() {
-        return bogaraszok;
-    }
+  
 
     public Tekton helyzet(String bogarasz, String bogar) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);

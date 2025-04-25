@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -291,12 +290,86 @@ public class View
                         kimenet.println("bogar" + bogarLista.indexOf(b));
                     }
                     break;
+                case "teszt":
+                    tesztfvek(tordel);
+                    break;
                 case "kilepes":
                     return;
                 
                 default:
                     kimenet.println("\nnem ismert parancs\n");
             }
+        }
+    }
+
+    void tesztfvek(String tordel[])
+    {
+        switch (tordel[1]) {
+            case "BogarLep":
+                Tesztpalya.bogarLep();
+                break;
+            case "BogarEszik":
+                Tesztpalya.bogarEszik();
+                break;
+            case "BogarNemEszik":
+                Tesztpalya.bogarNemEszik();
+                break;
+            case "BogarRagas":
+                Tesztpalya.bogarRagas();
+                break;
+            case "BogarNemRagas":
+                Tesztpalya.bogarNemRagas();
+                break;
+            case "FonalLerakSima":
+                Tesztpalya.fonalLerakSima();
+                break;
+            case "EgyFonalasHonnan":
+                Tesztpalya.egyFonalasHonnan();
+                break;
+            case "EgyFonalasHova":
+                Tesztpalya.egyFonalasHova();
+                break;
+            case "SporaSzorSima":
+                Tesztpalya.sporaSzorSima();
+                break;
+            case "SporaSzorFejlett":
+                Tesztpalya.sporaSzorFejlett();
+                break;
+            case "GombatestEpitFonallal":
+                Tesztpalya.gombatestEpitFonallal();
+                break;
+            case "GombatestEpitSporaval":
+                Tesztpalya.gombatestEpitSporaval();
+                break;
+            case "GombatestMeghal":
+                Tesztpalya.gombatestMeghal();
+                break;
+            case "FonalElhalGombatestMiatt":
+                Tesztpalya.fonalElhalGombatestMiatt();
+                break;
+            case "FonalEvesBogar":
+                Tesztpalya.fonalEvesBogar();
+                break;
+            case "FonalElhalSzetesesMiatt":
+                Tesztpalya.fonalElhalSzetesesMiatt();
+                break;
+            case "GombatestEpitTestetlenre":
+                Tesztpalya.gombatestEpitTestetlenre();
+                break;
+            case "FonalElhalBogarMiatt":
+                Tesztpalya.fonalElhalBogarMiatt();
+                break;
+            case "EletbenTart":
+                Tesztpalya.eletbenTart();
+                break;
+            case "TektonSzetesesFonalNelkul":
+                Tesztpalya.tektonSzetesesFonalNelkul();
+                break;
+            case "FonalFelsziv":
+                Tesztpalya.fonalFelsziv();
+                break;
+            default:
+               kimenet.print("nem ismert teszt");
         }
     }
 

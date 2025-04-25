@@ -3,131 +3,104 @@ public class Tesztpalya
     
     Jatek tesztvilag;
 
-    void bogarLep()
-    {
+    public static void bogarLep() {
 
     }
-
-    void bogarEszik()
-    {
-
+    
+    public static void bogarEszik() {
+    
     }
-
-    void bogarNemEszik()
-    {
-
+    
+    public static void bogarNemEszik() {
+    
     }
-
-    void bogarRagas()
-    {
-
+    
+    public static void bogarRagas() {
+    
     }
-
-    void bogarNemRagas()
-    {
-
+    
+    public static void bogarNemRagas() {
+    
     }
-
-    void bogarEmeszt(String fajta)
-    {
+    
+    public static void bogarEmeszt(String fajta) {
         switch (fajta) {
             case "gyorsito":
-                
                 break;
             case "benito":
-                
                 break;
             case "keseru":
-                
                 break;
             case "lassito":
-                
                 break;
             case "szaporodo":
-                
                 break;
             default:
                 throw new AssertionError();
         }
     }
-
-    void fonalLerakSima()
-    {
-
-    }
-
-    void egyFonalasHonnan()
-    {
-
-    }
-
-    void egyFonalasHova()
-    {
-
-    }
-
-    void sporaSzorSima()
-    {
-
-    }
-
-    void sporaSzorFejlett()
-    {
-
-    }
-
-    void gombatestEpitFonallal()
-    {
-
-    }
-
-    void gombatestEpitSporaval()
-    {
-
-    }
-
-    void gombatestMeghal()
-    {
-
-    }
-
-    void fonalElhalGombatestMiatt()
-    {
-
+    
+    public static void fonalLerakSima() {
+    
     }
     
-    void fonalEvesBogar()
-    {
-
+    public static void egyFonalasHonnan() {
+    
     }
-
-    void fonalElhalSzetesesMiatt()
-    {
-
+    
+    public static void egyFonalasHova() {
+    
     }
-
-    void gombatestEpitTestetlenre()
-    {
-
+    
+    public static void sporaSzorSima() {
+    
     }
-
-    void fonalElhalBogarMiatt()
-    {
-
+    
+    public static void sporaSzorFejlett() {
+    
     }
-
-    void eletbenTart()
-    {
-
+    
+    public static void gombatestEpitFonallal() {
+    
     }
-
-    void tektonSzetesesFonalNelkul()
-    {
-
+    
+    public static void gombatestEpitSporaval() {
+    
     }
-
-    void fonalFelsziv()
-    {
-        
+    
+    public static void gombatestMeghal() {
+    
+    }
+    
+    public static void fonalElhalGombatestMiatt() {
+    
+    }
+    
+    public static void fonalEvesBogar() {
+    
+    }
+    
+    public static void fonalElhalSzetesesMiatt() {
+    
+    }
+    
+    public static void gombatestEpitTestetlenre() {
+    
+    }
+    
+    public static void fonalElhalBogarMiatt() {
+    
+    }
+    
+    public static void eletbenTart() {
+    
+    }
+    
+    public static void tektonSzetesesFonalNelkul() {
+    
+    }
+    
+    public static void fonalFelsziv() {
+    
     }
 }
