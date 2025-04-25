@@ -106,15 +106,17 @@ public class Gombatest
             
             if(!vissza2){
                 honnan.fonalElszakad(f2);
+                action--;
                 checkKorvege();
-                return "Fonal elhelyezese sikertelen, mert a hova tekton egyfonalas";
+                return "Fonal elhelyezese sikertelen, mert a hova tekton egyfonalas es van rajta mar fonal";
             }
             action--;
             checkKorvege();
             return "Siker";
         }
+        action--;
         checkKorvege();
-        return "Fonal elhelyezese sikertelen, mert a honnan tekton egyfonalas";
+        return "Fonal elhelyezese sikertelen, mert a honnan tekton egyfonalas es van rajta mar fonal";
     }
 
     //ez miert itt van, miert nem a tektonban?
