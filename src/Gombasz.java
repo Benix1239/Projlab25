@@ -12,22 +12,38 @@ public class Gombasz extends Jatekos
     
 
     //valtozas: megkapja a palyat is konstruktorban es nincs Tekton kezdo parametere
+    /**
+     * Konstruktor
+     * @param palya
+     */
     public Gombasz(ArrayList<Tekton> palya){
         testek = new ArrayList<>();
         this.palya = palya;
         benitottak = new ArrayList<>();
     }
 
+    /**
+     * Kör eleji inicializálás.
+     */
     public void korElejeInicializalas(){
         for(Gombatest gt : testek){
             gt.korElejeInicializalas();
         }
     }
     
+    /**
+     * Gombatest hozzáadása a testek listához.
+     * @param g A gombatest, amit hozzáadunk.
+     */
     public void gombatestHozzaad(Gombatest g){
         testek.add(g);
     }
 
+    /**
+     * Bénított bogár evés funkció
+     * @param b Bogár, amit megeszik.
+     * @return Sikeres-e.
+     */
     public boolean bogarEves(Bogar b){
         if(benitottak.contains(b)){
             Tekton bogarHelyzet = b.getHelyzet();
@@ -43,6 +59,9 @@ public class Gombasz extends Jatekos
     }
 
     //torli a fonalakat, amik már nem elérhetőek a gombász egyik testjéből sem
+    /**
+     * Kezeli az elszakadásokat DFS-el.
+     */
     public void elszakadasDfsKezeles(){
         Set<Tekton> elerhetok = new HashSet<>();
         for(Gombatest test : testek){
@@ -62,10 +81,19 @@ public class Gombasz extends Jatekos
         }
     }
 
+    /**
+     * Gombatest eltávolítása.
+     * @param g Gombatest, amit eltávolítunk.
+     */
     public void removeGombatest(Gombatest g){
         testek.remove(g);
     }
 
+    /**
+     * Honnan lehetőségek.
+     * @param g Gombatest.
+     * @return Sikeres-e.
+     */
     Set<Tekton> honnanLehetosegek(Gombatest g){
         if(testek.contains(g)){
             return g.dfs();
@@ -73,7 +101,11 @@ public class Gombasz extends Jatekos
         return null;
     }
 
-    //visszaadja, hogy a honnan tektonról melyik Tektonokra tud még a gombász fonalat rakni
+    /**
+     * Visszaadja, hogy a honnan tektonról melyik Tektonokra tud még a gombász fonalat rakni.
+     * @param honnan Tekton
+     * @return Halmaz
+     */
     Set<Tekton> hovaLehetosegek(Tekton honnan){
         ArrayList<Tekton> honnanSzomszedok = honnan.getSzomszed();
         ArrayList<Tekton> honnanOsszekotve = honnan.fonalKeres(this);
@@ -87,6 +119,10 @@ public class Gombasz extends Jatekos
         return hovaLehetoseg;
     }
 
+    /**
+     * Minden gomba körének vége.
+     * @return Sikeres-e.
+     */
     private boolean mindenGombaKorVege(){
         for(Gombatest gt : testek){
             if(!gt.getKorvege()){
@@ -98,6 +134,13 @@ public class Gombasz extends Jatekos
         return true;
     }
 
+    /**
+     * Fonal lerakás
+     * @param g Gombatest, ami lerakja
+     * @param honnan Honnan rakjuk le
+     * @param hova Hova rakjuk le
+     * @return
+     */
     public String fonalLerak(Gombatest g, Tekton honnan, Tekton hova){
         String returnValue = "Hibas parameter";
         if(testek.contains(g) && honnanLehetosegek(g).contains(honnan) && hovaLehetosegek(honnan).contains(hova)){
@@ -109,6 +152,11 @@ public class Gombasz extends Jatekos
         return returnValue;
     }
 
+    /**
+     * Hova szórhat az adott gombatest spórát.
+     * @param g Az adott gombatest.
+     * @return Ahova szórhat.
+     */
     public Set<Tekton> hovaSzorhat(Gombatest g){
         if(testek.contains(g)){
             return g.hovaSzorhat();
@@ -116,6 +164,12 @@ public class Gombasz extends Jatekos
         return null;       
     }
 
+    /**
+     * Spóra szórása.
+     * @param g Gombatest, ami szór.
+     * @param hova Tekton, ahova szór.
+     * @return Sikeres-e.
+     */
     public boolean sporaSzor(Gombatest g, Tekton hova){
         boolean returnValue = false;
         if(testek.contains(g) && hovaSzorhat(g).contains(hova)){
@@ -128,6 +182,10 @@ public class Gombasz extends Jatekos
         
     }
 
+    /**
+     * Visszaadja, mit lehet csinálni.
+     * @return Mit lehet csinálni, String.
+     */
     public String mitLehetCsinalni(){
         String returnValue = "";
         int szamlalo = 0;
@@ -138,14 +196,26 @@ public class Gombasz extends Jatekos
         return returnValue;
     }
     
+    /**
+     * Név setter.
+     * @param nev
+     */
     public void setNev(String nev) {
         this.nev = nev;
     }
 
+    /**
+     * Testek getter.
+     * @return testek lista.
+     */
     public ArrayList<Gombatest> getTestek() {
         return testek;
     }
 
+    /**
+     * Benitott bogarakat adja vissza.
+     * @return Benitott bogarak lista.
+     */
     public ArrayList<Bogar> getBenitottak()
     {
         Set<Tekton> elerhetok = new HashSet<>();
@@ -162,6 +232,10 @@ public class Gombasz extends Jatekos
         return returnValue;
     }
 
+    /**
+     * Benult bogarat hozzáad a benitottak-hoz.
+     * @param b benult Bogar.
+     */
     public void benultBogarHozzaad(Bogar b){
         benitottak.add(b);
     }

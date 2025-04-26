@@ -17,16 +17,28 @@ public abstract class Spora
 		pluszPont=random.nextInt(5);
     }
 
+    /**
+     * Tartozik getter.
+     * @return Gombasz.
+     */
     public Gombasz getTartozik()
     {
         return tartozik;
     }
 
+    /**
+     * Tartozik setter.
+     * @param g
+     */
     public void setTartozik(Gombasz g)
     {
         this.tartozik = g;
     }
 
+    /**
+     * Pluszpont getter.
+     * @return int.
+     */
     public int getPluszpont()
     {
         return pluszPont;

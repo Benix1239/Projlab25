@@ -28,16 +28,31 @@ public abstract class Jatekos implements Serializable
         
     }
 
+    /**
+     * korVege getter.
+     * @return korVege boolean.
+     */
     public boolean getKorvege(){
         return korVege;
     }
 
+    /**
+     * korVege setter.
+     * @param ertek
+     */
     public void setKorvege(boolean ertek){
         korVege = ertek;
     }
 
+    /**
+     * Absztrakt metódus a kör elején végrehajtandó inicializáláshoz.
+     */
     public abstract void korElejeInicializalas();
 
+    /**
+     * Absztrakt metódus, visszaadja, hogy mit lehet csinálni.
+     * @return String.
+     */
     public abstract String mitLehetCsinalni();
 
 }

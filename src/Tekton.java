@@ -270,6 +270,10 @@ public class Tekton
     	gombasz.elszakadasDfsKezeles();
 	}
 
+	/**
+	 * Fonal elpusztítás.
+	 * @param g Gombasz.
+	 */
 	public void fonalElpusztit(Gombasz g){
 
 		ArrayList<Fonal> tomb=new ArrayList<>();
@@ -511,6 +515,11 @@ public class Tekton
 
 	}
 
+	/**
+	 * Visszaadja a fonal nélküli szomszédokat.
+	 * @param g Gombasz.
+	 * @return Tekton lista.
+	 */
 	public ArrayList<Tekton> fonalNelkuliSzomzed(Gombasz g)
 	{
 		ArrayList<Tekton> eredmeny = new ArrayList<>();
@@ -526,6 +535,11 @@ public class Tekton
 		return eredmeny;
 	}
 
+	/**
+	 * Visszaadja, hány spóra van a tektonon egy adott Gombasz-nak.
+	 * @param g Gombász.
+	 * @return int.
+	 */
 	public int hanySporajaVan(Gombasz g){
 		int szam = 0;
 		for(Spora s : sporak){

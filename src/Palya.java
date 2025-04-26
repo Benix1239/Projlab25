@@ -73,6 +73,10 @@ public class Palya implements Serializable
         }
     }
 
+    /**
+     * Palya getter.
+     * @return Tekton lista.
+     */
     public ArrayList<Tekton> getPalya()
     {
         return this.palya;

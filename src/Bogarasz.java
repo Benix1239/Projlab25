@@ -8,6 +8,9 @@ public class Bogarasz extends Jatekos
 {
     private ArrayList<Bogar> bogarak;
 
+    /**
+     * Konstruktor, létrehozza a bogarak-at.
+     */
     public Bogarasz(){
         this.bogarak = new ArrayList<Bogar>();
     }
@@ -18,7 +21,11 @@ public class Bogarasz extends Jatekos
             bogar.beallit();
         }*/
     }
-    
+
+    /**
+     * Vége a bogarak körének, emésztenek.
+     * @return ha tényleg vége a körnek, true
+     */
     private boolean mindenBogarVege(){
         for(Bogar bogar : bogarak){
             if(!bogar.getKorVege()){
@@ -31,6 +38,9 @@ public class Bogarasz extends Jatekos
         return true;
     }
 
+    /**
+     * Megadja, mit lehet még csinálni a bogarakkal
+     */
     public String mitLehetCsinalni() {
         String returnValue = "";
         for (int i = 0; i < bogarak.size(); i++) {
@@ -198,14 +208,26 @@ public class Bogarasz extends Jatekos
         }
     }
 
+    /**
+     * Név setter.
+     * @param nev A beállítandó név
+     */
     public void setNev(String nev) {
         this.nev = nev;
     }
 
+    /**
+     * Visszaadja a bogarakat.
+     * @return bogarak lista.
+     */
     public ArrayList<Bogar> getBogarak() {
         return bogarak;
     }
 
+    /**
+     * Korvege setter.
+     * @param ertek
+     */
     public void setKorvege(boolean ertek){
         korVege = ertek;
         if(ertek==true){

@@ -14,6 +14,11 @@ public class Gombatest
     private int action;
     private static final Random random = new Random();
 
+    /**
+     * Konstruktor, beállítja a helyet és a gombászt.
+     * @param hely
+     * @param tartozik
+     */
     public Gombatest(Tekton hely, Gombasz tartozik) {
         this.hely = hely;
         this.tartozik = tartozik;
@@ -24,6 +29,9 @@ public class Gombatest
         tartozik.addPoint(hely.pluszPont);
     }
 
+    /**
+     * Kör eleji inicializálás.
+     */
     public void korElejeInicializalas(){
         action = 2;
         korVege = false;
@@ -31,6 +39,9 @@ public class Gombatest
         checkKorvege();
     }
 
+    /**
+     * Spóra termelése.
+     */
     private void termel(){
         int randomSzam = random.nextInt(5);
         switch (randomSzam) {
@@ -55,6 +66,9 @@ public class Gombatest
         }
     }
 
+    /**
+     * Vége van-e a körnek.
+     */
     private void checkKorvege(){
         if(action == 0){
             korVege = true;
@@ -70,6 +84,10 @@ public class Gombatest
 
     }
 
+    /**
+     * Tud-e fonalat rakni.
+     * @return boolean.
+     */
     private boolean tudFonalatRakni(){
         Set<Tekton> dfsEredmeny = dfs();
         for(Tekton t : dfsEredmeny){
@@ -80,6 +98,11 @@ public class Gombatest
         return false;
     }
 
+    /**
+     * Adott tektonra spórát szór.
+     * @param c Tekton, amire elszór.
+     * @return Sikeres-e.
+     */
     public boolean elszor(Tekton c){
         Set<Tekton> szomszedok = hovaSzorhat();
         if(szomszedok != null && szomszedok.contains(c) && spora != null){
@@ -97,6 +120,9 @@ public class Gombatest
         return false;
     }
 
+    /**
+     * Gombatest meghalásának kezelése.
+     */
     private void gombatestMeghal(){
         hely.setGombatest(null);
 
@@ -106,6 +132,12 @@ public class Gombatest
     }
 
     //legjobb minta erre az EgyFonalasHova szekvenciadiagram
+    /**
+     * Fonal elhelyezése
+     * @param honnan Tekton.
+     * @param hova Tekton.
+     * @return Sikeresség.
+     */
     public String elhelyez(Tekton honnan, Tekton hova){
         Fonal f1 = new Fonal(honnan, this.tartozik);
         Fonal f2 = new Fonal(hova, this.tartozik);
@@ -131,10 +163,19 @@ public class Gombatest
     }
 
     //ez miert itt van, miert nem a tektonban?
+    /**
+     * Szomszéd keresés.
+     * @return Szomszéd tektonok listája.
+     */
     public ArrayList<Tekton> szomszedKeres(){
         return hely.getSzomszed();
     }
 
+    /**
+     * DFS rekurzió függvény.
+     * @param tekton
+     * @param megtalalt
+     */
     private void dfsRekurzio(Tekton tekton, Set<Tekton> megtalalt){
         if (megtalalt.contains(tekton)) {
             return;
@@ -148,12 +189,20 @@ public class Gombatest
         }
     }
 
+    /**
+     * dfs függvény.
+     * @return Megtalált tektonok.
+     */
     public Set<Tekton> dfs(){
         Set<Tekton> megtalalt = new HashSet<>();
         dfsRekurzio(hely, megtalalt);
         return megtalalt;
     }
 
+    /**
+     * Visszaadja, hova szórhat a Gombatest.
+     * @return Tektonok listája, ahova szórhat.
+     */
     public Set<Tekton> hovaSzorhat(){
         Set<Tekton> szomszedok = new HashSet<>(hely.getSzomszed());
         if(this.maradt <= 3){
@@ -171,6 +220,10 @@ public class Gombatest
         }
     }
 
+    /**
+     * Visszaadja, mit lehet csinálni.
+     * @return String.
+     */
     public String mitLehetCsinalni(){
         String returnValue = "";
         if(action == 0){
@@ -194,22 +247,42 @@ public class Gombatest
         return returnValue;
     }
 
+    /**
+     * Maradt getter.
+     * @return int maradt.
+     */
     public int getMaradt(){
         return maradt;
     }
 
+    /**
+     * Spora setter.
+     * @param s
+     */
     public void setSpora(Spora s){
         this.spora = s;
     }
 
+    /**
+     * Maradt setter.
+     * @param i
+     */
     public void setMaradt(int i){
         maradt = i;
     }
 
+    /**
+     * Hely getter.
+     * @return Tekton.
+     */
     public Tekton getHely() {
         return hely;
     }
 
+    /**
+     * korVege getter.
+     * @return boolean.
+     */
     public boolean getKorvege(){
         return korVege;
     }

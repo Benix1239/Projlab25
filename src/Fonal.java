@@ -28,6 +28,11 @@ public class Fonal extends Osszekoto
         
     }
 
+    /**
+     * Fonal bogár evés funkciója.
+     * @param b A bogár, amit megeszik a fonal.
+     * @return Sikeres volt-e.
+     */
     public boolean bogarEves(Bogar b){
         if(b.megEve()){
             Gombatest g = new Gombatest(b.getHelyzet(), tartozik);
@@ -39,10 +44,18 @@ public class Fonal extends Osszekoto
         return false;
     }
 
+    /**
+     * El van-e rágva a fonal
+     * @return Sikeres lefutás
+     */
     public boolean getElragva(){
         return elragva;
     }
 
+    /**
+     * Elragva setter.
+     * @param tempelragva
+     */
     public void setEkragva(boolean tempelragva){
         this.elragva = tempelragva;
     }

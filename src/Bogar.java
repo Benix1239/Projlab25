@@ -26,6 +26,9 @@ public class Bogar
         korVege=false;
     }
 
+    /**
+     * Ellenőrzi a kör végét.
+     */
     private void checkKorvege(){
         if(mozgasok == 0 && actionEves==false && actionRagas==false){
             korVege = true;
@@ -43,6 +46,9 @@ public class Bogar
         }
     }
 
+    /**
+     * Kör végén emészt.
+     */
     public boolean korVegeEmeszt(){
         this.beallit();
 
@@ -153,6 +159,10 @@ public class Bogar
         }
     }
 
+    /**
+     * Eltávolítja a Bogarasz listájából ezt a bogarat.
+     * @return igazat ad, ha lefutott a bogár eltávolítása
+     */
     public boolean megEve(){
         tartozik.bogarRemove(this);
         return true;
@@ -229,22 +239,43 @@ public class Bogar
         return Id;
     }*/
 
+    /**
+     * Beállítja, hogy a kör véget ért-e.
+     * @param i true, ha a kör véget ért, false egyébként
+     */
     public void setKorVege(boolean i){
         this.korVege=i;
     }
 
+    /**
+     * Visszaadja, hogy a kör véget ért-e.
+     * @return true, ha a kör véget ért, false egyébként
+     */
     public boolean getKorVege(){
         return korVege;
     }
 
+    /**
+     * Beállítja, hogy melyik Bogarasz tartozik ehhez a Bogarhoz
+     * @param i a Bogarasz, aki tartozik ehhez a Bogarhoz
+     */
     public void setTartozik(Bogarasz i){
         this.tartozik=i;
     }
 
+    /**
+     * Visszaadja a Bogaraszt.
+     * @return a Bogarasz példány
+     */
     public Bogarasz getTartozik(){
         return tartozik;
     }
 
+    /**
+     * Megállapítja, hogy a megadott halmazban benne van-e a helyzet tekton
+     * @param elerhetok halmaz
+     * @return true, ha a tekton, amin a bogár van benne van az elérhető Tektonok halmazában, false egyébként
+     */
     public boolean elerhetoFonallal(Set<Tekton> elerhetok){
         if(elerhetok.contains(this.helyzet)){
             return true;
