@@ -270,14 +270,30 @@ public class Tekton
     	gombasz.elszakadasDfsKezeles();
 	}
 
-	public void fonalElpusztit(Gombasz t){
+	public void fonalElpusztit(Gombasz g){
 
 		ArrayList<Fonal> tomb=new ArrayList<>();
-		tomb=getOsszekoto(t);
 
-		for(int i=0;i<tomb.size();i++){
-			fonalElszakad(tomb.get(i));
+		for(Fonal f : osszekoto)
+		{
+			tomb.add(f);
 		}
+		
+		for(Fonal fonal : tomb)
+		{
+			Tekton hova = fonal.getHova();
+			Gombasz gombasz = fonal.getTartozik();
+			this.osszekoto.remove(fonal);
+			ArrayList<Fonal> fonalak = hova.getOsszekoto();
+
+			for (Fonal fonali : fonalak) {
+				if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {
+					hova.osszekoto.remove(fonali);
+					break;
+				}
+			}
+		}
+		
 	}
 
 	/*

@@ -7,6 +7,6 @@ A bogarasz0-nek a bogar0 bogara, a tekton0 tektonon all.
 tekton0 tektonon az alabbi fonalak vannak: 
 fonal0
 fonal1
-Nem sikerult elragni az adott fonalat
+bogarasz0-hez tartozo bogar0 elragta a fonal0-t
 tekton0 tektonon az alabbi fonalak vannak: 
 fonal0

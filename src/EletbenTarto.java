@@ -28,20 +28,32 @@ public class EletbenTarto extends Tekton {
      * @brief Elszakit egy fonal osszekottetest ket tekton kozott. Eloszor lementi a torlendo fonalat.
      */
     @Override
-    public void fonalElszakad(Fonal fonal){
-        nemHalMegLista.add(fonal);
-		Tekton hova = fonal.getHova();
-        Gombasz gombasz = fonal.getTartozik();
-        this.osszekoto.remove(fonal);
-        ArrayList<Fonal> fonalak = hova.getOsszekoto();
+    public void fonalElpusztit(Gombasz g){
 
-        for (Fonal fonali : fonalak) {
-            if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {
-                hova.osszekoto.remove(fonali);
-				break;
-            }
-        }
-    	gombasz.elszakadasDfsKezeles();
+        
+		ArrayList<Fonal> tomb=new ArrayList<>();
+
+		for(Fonal f : osszekoto)
+		{
+			tomb.add(f);
+            nemHalMegLista.add(f);
+		}
+		
+		for(Fonal fonal : tomb)
+		{
+			Tekton hova = fonal.getHova();
+			Gombasz gombasz = fonal.getTartozik();
+			this.osszekoto.remove(fonal);
+			ArrayList<Fonal> fonalak = hova.getOsszekoto();
+
+			for (Fonal fonali : fonalak) {
+				if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {
+					hova.osszekoto.remove(fonali);
+					break;
+				}
+			}
+		}
+		
 	}
 
     /*
