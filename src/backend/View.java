@@ -58,18 +58,6 @@ public class View
                 case "jatekIndit":
                     menet.alapJatekPalya();
                     break;
-                case "ment":
-                    
-                    break;
-                case "betolt":
-                    
-                    break;
-                case "jatekosKor":
-                    
-                    break;
-                case "korVege":
-                    
-                    break;
                 case "palyaListazasa":
                     kimenet.println(menet.getPalya());
                     break;
