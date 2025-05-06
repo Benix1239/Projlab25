@@ -1,5 +1,7 @@
 package backend;
 
+import swing.MainFrame;
+
 public class App {
     
     /**
@@ -9,10 +11,6 @@ public class App {
      */
     public static void main(String[] args) throws Exception 
     {
-        View asd = new View();
-        
-        asd.bemenetKezeles();
-        
-
+        new MainFrame().setVisible(true);
     }
 }
