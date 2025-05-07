@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -34,8 +33,9 @@ public class JatekPanel extends JPanel {
     private Command command;
     private Jatek jatekMenet;
 
-    public JatekPanel(MainFrame mainFrame){
+    public JatekPanel(MainFrame mainFrame,Jatek _jatekmenet){
         this.mainFrame = mainFrame;
+        this.jatekMenet=_jatekmenet;
 
         // palya merete
         final int SOR = 25;
