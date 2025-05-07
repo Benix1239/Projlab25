@@ -20,7 +20,7 @@ public class InfoFrame extends JFrame {
     }
 
     private void initializeUI() {
-        setTitle("Játék Információk");
+        setTitle("Játék jelenlegi állása");
         setSize(500, 400);
         setLayout(new BorderLayout());
         
@@ -40,17 +40,7 @@ public class InfoFrame extends JFrame {
         cardPanel.add(bogaraszPanel, "bogarasz");
         cardPanel.add(tektonPanel, "tekton");
         
-        // Vezérlő gombok
-        JPanel controlPanel = new JPanel();
-        String[] modes = {"Pontok", "Gombászok", "Bogárászok", "Tektonok"};
-        for (int i = 0; i < modes.length; i++) {
-            JButton btn = new JButton(modes[i]);
-            int finalI = i;
-            btn.addActionListener(e -> modeValtozas(finalI));
-            controlPanel.add(btn);
-        }
-        
-        add(controlPanel, BorderLayout.NORTH);
+       
         add(cardPanel, BorderLayout.CENTER);
         
         // Kezdeti frissítés
@@ -60,6 +50,9 @@ public class InfoFrame extends JFrame {
     public void frissit() {
         // Pontok frissítése
         pontokPanel.frissit(jatekmenet.getJatekosPontok());
+        //gombaszPanel.frissit(jatekmenet.getAktivGombasz());
+        //bogaraszPanel.frissit(jatekmenet.getAktivBogarasz());
+        //tektonPanel.frissit(jatekmenet.getAktivTekton());
         
     }
 
@@ -71,12 +64,5 @@ public class InfoFrame extends JFrame {
             case 3: cardLayout.show(cardPanel, "tekton"); break;
             default: cardLayout.show(cardPanel, "pontok");
         }
-    }
-
-    // Segédmetódus a megjelenítéshez
-    public static void showInfoFrame(Jatek jatek) {
-        InfoFrame frame = new InfoFrame(jatek);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
     }
 }
