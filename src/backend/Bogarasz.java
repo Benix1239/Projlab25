@@ -13,7 +13,8 @@ public class Bogarasz extends Jatekos
     /**
      * Konstruktor, létrehozza a bogarak-at.
      */
-    public Bogarasz(){
+    public Bogarasz(String nev){
+        super(nev);
         this.bogarak = new ArrayList<Bogar>();
     }
 
@@ -171,24 +172,16 @@ public class Bogarasz extends Jatekos
     }
 
     /**
-     * Hozzáad egy bogarat a játékos bogaraihoz, és beállítja annak kezdeti helyzetét a megadott Tektonra.
+     * Hozzáad egy bogarat a játékos bogaraihoz.
      *
-     * @param b A hozzáadandó bogár.
-     * @param t A kezdeti Tekton, ahol a bogár elhelyezkedik.
-     * @return true, ha a bogár sikeresen hozzá lett adva és a helyzete is be lett állítva, különben false.
+     * @param helyzet A bogar kezdeti helyzete
+     * @return true
      */
-    public boolean bogarHozzaad(Bogar b,Tekton t)
+    public boolean bogarHozzaad(Tekton helyzet)
     {
+        Bogar b = new Bogar(this, helyzet);
         bogarak.add(b);
-        bogarak.get(bogarak.size()-1).setHelyzet(t);
-        b.beallit();
-        b.setTartozik(this);
-        if(bogarak.contains(b) && b.getHelyzet()==t){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return true;
     }
     
     /**

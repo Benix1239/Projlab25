@@ -9,9 +9,9 @@ public abstract class Jatekos implements Serializable
     protected String nev;
     protected boolean korVege = false;
 
-    Jatekos()
+    public Jatekos(String nev)
     {
-        
+        this.nev = nev;
     }
 
     public void addPoint(int amount)
