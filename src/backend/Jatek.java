@@ -284,9 +284,9 @@ public class Jatek {
     
     public String jelenlegiJatekosNeve() {
         if (jatekosIndex < gombaszok.size()) {
-            return "Gombasz" + jatekosIndex;
+            return "Jelenlegi gombasz: " + jelenlegiJatekos().getNev();
         } else {
-            return "Bogarasz" + (jatekosIndex - gombaszok.size());
+            return "Jelenlegi bogarasz: " + jelenlegiJatekos().getNev();
         }
     }
 
@@ -756,5 +756,20 @@ public class Jatek {
         Gombasz gombaszObj = gombaszFromString(gombasz);
         Tekton tektonObj = tektonFromString(tekton);
         return tektonObj.hanySporajaVan(gombaszObj);
+    }
+
+    public int palyaMeret(){
+        return jatekter.getPalya().size();
+    }
+
+    public boolean gombaszKoreVanE(){
+        if(jatekosIndex < gombaszok.size()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean bogaraszKoreVanE(){
+        return !gombaszKoreVanE();
     }
 }

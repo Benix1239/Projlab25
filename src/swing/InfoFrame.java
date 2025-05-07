@@ -14,7 +14,7 @@ public class InfoFrame extends JFrame {
     private Jatek jatekmenet;
 
     //TODO
-    public void update(){}
+    public void frissit(){}
 
     //TODO
     public void modeValtozas(int mode){}

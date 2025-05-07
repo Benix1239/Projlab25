@@ -32,14 +32,13 @@ public class MainFrame extends JFrame {
         // panelek peldanyositasa
         fomenuPanel = new FomenuPanel(this);
         jatekosMegadosPanel = new JatekosMegadosPanel(this);
-        jatekPanel = new JatekPanel(this);
+        
         betoltPanel = new BetoltPanel(this);
         dicsosegPanel = new DicsosegPanel(this);
 
         // panelek hozzaadasa a cardPanelhez
         cardPanel.add(fomenuPanel, "fomenuPanel");
         cardPanel.add(jatekosMegadosPanel, "jatekosMegadosPanel");
-        cardPanel.add(jatekPanel, "jatekPanel");
         cardPanel.add(betoltPanel, "betoltPanel");
         cardPanel.add(dicsosegPanel, "dicsosegPanel");
 
@@ -71,7 +70,7 @@ public class MainFrame extends JFrame {
 
     //betoltPanel bekapcsolasa, hogy ki lehessen valasztani, hogy melyik jatekot akarod folytatni
     public void betoltBekapcs(){
-        betoltPanel.update(new String[] {"Jatek1", "Üres", "Üres"}); // később fájlból olvasható
+        betoltPanel.frissit(new String[] {"Jatek1", "Üres", "Üres"}); // később fájlból olvasható
         cardLayout.show(cardPanel, "betoltPanel");
         setSize(500, 300);
         setLocationRelativeTo(null);
@@ -98,6 +97,16 @@ public class MainFrame extends JFrame {
 
     // jatekMenet letrehozasa uj jatek eseten. Parameterkent megkapja az uj jatekosok neveit
     public void jatekIndit(ArrayList<String> jatekosNevek){
-        
+        if(jatekosNevek.size() == 4){
+            jatekmenet = new Jatek(this, jatekosNevek);
+            jatekPanel = new JatekPanel(this, jatekmenet);
+            cardPanel.add(jatekPanel, "jatekPanel");
+            jatekPanel.frissit();
+        }
+    }
+
+    // meghivja a tobbi elem frissit() fv-et
+    public void frissit(){
+        jatekPanel.frissit();
     }
 }

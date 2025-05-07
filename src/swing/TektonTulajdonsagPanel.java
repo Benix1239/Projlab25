@@ -10,5 +10,5 @@ public class TektonTulajdonsagPanel extends JPanel {
     private JTable data;
 
     //TODO
-    public void update(){}
+    public void frissit(){}
 }

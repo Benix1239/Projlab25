@@ -59,7 +59,7 @@ public class BetoltPanel extends JPanel {
     }
 
     // Frissíti a mentés nevek megjelenítését
-    public void update(String[] mentesek) {
+    public void frissit(String[] mentesek) {
         elso.setText(mentesek[0]);
         masodik.setText(mentesek[1]);
         harmadik.setText(mentesek[2]);

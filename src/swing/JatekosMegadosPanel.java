@@ -65,7 +65,13 @@ public class JatekosMegadosPanel extends JPanel {
           if (!nev.isEmpty()) {
               jatekosok.add(nev);
               nevField.setText("");
-              vege.setEnabled(true);
+              //jelenleg csak 4 jatekoshoz van egy "hasznalhato" palya, ezert csak ennyivel szabad elinditani
+              if(jatekosok.size() == 4){
+                    vege.setEnabled(true);
+              }
+              else{
+                    vege.setEnabled(false);
+              }
           }
         });
 
