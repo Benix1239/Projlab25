@@ -1,5 +1,6 @@
 package swing;
 
+import backend.Jatek;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,11 +13,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Collections;
+<<<<<<< HEAD
 
 import javax.swing.AbstractAction;
+=======
+>>>>>>> 63e35e424f196dcf03f5195273bdd65a61a4ad4b
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

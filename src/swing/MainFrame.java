@@ -4,6 +4,7 @@ import backend.Jatek;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
@@ -32,7 +33,7 @@ public class MainFrame extends JFrame {
         // panelek peldanyositasa
         fomenuPanel = new FomenuPanel(this);
         jatekosMegadosPanel = new JatekosMegadosPanel(this);
-        
+        jatekPanel = new JatekPanel(this,jatekmenet);
         betoltPanel = new BetoltPanel(this);
         dicsosegPanel = new DicsosegPanel(this);
 
@@ -70,9 +71,8 @@ public class MainFrame extends JFrame {
 
     //betoltPanel bekapcsolasa, hogy ki lehessen valasztani, hogy melyik jatekot akarod folytatni
     public void betoltBekapcs(){
-        betoltPanel.frissit(new String[] {"Jatek1", "Üres", "Üres"}); // később fájlból olvasható
         cardLayout.show(cardPanel, "betoltPanel");
-        setSize(500, 300);
+        setSize(500, 300); // vagy amit szeretnél
         setLocationRelativeTo(null);
     }
 
@@ -84,8 +84,27 @@ public class MainFrame extends JFrame {
     }
 
     //TODO
-    public void jatekBetolt(int melyik){
-        
+    public void jatekBetolt(int mentesSzam) {
+        try {
+            String fajlNev = "mentes" + mentesSzam + ".txt";
+            
+            jatekmenet = new Jatek(); // új példány létrehozása, ha még nem volt
+            jatekmenet.betolt(fajlNev); // betöltés a fájlból
+
+            // új játékpanel példányosítása a betöltött játékmenettel
+            jatekPanel = new JatekPanel(this, jatekmenet); // ha kell neki Jatek paraméter
+            cardPanel.add(jatekPanel, "jatekPanel"); // hozzáadás a CardLayout-hoz
+            cardLayout.show(cardPanel, "jatekPanel"); // váltás a játékpanelre
+            setSize(1400, 1000); 
+            setLocationRelativeTo(null);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, 
+                "Hiba történt a játék betöltése közben: " + e.getMessage(),
+                "Betöltési hiba", 
+                JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }
 
     //TODO
@@ -109,4 +128,6 @@ public class MainFrame extends JFrame {
     public void frissit(){
         jatekPanel.frissit();
     }
+
+    
 }
