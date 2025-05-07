@@ -2,6 +2,7 @@ package swing;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -34,10 +35,12 @@ public class MainFrame extends JFrame {
         // panelek peldanyositasa
         fomenuPanel = new FomenuPanel(this);
         jatekosMegadosPanel = new JatekosMegadosPanel(this);
+        jatekPanel = new JatekPanel(this);
 
         // panelek hozzaadasa a cardPanelhez
-        cardPanel.add(fomenuPanel, "fomenu");
-        cardPanel.add(jatekosMegadosPanel, "jatekos");
+        cardPanel.add(fomenuPanel, "fomenuPanel");
+        cardPanel.add(jatekosMegadosPanel, "jatekosMegadosPanel");
+        cardPanel.add(jatekPanel, "jatekPanel");
 
         // foablak tartalmanak beallitasa
         setContentPane(cardPanel);
@@ -48,14 +51,14 @@ public class MainFrame extends JFrame {
 
     //Fomenu bekapcsolasa
     public void foMenuBekapcs(){
-        cardLayout.show(cardPanel, "fomenu");
+        cardLayout.show(cardPanel, "fomenuPanel");
         setSize(300, 300);
         setLocationRelativeTo(null);
     }
 
     //jatekosMegadosPanel bekapcsolasa, hogy a jatekosokat meg lehessen adni
     public void ujJatekBekapcs(){
-        cardLayout.show(cardPanel, "jatekos");
+        cardLayout.show(cardPanel, "jatekosMegadosPanel");
         setSize(400, 180);
         setLocationRelativeTo(null);
     }
@@ -80,4 +83,15 @@ public class MainFrame extends JFrame {
         
     }
 
+    //TODO
+    public void jatekPanelBekapcs(){
+        cardLayout.show(cardPanel, "jatekPanel");
+        setSize(1400, 1000);
+        setLocationRelativeTo(null);
+    }
+
+    // jatekMenet letrehozasa uj jatek eseten. Parameterkent megkapja az uj jatekosok neveit
+    public void jatekIndit(ArrayList<String> jatekosNevek){
+        
+    }
 }
