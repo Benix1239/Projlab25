@@ -65,7 +65,7 @@ public class Jatek {
         gombaszok = new ArrayList<Gombasz>();
         bogaraszok = new ArrayList<Bogarasz>();
         jatekter = new Palya();
-        jatekosIndex = 2;
+        jatekosIndex = 0;
         this.mainFrame = mainFrame;
 
         alapJatekPalya(jatekosNevek);
@@ -87,160 +87,6 @@ public class Jatek {
             jatekosNevek.remove(valasztottIndex);
         }
         
-    }
-
-    private void inicializalasBogar(){
-        //BogarLep
-        /*Tekton t1 = new Tekton();
-        Tekton t2 = new Tekton();
-        t1.addSzomszed(t2);
-        t2.addSzomszed(t1);
-        
-        jatekter.tektonHozzaad(t1);
-        jatekter.tektonHozzaad(t2);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
-        bogaraszok.add(karakter);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Fonal fon10 = new Fonal(t2,jatekos);
-        Fonal fon11 = new Fonal(t1,jatekos);
-        t2.addFonal(fon11);
-        t1.addFonal(fon10);
-        gombaszok.add(jatekos);*/
-
-        //BogarEszik
-        /*Tekton t1 = new Tekton();
-        jatekter.tektonHozzaad(t1);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
-        bogaraszok.add(karakter);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Spora s= new Sima(jatekos);
-        t1.addSpora(s);
-        gombaszok.add(jatekos);*/
-
-        //BogarNemEszik
-        /*Tekton t1 = new Tekton();
-        jatekter.tektonHozzaad(t1);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
-        bogaraszok.add(karakter);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        gombaszok.add(jatekos);*/
-
-        //BogarRagas
-        /*Tekton t1 = new Tekton();
-        Tekton t2 = new Tekton();
-        t1.addSzomszed(t2);
-        t2.addSzomszed(t1);
-        
-        jatekter.tektonHozzaad(t1);
-        jatekter.tektonHozzaad(t2);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
-        bogaraszok.add(karakter);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Fonal fon10 = new Fonal(t2,jatekos);
-        Fonal fon11 = new Fonal(t1,jatekos);
-        t2.addFonal(fon11);
-        t1.addFonal(fon10);
-        gombaszok.add(jatekos);*/
-
-        //Gyorsito
-        /*Tekton t1 = new Tekton();
-        jatekter.tektonHozzaad(t1);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
-        bogaraszok.add(karakter);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Spora s= new Gyorsito(jatekos);
-        t1.addSpora(s);
-        gombaszok.add(jatekos);*/
-
-        //Benito
-        /*Tekton t1 = new Tekton();
-        jatekter.tektonHozzaad(t1);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
-        bogaraszok.add(karakter);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Spora s= new Benito(jatekos);
-        t1.addSpora(s);
-        gombaszok.add(jatekos);*/
-
-        //Keseru
-        /*Tekton t1 = new Tekton();
-        jatekter.tektonHozzaad(t1);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
-        bogaraszok.add(karakter);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Spora s= new Keseru(jatekos);
-        t1.addSpora(s);
-        gombaszok.add(jatekos);*/
-
-        //Lassito
-        /*Tekton t1 = new Tekton();
-        jatekter.tektonHozzaad(t1);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
-        bogaraszok.add(karakter);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Spora s= new Lassito(jatekos);
-        t1.addSpora(s);
-        gombaszok.add(jatekos);
-
-        Tekton t1 = new Tekton();
-        jatekter.tektonHozzaad(t1);
-
-        Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
-        bogaraszok.add(karakter);
-
-        Gombasz jatekos = new Gombasz(jatekter.getPalya());
-        Spora s= new Szaporodo(jatekos);
-        t1.addSpora(s);
-        gombaszok.add(jatekos);*/
-    }
-
-    private void inicializalasGombasz(){
-        /*Tekton hely = new Tekton();
-        Tekton t2 = new Tekton();
-        hely.addSzomszed(t2);
-        t2.addSzomszed(hely);
-        jatekter.tektonHozzaad(t2);
-        jatekter.tektonHozzaad(hely);
-        Gombasz karakter = new Gombasz(jatekter.getPalya());
-        Gombatest test = new Gombatest(hely,karakter);
-        karakter.gombatestHozzaad(test);
-        hely.setGombatest(test);
-        gombaszok.add(karakter);
-	jelenlegiJatekos().korElejeInicializalas();*/
     }
 
     public Palya getJatekter() {
@@ -476,6 +322,7 @@ public class Jatek {
         jelenlegiJatekos().setKorvege(true);
         returnValue = "A "+jelenlegiJatekosNeve()+" jatekos passzolta a koret";
         jatekosKorvege();
+        mainFrame.frissit();
         return returnValue;
     }
 
@@ -804,7 +651,7 @@ public class Jatek {
     }
 
     public int[] sajatBogarakHelyei(){
-        if(gombaszKoreVanE()){
+        if(!bogaraszKoreVanE()){
             return null;
         }
 
@@ -834,4 +681,34 @@ public class Jatek {
 
         return returnValue;
     }
+
+    public int[] sajatGombatestekHelyei(){
+        if(!gombaszKoreVanE()){
+            return null;
+        }
+
+        int[] returnValue = new int[palyaMeret()];
+        ArrayList<Tekton> helyek = jelenlegiGombasz().gombatestHelyei();
+        for(Tekton t : helyek){
+            returnValue[jatekter.getPalya().indexOf(t)]++;
+        }
+        return returnValue;
+    }
+
+    public int[] mindenGombatestHelyei(){
+
+        int[] returnValue = new int[palyaMeret()];
+        ArrayList<Tekton> helyek = new ArrayList<>();
+
+        for(Gombasz gombasz : gombaszok){
+            helyek.addAll(gombasz.gombatestHelyei());
+        }
+
+        for(Tekton t : helyek){
+            returnValue[jatekter.getPalya().indexOf(t)]++;
+        }
+
+        return returnValue;
+    }
+
 }

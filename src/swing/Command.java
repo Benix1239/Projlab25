@@ -29,6 +29,15 @@ public class Command {
         switch(commandNev){
             case "bogarakListazasa":
                 jatekPanel.bogarakListazasa();
+                break;
+
+            case "gombatestekListazasa":
+                jatekPanel.gombatestekListazasa();
+                break;
+
+            case "passz":
+                jatekmenet.passz();
+                break;
         }
     }
 

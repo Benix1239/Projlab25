@@ -215,11 +215,8 @@ public class Gombatest
             szomszedok.addAll(szomszedokSzomszedai);
         }
 
-        if(szomszedok.size() != 0){
-            return szomszedok;
-        }else{
-            return null;
-        }
+        return szomszedok;
+        
     }
 
     /**

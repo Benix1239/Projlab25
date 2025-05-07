@@ -1,6 +1,10 @@
 package swing;
 
+import java.awt.*;
+import java.util.Map;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class PontokPanel extends JPanel {
     
@@ -41,7 +45,7 @@ public class PontokPanel extends JPanel {
         add(scrollPane, BorderLayout.CENTER);
     }
 
-    public void update(Map<String, Integer> jatekosPontok) {
+    public void frissit(Map<String, Integer> jatekosPontok) {
         // Táblázat ürítése
         tableModel.setRowCount(0);
         

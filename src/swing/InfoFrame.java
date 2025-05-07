@@ -54,12 +54,12 @@ public class InfoFrame extends JFrame {
         add(cardPanel, BorderLayout.CENTER);
         
         // Kezdeti frissítés
-        update();
+        frissit();
     }
 
-    public void update() {
+    public void frissit() {
         // Pontok frissítése
-        pontokPanel.update(jatekmenet.getJatekosPontok());
+        pontokPanel.frissit(jatekmenet.getJatekosPontok());
         
     }
 

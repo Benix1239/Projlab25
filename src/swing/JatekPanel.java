@@ -195,6 +195,30 @@ public class JatekPanel extends JPanel{
                 frissit();
             }
         });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("G"), "gombatestekListazasa");
+        this.getActionMap().put("gombatestekListazasa", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Command("gombatestekListazasa", jatekmenet, sajatMaga());
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released G"), "felengedveG");
+        this.getActionMap().put("felengedveG", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frissit();
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("P"), "passz");
+        this.getActionMap().put("passz", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Command("passz", jatekmenet, sajatMaga());
+            }
+        });
     }
 
     // letiltja a tektonGombokat es a comboboxokat
@@ -228,8 +252,28 @@ public class JatekPanel extends JPanel{
     public void bogarakListazasa(){
         int[] sajatBogarak = jatekmenet.sajatBogarakHelyei();
         int[] mindenBogar = jatekmenet.mindenBogarHelyei();
-        for(int i = 0; i < sajatBogarak.length; i++){
-            tektonGombok.get(i).setText(sajatBogarak[i] + ", " + mindenBogar[i]);
+        for(int i = 0; i < mindenBogar.length; i++){
+            if(jatekmenet.bogaraszKoreVanE()){
+                tektonGombok.get(i).setText(sajatBogarak[i] + ", " + mindenBogar[i]);
+            }
+            else{
+                tektonGombok.get(i).setText(""+ mindenBogar[i]);
+            }
+        }
+    }
+
+    public void gombatestekListazasa(){
+        int[] sajatGombatestek = jatekmenet.sajatGombatestekHelyei();
+        int[] mindenGombatest = jatekmenet.mindenGombatestHelyei();
+
+        for(int i = 0; i < mindenGombatest.length; i++){
+            if(jatekmenet.gombaszKoreVanE() && sajatGombatestek[i] != 0){
+                tektonGombok.get(i).setBackground(Color.GREEN);
+            }
+            if(mindenGombatest[i] != 0){
+                tektonGombok.get(i).setText("G");
+            }
+            
         }
     }
 }

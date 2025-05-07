@@ -242,4 +242,13 @@ public class Gombasz extends Jatekos
     public void benultBogarHozzaad(Bogar b){
         benitottak.add(b);
     }
+
+    public ArrayList<Tekton> gombatestHelyei(){
+        ArrayList<Tekton> returnValue = new ArrayList<>();
+        for(Gombatest g : testek){
+            returnValue.add(g.getHely());
+        }
+
+        return returnValue;
+    }
 }
