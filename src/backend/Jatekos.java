@@ -105,4 +105,8 @@ public abstract class Jatekos implements Serializable
      */
     public abstract String mitLehetCsinalni();
 
+    public String getNev(){
+        return nev;
+    }
+
 }

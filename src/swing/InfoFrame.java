@@ -1,8 +1,8 @@
 package swing;
 
-import javax.swing.*;
-import java.awt.*;
 import backend.Jatek;
+import java.awt.*;
+import javax.swing.*;
 
 public class InfoFrame extends JFrame {
     

@@ -40,7 +40,6 @@ public class MainFrame extends JFrame {
         // panelek hozzaadasa a cardPanelhez
         cardPanel.add(fomenuPanel, "fomenuPanel");
         cardPanel.add(jatekosMegadosPanel, "jatekosMegadosPanel");
-        cardPanel.add(jatekPanel, "jatekPanel");
         cardPanel.add(betoltPanel, "betoltPanel");
         cardPanel.add(dicsosegPanel, "dicsosegPanel");
 
@@ -117,8 +116,17 @@ public class MainFrame extends JFrame {
 
     // jatekMenet letrehozasa uj jatek eseten. Parameterkent megkapja az uj jatekosok neveit
     public void jatekIndit(ArrayList<String> jatekosNevek){
-        jatekmenet=new Jatek();
-        jatekmenet.alapJatekPalya(jatekosNevek);
+        if(jatekosNevek.size() == 4){
+            jatekmenet = new Jatek(this, jatekosNevek);
+            jatekPanel = new JatekPanel(this, jatekmenet);
+            cardPanel.add(jatekPanel, "jatekPanel");
+            jatekPanel.frissit();
+        }
+    }
+
+    // meghivja a tobbi elem frissit() fv-et
+    public void frissit(){
+        jatekPanel.frissit();
     }
 
     

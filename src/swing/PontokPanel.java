@@ -1,9 +1,6 @@
 package swing;
 
-import java.awt.*;
-import java.util.Map;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 public class PontokPanel extends JPanel {
     

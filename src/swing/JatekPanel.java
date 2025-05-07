@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import backend.Jatek;
+
 public class JatekPanel extends JPanel {
     
     private MainFrame mainFrame;
@@ -31,11 +33,11 @@ public class JatekPanel extends JPanel {
     private JPanel felsoPanel;
     private ArrayList<JButton> tektonGombok;
     private Command command;
-    private Jatek jatekMenet;
+    private Jatek jatekmenet;
 
-    public JatekPanel(MainFrame mainFrame,Jatek _jatekmenet){
+    public JatekPanel(MainFrame mainFrame, Jatek jatekmenet){
         this.mainFrame = mainFrame;
-        this.jatekMenet=_jatekmenet;
+        this.jatekmenet = jatekmenet;
 
         // palya merete
         final int SOR = 25;
@@ -50,8 +52,10 @@ public class JatekPanel extends JPanel {
 
         jelenlegiJatekos = new JLabel("Jelenlegi gombasz");
 
-        elsoComboBox = new JComboBox<>(new String[]{"bogar1", "bogar2"});
-        masodikComboBox = new JComboBox<>(new String[]{"fonal1", "fonal2"});
+        elsoComboBox = new JComboBox<String>();
+        masodikComboBox = new JComboBox<String>();
+        elsoComboBox.setEnabled(false);
+        masodikComboBox.setEnabled(false);
 
         Dimension szurkeMeret = new Dimension(80, 30);
         mentes.setPreferredSize(szurkeMeret);
@@ -71,6 +75,7 @@ public class JatekPanel extends JPanel {
         for (int i = 0; i < SOR; i++) {
             for (int j = 0; j < OSZLOP; j++) {
                 JButton gomb = new JButton();
+                gomb.setEnabled(false);
                 gomb.setPreferredSize(new Dimension(40, 40));
                 gomb.setMargin(new Insets(0, 0, 0, 0));
                 gomb.setOpaque(true);
@@ -163,5 +168,17 @@ public class JatekPanel extends JPanel {
 
         Collections.reverse(res);
         tektonGombok = res;
+    }
+
+    public void frissit(){
+
+        // gombok frissitese
+        int palyaMeret = jatekmenet.palyaMeret();
+        for(int i = 0; i < palyaMeret; i++){
+            tektonGombok.get(i).setBackground(Color.ORANGE);
+        }
+
+        // jelenlegi jatekos frissitese
+        jelenlegiJatekos.setText(jatekmenet.jelenlegiJatekosNeve());
     }
 }
