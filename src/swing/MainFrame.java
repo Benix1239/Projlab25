@@ -34,12 +34,14 @@ public class MainFrame extends JFrame {
         jatekosMegadosPanel = new JatekosMegadosPanel(this);
         jatekPanel = new JatekPanel(this);
         betoltPanel = new BetoltPanel(this);
+        dicsosegPanel = new DicsosegPanel(this);
 
         // panelek hozzaadasa a cardPanelhez
         cardPanel.add(fomenuPanel, "fomenuPanel");
         cardPanel.add(jatekosMegadosPanel, "jatekosMegadosPanel");
         cardPanel.add(jatekPanel, "jatekPanel");
         cardPanel.add(betoltPanel, "betoltPanel");
+        cardPanel.add(dicsosegPanel, "dicsosegPanel");
 
         // foablak tartalmanak beallitasa
         setContentPane(cardPanel);
@@ -76,8 +78,10 @@ public class MainFrame extends JFrame {
     }
 
     //dicsosegPanel bekapcsolasa
-    public void dicsosegBekapcs(){
-        dicsosegPanel.setVisible(true);
+    public void dicsosegBekapcs() {
+        cardLayout.show(cardPanel, "dicsosegPanel");
+        setSize(600, 400);
+        setLocationRelativeTo(null);
     }
 
     //TODO

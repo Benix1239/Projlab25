@@ -63,6 +63,9 @@ public class FomenuPanel extends JPanel {
         //betolt gomb mukodese
         betolto.addActionListener((ActionEvent e) -> mainFrame.betoltBekapcs());
 
+        //dicsoseg gomb mukodese
+        dicsoseg.addActionListener((ActionEvent e) -> mainFrame.dicsosegBekapcs());
+
         // Panel felépítése
         this.setLayout(new BorderLayout());
         this.add(focim, BorderLayout.NORTH);
