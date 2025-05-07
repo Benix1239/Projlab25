@@ -184,6 +184,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("bogarakListazasa", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 new Command("bogarakListazasa", jatekmenet, sajatMaga());
             }
         });

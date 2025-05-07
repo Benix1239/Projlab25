@@ -36,12 +36,14 @@ public class MainFrame extends JFrame {
         jatekPanel = new JatekPanel(this,jatekmenet);
         betoltPanel = new BetoltPanel(this);
         dicsosegPanel = new DicsosegPanel(this);
+        infoFrame = new InfoFrame(jatekmenet);
 
         // panelek hozzaadasa a cardPanelhez
         cardPanel.add(fomenuPanel, "fomenuPanel");
         cardPanel.add(jatekosMegadosPanel, "jatekosMegadosPanel");
         cardPanel.add(betoltPanel, "betoltPanel");
         cardPanel.add(dicsosegPanel, "dicsosegPanel");
+        //cardPanel.add(infoFrame,"infoFrame");
 
         // foablak tartalmanak beallitasa
         setContentPane(cardPanel);
@@ -65,7 +67,11 @@ public class MainFrame extends JFrame {
     }
 
     //infoFrame bekapcsolasa
-    public void infoFrameBekapcs(){
+    public void infoFrameBekapcs() {
+        if (infoFrame == null || !infoFrame.isDisplayable()) {
+            infoFrame = new InfoFrame(jatekmenet);
+        }
+        infoFrame.frissit();
         infoFrame.setVisible(true);
     }
 
@@ -83,7 +89,7 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    //TODO
+    //A megfelelő játékmenetet tölti be
     public void jatekBetolt(int mentesSzam) {
         try {
             String fajlNev = "mentes" + mentesSzam + ".txt";
@@ -120,6 +126,7 @@ public class MainFrame extends JFrame {
             jatekmenet = new Jatek(this, jatekosNevek);
             jatekPanel = new JatekPanel(this, jatekmenet);
             cardPanel.add(jatekPanel, "jatekPanel");
+
             jatekPanel.frissit();
         }
     }

@@ -76,6 +76,8 @@ public class JatekosMegadosPanel extends JPanel {
         vege.addActionListener(e -> {
           mainFrame.jatekIndit(jatekosok);
           mainFrame.jatekPanelBekapcs();
+          mainFrame.infoFrameBekapcs();
+          
         });
 
         // Panel elemek elrendezese
