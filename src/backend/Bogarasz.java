@@ -235,4 +235,18 @@ public class Bogarasz extends Jatekos
             }
         }
     }
+
+    /**
+     * Korvege setter.
+     * @return visszaadja azokat a tektonokat, ahol a bogarak allnak
+     */
+    public ArrayList<Tekton> bogarakHelyei(){
+
+        ArrayList<Tekton> returnValue = new ArrayList<>();
+        for(Bogar b : bogarak){
+            returnValue.add(b.getHelyzet());
+        }
+
+        return returnValue;
+    }
 }

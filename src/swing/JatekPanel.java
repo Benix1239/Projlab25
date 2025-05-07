@@ -7,9 +7,13 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -17,10 +21,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 
 import backend.Jatek;
 
-public class JatekPanel extends JPanel {
+public class JatekPanel extends JPanel{
     
     private MainFrame mainFrame;
     private InfoFrame infoFrame;
@@ -102,6 +107,9 @@ public class JatekPanel extends JPanel {
             }
         });
 
+        // Billentyuzet beallitas
+        this.billentyuBeallitas();
+
         // JatekPanel elrendezese
         this.setLayout(new BorderLayout());
         this.add(felsoPanel, BorderLayout.NORTH);
@@ -171,15 +179,57 @@ public class JatekPanel extends JPanel {
         tektonGombok = res;
     }
 
+    private void billentyuBeallitas(){
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("B"), "bogarakListazasa");
+        this.getActionMap().put("bogarakListazasa", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Command("bogarakListazasa", jatekmenet, sajatMaga());
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released B"), "felengedveB");
+        this.getActionMap().put("felengedveB", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frissit();
+            }
+        });
+    }
+
+    // letiltja a tektonGombokat es a comboboxokat
+    private void mindentLetilt(){
+        for(JButton gomb : tektonGombok){
+            gomb.setEnabled(false);
+        }
+        elsoComboBox.setEnabled(false);
+        masodikComboBox.setEnabled(false);
+    }
+
+    private JatekPanel sajatMaga(){
+        return this;
+    }
+
     public void frissit(){
+
+        mindentLetilt();
 
         // gombok frissitese
         int palyaMeret = jatekmenet.palyaMeret();
         for(int i = 0; i < palyaMeret; i++){
             tektonGombok.get(i).setBackground(Color.ORANGE);
+            tektonGombok.get(i).setText("");
         }
 
         // jelenlegi jatekos frissitese
         jelenlegiJatekos.setText(jatekmenet.jelenlegiJatekosNeve());
+    }
+
+    public void bogarakListazasa(){
+        int[] sajatBogarak = jatekmenet.sajatBogarakHelyei();
+        int[] mindenBogar = jatekmenet.mindenBogarHelyei();
+        for(int i = 0; i < sajatBogarak.length; i++){
+            tektonGombok.get(i).setText(sajatBogarak[i] + ", " + mindenBogar[i]);
+        }
     }
 }

@@ -14,12 +14,22 @@ public class Command {
     private Jatek jatekmenet;
 
     //TODO
-    public Command(String nev, Jatek jatekmenet, JatekPanel jatekPanel){}
+    public Command(String nev, Jatek jatekmenet, JatekPanel jatekPanel){
+        this.commandNev = nev;
+        this.jatekmenet = jatekmenet;
+        this.jatekPanel = jatekPanel;
+        executeCommand();
+    }
 
     //TODO
     public void addPAram(String param){}
 
     //TODO
-    public void executeCommand(){}
+    private void executeCommand(){
+        switch(commandNev){
+            case "bogarakListazasa":
+                jatekPanel.bogarakListazasa();
+        }
+    }
 
 }

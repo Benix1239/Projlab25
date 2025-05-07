@@ -43,7 +43,7 @@ public class Jatek {
         gombaszok = new ArrayList<Gombasz>();
         bogaraszok = new ArrayList<Bogarasz>();
         jatekter = new Palya();
-        jatekosIndex = 0;
+        jatekosIndex = 2;
         this.mainFrame = mainFrame;
 
         alapJatekPalya(jatekosNevek);
@@ -251,6 +251,14 @@ public class Jatek {
             return gombaszok.get(jatekosIndex);
         }
         throw new IllegalArgumentException("Nem hasznalhato parancs, mert Bogarasz van koron eppen");
+    }
+
+    private Bogarasz jelenlegiBogarasz(){
+        if (jatekosIndex < gombaszok.size()) {
+            throw new IllegalArgumentException("Nem hasznalhato parancs, mert Gombasz van koron eppen");
+        } else {
+            return bogaraszok.get(jatekosIndex - gombaszok.size());
+        }
     }
 
     private void jatekosIndexLeptetes() {
@@ -771,5 +779,37 @@ public class Jatek {
 
     public boolean bogaraszKoreVanE(){
         return !gombaszKoreVanE();
+    }
+
+    public int[] sajatBogarakHelyei(){
+        if(gombaszKoreVanE()){
+            return null;
+        }
+
+        int[] returnValue = new int[palyaMeret()];
+        ArrayList<Tekton> helyek = jelenlegiBogarasz().bogarakHelyei();
+
+        for(Tekton t : helyek){
+            returnValue[jatekter.getPalya().indexOf(t)]++;
+        }
+
+        return returnValue;
+
+    }
+
+    public int[] mindenBogarHelyei(){
+
+        int[] returnValue = new int[palyaMeret()];
+        ArrayList<Tekton> helyek = new ArrayList<>();
+
+        for(Bogarasz bogarasz : bogaraszok){
+            helyek.addAll(bogarasz.bogarakHelyei());
+        }
+
+        for(Tekton t : helyek){
+            returnValue[jatekter.getPalya().indexOf(t)]++;
+        }
+
+        return returnValue;
     }
 }
