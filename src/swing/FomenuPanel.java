@@ -1,17 +1,14 @@
 package swing;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class FomenuPanel extends JPanel {
 
@@ -62,6 +59,9 @@ public class FomenuPanel extends JPanel {
 
         // ujJatek gomb mukodese
         ujJatek.addActionListener((ActionEvent e) -> mainFrame.ujJatekBekapcs());
+
+        //betolt gomb mukodese
+        betolto.addActionListener((ActionEvent e) -> mainFrame.betoltBekapcs());
 
         // Panel felépítése
         this.setLayout(new BorderLayout());

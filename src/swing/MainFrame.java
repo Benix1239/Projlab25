@@ -1,13 +1,10 @@
 package swing;
 
-import java.awt.BorderLayout;
+import backend.Jatek;
 import java.awt.CardLayout;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import backend.Jatek;
 
 public class MainFrame extends JFrame {
     private JPanel cardPanel;
@@ -36,11 +33,13 @@ public class MainFrame extends JFrame {
         fomenuPanel = new FomenuPanel(this);
         jatekosMegadosPanel = new JatekosMegadosPanel(this);
         jatekPanel = new JatekPanel(this);
+        betoltPanel = new BetoltPanel(this);
 
         // panelek hozzaadasa a cardPanelhez
         cardPanel.add(fomenuPanel, "fomenuPanel");
         cardPanel.add(jatekosMegadosPanel, "jatekosMegadosPanel");
         cardPanel.add(jatekPanel, "jatekPanel");
+        cardPanel.add(betoltPanel, "betoltPanel");
 
         // foablak tartalmanak beallitasa
         setContentPane(cardPanel);
@@ -70,7 +69,10 @@ public class MainFrame extends JFrame {
 
     //betoltPanel bekapcsolasa, hogy ki lehessen valasztani, hogy melyik jatekot akarod folytatni
     public void betoltBekapcs(){
-        betoltPanel.setVisible(true);
+        betoltPanel.update(new String[] {"Jatek1", "Üres", "Üres"}); // később fájlból olvasható
+        cardLayout.show(cardPanel, "betoltPanel");
+        setSize(500, 300);
+        setLocationRelativeTo(null);
     }
 
     //dicsosegPanel bekapcsolasa
