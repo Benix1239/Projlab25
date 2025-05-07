@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -85,6 +87,14 @@ public class JatekPanel extends JPanel {
         visszajelzes.setFont(new Font("SansSerif", Font.PLAIN, 32));
         visszajelzes.setHorizontalAlignment(JTextField.CENTER);
         visszajelzes.setPreferredSize(new Dimension(10000, 100));
+
+        // kilepes gomb mukodese
+        kilepes.addActionListener(e -> {
+            int valasz = JOptionPane.showConfirmDialog(this, "Biztos, hogy ki akar lepni?", "Kilépés megerősítése", JOptionPane.YES_NO_OPTION);
+            if (valasz == JOptionPane.YES_OPTION) {
+                mainFrame.foMenuBekapcs();
+            }
+        });
 
         // JatekPanel elrendezese
         this.setLayout(new BorderLayout());

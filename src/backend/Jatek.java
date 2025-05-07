@@ -11,9 +11,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import swing.MainFrame;
 
 public class Jatek {
 
@@ -23,6 +26,8 @@ public class Jatek {
     private ArrayList<Bogarasz> bogaraszok;
 
     private int jatekosIndex;
+
+    private MainFrame mainFrame;
 
     /*
      * Konstruktor, amely l�trehozza a j�t�kteret �s a karakterek list�j�t.
@@ -55,6 +60,34 @@ public class Jatek {
         
         return pontok;
     }    
+
+    public Jatek(MainFrame mainFrame, ArrayList<String> jatekosNevek) {
+        gombaszok = new ArrayList<Gombasz>();
+        bogaraszok = new ArrayList<Bogarasz>();
+        jatekter = new Palya();
+        jatekosIndex = 0;
+        this.mainFrame = mainFrame;
+
+        alapJatekPalya(jatekosNevek);
+    }
+
+    private void jatekosokSorsolasa(ArrayList<String> jatekosNevek){
+        Random rand = new Random();
+        int gombaszokSzama = (jatekosNevek.size() + 1) / 2;
+        int bogaraszokSzama = jatekosNevek.size() - gombaszokSzama;
+        for(int i = 0; i < gombaszokSzama; i++){
+            int valasztottIndex = rand.nextInt(jatekosNevek.size());
+            gombaszok.add(new Gombasz(jatekosNevek.get(valasztottIndex), jatekter.getPalya()));
+            jatekosNevek.remove(valasztottIndex);
+        }
+
+        for(int i = 0; i < bogaraszokSzama; i++){
+            int valasztottIndex = rand.nextInt(jatekosNevek.size());
+            bogaraszok.add(new Bogarasz(jatekosNevek.get(valasztottIndex)));
+            jatekosNevek.remove(valasztottIndex);
+        }
+        
+    }
 
     private void inicializalasBogar(){
         //BogarLep
@@ -179,7 +212,7 @@ public class Jatek {
         Gombasz jatekos = new Gombasz(jatekter.getPalya());
         Spora s= new Lassito(jatekos);
         t1.addSpora(s);
-        gombaszok.add(jatekos);*/
+        gombaszok.add(jatekos);
 
         Tekton t1 = new Tekton();
         jatekter.tektonHozzaad(t1);
@@ -192,11 +225,11 @@ public class Jatek {
         Gombasz jatekos = new Gombasz(jatekter.getPalya());
         Spora s= new Szaporodo(jatekos);
         t1.addSpora(s);
-        gombaszok.add(jatekos);
+        gombaszok.add(jatekos);*/
     }
 
     private void inicializalasGombasz(){
-        Tekton hely = new Tekton();
+        /*Tekton hely = new Tekton();
         Tekton t2 = new Tekton();
         hely.addSzomszed(t2);
         t2.addSzomszed(hely);
@@ -207,7 +240,7 @@ public class Jatek {
         karakter.gombatestHozzaad(test);
         hely.setGombatest(test);
         gombaszok.add(karakter);
-	jelenlegiJatekos().korElejeInicializalas();
+	jelenlegiJatekos().korElejeInicializalas();*/
     }
 
     public Palya getJatekter() {
@@ -643,14 +676,10 @@ public class Jatek {
         return null;
     }
 
-    public void alapJatekPalya()
+    //Ez a fv CSAK abban az esetben használható, ha pontosan 4 jatekos van (2 gombasz, 2 bogarasz).
+    public void alapJatekPalya(ArrayList<String> jatekosNevek)
     {
         jatekter = new Palya();
-        Gombasz gombaszEgy = new Gombasz(jatekter.getPalya());
-        Gombasz gombaszKet = new Gombasz(jatekter.getPalya());
-
-        Bogarasz bogaraszEgy = new Bogarasz();
-        Bogarasz bogaraszKet = new Bogarasz();
 
         Tekton elso = new Tekton();
         Tekton ketto = new Tekton();
@@ -731,21 +760,17 @@ public class Jatek {
         tizenharom.szomszed.add(ot);
         tizenharom.szomszed.add(tiz);
 
-        Gombatest gtEgy = new Gombatest(elso, gombaszEgy);
-        gombaszEgy.gombatestHozzaad(gtEgy);
-        gombaszok.add(gombaszEgy);
+        jatekosokSorsolasa(jatekosNevek);
 
-        Gombatest gtKet = new Gombatest(negy, gombaszKet);
-        gombaszKet.gombatestHozzaad(gtKet);
-        gombaszok.add(gombaszKet);
+        Gombatest gtEgy = new Gombatest(elso, gombaszok.get(0));
+        gombaszok.get(0).gombatestHozzaad(gtEgy);
 
-        Bogar bEgy = new Bogar();
-        bogaraszEgy.bogarHozzaad(bEgy, ketto);
-        bogaraszok.add(bogaraszEgy);
+        Gombatest gtKet = new Gombatest(negy, gombaszok.get(1));
+        gombaszok.get(1).gombatestHozzaad(gtKet);
 
-        Bogar bKet = new Bogar();
-        bogaraszKet.bogarHozzaad(bKet, het);
-        bogaraszok.add(bogaraszKet);
+        bogaraszok.get(0).bogarHozzaad(ketto);
+
+        bogaraszok.get(1).bogarHozzaad(het);
 
     }
 

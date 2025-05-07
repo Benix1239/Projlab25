@@ -20,7 +20,9 @@ public class Bogar
     /**
      * Alapértelmezett konstruktor, amely beállítja az alapértékeket.
      */
-    public Bogar() {
+    public Bogar(Bogarasz tartozik, Tekton helyzet) {
+        this.tartozik = tartozik;
+        this.helyzet = helyzet;
         mozgasok = 1;
         actionRagas = true;
         actionEves = true;
@@ -110,8 +112,7 @@ public class Bogar
      * Létrehoz egy új bogarat és eltárolja a bogarásznál
      */
     public void szaporodo() {
-        Bogar uj = new Bogar();
-        this.tartozik.bogarHozzaad(uj, this.helyzet);
+        this.tartozik.bogarHozzaad(this.helyzet);
     }
 
     /**

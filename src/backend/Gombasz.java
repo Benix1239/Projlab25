@@ -18,7 +18,8 @@ public class Gombasz extends Jatekos
      * Konstruktor
      * @param palya
      */
-    public Gombasz(ArrayList<Tekton> palya){
+    public Gombasz(String nev, ArrayList<Tekton> palya){
+        super(nev);
         testek = new ArrayList<>();
         this.palya = palya;
         benitottak = new ArrayList<>();

@@ -19,8 +19,7 @@ public class Tesztpalya
         tesztvilag.getJatekter().tektonHozzaad(t2);
 
         Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
+        karakter.bogarHozzaad(t1);
         tesztvilag.getBogaraszok().add(karakter);
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
@@ -40,8 +39,7 @@ public class Tesztpalya
         tesztvilag.getJatekter().tektonHozzaad(t1);
 
         Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
+        karakter.bogarHozzaad(t1);
         tesztvilag.getBogaraszok().add(karakter);
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
@@ -59,8 +57,7 @@ public class Tesztpalya
         tesztvilag.getJatekter().tektonHozzaad(t1);
 
         Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
+        karakter.bogarHozzaad(t1);
         tesztvilag.getBogaraszok().add(karakter);
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
@@ -81,8 +78,7 @@ public class Tesztpalya
         tesztvilag.getJatekter().tektonHozzaad(t2);
 
         Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
+        karakter.bogarHozzaad(t1);
         tesztvilag.getBogaraszok().add(karakter);
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
@@ -112,8 +108,7 @@ public class Tesztpalya
         tesztvilag.getJatekter().tektonHozzaad(t3);
 
         Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
+        karakter.bogarHozzaad(t1);
         tesztvilag.getBogaraszok().add(karakter);
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
@@ -147,8 +142,7 @@ public class Tesztpalya
         tesztvilag.getJatekter().tektonHozzaad(t1);
 
         karakter =new Bogarasz();
-        bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
+        karakter.bogarHozzaad(t1);
         tesztvilag.getBogaraszok().add(karakter);
 
         jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
@@ -471,8 +465,7 @@ public class Tesztpalya
         tesztvilag.getJatekter().tektonHozzaad(t2);
 
         karakter = new Bogarasz();
-        bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
+        karakter.bogarHozzaad(t1);
         tesztvilag.getBogaraszok().add(karakter);
 
         jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
@@ -593,8 +586,7 @@ public class Tesztpalya
         tesztvilag.getJatekter().tektonHozzaad(t3);
 
         Bogarasz karakter =new Bogarasz();
-        Bogar bogar = new Bogar();
-        karakter.bogarHozzaad(bogar, t1);
+        karakter.bogarHozzaad(t1);
         tesztvilag.getBogaraszok().add(karakter);
 
         Gombasz jatekos = new Gombasz(tesztvilag.getJatekter().getPalya());
