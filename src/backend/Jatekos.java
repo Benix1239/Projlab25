@@ -16,7 +16,7 @@ public abstract class Jatekos implements Serializable
 
     public void addPoint(int amount)
     {
-        
+        pontok+=amount;
     }
 
     public void round() 
@@ -27,6 +27,14 @@ public abstract class Jatekos implements Serializable
     public void pontSzamlalo()
     {
         
+    }
+
+    public int getPontok(){
+        return pontok;
+    }
+
+    public String getNev(){
+        return nev;
     }
 
     /**

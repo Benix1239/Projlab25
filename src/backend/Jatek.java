@@ -7,8 +7,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,6 +35,26 @@ public class Jatek {
         jatekter = new Palya();
         jatekosIndex = 0;
     }
+
+/**
+     * Összegyűjti és visszaadja a játékosok pontszámait
+     * @return Map<String, Integer> ahol a kulcs a játékos neve, az érték a pontszáma
+     */
+    public Map<String, Integer> getJatekosPontok() {
+        Map<String, Integer> pontok = new HashMap<>();
+        
+        // Gombászok pontjainak hozzáadása
+        for (Gombasz gombasz : gombaszok) {
+            pontok.put(gombasz.getNev(), gombasz.getPontok());
+        }
+        
+        // Bogárászok pontjainak hozzáadása
+        for (Bogarasz bogarasz : bogaraszok) {
+            pontok.put(bogarasz.getNev(), bogarasz.getPontok());
+        }
+        
+        return pontok;
+    }    
 
     private void inicializalasBogar(){
         //BogarLep

@@ -1,5 +1,6 @@
 package swing;
 
+import backend.Jatek;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,7 +10,6 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -30,6 +30,7 @@ public class JatekPanel extends JPanel {
     private JPanel felsoPanel;
     private ArrayList<JButton> tektonGombok;
     private Command command;
+    private Jatek jatekMenet;
 
     public JatekPanel(MainFrame mainFrame){
         this.mainFrame = mainFrame;
