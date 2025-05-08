@@ -286,4 +286,11 @@ public class Gombatest
         return korVege;
     }
 
+    /**
+     * spora getter.
+     * @return Spora.
+     */
+    public Spora getSpora(){
+        return spora;
+    }
 }
