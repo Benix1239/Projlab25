@@ -42,9 +42,6 @@ public class InfoFrame extends JFrame {
         
        
         add(cardPanel, BorderLayout.CENTER);
-        
-        // Kezdeti frissítés
-        frissit();
     }
 
     public void frissit() {

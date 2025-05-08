@@ -90,7 +90,7 @@ public class Gombatest
      * Tud-e fonalat rakni.
      * @return boolean.
      */
-    private boolean tudFonalatRakni(){
+    public boolean tudFonalatRakni(){
         Set<Tekton> dfsEredmeny = dfs();
         for(Tekton t : dfsEredmeny){
             if(tartozik.hovaLehetosegek(t).size() != 0){
@@ -285,4 +285,5 @@ public class Gombatest
     public boolean getKorvege(){
         return korVege;
     }
+
 }

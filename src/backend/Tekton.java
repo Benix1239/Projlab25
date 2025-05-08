@@ -551,4 +551,13 @@ public class Tekton
 		return szam;
 	}
 
+	/**
+	 * 
+	 * Megnezi, hogy a kapott tekton benne van-e a szomszedok listaban
+	 * @param sz a vizsgalt tekton
+	 * @return igazat ad vissza, ha szomszedok, hamisat ha nem
+	 */
+	public boolean szomszedE(Tekton sz){
+		return szomszed.contains(sz);
+	}
 }
