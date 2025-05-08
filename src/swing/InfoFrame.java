@@ -1,6 +1,8 @@
 package swing;
 
+import backend.Gombasz;
 import backend.Jatek;
+import backend.Jatekos;
 import java.awt.*;
 import javax.swing.*;
 
@@ -24,6 +26,29 @@ public class InfoFrame extends JFrame {
         setSize(500, 400);
         setLayout(new BorderLayout());
         
+        // Gombok felülre
+        JPanel gombPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+        JButton pontokGomb = new JButton("Pontok");
+        JButton gombaszGomb = new JButton("Gombász");
+        JButton bogaraszGomb = new JButton("Bogarász");
+        JButton tektonGomb = new JButton("Tekton");
+
+        // Gomb eseménykezelők
+        pontokGomb.addActionListener(e -> modeValtozas(0));
+        gombaszGomb.addActionListener(e -> modeValtozas(1));
+        bogaraszGomb.addActionListener(e -> modeValtozas(2));
+        tektonGomb.addActionListener(e -> modeValtozas(3));
+
+        // Gombok hozzáadása a panelhez
+        gombPanel.add(pontokGomb);
+        gombPanel.add(gombaszGomb);
+        gombPanel.add(bogaraszGomb);
+        gombPanel.add(tektonGomb);
+
+        // Gombpanel hozzáadása felülre
+        add(gombPanel, BorderLayout.NORTH);
+
         // CardLayout inicializálása
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
@@ -44,13 +69,18 @@ public class InfoFrame extends JFrame {
         add(cardPanel, BorderLayout.CENTER);
         
         // Kezdeti frissítés
-        frissit();
+        //frissit();
     }
 
     public void frissit() {
         // Pontok frissítése
         pontokPanel.frissit(jatekmenet.getJatekosPontok());
-        //gombaszPanel.frissit(jatekmenet.getAktivGombasz());
+        Jatekos aktualis = jatekmenet.jelenlegiJatekos();
+
+        if (aktualis instanceof Gombasz g) {
+            gombaszPanel.frissit(g);
+        }// else if (aktualis instanceof Bogarasz b) {
+        //    bogaraszPanel.frissit(b);
         //bogaraszPanel.frissit(jatekmenet.getAktivBogarasz());
         //tektonPanel.frissit(jatekmenet.getAktivTekton());
         
