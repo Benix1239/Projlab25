@@ -136,6 +136,7 @@ public class MainFrame extends JFrame {
     // meghivja a tobbi elem frissit() fv-et
     public void frissit(){
         jatekPanel.frissit();
+        infoFrame.frissit();
     }
 
     

@@ -89,10 +89,29 @@ public class Command {
                         jatekmenet.fonalLerak(paramaterek.get(0), paramaterek.get(2), paramaterek.get(1));
                         jatekPanel.setCommandNull();
                     }
-
-
                 }
-                
+                break;
+            case "sporaSzor":
+                if(jatekmenet.gombaszKoreVanE()){
+                    if(paramaterek.size() == 0){
+                        jatekPanel.elsoComboboxElemek(jatekmenet.jelenlegiGombaszSporaSzorosTestjei());
+                        jatekPanel.elsoComboboxEnabled(true);
+                        jatekPanel.tektonGombokEnabled(false);
+                        jatekPanel.masodikComboboxEnabled(false);
+                    }
+
+                    if(paramaterek.size() == 1){
+                        boolean[] hovaSzorhat = jatekmenet.gombaszHovaSzorhat("Koron levo gombasz", paramaterek.get(0));
+                        jatekPanel.tektonSzinAllitas(hovaSzorhat, Color.GREEN);
+                        jatekPanel.tektonEngedelyezes(hovaSzorhat);
+                    }
+
+                    if(paramaterek.size() == 2){
+                        jatekmenet.sporaSzor(paramaterek.get(0), paramaterek.get(1));
+                        jatekPanel.setCommandNull();
+                    }
+                }
+                break;
         }
     }
 

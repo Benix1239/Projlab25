@@ -31,7 +31,11 @@ public class Jatek {
 
     private MainFrame mainFrame;
 
-    //konstruktorok-----------------------------------------------------------------------
+    /*
+     * Konstruktor, amely l�trehozza a j�t�kteret �s a karakterek list�j�t.
+     * 
+     * @param palyaMeret A p�lya m�rete.
+     */
     public Jatek() {
         gombaszok = new ArrayList<Gombasz>();
         bogaraszok = new ArrayList<Bogarasz>();
@@ -39,41 +43,7 @@ public class Jatek {
         jatekosIndex = 0;
     }
 
-    public Jatek(MainFrame mainFrame, ArrayList<String> jatekosNevek) {
-        gombaszok = new ArrayList<Gombasz>();
-        bogaraszok = new ArrayList<Bogarasz>();
-        jatekter = new Palya();
-        jatekosIndex = 0;
-        this.mainFrame = mainFrame;
-
-        randomPalya(jatekosNevek);
-    }
-
-    //hozzaad/setterek------------------------------------------------------------------------------
-    public void gombaszHozzaad(Gombasz g) {
-        g.setNev("Gombasz" + (gombaszok.size()));
-        gombaszok.add(g);
-    }
-
-    public void bogaraszHozzaad(Bogarasz b) {
-        b.setNev("Bogarasz" + (bogaraszok.size()));
-        bogaraszok.add(b);
-    }
-
-//getterek-----------------------------------------------------------------------------------------
-
-    public Palya getJatekter() {
-        return jatekter;
-    }
-    public ArrayList<Gombasz> getGombaszok() {
-        return gombaszok;
-    }
-
-    public ArrayList<Bogarasz> getBogaraszok() {
-        return bogaraszok;
-    }
-
-    /**
+/**
      * Összegyűjti és visszaadja a játékosok pontszámait
      * @return Map<String, Integer> ahol a kulcs a játékos neve, az érték a pontszáma
      */
@@ -93,13 +63,47 @@ public class Jatek {
         return pontok;
     }    
 
-    public int palyaMeret(){
-        return jatekter.getPalya().size();
+    public Jatek(MainFrame mainFrame, ArrayList<String> jatekosNevek) {
+        gombaszok = new ArrayList<Gombasz>();
+        bogaraszok = new ArrayList<Bogarasz>();
+        jatekter = new Palya();
+        jatekosIndex = 0;
+        this.mainFrame = mainFrame;
+
+        alapJatekPalya(jatekosNevek);
+    }
+
+    private void jatekosokSorsolasa(ArrayList<String> jatekosNevek){
+        Random rand = new Random();
+        int gombaszokSzama = (jatekosNevek.size() + 1) / 2;
+        int bogaraszokSzama = jatekosNevek.size() - gombaszokSzama;
+        for(int i = 0; i < gombaszokSzama; i++){
+            int valasztottIndex = rand.nextInt(jatekosNevek.size());
+            gombaszok.add(new Gombasz(jatekosNevek.get(valasztottIndex), jatekter.getPalya()));
+            jatekosNevek.remove(valasztottIndex);
+        }
+
+        for(int i = 0; i < bogaraszokSzama; i++){
+            int valasztottIndex = rand.nextInt(jatekosNevek.size());
+            bogaraszok.add(new Bogarasz(jatekosNevek.get(valasztottIndex)));
+            jatekosNevek.remove(valasztottIndex);
+        }
+        
+    }
+
+    public Palya getJatekter() {
+        return jatekter;
+    }
+    public ArrayList<Gombasz> getGombaszok() {
+        return gombaszok;
+    }
+
+    public ArrayList<Bogarasz> getBogaraszok() {
+        return bogaraszok;
     }
 
 //jateklogika-----------------------------------------------------------------------------------
 
-    //jelenlegi jatekos---------------------------------------------------------------------------
     private boolean jelenlegiJatekos_e(Jatekos jatekos) {
         return jatekos == jelenlegiJatekos();
     }
@@ -126,27 +130,12 @@ public class Jatek {
             return bogaraszok.get(jatekosIndex - gombaszok.size());
         }
     }
-    
-    public String jelenlegiJatekosNeve() {
-        if (jatekosIndex < gombaszok.size()) {
-            return "Jelenlegi gombasz: " + jelenlegiJatekos().getNev();
-        } else {
-            return "Jelenlegi bogarasz: " + jelenlegiJatekos().getNev();
-        }
-    }
-    //kor kezeles-------------------------------------------------------------------------------------------
+
     private void jatekosIndexLeptetes() {
         jatekosIndex = (jatekosIndex + 1) % (gombaszok.size() + bogaraszok.size());
         jelenlegiJatekos().korElejeInicializalas();
         if (jatekosIndex == 0) {
             palyaKezeles();
-        }
-    }
-
-    private void jatekosKorvege() {
-        if (jelenlegiJatekos().getKorvege()) {
-            jelenlegiJatekos().setKorvege(false);
-            jatekosIndexLeptetes();
         }
     }
 
@@ -164,7 +153,30 @@ public class Jatek {
         }
     }
 
-//file kezeles----------------------------------------------------------------------------------
+    private void jatekosKorvege() {
+        if (jelenlegiJatekos().getKorvege()) {
+            jelenlegiJatekos().setKorvege(false);
+            jatekosIndexLeptetes();
+        }
+    }
+    
+    public String jelenlegiJatekosNeve() {
+        if (jatekosIndex < gombaszok.size()) {
+            return "Jelenlegi gombasz: " + jelenlegiJatekos().getNev();
+        } else {
+            return "Jelenlegi bogarasz: " + jelenlegiJatekos().getNev();
+        }
+    }
+
+    public void gombaszHozzaad(Gombasz g) {
+        g.setNev("Gombasz" + (gombaszok.size()));
+        gombaszok.add(g);
+    }
+
+    public void bogaraszHozzaad(Bogarasz b) {
+        b.setNev("Bogarasz" + (bogaraszok.size()));
+        bogaraszok.add(b);
+    }
 
     /**
      * Szerializálással betölti az adatokat egy fájlból, beleértve a játékteret és a
@@ -295,18 +307,6 @@ public class Jatek {
 
 //parancsok---------------------------------------------------------------------------------------------
     
-
-    //altalanos parancsok-------------------------------------------------------------------------------
-
-    public String passz(){
-        String returnValue = null;
-        jelenlegiJatekos().setKorvege(true);
-        returnValue = "A "+jelenlegiJatekosNeve()+" jatekos passzolta a koret";
-        jatekosKorvege();
-        mainFrame.frissit();
-        return returnValue;
-    }
-
     public String getPalya(){
         String returnValue = "A jelenlegi palya: \n";
         for(int i = 0; i < jatekter.getPalya().size(); i++){
@@ -319,234 +319,28 @@ public class Jatek {
         return returnValue;
     }
 
-        //jatekoskor cuccok-----------------------------------------------------------------------
+    public String passz(){
+        String returnValue = null;
+        jelenlegiJatekos().setKorvege(true);
+        returnValue = "A "+jelenlegiJatekosNeve()+" jatekos passzolta a koret";
+        jatekosKorvege();
+        mainFrame.frissit();
+        return returnValue;
+    }
 
     public String info() {
 
         String s;
         s="A jelenlegi jatekos: " +jelenlegiJatekosNeve() + "\n" +jelenlegiJatekos().mitLehetCsinalni();
         jatekosKorvege();
-         return s;
+        return s;
     }
 
-    public String getJelenlegiJatekosNev(){
-        for(Gombasz g : gombaszok){
-            if(jelenlegiJatekos_e(g)){
-                return "gombasz" + gombaszok.indexOf(g);
-            }
-        }
-
-        for(Bogarasz b : bogaraszok){
-            if(jelenlegiJatekos_e(b)){
-                return "bogarasz" + bogaraszok.indexOf(b);
-            }
-        }
-        return null;
+    public ArrayList<Bogar> bogarakListazas(String bogarasz) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        return bogaraszObj.getBogarak();
     }
 
-    public boolean gombaszKoreVanE(){
-        if(jatekosIndex < gombaszok.size()){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean bogaraszKoreVanE(){
-        return !gombaszKoreVanE();
-    }
-
-    //gombasz parancsok----------------------------------------------------------------------------------
-
-
-        //gombasz&&bogar dolgok--------------------------------------------------------------------------
-    public boolean evesBogarat(String gombasz, String bogar) {
-        Gombasz gobj = gombaszFromString(gombasz);
-        Bogar bobj = bogarFromBenitott(gobj, bogar);
-        return gobj.bogarEves(bobj);
-    }
-
-    private Bogar bogarFromBenitott(Gombasz g, String bogar) {
-        return g.getBenitottak().get(Integer.parseInt(bogar.substring(5)));
-    }
-
-    public ArrayList<Bogar> benultBogar(String gombasz) {
-        Gombasz gombaszObj = gombaszFromString(gombasz);
-
-        ArrayList<Bogar> returnValue = new ArrayList<>();
-        if(jelenlegiJatekos_e(gombaszObj)){
-            returnValue = gombaszObj.getBenitottak();
-        }
-        jatekosKorvege();
-
-        return returnValue;
-    }
-
-        //spora dolgok----------------------------------------------------------------------
-
-    public int tektonSpora(String gombasz, String tekton){
-        Gombasz gombaszObj = gombaszFromString(gombasz);
-        Tekton tektonObj = tektonFromString(tekton);
-        return tektonObj.hanySporajaVan(gombaszObj);
-    }
-
-    public boolean sporaSzor(String gombatest, String tekton) {
-        Gombasz gombaszObj = jelenlegiGombasz();
-        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
-        Tekton tektonObj = tektonFromString(tekton);
-
-        boolean returnValue = false;
-        returnValue = gombaszObj.sporaSzor(gombatestObj, tektonObj);
-
-        jatekosKorvege();
-        return returnValue;
-    }
-
-        //gombatest dolgok-------------------------------------------------------------------
-    
-        public ArrayList<Gombatest> gombatestListazas(String gombasz) {
-            Gombasz gombaszObj = gombaszFromString(gombasz);
-            return gombaszObj.getTestek();
-        }
-
-        public int[] sajatGombatestekHelyei(){
-        if(!gombaszKoreVanE()){
-            return null;
-        }
-
-        int[] returnValue = new int[palyaMeret()];
-        ArrayList<Tekton> helyek = jelenlegiGombasz().gombatestHelyei();
-        for(Tekton t : helyek){
-            returnValue[jatekter.getPalya().indexOf(t)]++;
-        }
-        return returnValue;
-    }
-
-    public int[] mindenGombatestHelyei(){
-
-        int[] returnValue = new int[palyaMeret()];
-        ArrayList<Tekton> helyek = new ArrayList<>();
-
-        for(Gombasz gombasz : gombaszok){
-            helyek.addAll(gombasz.gombatestHelyei());
-        }
-
-        for(Tekton t : helyek){
-            returnValue[jatekter.getPalya().indexOf(t)]++;
-        }
-
-        return returnValue;
-    }
-
-
-        //fonal dolgok------------------------------------------------------------------------
-
-        
-    
-    public ArrayList<String> jelenlegiGombaszFonalLerakosTestjei(){
-        Gombasz gombaszObj = gombaszFromString("Koron levo gombasz");
-        Set<Gombatest> gombatestek = gombaszObj.fonalLerakosTestek();
-        
-        ArrayList<String> returnString = new ArrayList<>();
-        for(Gombatest g : gombatestek){
-            returnString.add("gombatest" + jelenlegiGombasz().getTestek().indexOf(g));
-        }
-
-        return returnString;
-    }
-
-            //gombasz&&tekton dolgok--------------------------------------------------------------------
-
-        public boolean[] gombaHonnanRakhat(String gombasz, String gombatest, String hova){
-            Tekton hovaObj = tektonFromString(hova);
-        
-            Set<Tekton> gombaAltalElert = gombaEler(gombasz, gombatest);
-        
-            boolean[] returnValue = new boolean[palyaMeret()];
-            for(Tekton t : gombaAltalElert){
-                if(hovaObj.szomszedE(t)){
-                    returnValue[jatekter.getPalya().indexOf(t)] = true;
-                }
-            }
-        
-            return returnValue;
-         }
-
-        public String fonalLerak(String gombatest, String t1, String t2) {
-            Gombasz gombaszObj = jelenlegiGombasz();
-            Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
-            Tekton t1Obj = tektonFromString(t1);
-            Tekton t2Obj = tektonFromString(t2);
-    
-            String returnValue = gombaszObj.fonalLerak(gombatestObj, t1Obj, t2Obj);
-    
-            jatekosKorvege();
-    
-            mainFrame.frissit();
-            return returnValue;
-        }
-    
-        public Set<Tekton> gombaszHovaSzorhat(String gombasz, String gombatest) {
-            Gombasz gombaszObj = gombaszFromString(gombasz);
-            Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
-    
-            return gombatestObj.hovaSzorhat();
-        }
-    
-        public boolean[] gombaHovaRakhat(String gombasz, String gombatest) {
-            Gombasz gombaszObj = gombaszFromString(gombasz);
-            Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
-    
-            Set<Tekton> hovaLehetosegek = new HashSet<Tekton>();
-            if (jelenlegiJatekos_e(gombaszObj)) {
-                hovaLehetosegek = gombaszObj.hovaLehetosegek(gombatestObj.getHely());
-            }
-    
-            jatekosKorvege();
-    
-            boolean[] returnValue = new boolean[palyaMeret()];
-            for(Tekton t : hovaLehetosegek){
-                returnValue[jatekter.getPalya().indexOf(t)] = true;
-            }
-    
-            return returnValue;
-        }
-    
-        
-    
-        public Set<Tekton> gombaEler(String gombasz, String gombatest) {
-            Gombasz gombaszObj = gombaszFromString(gombasz);
-            Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
-    
-            return gombatestObj.dfs();
-        }
-    
-
-    //visszaadja, hogy melyik tektonok erhetoek el. Pl ha a harmadik elerheto: [false,false,true]
-    public boolean[] gombaszEler(String gombasz) {
-        Set<Tekton> acc = new HashSet<Tekton>();
-        Gombasz gombaszObj = gombaszFromString(gombasz);
-
-        if (jelenlegiJatekos_e(gombaszObj)){
-            for (Gombatest g : gombaszObj.getTestek()) {
-                Set<Tekton> dfs = g.dfs();
-                for (Tekton t : dfs) {
-                    acc.add(t);
-                }
-            }
-        }
-
-        boolean[] returnValue = new boolean[palyaMeret()];
-        for(Tekton t : acc){
-            returnValue[jatekter.getPalya().indexOf(t)] = true;
-        }
-
-        jatekosKorvege();
-        return returnValue;
-    }
-
-    //bogarasz parancsok---------------------------------------------------------------------------------
-   
-        //bogar cselekedetek-----------------------------------------------------------------------------
     public String lepes(String bogarasz, String bogar, String hova) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
@@ -589,17 +383,311 @@ public class Jatek {
         return returnValue;
     }
 
-        //bogarhelyek------------------------------------------------------------------------
+    ///
+    public boolean evesBogarat(String gombasz, String bogar) {
+        Gombasz gobj = gombaszFromString(gombasz);
+        Bogar bobj = bogarFromBenitott(gobj, bogar);
+        return gobj.bogarEves(bobj);
+    }
+
+    private Bogar bogarFromBenitott(Gombasz g, String bogar) {
+        return g.getBenitottak().get(Integer.parseInt(bogar.substring(5)));
+    }
+
+    public String fonalLerak(String gombatest, String t1, String t2) {
+        Gombasz gombaszObj = jelenlegiGombasz();
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+        Tekton t1Obj = tektonFromString(t1);
+        Tekton t2Obj = tektonFromString(t2);
+
+        String returnValue = gombaszObj.fonalLerak(gombatestObj, t1Obj, t2Obj);
+
+        jatekosKorvege();
+
+        mainFrame.frissit();
+        return returnValue;
+    }
+
+    //kesz
+    public boolean sporaSzor(String gombatest, String tekton) {
+        Gombasz gombaszObj = jelenlegiGombasz();
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+        Tekton tektonObj = tektonFromString(tekton);
+
+        boolean returnValue = false;
+        returnValue = gombaszObj.sporaSzor(gombatestObj, tektonObj);
+
+        jatekosKorvege();
+        mainFrame.frissit();
+        return returnValue;
+    }
+
+    //kesz
+    public boolean[] gombaHovaRakhat(String gombasz, String gombatest) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+
+        Set<Tekton> hovaLehetosegek = new HashSet<Tekton>();
+        if (jelenlegiJatekos_e(gombaszObj)) {
+            hovaLehetosegek = gombaszObj.hovaLehetosegek(gombatestObj.getHely());
+        }
+
+        jatekosKorvege();
+
+        boolean[] returnValue = new boolean[palyaMeret()];
+        for(Tekton t : hovaLehetosegek){
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        }
+
+        return returnValue;
+    }
+
+    public boolean[] gombaHonnanRakhat(String gombasz, String gombatest, String hova){
+        Tekton hovaObj = tektonFromString(hova);
+
+        Set<Tekton> gombaAltalElert = gombaEler(gombasz, gombatest);
+
+        boolean[] returnValue = new boolean[palyaMeret()];
+        for(Tekton t : gombaAltalElert){
+            if(hovaObj.szomszedE(t)){
+                returnValue[jatekter.getPalya().indexOf(t)] = true;
+            }
+        }
+
+        return returnValue;
+    }
+
+    //kesz
+    public Set<Tekton> gombaEler(String gombasz, String gombatest) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+
+        return gombatestObj.dfs();
+    }
+
+    //visszaadja, hogy melyik tektonok erhetoek el. Pl ha a harmadik elerheto: [false,false,true]
+    public boolean[] gombaszEler(String gombasz) {
+        Set<Tekton> acc = new HashSet<Tekton>();
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+
+        if (jelenlegiJatekos_e(gombaszObj)){
+            for (Gombatest g : gombaszObj.getTestek()) {
+                Set<Tekton> dfs = g.dfs();
+                for (Tekton t : dfs) {
+                    acc.add(t);
+                }
+            }
+        }
+
+        boolean[] returnValue = new boolean[palyaMeret()];
+        for(Tekton t : acc){
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        }
+
+        jatekosKorvege();
+        return returnValue;
+    }
+
+    public ArrayList<Tekton> fonallalOsszekotott(String tekton) {
+        Tekton tektonObj = tektonFromString(tekton);
+        return tektonObj.fonalKeres();
+    }
+
+    //kesz
+    public boolean[] gombaszHovaSzorhat(String gombasz, String gombatest) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
+
+        Set<Tekton> helyek = gombatestObj.hovaSzorhat();
+
+        boolean[] hovaSzorhat = new boolean[palyaMeret()];
+        for(Tekton t : helyek){
+            hovaSzorhat[jatekter.getPalya().indexOf(t)] = true;;
+        }
+
+        return hovaSzorhat;
+    }
+
+    public ArrayList<Fonal> tektononFonal(String tekton) {
+        Tekton tektonObj = tektonFromString(tekton);
+        return tektonObj.getOsszekoto();
+    }
+
     public Tekton bogarTekton(String bogarasz, String bogar) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
         return bogarObj.getHelyzet();
     }
 
+    // A palyaKor, hozzaad parancsok nem kellnek elvileg, megemeszt se
+
+  
+
     public Tekton helyzet(String bogarasz, String bogar) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
         return bogarObj.getHelyzet();
+    }
+
+    //kesz
+    public ArrayList<Gombatest> gombatestListazas(String gombasz) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        return gombaszObj.getTestek();
+    }
+
+    public ArrayList<Tekton> tektonSzomszedNincsFonal(String tekton) {
+        Tekton tektonObj = tektonFromString(tekton);
+        ArrayList<Tekton> acc = tektonObj.fonalNelkuliSzomzed(jelenlegiGombasz());
+        return acc;
+    }
+
+    //kesz
+    public ArrayList<Bogar> benultBogar(String gombasz) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+
+        ArrayList<Bogar> returnValue = new ArrayList<>();
+        if(jelenlegiJatekos_e(gombaszObj)){
+            returnValue = gombaszObj.getBenitottak();
+        }
+        jatekosKorvege();
+
+        return returnValue;
+    }
+
+    public String getJelenlegiJatekosNev(){
+        for(Gombasz g : gombaszok){
+            if(jelenlegiJatekos_e(g)){
+                return "gombasz" + gombaszok.indexOf(g);
+            }
+        }
+
+        for(Bogarasz b : bogaraszok){
+            if(jelenlegiJatekos_e(b)){
+                return "bogarasz" + bogaraszok.indexOf(b);
+            }
+        }
+        return null;
+    }
+
+    //Ez a fv CSAK abban az esetben használható, ha pontosan 4 jatekos van (2 gombasz, 2 bogarasz).
+    public void alapJatekPalya(ArrayList<String> jatekosNevek)
+    {
+        jatekter = new Palya();
+
+        Tekton elso = new Tekton();
+        Tekton ketto = new Tekton();
+        Tekton harom = new Tekton();
+        Tekton negy = new Tekton();
+        Tekton ot = new Tekton();
+        Tekton hat = new Testetlen();
+        Tekton het = new Testetlen();
+        Tekton nyolc = new EletbenTarto();
+        Tekton kilenc = new EletbenTarto();
+        Tekton tiz = new Felszivo();
+        Tekton tizenegy = new Felszivo();
+        Tekton tizenketto = new Egyfonalas();
+        Tekton tizenharom = new Egyfonalas();
+
+        jatekter.getPalya().add(elso);
+        jatekter.getPalya().add(ketto);
+        jatekter.getPalya().add(harom);
+        jatekter.getPalya().add(negy);
+        jatekter.getPalya().add(ot);
+        jatekter.getPalya().add(hat);
+        jatekter.getPalya().add(het);
+        jatekter.getPalya().add(nyolc);
+        jatekter.getPalya().add(kilenc);
+        jatekter.getPalya().add(tiz);
+        jatekter.getPalya().add(tizenegy);
+        jatekter.getPalya().add(tizenketto);
+        jatekter.getPalya().add(tizenharom);
+
+        elso.szomszed.add(ketto);
+        elso.szomszed.add(hat);
+        elso.szomszed.add(tizenketto);
+        elso.szomszed.add(tizenharom);
+
+        ketto.szomszed.add(elso);
+        ketto.szomszed.add(tizenketto);
+        ketto.szomszed.add(harom);
+
+        harom.szomszed.add(ketto);
+        harom.szomszed.add(hat);
+        harom.szomszed.add(het);
+
+        negy.szomszed.add(het);
+        negy.szomszed.add(nyolc);
+        negy.szomszed.add(tizenegy);
+
+        ot.szomszed.add(tizenegy);
+        ot.szomszed.add(tizenharom);
+
+        hat.szomszed.add(elso);
+        hat.szomszed.add(harom);
+        hat.szomszed.add(nyolc);
+
+        het.szomszed.add(harom);
+        het.szomszed.add(negy);
+        het.szomszed.add(tizenegy);
+        het.szomszed.add(tizenketto);
+
+        nyolc.szomszed.add(negy);
+        nyolc.szomszed.add(hat);
+
+        kilenc.szomszed.add(tizenketto);
+
+        tiz.szomszed.add(tizenketto);
+        tiz.szomszed.add(tizenharom);
+
+        tizenegy.szomszed.add(negy);
+        tizenegy.szomszed.add(ot);
+        tizenegy.szomszed.add(het);
+
+        tizenketto.szomszed.add(elso);
+        tizenketto.szomszed.add(ketto);
+        tizenketto.szomszed.add(het);
+        tizenketto.szomszed.add(kilenc);
+        tizenketto.szomszed.add(tiz);
+
+        tizenharom.szomszed.add(elso);
+        tizenharom.szomszed.add(ot);
+        tizenharom.szomszed.add(tiz);
+
+        jatekosokSorsolasa(jatekosNevek);
+
+        Gombatest gtEgy = new Gombatest(elso, gombaszok.get(0));
+        gombaszok.get(0).gombatestHozzaad(gtEgy);
+
+        Gombatest gtKet = new Gombatest(negy, gombaszok.get(1));
+        gombaszok.get(1).gombatestHozzaad(gtKet);
+
+        bogaraszok.get(0).bogarHozzaad(ketto);
+
+        bogaraszok.get(1).bogarHozzaad(het);
+
+        jelenlegiJatekos().korElejeInicializalas();
+
+    }
+
+    public int tektonSpora(String gombasz, String tekton){
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        Tekton tektonObj = tektonFromString(tekton);
+        return tektonObj.hanySporajaVan(gombaszObj);
+    }
+
+    public int palyaMeret(){
+        return jatekter.getPalya().size();
+    }
+
+    public boolean gombaszKoreVanE(){
+        if(jatekosIndex < gombaszok.size()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean bogaraszKoreVanE(){
+        return !gombaszKoreVanE();
     }
 
     public int[] sajatBogarakHelyei(){
@@ -634,290 +722,56 @@ public class Jatek {
         return returnValue;
     }
 
-        //bogarasz altalanos--------------------------------------------------------------
-    public ArrayList<Bogar> bogarakListazas(String bogarasz) {
-        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
-        return bogaraszObj.getBogarak();
-    }
-
-    //tekton parancsok---------------------------------------------------------------------
-    
-    public ArrayList<Tekton> fonallalOsszekotott(String tekton) {
-        Tekton tektonObj = tektonFromString(tekton);
-        return tektonObj.fonalKeres();
-    }
-
-    public ArrayList<Fonal> tektononFonal(String tekton) {
-        Tekton tektonObj = tektonFromString(tekton);
-        return tektonObj.getOsszekoto();
-    }
-   
-    public ArrayList<Tekton> tektonSzomszedNincsFonal(String tekton) {
-        Tekton tektonObj = tektonFromString(tekton);
-        ArrayList<Tekton> acc = tektonObj.fonalNelkuliSzomzed(jelenlegiGombasz());
-        return acc;
-    }
-
-//palya generalasok------------------------------------------------------------------------------------------------------
-
-
-    private void jatekosokSorsolasa(ArrayList<String> jatekosNevek){
-        Random rand = new Random();
-        int gombaszokSzama = (jatekosNevek.size() + 1) / 2;
-        int bogaraszokSzama = jatekosNevek.size() - gombaszokSzama;
-        for(int i = 0; i < gombaszokSzama; i++){
-            int valasztottIndex = rand.nextInt(jatekosNevek.size());
-            gombaszok.add(new Gombasz(jatekosNevek.get(valasztottIndex), jatekter.getPalya()));
-            jatekosNevek.remove(valasztottIndex);
+    public int[] sajatGombatestekHelyei(){
+        if(!gombaszKoreVanE()){
+            return null;
         }
 
-        for(int i = 0; i < bogaraszokSzama; i++){
-            int valasztottIndex = rand.nextInt(jatekosNevek.size());
-            bogaraszok.add(new Bogarasz(jatekosNevek.get(valasztottIndex)));
-            jatekosNevek.remove(valasztottIndex);
+        int[] returnValue = new int[palyaMeret()];
+        ArrayList<Tekton> helyek = jelenlegiGombasz().gombatestHelyei();
+        for(Tekton t : helyek){
+            returnValue[jatekter.getPalya().indexOf(t)]++;
         }
+        return returnValue;
+    }
+
+    public int[] mindenGombatestHelyei(){
+
+        int[] returnValue = new int[palyaMeret()];
+        ArrayList<Tekton> helyek = new ArrayList<>();
+
+        for(Gombasz gombasz : gombaszok){
+            helyek.addAll(gombasz.gombatestHelyei());
+        }
+
+        for(Tekton t : helyek){
+            returnValue[jatekter.getPalya().indexOf(t)]++;
+        }
+
+        return returnValue;
+    }
+
+    public ArrayList<String> jelenlegiGombaszFonalLerakosTestjei(){
+        Gombasz gombaszObj = gombaszFromString("Koron levo gombasz");
+        Set<Gombatest> gombatestek = gombaszObj.fonalLerakosTestek();
         
+        ArrayList<String> returnString = new ArrayList<>();
+        for(Gombatest g : gombatestek){
+            returnString.add("gombatest" + jelenlegiGombasz().getTestek().indexOf(g));
+        }
+
+        return returnString;
     }
 
-    //Ez a fv CSAK abban az esetben használható, ha pontosan 4 jatekos van (2 gombasz, 2 bogarasz).
-    public void alapJatekPalya(ArrayList<String> jatekosNevek)
-    {
-        jatekter = new Palya();
- 
-        Tekton elso = new Tekton();
-        Tekton ketto = new Tekton();
-        Tekton harom = new Tekton();
-        Tekton negy = new Tekton();
-        Tekton ot = new Tekton();
-        Tekton hat = new Testetlen();
-        Tekton het = new Testetlen();
-        Tekton nyolc = new EletbenTarto();
-        Tekton kilenc = new EletbenTarto();
-        Tekton tiz = new Felszivo();
-        Tekton tizenegy = new Felszivo();
-        Tekton tizenketto = new Egyfonalas();
-        Tekton tizenharom = new Egyfonalas();
- 
-        jatekter.getPalya().add(elso);
-        jatekter.getPalya().add(ketto);
-        jatekter.getPalya().add(harom);
-        jatekter.getPalya().add(negy);
-        jatekter.getPalya().add(ot);
-        jatekter.getPalya().add(hat);
-        jatekter.getPalya().add(het);
-        jatekter.getPalya().add(nyolc);
-        jatekter.getPalya().add(kilenc);
-        jatekter.getPalya().add(tiz);
-        jatekter.getPalya().add(tizenegy);
-        jatekter.getPalya().add(tizenketto);
-        jatekter.getPalya().add(tizenharom);
- 
-        elso.szomszed.add(ketto);
-        elso.szomszed.add(hat);
-        elso.szomszed.add(tizenketto);
-        elso.szomszed.add(tizenharom);
- 
-        ketto.szomszed.add(elso);
-        ketto.szomszed.add(tizenketto);
-        ketto.szomszed.add(harom);
- 
-        harom.szomszed.add(ketto);
-        harom.szomszed.add(hat);
-        harom.szomszed.add(het);
- 
-        negy.szomszed.add(het);
-        negy.szomszed.add(nyolc);
-        negy.szomszed.add(tizenegy);
- 
-        ot.szomszed.add(tizenegy);
-        ot.szomszed.add(tizenharom);
- 
-        hat.szomszed.add(elso);
-        hat.szomszed.add(harom);
-        hat.szomszed.add(nyolc);
- 
-        het.szomszed.add(harom);
-        het.szomszed.add(negy);
-        het.szomszed.add(tizenegy);
-        het.szomszed.add(tizenketto);
- 
-        nyolc.szomszed.add(negy);
-        nyolc.szomszed.add(hat);
- 
-        kilenc.szomszed.add(tizenketto);
- 
-        tiz.szomszed.add(tizenketto);
-        tiz.szomszed.add(tizenharom);
- 
-        tizenegy.szomszed.add(negy);
-        tizenegy.szomszed.add(ot);
-        tizenegy.szomszed.add(het);
- 
-        tizenketto.szomszed.add(elso);
-        tizenketto.szomszed.add(ketto);
-        tizenketto.szomszed.add(het);
-        tizenketto.szomszed.add(kilenc);
-        tizenketto.szomszed.add(tiz);
- 
-        tizenharom.szomszed.add(elso);
-        tizenharom.szomszed.add(ot);
-        tizenharom.szomszed.add(tiz);
- 
-        jatekosokSorsolasa(jatekosNevek);
- 
-        Gombatest gtEgy = new Gombatest(elso, gombaszok.get(0));
-        gombaszok.get(0).gombatestHozzaad(gtEgy);
- 
-        Gombatest gtKet = new Gombatest(negy, gombaszok.get(1));
-        gombaszok.get(1).gombatestHozzaad(gtKet);
- 
-        bogaraszok.get(0).bogarHozzaad(ketto);
- 
-        bogaraszok.get(1).bogarHozzaad(het);
- 
-        jelenlegiJatekos().korElejeInicializalas();
- 
+    public ArrayList<String> jelenlegiGombaszSporaSzorosTestjei(){
+        Gombasz gombaszObj = gombaszFromString("Koron levo gombasz");
+        Set<Gombatest> gombatestek = gombaszObj.sporaSzorosTestek();
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for(Gombatest g : gombatestek){
+            returnString.add("gombatest" + jelenlegiGombasz().getTestek().indexOf(g));
+        }
+
+        return returnString;
     }
-
-    //random palya keszites
-    public void randomPalya(ArrayList<String> jatekosNevek)
-    {
-        //tektonok
-        Random rnd = new Random();
-        int meret = 5* jatekosNevek.size();
-       
-        jatekter = new Palya();
-
-        int lerakhato = meret;
-
-        Tekton elso = randomTipusuTekton();
-        jatekter.getPalya().add(elso);
-
-        do 
-        { 
-            lerakhato = palyaFelepites(lerakhato, elso);
-        } while (lerakhato > 0);
-        
-        lerakhato = rnd.nextInt(meret/3) + meret/3;
-
-        do 
-        { 
-            Tekton egyik = jatekter.getPalya().get(rnd.nextInt(meret));
-            Tekton masik;
-            do 
-            { 
-                masik = jatekter.getPalya().get(rnd.nextInt(meret));
-            } while (egyik == masik);
-
-            egyik.szomszed.add(masik);
-            masik.szomszed.add(elso);
-            lerakhato--;
-        } while (lerakhato != 0);
-/* 
-        for(int i = 0; i < meret; i++)
-        {
-            jatekter.getPalya().add(randomTipusuTekton());
-        }
-*/
-        ArrayList<Tekton> foglalt = new ArrayList<>();
-        //jatekosok
-        jatekosokSorsolasa(jatekosNevek);
-        for(int i = 0; i < gombaszok.size(); i++)
-        {
-            Tekton kezdo;
-            do
-            {
-                kezdo = jatekter.getPalya().get(rnd.nextInt(meret));
-                
-            }while(foglalt.contains(kezdo));
-            foglalt.add(kezdo);
-            gombaszok.get(i).getTestek().add(new Gombatest(kezdo, gombaszok.get(i)));
-        }
-
-        for(int i = 0; i < gombaszok.size(); i++)
-        {
-            Tekton kezdo;
-            do
-            {
-                kezdo = jatekter.getPalya().get(rnd.nextInt(meret));
-            }while(foglalt.contains(kezdo));
-            foglalt.add(kezdo);
-            bogaraszok.get(i).bogarHozzaad(kezdo);
-        }
-
-    }
-
-    //random tekton tipus
-
-    public Tekton randomTipusuTekton()
-    {
-        Random rnd = new Random();
-        Tekton uj;
-        int i = rnd.nextInt(10);
-        switch (i) {
-            case 1:
-                uj = new Testetlen(); 
-                break;
-            case 2:
-                uj = new Felszivo();
-                break;
-            case 3:
-                uj = new Egyfonalas();
-                break;
-            case 4:
-                uj = new EletbenTarto();
-                break;
-            default:
-            uj = new Tekton();
-        }
-
-        return uj;
-    }
-
-    //palya felepites random kapcsolatokkal
-    int palyaFelepites(int lerakhato, Tekton forras)
-    {
-        if(lerakhato == 1)
-        {
-            return 0;
-        }
-
-        Random rnd = new Random();
-        int ertek;
-        do { 
-
-            do { 
-                ertek = rnd.nextInt(lerakhato);
-            } while (ertek > lerakhato/2);
-            for(int i = 0; i < ertek; i++)
-            {
-                Tekton uj = randomTipusuTekton();
-
-                forras.addSzomszed(uj);
-                uj.addSzomszed(forras);
-                jatekter.getPalya().add(uj);
-            }
-
-        } while (ertek == 0 && jatekter.getPalya().size() <= 4);
-
-        int maradt = lerakhato - ertek;
-        int kezdoertek = 1;
-        if(forras == jatekter.getPalya().get(0))
-        {
-            kezdoertek = 0;
-        }
-
-        for(int i = kezdoertek; i < forras.getSzomszed().size(); i++)
-        {
-            if(maradt != 0)
-            {
-                maradt =  palyaFelepites(maradt, forras.getSzomszed().get(i));
-            }
-           
-        }
-
-        return maradt;
-        
-    }
-
 }
