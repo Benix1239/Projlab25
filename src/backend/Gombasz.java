@@ -243,10 +243,29 @@ public class Gombasz extends Jatekos
         benitottak.add(b);
     }
 
+    /**
+     * 
+     * @return gombatestjeinek helyei.
+     */
     public ArrayList<Tekton> gombatestHelyei(){
         ArrayList<Tekton> returnValue = new ArrayList<>();
         for(Gombatest g : testek){
             returnValue.add(g.getHely());
+        }
+
+        return returnValue;
+    }
+
+    /**
+     * 
+     * @return Azok a gombatestek, akik meg kepesek fonalat lerakni.
+     */
+    public Set<Gombatest> fonalLerakosTestek(){
+        Set<Gombatest> returnValue = new HashSet<>();
+        for(Gombatest g : testek){
+            if(g.tudFonalatRakni()){
+                returnValue.add(g);
+            }
         }
 
         return returnValue;

@@ -401,6 +401,8 @@ public class Jatek {
         String returnValue = gombaszObj.fonalLerak(gombatestObj, t1Obj, t2Obj);
 
         jatekosKorvege();
+
+        mainFrame.frissit();
         return returnValue;
     }
 
@@ -418,7 +420,7 @@ public class Jatek {
     }
 
     //kesz
-    public Set<Tekton> gombaHovaRakhat(String gombasz, String gombatest) {
+    public boolean[] gombaHovaRakhat(String gombasz, String gombatest) {
         Gombasz gombaszObj = gombaszFromString(gombasz);
         Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
 
@@ -428,7 +430,28 @@ public class Jatek {
         }
 
         jatekosKorvege();
-        return hovaLehetosegek;
+
+        boolean[] returnValue = new boolean[palyaMeret()];
+        for(Tekton t : hovaLehetosegek){
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        }
+
+        return returnValue;
+    }
+
+    public boolean[] gombaHonnanRakhat(String gombasz, String gombatest, String hova){
+        Tekton hovaObj = tektonFromString(hova);
+
+        Set<Tekton> gombaAltalElert = gombaEler(gombasz, gombatest);
+
+        boolean[] returnValue = new boolean[palyaMeret()];
+        for(Tekton t : gombaAltalElert){
+            if(hovaObj.szomszedE(t)){
+                returnValue[jatekter.getPalya().indexOf(t)] = true;
+            }
+        }
+
+        return returnValue;
     }
 
     //kesz
@@ -439,8 +462,8 @@ public class Jatek {
         return gombatestObj.dfs();
     }
 
-    //kesz
-    public Set<Tekton> gombaszEler(String gombasz) {
+    //visszaadja, hogy melyik tektonok erhetoek el. Pl ha a harmadik elerheto: [false,false,true]
+    public boolean[] gombaszEler(String gombasz) {
         Set<Tekton> acc = new HashSet<Tekton>();
         Gombasz gombaszObj = gombaszFromString(gombasz);
 
@@ -453,8 +476,13 @@ public class Jatek {
             }
         }
 
+        boolean[] returnValue = new boolean[palyaMeret()];
+        for(Tekton t : acc){
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        }
+
         jatekosKorvege();
-        return acc;
+        return returnValue;
     }
 
     public ArrayList<Tekton> fonallalOsszekotott(String tekton) {
@@ -627,6 +655,8 @@ public class Jatek {
 
         bogaraszok.get(1).bogarHozzaad(het);
 
+        jelenlegiJatekos().korElejeInicializalas();
+
     }
 
     public int tektonSpora(String gombasz, String tekton){
@@ -711,4 +741,15 @@ public class Jatek {
         return returnValue;
     }
 
+    public ArrayList<String> jelenlegiGombaszFonalLerakosTestjei(){
+        Gombasz gombaszObj = gombaszFromString("Koron levo gombasz");
+        Set<Gombatest> gombatestek = gombaszObj.fonalLerakosTestek();
+        
+        ArrayList<String> returnString = new ArrayList<>();
+        for(Gombatest g : gombatestek){
+            returnString.add("gombatest" + jelenlegiGombasz().getTestek().indexOf(g));
+        }
+
+        return returnString;
+    }
 }

@@ -9,12 +9,14 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.AbstractAction;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -110,6 +112,29 @@ public class JatekPanel extends JPanel{
         // Billentyuzet beallitas
         this.billentyuBeallitas();
 
+        // comboboxok mukodese
+        elsoComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selected = (String) elsoComboBox.getSelectedItem();
+        
+                if (selected != null && !selected.isEmpty() && command != null) {
+                    command.addPAram(selected);
+                }
+            }
+        });
+
+        masodikComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selected = (String) masodikComboBox.getSelectedItem();
+        
+                if (selected != null && !selected.isEmpty() && command != null) {
+                    command.addPAram(selected);
+                }
+            }
+        });
+
         // JatekPanel elrendezese
         this.setLayout(new BorderLayout());
         this.add(felsoPanel, BorderLayout.NORTH);
@@ -139,8 +164,17 @@ public class JatekPanel extends JPanel{
 
         for (int i = 0; i < m * n; ++i) {
 
+            JButton tgomb = mat[r][c];
+
             // Add current element to result list
             res.add(mat[r][c]);
+
+            // tektonGombok megnyomasakor a jelenlegi parancshoz adodik hozza egy parameter: tekton+gom indexe a tombben
+            tgomb.addActionListener(e->{
+                if(command != null){
+                    command.addPAram("tekton" + tektonGombok.indexOf(tgomb));
+                }
+            });
 
             // Mark current cell as visited
             vis[r][c] = true;
@@ -236,13 +270,35 @@ public class JatekPanel extends JPanel{
                 mainFrame.getInfoFrame().modeValtozas("I"); 
             }
         });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("E"), "gombaszEler");
+        this.getActionMap().put("gombaszEler", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Command("gombaszEler", jatekmenet, sajatMaga());
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released E"), "felengedveE");
+        this.getActionMap().put("felengedveE", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frissit();
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F"), "fonalLerak");
+        this.getActionMap().put("fonalLerak", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("fonalLerak", jatekmenet, sajatMaga());
+            }
+        });
     }
 
     // letiltja a tektonGombokat es a comboboxokat
-    private void mindentLetilt(){
-        for(JButton gomb : tektonGombok){
-            gomb.setEnabled(false);
-        }
+    public void mindentLetilt(){
+        tektonGombokEnabled(false);
         elsoComboBox.setEnabled(false);
         masodikComboBox.setEnabled(false);
     }
@@ -293,4 +349,62 @@ public class JatekPanel extends JPanel{
             
         }
     }
+
+    public void gombaszEler(){
+        try{
+            boolean[] elerhetoTektonok = jatekmenet.gombaszEler("Koron levo gombasz");
+            for(int i = 0; i < elerhetoTektonok.length; i++){
+                if(elerhetoTektonok[i]){
+                    tektonGombok.get(i).setBackground(Color.GREEN);
+                }
+            }
+        }catch(IllegalArgumentException e){
+
+        }
+    }
+
+    public void tektonGombokEnabled(boolean ertek){
+        for(JButton gomb : tektonGombok){
+            gomb.setEnabled(ertek);
+        }
+    }
+
+    public void elsoComboboxEnabled(boolean ertek){
+        elsoComboBox.setEnabled(ertek);
+    }
+
+    public void elsoComboboxElemek(ArrayList<String> elemek){
+        elsoComboBox.setModel(new DefaultComboBoxModel<>(elemek.toArray(new String[0])));
+        elsoComboBox.setSelectedItem(null);
+    }
+
+    public void masodikComboboxEnabled(boolean ertek){
+        masodikComboBox.setEnabled(ertek);
+    }
+
+    public void masodikComboboxElemek(ArrayList<String> elemek){
+        masodikComboBox.setModel(new DefaultComboBoxModel<>(elemek.toArray(new String[0])));
+        masodikComboBox.setSelectedItem(null);
+    }
+
+    public void tektonSzinAllitas(boolean[] tektonok, Color color){
+        for(int i = 0; i < tektonok.length; i++){
+            if(tektonok[i]){
+                tektonGombok.get(i).setBackground(color);
+            }
+        }
+    }
+
+    public void tektonEngedelyezes(boolean[] tektonok){
+        for(int i = 0; i < tektonok.length; i++){
+            if(tektonok[i]){
+                tektonGombok.get(i).setEnabled(true);;
+            }
+        }
+    }
+
+    public void setCommandNull(){
+        command = null;
+    }
+
 }
