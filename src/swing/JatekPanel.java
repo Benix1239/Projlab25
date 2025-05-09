@@ -251,7 +251,7 @@ public class JatekPanel extends JPanel{
             }
         });
 
-        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("L"), "leiras");
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("D"), "leiras");
         this.getActionMap().put("leiras", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -298,6 +298,14 @@ public class JatekPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 command = new Command("sporaSzor", jatekmenet, sajatMaga(),infoFrame);
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("L"), "lepes");
+        this.getActionMap().put("lepes", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("lepes", jatekmenet, sajatMaga(),infoFrame);
             }
         });
     }

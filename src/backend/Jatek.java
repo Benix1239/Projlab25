@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -218,16 +219,21 @@ public class Jatek {
     public Bogarasz bogaraszFromString(String bogarasz) {
         //return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
 
-        Pattern pattern = Pattern.compile("^bogarasz(\\d+)$");
-        Matcher matcher = pattern.matcher(bogarasz);
+        if(bogarasz == "Koron levo bogarasz"){
+            return jelenlegiBogarasz();
+        }else{
+            Pattern pattern = Pattern.compile("^bogarasz(\\d+)$");
+            Matcher matcher = pattern.matcher(bogarasz);
 
-        if (matcher.matches()) {
-            int szam = Integer.parseInt(matcher.group(1));
-            if(szam >= 0 && szam <bogaraszok.size()){
-                return bogaraszok.get(szam);
-            }
-        } 
-        throw new IllegalArgumentException("Ilyen bogarasz nem letezik");
+            if (matcher.matches()) {
+                int szam = Integer.parseInt(matcher.group(1));
+                if(szam >= 0 && szam <bogaraszok.size()){
+                    return bogaraszok.get(szam);
+                }
+            } 
+            throw new IllegalArgumentException("Ilyen bogarasz nem letezik");
+        }
+        
     }
 
     public Bogar bogarFromString(Bogarasz bogarasz, String bogar) {
@@ -607,6 +613,8 @@ public class Jatek {
         elso.szomszed.add(tizenketto);
         elso.szomszed.add(tizenharom);
 
+
+
         ketto.szomszed.add(elso);
         ketto.szomszed.add(tizenketto);
         ketto.szomszed.add(harom);
@@ -776,6 +784,34 @@ public class Jatek {
 
         return returnString;
     }
+    public ArrayList<String> jelenlegiBogaraszBogaraiIndexei() {
+        Bogarasz bogaraszObj = jelenlegiBogarasz();  
+        List<Bogar> bogarak = bogaraszObj.getBogarak();  
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < bogarak.size(); i++) {
+            returnString.add("bogar" + i);
+        }
+
+        return returnString;
+    }
+
+    public boolean[] bogarHovaLephet(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj,bogar);
+    
+        Set<Tekton> lepesek = bogarObj.hovaLephet(); 
+    
+        boolean[] returnValue = new boolean[palyaMeret()]; 
+
+        for (Tekton t : lepesek) {
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        }
+    
+        return returnValue;
+    }
+    
+
 
     public void randomPalya(ArrayList<String> jatekosNevek)
     {

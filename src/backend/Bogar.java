@@ -171,6 +171,16 @@ public class Bogar
         return true;
     }
 
+    public Set<Tekton> hovaLephet() {
+        Set<Tekton> szomszedok=null;
+    
+        if (this.mozgasok > 0) { 
+            szomszedok=new HashSet<>(helyzet.fonalKeres());
+        }
+    
+        return szomszedok;
+    }
+
     /**
      * Lekéri a bogár jelenlegi helyzetét.
      * 
