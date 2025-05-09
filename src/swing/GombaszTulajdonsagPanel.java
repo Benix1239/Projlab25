@@ -32,7 +32,6 @@ public class GombaszTulajdonsagPanel extends JPanel {
         tableModel.setRowCount(0); // előző sorok törlése
         List<Gombatest> testek = g.getTestek();
         int index = 0;
-        int index = 0;
         for (Gombatest test : testek) {
             tableModel.addRow(new Object[]{
                 "Test" + index,
