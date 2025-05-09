@@ -220,6 +220,22 @@ public class JatekPanel extends JPanel{
                 new Command("passz", jatekmenet, sajatMaga());
             }
         });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("L"), "leiras");
+        this.getActionMap().put("leiras", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame.getInfoFrame().modeValtozas("L");  
+            }
+        });
+        
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("I"), "info");
+        this.getActionMap().put("info", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame.getInfoFrame().modeValtozas("I"); 
+            }
+        });
     }
 
     // letiltja a tektonGombokat es a comboboxokat
