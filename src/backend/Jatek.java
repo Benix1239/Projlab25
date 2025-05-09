@@ -829,6 +829,7 @@ public class Jatek {
             }while(foglalt.contains(kezdo));
             foglalt.add(kezdo);
             gombaszok.get(i).getTestek().add(new Gombatest(kezdo, gombaszok.get(i)));
+            kezdo.gombatest = gombaszok.get(i).getTestek().get(0);
         }
 
         for(int i = 0; i < gombaszok.size(); i++)
