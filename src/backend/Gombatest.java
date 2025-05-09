@@ -305,10 +305,8 @@ public class Gombatest
         return spora;
     }
 
-    public boolean tudSporatSzorni(){
-        if(spora!=null){
-            return true;
-        }
-        return false;
+
+    public Gombasz getTartozik(){
+        return tartozik;
     }
 }

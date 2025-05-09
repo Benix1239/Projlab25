@@ -1,6 +1,5 @@
 package swing;
 
-import backend.Bogar;
 import backend.Bogarasz;
 import backend.Gombasz;
 import backend.Tekton;
@@ -40,8 +39,8 @@ public class TektonTulajdonsagPanel extends JPanel {
         if (tekton != null) {
             for (int i = 0; i < gombaszok.size(); i++) {
                 Gombasz g = gombaszok.get(i);
-                String sporak = tekton.getSporak() != null ? String.valueOf(tekton.getSporak().size()) : "";
-                String gombatest = tekton.getGombatest() != null ? "Van" : "-";
+                String sporak = tekton.getSporak() != null  ? String.valueOf(tekton.getSporak().size()) : "";
+                String gombatest = tekton.getGombatest() != null&&tekton.getGombatest().getTartozik()==g ? "Van" : "-";
                 tableModel.addRow(new Object[]{g.getNev(), sporak, gombatest, "-"});
             }
         } else {
@@ -51,7 +50,7 @@ public class TektonTulajdonsagPanel extends JPanel {
         }
 
         // Bogarászok adatai
-        for (Bogarasz b : bogaraszok) {
+        /*for (Bogarasz b : bogaraszok) {
             List<Bogar> bogarak = b.getBogarak(); 
             List<Tekton> bogarakHelyei = b.bogarakHelyei();
     
@@ -66,6 +65,6 @@ public class TektonTulajdonsagPanel extends JPanel {
     
             String bogarakStr = ottLevoBogarak.length() > 0 ? ottLevoBogarak.toString() : "-";
             tableModel.addRow(new Object[]{b.getNev(), "-", "-", bogarakStr});
-        }
+        }*/
     }
 }
