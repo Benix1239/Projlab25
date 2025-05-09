@@ -1,11 +1,13 @@
 package swing;
 
-import backend.Jatek;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import backend.Jatek;
 
 public class MainFrame extends JFrame {
     private JPanel cardPanel;
@@ -122,13 +124,13 @@ public class MainFrame extends JFrame {
 
     // jatekMenet letrehozasa uj jatek eseten. Parameterkent megkapja az uj jatekosok neveit
     public void jatekIndit(ArrayList<String> jatekosNevek){
-        if(jatekosNevek.size() == 4){
-            jatekmenet = new Jatek(this, jatekosNevek);
-            jatekPanel = new JatekPanel(this, jatekmenet);
-            cardPanel.add(jatekPanel, "jatekPanel");
+       
+        jatekmenet = new Jatek(this, jatekosNevek);
+        jatekPanel = new JatekPanel(this, jatekmenet);
+        cardPanel.add(jatekPanel, "jatekPanel");
 
-            jatekPanel.frissit();
-        }
+        jatekPanel.frissit();
+        
     }
 
     // meghivja a tobbi elem frissit() fv-et

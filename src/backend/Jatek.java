@@ -16,6 +16,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.plaf.basic.BasicSplitPaneUI;
+
 import swing.MainFrame;
 
 public class Jatek {
@@ -44,7 +46,7 @@ public class Jatek {
         jatekosIndex = 0;
         this.mainFrame = mainFrame;
 
-        alapJatekPalya(jatekosNevek);
+        randomPalya(jatekosNevek);
     }
 
     //hozzaad/setterek------------------------------------------------------------------------------
@@ -677,103 +679,245 @@ public class Jatek {
         
     }
 
-     //Ez a fv CSAK abban az esetben használható, ha pontosan 4 jatekos van (2 gombasz, 2 bogarasz).
-     public void alapJatekPalya(ArrayList<String> jatekosNevek)
-     {
-         jatekter = new Palya();
+    //Ez a fv CSAK abban az esetben használható, ha pontosan 4 jatekos van (2 gombasz, 2 bogarasz).
+    public void alapJatekPalya(ArrayList<String> jatekosNevek)
+    {
+        jatekter = new Palya();
  
-         Tekton elso = new Tekton();
-         Tekton ketto = new Tekton();
-         Tekton harom = new Tekton();
-         Tekton negy = new Tekton();
-         Tekton ot = new Tekton();
-         Tekton hat = new Testetlen();
-         Tekton het = new Testetlen();
-         Tekton nyolc = new EletbenTarto();
-         Tekton kilenc = new EletbenTarto();
-         Tekton tiz = new Felszivo();
-         Tekton tizenegy = new Felszivo();
-         Tekton tizenketto = new Egyfonalas();
-         Tekton tizenharom = new Egyfonalas();
+        Tekton elso = new Tekton();
+        Tekton ketto = new Tekton();
+        Tekton harom = new Tekton();
+        Tekton negy = new Tekton();
+        Tekton ot = new Tekton();
+        Tekton hat = new Testetlen();
+        Tekton het = new Testetlen();
+        Tekton nyolc = new EletbenTarto();
+        Tekton kilenc = new EletbenTarto();
+        Tekton tiz = new Felszivo();
+        Tekton tizenegy = new Felszivo();
+        Tekton tizenketto = new Egyfonalas();
+        Tekton tizenharom = new Egyfonalas();
  
-         jatekter.getPalya().add(elso);
-         jatekter.getPalya().add(ketto);
-         jatekter.getPalya().add(harom);
-         jatekter.getPalya().add(negy);
-         jatekter.getPalya().add(ot);
-         jatekter.getPalya().add(hat);
-         jatekter.getPalya().add(het);
-         jatekter.getPalya().add(nyolc);
-         jatekter.getPalya().add(kilenc);
-         jatekter.getPalya().add(tiz);
-         jatekter.getPalya().add(tizenegy);
-         jatekter.getPalya().add(tizenketto);
-         jatekter.getPalya().add(tizenharom);
+        jatekter.getPalya().add(elso);
+        jatekter.getPalya().add(ketto);
+        jatekter.getPalya().add(harom);
+        jatekter.getPalya().add(negy);
+        jatekter.getPalya().add(ot);
+        jatekter.getPalya().add(hat);
+        jatekter.getPalya().add(het);
+        jatekter.getPalya().add(nyolc);
+        jatekter.getPalya().add(kilenc);
+        jatekter.getPalya().add(tiz);
+        jatekter.getPalya().add(tizenegy);
+        jatekter.getPalya().add(tizenketto);
+        jatekter.getPalya().add(tizenharom);
  
-         elso.szomszed.add(ketto);
-         elso.szomszed.add(hat);
-         elso.szomszed.add(tizenketto);
-         elso.szomszed.add(tizenharom);
+        elso.szomszed.add(ketto);
+        elso.szomszed.add(hat);
+        elso.szomszed.add(tizenketto);
+        elso.szomszed.add(tizenharom);
  
-         ketto.szomszed.add(elso);
-         ketto.szomszed.add(tizenketto);
-         ketto.szomszed.add(harom);
+        ketto.szomszed.add(elso);
+        ketto.szomszed.add(tizenketto);
+        ketto.szomszed.add(harom);
  
-         harom.szomszed.add(ketto);
-         harom.szomszed.add(hat);
-         harom.szomszed.add(het);
+        harom.szomszed.add(ketto);
+        harom.szomszed.add(hat);
+        harom.szomszed.add(het);
  
-         negy.szomszed.add(het);
-         negy.szomszed.add(nyolc);
-         negy.szomszed.add(tizenegy);
+        negy.szomszed.add(het);
+        negy.szomszed.add(nyolc);
+        negy.szomszed.add(tizenegy);
  
-         ot.szomszed.add(tizenegy);
-         ot.szomszed.add(tizenharom);
+        ot.szomszed.add(tizenegy);
+        ot.szomszed.add(tizenharom);
  
-         hat.szomszed.add(elso);
-         hat.szomszed.add(harom);
-         hat.szomszed.add(nyolc);
+        hat.szomszed.add(elso);
+        hat.szomszed.add(harom);
+        hat.szomszed.add(nyolc);
  
-         het.szomszed.add(harom);
-         het.szomszed.add(negy);
-         het.szomszed.add(tizenegy);
-         het.szomszed.add(tizenketto);
+        het.szomszed.add(harom);
+        het.szomszed.add(negy);
+        het.szomszed.add(tizenegy);
+        het.szomszed.add(tizenketto);
  
-         nyolc.szomszed.add(negy);
-         nyolc.szomszed.add(hat);
+        nyolc.szomszed.add(negy);
+        nyolc.szomszed.add(hat);
  
-         kilenc.szomszed.add(tizenketto);
+        kilenc.szomszed.add(tizenketto);
  
-         tiz.szomszed.add(tizenketto);
-         tiz.szomszed.add(tizenharom);
+        tiz.szomszed.add(tizenketto);
+        tiz.szomszed.add(tizenharom);
  
-         tizenegy.szomszed.add(negy);
-         tizenegy.szomszed.add(ot);
-         tizenegy.szomszed.add(het);
+        tizenegy.szomszed.add(negy);
+        tizenegy.szomszed.add(ot);
+        tizenegy.szomszed.add(het);
  
-         tizenketto.szomszed.add(elso);
-         tizenketto.szomszed.add(ketto);
-         tizenketto.szomszed.add(het);
-         tizenketto.szomszed.add(kilenc);
-         tizenketto.szomszed.add(tiz);
+        tizenketto.szomszed.add(elso);
+        tizenketto.szomszed.add(ketto);
+        tizenketto.szomszed.add(het);
+        tizenketto.szomszed.add(kilenc);
+        tizenketto.szomszed.add(tiz);
  
-         tizenharom.szomszed.add(elso);
-         tizenharom.szomszed.add(ot);
-         tizenharom.szomszed.add(tiz);
+        tizenharom.szomszed.add(elso);
+        tizenharom.szomszed.add(ot);
+        tizenharom.szomszed.add(tiz);
  
-         jatekosokSorsolasa(jatekosNevek);
+        jatekosokSorsolasa(jatekosNevek);
  
-         Gombatest gtEgy = new Gombatest(elso, gombaszok.get(0));
-         gombaszok.get(0).gombatestHozzaad(gtEgy);
+        Gombatest gtEgy = new Gombatest(elso, gombaszok.get(0));
+        gombaszok.get(0).gombatestHozzaad(gtEgy);
  
-         Gombatest gtKet = new Gombatest(negy, gombaszok.get(1));
-         gombaszok.get(1).gombatestHozzaad(gtKet);
+        Gombatest gtKet = new Gombatest(negy, gombaszok.get(1));
+        gombaszok.get(1).gombatestHozzaad(gtKet);
  
-         bogaraszok.get(0).bogarHozzaad(ketto);
+        bogaraszok.get(0).bogarHozzaad(ketto);
  
-         bogaraszok.get(1).bogarHozzaad(het);
+        bogaraszok.get(1).bogarHozzaad(het);
  
-         jelenlegiJatekos().korElejeInicializalas();
+        jelenlegiJatekos().korElejeInicializalas();
  
-     }
+    }
+
+    //random palya keszites
+    public void randomPalya(ArrayList<String> jatekosNevek)
+    {
+        //tektonok
+        Random rnd = new Random();
+        int meret = 5* jatekosNevek.size();
+       
+        jatekter = new Palya();
+
+        int lerakhato = meret;
+
+        Tekton elso = randomTipusuTekton();
+        jatekter.getPalya().add(elso);
+
+        do 
+        { 
+            lerakhato = palyaFelepites(lerakhato, elso);
+        } while (lerakhato > 0);
+        
+        lerakhato = rnd.nextInt(meret/3) + meret/3;
+
+        do 
+        { 
+            Tekton egyik = jatekter.getPalya().get(rnd.nextInt(meret));
+            Tekton masik;
+            do 
+            { 
+                masik = jatekter.getPalya().get(rnd.nextInt(meret));
+            } while (egyik == masik);
+
+            egyik.szomszed.add(masik);
+            masik.szomszed.add(elso);
+            lerakhato--;
+        } while (lerakhato != 0);
+/* 
+        for(int i = 0; i < meret; i++)
+        {
+            jatekter.getPalya().add(randomTipusuTekton());
+        }
+*/
+        ArrayList<Tekton> foglalt = new ArrayList<>();
+        //jatekosok
+        jatekosokSorsolasa(jatekosNevek);
+        for(int i = 0; i < gombaszok.size(); i++)
+        {
+            Tekton kezdo;
+            do
+            {
+                kezdo = jatekter.getPalya().get(rnd.nextInt(meret));
+                
+            }while(foglalt.contains(kezdo));
+            foglalt.add(kezdo);
+            gombaszok.get(i).getTestek().add(new Gombatest(kezdo, gombaszok.get(i)));
+        }
+
+        for(int i = 0; i < gombaszok.size(); i++)
+        {
+            Tekton kezdo;
+            do
+            {
+                kezdo = jatekter.getPalya().get(rnd.nextInt(meret));
+            }while(foglalt.contains(kezdo));
+            foglalt.add(kezdo);
+            bogaraszok.get(i).bogarHozzaad(kezdo);
+        }
+
+    }
+
+    //random tekton tipus
+
+    public Tekton randomTipusuTekton()
+    {
+        Random rnd = new Random();
+        Tekton uj;
+        int i = rnd.nextInt(10);
+        switch (i) {
+            case 1:
+                uj = new Testetlen(); 
+                break;
+            case 2:
+                uj = new Felszivo();
+                break;
+            case 3:
+                uj = new Egyfonalas();
+                break;
+            case 4:
+                uj = new EletbenTarto();
+                break;
+            default:
+            uj = new Tekton();
+        }
+
+        return uj;
+    }
+
+    //palya felepites random kapcsolatokkal
+    int palyaFelepites(int lerakhato, Tekton forras)
+    {
+        if(lerakhato == 1)
+        {
+            return 0;
+        }
+
+        Random rnd = new Random();
+        int ertek;
+        do { 
+
+            do { 
+                ertek = rnd.nextInt(lerakhato);
+            } while (ertek > lerakhato/2);
+            for(int i = 0; i < ertek; i++)
+            {
+                Tekton uj = randomTipusuTekton();
+
+                forras.addSzomszed(uj);
+                uj.addSzomszed(forras);
+                jatekter.getPalya().add(uj);
+            }
+
+        } while (ertek == 0 && jatekter.getPalya().size() <= 4);
+
+        int maradt = lerakhato - ertek;
+        int kezdoertek = 1;
+        if(forras == jatekter.getPalya().get(0))
+        {
+            kezdoertek = 0;
+        }
+
+        for(int i = kezdoertek; i < forras.getSzomszed().size(); i++)
+        {
+            if(maradt != 0)
+            {
+                maradt =  palyaFelepites(maradt, forras.getSzomszed().get(i));
+            }
+           
+        }
+
+        return maradt;
+        
+    }
+
 }

@@ -1,7 +1,9 @@
 package swing;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -60,15 +62,9 @@ public class JatekosMegadosPanel extends JPanel {
         hozzaAd.addActionListener(e -> {
           String nev = nevField.getText().trim();
           if (!nev.isEmpty()) {
-              jatekosok.add(nev);
-              nevField.setText("");
-              //jelenleg csak 4 jatekoshoz van egy "hasznalhato" palya, ezert csak ennyivel szabad elinditani
-              if(jatekosok.size() == 4){
-                    vege.setEnabled(true);
-              }
-              else{
-                    vege.setEnabled(false);
-              }
+            jatekosok.add(nev);
+            nevField.setText("");
+            vege.setEnabled(true);
           }
         });
 
