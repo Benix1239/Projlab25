@@ -23,6 +23,10 @@ public class Tekton
 		return sporak;
 	}
 
+	public Gombatest getGombatest(){
+		return gombatest;
+	}
+
 	/*
 	 * @brief Konstruktor
 	 * @param spo -> A tekton spora listaja (tekton szetesesekor a tektonon maradnak sporak)

@@ -1,8 +1,10 @@
 package swing;
 
+import backend.Bogarasz;
 import backend.Gombasz;
 import backend.Jatek;
 import backend.Jatekos;
+import backend.Tekton;
 import java.awt.*;
 import javax.swing.*;
 
@@ -15,6 +17,12 @@ public class InfoFrame extends JFrame {
     private JPanel cardPanel;
     private CardLayout cardLayout;
     private Jatek jatekmenet;
+    private String mode;
+    private Tekton kivalasztott;
+
+    public String getMode(){
+        return mode;
+    }
 
     public InfoFrame(Jatek jatek) {
         this.jatekmenet = jatek;
@@ -27,7 +35,7 @@ public class InfoFrame extends JFrame {
         setLayout(new BorderLayout());
         
         // Gombok felülre
-        JPanel gombPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        /*JPanel gombPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         JButton pontokGomb = new JButton("Pontok");
         JButton gombaszGomb = new JButton("Gombász");
@@ -47,7 +55,7 @@ public class InfoFrame extends JFrame {
         gombPanel.add(tektonGomb);
 
         // Gombpanel hozzáadása felülre
-        add(gombPanel, BorderLayout.NORTH);
+        add(gombPanel, BorderLayout.NORTH);*/
 
         // CardLayout inicializálása
         cardLayout = new CardLayout();
@@ -79,20 +87,39 @@ public class InfoFrame extends JFrame {
 
         if (aktualis instanceof Gombasz g) {
             gombaszPanel.frissit(g);
-        }// else if (aktualis instanceof Bogarasz b) {
-        //    bogaraszPanel.frissit(b);
-        //bogaraszPanel.frissit(jatekmenet.getAktivBogarasz());
-        //tektonPanel.frissit(jatekmenet.getAktivTekton());
+        } else if (aktualis instanceof Bogarasz b) {
+                bogaraszPanel.frissit(b);
+        }
+        tektonPanel.frissit(kivalasztott,jatekmenet.getGombaszok(),jatekmenet.getBogaraszok());
         
     }
 
-    public void modeValtozas(int mode) {
+    public void modeValtozas(String mode) {
+        this.mode=mode;
         switch(mode) {
-            case 0: cardLayout.show(cardPanel, "pontok"); break;
-            case 1: cardLayout.show(cardPanel, "gombasz"); break;
-            case 2: cardLayout.show(cardPanel, "bogarasz"); break;
-            case 3: cardLayout.show(cardPanel, "tekton"); break;
-            default: cardLayout.show(cardPanel, "pontok");
+            case "I":
+                Jatekos j = jatekmenet.jelenlegiJatekos();
+    
+                if (j instanceof backend.Gombasz) {
+                    cardLayout.show(cardPanel, "gombasz");
+                } else if (j instanceof backend.Bogarasz) {
+                    cardLayout.show(cardPanel, "bogarasz");
+                }
+                break;
+    
+            case "L":
+                cardLayout.show(cardPanel, "tekton");
+                break;
+    
+            default:
+                cardLayout.show(cardPanel, "pontok");
+                break;
         }
+    
+        frissit();
+    }
+    
+    public void setTektonInfo(Tekton t){
+        kivalasztott=t;
     }
 }

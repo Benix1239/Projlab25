@@ -1,11 +1,11 @@
 package swing;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.util.List;
 import backend.Gombasz;
 import backend.Gombatest;
+import java.awt.*;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class GombaszTulajdonsagPanel extends JPanel {
@@ -34,10 +34,11 @@ public class GombaszTulajdonsagPanel extends JPanel {
         int index = 0;
         for (Gombatest test : testek) {
             tableModel.addRow(new Object[]{
-                "gombatest" + index++,
-                test.getSpora()!=null ? "Igen" : "Nem",
+                "Test" + index,
+                test.tudSporatSzorni() ? "Igen" : "Nem",
                 test.tudFonalatRakni() ? "Igen" : "Nem"
             });
+            index++;
         }
         tableModel.fireTableDataChanged();
     }

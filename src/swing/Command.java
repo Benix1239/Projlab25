@@ -1,9 +1,9 @@
 package swing;
 
+import backend.Jatek;
+import backend.Tekton;
 import java.awt.Color;
 import java.util.ArrayList;
-
-import backend.Jatek;
 
 public class Command {
     
@@ -33,6 +33,15 @@ public class Command {
     private void executeCommand(){
         jatekPanel.frissit();
         switch(commandNev){
+            case "leiras":
+                if (paramaterek.size()==0) {
+                    jatekPanel.mindentEngedely();
+                }
+                if(paramaterek.size() == 1){
+                    Tekton valasztott = jatekmenet.tektonFromString(paramaterek.get(1));
+                    infoFrame.setTektonInfo(valasztott);
+                }
+                break;
             case "bogarakListazasa":
                 jatekPanel.bogarakListazasa();
                 break;

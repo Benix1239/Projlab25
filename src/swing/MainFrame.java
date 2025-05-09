@@ -139,5 +139,7 @@ public class MainFrame extends JFrame {
         infoFrame.frissit();
     }
 
-    
+    public InfoFrame getInfoFrame(){
+        return infoFrame;
+    }
 }
