@@ -254,7 +254,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("leiras", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Command("leiras", jatekmenet, sajatMaga());
+                command = new Command("leiras", jatekmenet, sajatMaga());
                 mainFrame.getInfoFrame().modeValtozas("L");  
             }
         });

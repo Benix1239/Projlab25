@@ -38,7 +38,7 @@ public class Command {
                     jatekPanel.mindentEngedely();
                 }
                 if(paramaterek.size() == 1){
-                    Tekton valasztott = jatekmenet.tektonFromString(paramaterek.get(1));
+                    Tekton valasztott = jatekmenet.tektonFromString(paramaterek.get(0));
                     infoFrame.setTektonInfo(valasztott);
                 }
                 break;
@@ -127,7 +127,7 @@ public class Command {
                 }
 
                 if(paramaterek.size() != 0){
-                    
+
                 }
                 break;
         }
