@@ -69,9 +69,6 @@ public class MainFrame extends JFrame {
 
     //infoFrame bekapcsolasa
     public void infoFrameBekapcs() {
-        if (infoFrame == null || !infoFrame.isDisplayable()) {
-            infoFrame = new InfoFrame(jatekmenet);
-        }
         infoFrame.frissit();
         infoFrame.setVisible(true);
     }

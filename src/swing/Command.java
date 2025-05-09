@@ -41,7 +41,7 @@ public class Command {
                 } else {
                     Tekton valasztott = jatekmenet.tektonFromString(paramaterek.getLast());
                     infoFrame.setTektonInfo(valasztott);
-                    infoFrame.frissit();  // itt nem kell újra váltani
+                    
                 }
                 break;
             case "bogarakListazasa":

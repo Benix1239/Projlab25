@@ -66,20 +66,20 @@ public class TektonTulajdonsagPanel extends JPanel {
 
         // Bogarászok adatai
         for (Bogarasz b : bogaraszok) {
-            List<Bogar> bogarak = b.getBogarak(); 
             List<Tekton> bogarakHelyei = b.bogarakHelyei();
-    
+        
             StringBuilder ottLevoBogarak = new StringBuilder();
             for (int i = 0; i < bogarakHelyei.size(); i++) {
-                Tekton t = bogarakHelyei.get(i);
-                if (t.equals(tekton)) {
+                if (bogarakHelyei.get(i).equals(tekton)) {
                     if (ottLevoBogarak.length() > 0) ottLevoBogarak.append(", ");
-                    ottLevoBogarak.append(bogarak.get(i)); 
+                    ottLevoBogarak.append(i); 
                 }
             }
-    
+        
             String bogarakStr = ottLevoBogarak.length() > 0 ? ottLevoBogarak.toString() : "-";
             tableModel.addRow(new Object[]{b.getNev(), "-", "-", bogarakStr});
         }
+
+        tableModel.fireTableDataChanged();
     }
 }
