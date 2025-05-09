@@ -70,7 +70,7 @@ public class Jatek {
         jatekosIndex = 0;
         this.mainFrame = mainFrame;
 
-        randomPalya(jatekosNevek);
+       alapJatekPalya(jatekosNevek);
     }
 
     private void jatekosokSorsolasa(ArrayList<String> jatekosNevek){
