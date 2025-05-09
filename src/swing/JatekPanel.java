@@ -256,7 +256,7 @@ public class JatekPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 command = new Command("leiras", jatekmenet, sajatMaga(),infoFrame);
-                mainFrame.getInfoFrame().modeValtozas("L");
+                
             }
         });
         
@@ -309,10 +309,6 @@ public class JatekPanel extends JPanel{
         tektonGombokEnabled(false);
         elsoComboBox.setEnabled(false);
         masodikComboBox.setEnabled(false);
-    }
-
-    public void mindentEngedely(){
-        tektonGombokEnabled(true);
     }
 
     private JatekPanel sajatMaga(){

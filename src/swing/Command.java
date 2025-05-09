@@ -35,13 +35,13 @@ public class Command {
         jatekPanel.frissit();
         switch(commandNev){
             case "leiras":
-                if (paramaterek.size()==0) {
-                    jatekPanel.mindentEngedely();
-                }
-                else if(paramaterek.size() == 1){
-                    Tekton valasztott = jatekmenet.tektonFromString(paramaterek.get(0));
+                if (paramaterek.isEmpty()) {
+                    jatekPanel.tektonGombokEnabled(true);
+                    infoFrame.modeValtozas("L");
+                } else {
+                    Tekton valasztott = jatekmenet.tektonFromString(paramaterek.getLast());
                     infoFrame.setTektonInfo(valasztott);
-                    infoFrame.frissit();
+                    infoFrame.frissit();  // itt nem kell újra váltani
                 }
                 break;
             case "bogarakListazasa":
