@@ -1,11 +1,11 @@
 package swing;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.util.List;
 import backend.Gombasz;
 import backend.Gombatest;
+import java.awt.*;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class GombaszTulajdonsagPanel extends JPanel {
@@ -31,6 +31,7 @@ public class GombaszTulajdonsagPanel extends JPanel {
     public void frissit(Gombasz g) {
         tableModel.setRowCount(0); // előző sorok törlése
         List<Gombatest> testek = g.getTestek();
+        int index = 0;
         int index = 0;
         for (Gombatest test : testek) {
             tableModel.addRow(new Object[]{

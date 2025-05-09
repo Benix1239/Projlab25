@@ -11,6 +11,7 @@ import java.util.Set;
 public class View
 {
 
+    /* 
     Scanner bemenet = InputHandler.getScanner();
     PrintStream kimenet = OutputHandler.getKonzol();
     Scanner elvart;
@@ -527,5 +528,5 @@ public class View
         }
         return;
     }
-
+*/
 }

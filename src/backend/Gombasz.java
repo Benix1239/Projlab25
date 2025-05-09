@@ -270,4 +270,20 @@ public class Gombasz extends Jatekos
 
         return returnValue;
     }
+
+    /**
+     * 
+     * @return Azok a gombatestek, akik meg kepesek sporat szorni.
+     */
+    public Set<Gombatest> sporaSzorosTestek(){
+        Set<Gombatest> returnValue = new HashSet<>();
+        for(Gombatest g : testek){
+            if(g.tudSporatSzorni()){
+                returnValue.add(g);
+            }
+        }
+
+        return returnValue;
+    }
+    
 }

@@ -291,6 +291,14 @@ public class JatekPanel extends JPanel{
                 command = new Command("fonalLerak", jatekmenet, sajatMaga());
             }
         });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("S"), "sporaSzor");
+        this.getActionMap().put("sporaSzor", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("sporaSzor", jatekmenet, sajatMaga());
+            }
+        });
     }
 
     

@@ -16,6 +16,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.plaf.basic.BasicSplitPaneUI;
+
 import swing.MainFrame;
 
 public class Jatek {
@@ -68,7 +70,7 @@ public class Jatek {
         jatekosIndex = 0;
         this.mainFrame = mainFrame;
 
-        alapJatekPalya(jatekosNevek);
+       alapJatekPalya(jatekosNevek);
     }
 
     private void jatekosokSorsolasa(ArrayList<String> jatekosNevek){
@@ -416,6 +418,7 @@ public class Jatek {
         returnValue = gombaszObj.sporaSzor(gombatestObj, tektonObj);
 
         jatekosKorvege();
+        mainFrame.frissit();
         return returnValue;
     }
 
@@ -491,11 +494,18 @@ public class Jatek {
     }
 
     //kesz
-    public Set<Tekton> gombaszHovaSzorhat(String gombasz, String gombatest) {
+    public boolean[] gombaszHovaSzorhat(String gombasz, String gombatest) {
         Gombasz gombaszObj = gombaszFromString(gombasz);
         Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
 
-        return gombatestObj.hovaSzorhat();
+        Set<Tekton> helyek = gombatestObj.hovaSzorhat();
+
+        boolean[] hovaSzorhat = new boolean[palyaMeret()];
+        for(Tekton t : helyek){
+            hovaSzorhat[jatekter.getPalya().indexOf(t)] = true;;
+        }
+
+        return hovaSzorhat;
     }
 
     public ArrayList<Fonal> tektononFonal(String tekton) {
@@ -752,4 +762,158 @@ public class Jatek {
 
         return returnString;
     }
+
+    public ArrayList<String> jelenlegiGombaszSporaSzorosTestjei(){
+        Gombasz gombaszObj = gombaszFromString("Koron levo gombasz");
+        Set<Gombatest> gombatestek = gombaszObj.sporaSzorosTestek();
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for(Gombatest g : gombatestek){
+            returnString.add("gombatest" + jelenlegiGombasz().getTestek().indexOf(g));
+        }
+
+        return returnString;
+    }
+
+    public void randomPalya(ArrayList<String> jatekosNevek)
+    {
+        //tektonok
+        Random rnd = new Random();
+        int meret = 5* jatekosNevek.size();
+       
+        jatekter = new Palya();
+
+        int lerakhato = meret;
+
+        Tekton elso = randomTipusuTekton();
+        jatekter.getPalya().add(elso);
+
+        do 
+        { 
+            lerakhato = palyaFelepites(lerakhato, elso);
+        } while (lerakhato > 0);
+        
+        lerakhato = rnd.nextInt(meret/3) + meret/3;
+
+        do 
+        { 
+            Tekton egyik = jatekter.getPalya().get(rnd.nextInt(meret));
+            Tekton masik;
+            do 
+            { 
+                masik = jatekter.getPalya().get(rnd.nextInt(meret));
+            } while (egyik == masik);
+
+            egyik.szomszed.add(masik);
+            masik.szomszed.add(elso);
+            lerakhato--;
+        } while (lerakhato != 0);
+/* 
+        for(int i = 0; i < meret; i++)
+        {
+            jatekter.getPalya().add(randomTipusuTekton());
+        }
+*/
+        ArrayList<Tekton> foglalt = new ArrayList<>();
+        //jatekosok
+        jatekosokSorsolasa(jatekosNevek);
+        for(int i = 0; i < gombaszok.size(); i++)
+        {
+            Tekton kezdo;
+            do
+            {
+                kezdo = jatekter.getPalya().get(rnd.nextInt(meret));
+                
+            }while(foglalt.contains(kezdo));
+            foglalt.add(kezdo);
+            gombaszok.get(i).getTestek().add(new Gombatest(kezdo, gombaszok.get(i)));
+        }
+
+        for(int i = 0; i < gombaszok.size(); i++)
+        {
+            Tekton kezdo;
+            do
+            {
+                kezdo = jatekter.getPalya().get(rnd.nextInt(meret));
+            }while(foglalt.contains(kezdo));
+            foglalt.add(kezdo);
+            bogaraszok.get(i).bogarHozzaad(kezdo);
+        }
+
+    }
+
+    //random tekton tipus
+
+    public Tekton randomTipusuTekton()
+    {
+        Random rnd = new Random();
+        Tekton uj;
+        int i = rnd.nextInt(10);
+        switch (i) {
+            case 1:
+                uj = new Testetlen(); 
+                break;
+            case 2:
+                uj = new Felszivo();
+                break;
+            case 3:
+                uj = new Egyfonalas();
+                break;
+            case 4:
+                uj = new EletbenTarto();
+                break;
+            default:
+            uj = new Tekton();
+        }
+
+        return uj;
+    }
+
+    //palya felepites random kapcsolatokkal
+    int palyaFelepites(int lerakhato, Tekton forras)
+    {
+        if(lerakhato == 1)
+        {
+            return 0;
+        }
+
+        Random rnd = new Random();
+        int ertek;
+        do { 
+
+            do { 
+                ertek = rnd.nextInt(lerakhato);
+            } while (ertek > lerakhato/2);
+            for(int i = 0; i < ertek; i++)
+            {
+                Tekton uj = randomTipusuTekton();
+
+                forras.addSzomszed(uj);
+                uj.addSzomszed(forras);
+                jatekter.getPalya().add(uj);
+            }
+
+        } while (ertek == 0 && jatekter.getPalya().size() <= 4);
+
+        int maradt = lerakhato - ertek;
+        int kezdoertek = 1;
+        if(forras == jatekter.getPalya().get(0))
+        {
+            kezdoertek = 0;
+        }
+
+        for(int i = kezdoertek; i < forras.getSzomszed().size(); i++)
+        {
+            if(maradt != 0)
+            {
+                maradt =  palyaFelepites(maradt, forras.getSzomszed().get(i));
+            }
+           
+        }
+
+        return maradt;
+        
+    }
+
+
 }

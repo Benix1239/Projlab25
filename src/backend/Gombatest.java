@@ -247,6 +247,17 @@ public class Gombatest
     }
 
     /**
+     * Lehet-e sporat szorni a gombatesttel.
+     * @return true: lehet szorni, false: nem lehet sporat szorni.
+     */
+    public boolean tudSporatSzorni(){
+        if(spora != null){
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Maradt getter.
      * @return int maradt.
      */
