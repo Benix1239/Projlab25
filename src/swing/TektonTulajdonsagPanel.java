@@ -37,10 +37,17 @@ public class TektonTulajdonsagPanel extends JPanel {
         tableModel.setRowCount(0); // előző sorok törlése
 
         // Gombászok adatai
-        for (Gombasz g : gombaszok) {
-            String sporak = String.valueOf(tekton.getSporak()); 
-            String gombatest = tekton.getGombatest()!=null ? "Van" : "-"; 
-            tableModel.addRow(new Object[]{g.getNev(), sporak, gombatest, "-"});
+        if (tekton != null) {
+            for (int i = 0; i < gombaszok.size(); i++) {
+                Gombasz g = gombaszok.get(i);
+                String sporak = i == 0 ? String.valueOf(tekton.getSporak().size()) : "";
+                String gombatest = i == 0 ? (tekton.getGombatest() != null ? "Van" : "-") : "";
+                tableModel.addRow(new Object[]{g.getNev(), sporak, gombatest, "-"});
+            }
+        } else {
+            for (Gombasz g : gombaszok) {
+                tableModel.addRow(new Object[]{g.getNev(), "-", "-", "-"});
+            }
         }
 
         // Bogarászok adatai

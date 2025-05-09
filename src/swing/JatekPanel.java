@@ -10,11 +10,8 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -24,8 +21,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
-
-import backend.Jatek;
 
 public class JatekPanel extends JPanel{
     
@@ -259,6 +254,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("leiras", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                new Command("leiras", jatekmenet, sajatMaga());
                 mainFrame.getInfoFrame().modeValtozas("L");  
             }
         });
@@ -267,7 +263,8 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("info", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.getInfoFrame().modeValtozas("I"); 
+                mainFrame.getInfoFrame().modeValtozas("I");
+
             }
         });
 
@@ -296,11 +293,17 @@ public class JatekPanel extends JPanel{
         });
     }
 
+    
+
     // letiltja a tektonGombokat es a comboboxokat
     public void mindentLetilt(){
         tektonGombokEnabled(false);
         elsoComboBox.setEnabled(false);
         masodikComboBox.setEnabled(false);
+    }
+
+    public void mindentEngedely(){
+        tektonGombokEnabled(true);
     }
 
     private JatekPanel sajatMaga(){

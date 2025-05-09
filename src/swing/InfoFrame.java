@@ -4,6 +4,7 @@ import backend.Bogarasz;
 import backend.Gombasz;
 import backend.Jatek;
 import backend.Jatekos;
+import backend.Tekton;
 import java.awt.*;
 import javax.swing.*;
 
@@ -16,6 +17,12 @@ public class InfoFrame extends JFrame {
     private JPanel cardPanel;
     private CardLayout cardLayout;
     private Jatek jatekmenet;
+    private String mode;
+    private Tekton kivalasztott;
+
+    public String getMode(){
+        return mode;
+    }
 
     public InfoFrame(Jatek jatek) {
         this.jatekmenet = jatek;
@@ -83,11 +90,12 @@ public class InfoFrame extends JFrame {
         } else if (aktualis instanceof Bogarasz b) {
                 bogaraszPanel.frissit(b);
         }
-        //tektonPanel.frissit(,jatekmenet.getGombaszok(),jatekmenet.getBogaraszok());
+        tektonPanel.frissit(kivalasztott,jatekmenet.getGombaszok(),jatekmenet.getBogaraszok());
         
     }
 
     public void modeValtozas(String mode) {
+        this.mode=mode;
         switch(mode) {
             case "I":
                 Jatekos j = jatekmenet.jelenlegiJatekos();
@@ -111,4 +119,7 @@ public class InfoFrame extends JFrame {
         frissit();
     }
     
+    public void setTektonInfo(Tekton t){
+        kivalasztott=t;
+    }
 }
