@@ -416,6 +416,7 @@ public class Jatek {
         returnValue = gombaszObj.sporaSzor(gombatestObj, tektonObj);
 
         jatekosKorvege();
+        mainFrame.frissit();
         return returnValue;
     }
 
@@ -491,11 +492,18 @@ public class Jatek {
     }
 
     //kesz
-    public Set<Tekton> gombaszHovaSzorhat(String gombasz, String gombatest) {
+    public boolean[] gombaszHovaSzorhat(String gombasz, String gombatest) {
         Gombasz gombaszObj = gombaszFromString(gombasz);
         Gombatest gombatestObj = gombatestFromString(gombatest, gombaszObj);
 
-        return gombatestObj.hovaSzorhat();
+        Set<Tekton> helyek = gombatestObj.hovaSzorhat();
+
+        boolean[] hovaSzorhat = new boolean[palyaMeret()];
+        for(Tekton t : helyek){
+            hovaSzorhat[jatekter.getPalya().indexOf(t)] = true;;
+        }
+
+        return hovaSzorhat;
     }
 
     public ArrayList<Fonal> tektononFonal(String tekton) {
@@ -745,6 +753,18 @@ public class Jatek {
         Gombasz gombaszObj = gombaszFromString("Koron levo gombasz");
         Set<Gombatest> gombatestek = gombaszObj.fonalLerakosTestek();
         
+        ArrayList<String> returnString = new ArrayList<>();
+        for(Gombatest g : gombatestek){
+            returnString.add("gombatest" + jelenlegiGombasz().getTestek().indexOf(g));
+        }
+
+        return returnString;
+    }
+
+    public ArrayList<String> jelenlegiGombaszSporaSzorosTestjei(){
+        Gombasz gombaszObj = gombaszFromString("Koron levo gombasz");
+        Set<Gombatest> gombatestek = gombaszObj.sporaSzorosTestek();
+
         ArrayList<String> returnString = new ArrayList<>();
         for(Gombatest g : gombatestek){
             returnString.add("gombatest" + jelenlegiGombasz().getTestek().indexOf(g));

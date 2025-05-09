@@ -31,10 +31,10 @@ public class GombaszTulajdonsagPanel extends JPanel {
     public void frissit(Gombasz g) {
         tableModel.setRowCount(0); // előző sorok törlése
         List<Gombatest> testek = g.getTestek();
-        int index = 1;
+        int index = 0;
         for (Gombatest test : testek) {
             tableModel.addRow(new Object[]{
-                "Test" + index++,
+                "gombatest" + index++,
                 test.getSpora()!=null ? "Igen" : "Nem",
                 test.tudFonalatRakni() ? "Igen" : "Nem"
             });
