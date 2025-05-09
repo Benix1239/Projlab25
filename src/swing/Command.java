@@ -35,13 +35,12 @@ public class Command {
         jatekPanel.frissit();
         switch(commandNev){
             case "leiras":
-                if (paramaterek.isEmpty()) {
-                    jatekPanel.tektonGombokEnabled(true);
+                jatekPanel.tektonGombokEnabled(true);
+                if (paramaterek.isEmpty()) {   
                     infoFrame.modeValtozas("L");
                 } else {
                     Tekton valasztott = jatekmenet.tektonFromString(paramaterek.getLast());
                     infoFrame.setTektonInfo(valasztott);
-                    
                 }
                 break;
             case "bogarakListazasa":
