@@ -123,6 +123,15 @@ public class Command {
                     }
                 }
                 break;
+            case "fonallalOsszekotott":
+                if(paramaterek.size() == 0){
+
+                }
+
+                if(paramaterek.size() != 0){
+                    
+                }
+                break;
         }
     }
 

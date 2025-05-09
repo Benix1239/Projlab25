@@ -70,7 +70,7 @@ public class Jatek {
         jatekosIndex = 0;
         this.mainFrame = mainFrame;
 
-       alapJatekPalya(jatekosNevek);
+        alapJatekPalya(jatekosNevek);
     }
 
     private void jatekosokSorsolasa(ArrayList<String> jatekosNevek){
@@ -657,9 +657,11 @@ public class Jatek {
 
         Gombatest gtEgy = new Gombatest(elso, gombaszok.get(0));
         gombaszok.get(0).gombatestHozzaad(gtEgy);
+        elso.gombatest = gtEgy;
 
         Gombatest gtKet = new Gombatest(negy, gombaszok.get(1));
         gombaszok.get(1).gombatestHozzaad(gtKet);
+        negy.gombatest = gtKet;
 
         bogaraszok.get(0).bogarHozzaad(ketto);
 
