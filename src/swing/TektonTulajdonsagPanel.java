@@ -40,8 +40,8 @@ public class TektonTulajdonsagPanel extends JPanel {
         if (tekton != null) {
             for (int i = 0; i < gombaszok.size(); i++) {
                 Gombasz g = gombaszok.get(i);
-                String sporak = i == 0 ? String.valueOf(tekton.getSporak().size()) : "";
-                String gombatest = i == 0 ? (tekton.getGombatest() != null ? "Van" : "-") : "";
+                String sporak = tekton.getSporak() != null ? String.valueOf(tekton.getSporak().size()) : "";
+                String gombatest = tekton.getGombatest() != null ? "Van" : "-";
                 tableModel.addRow(new Object[]{g.getNev(), sporak, gombatest, "-"});
             }
         } else {

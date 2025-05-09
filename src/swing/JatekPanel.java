@@ -38,9 +38,10 @@ public class JatekPanel extends JPanel{
     private Command command;
     private Jatek jatekmenet;
 
-    public JatekPanel(MainFrame mainFrame, Jatek jatekmenet){
+    public JatekPanel(MainFrame mainFrame, Jatek jatekmenet,InfoFrame infoFrame ){
         this.mainFrame = mainFrame;
         this.jatekmenet = jatekmenet;
+        this.infoFrame=infoFrame;
 
         // palya merete
         final int SOR = 25;
@@ -214,7 +215,7 @@ public class JatekPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                new Command("bogarakListazasa", jatekmenet, sajatMaga());
+                new Command("bogarakListazasa", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -230,7 +231,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("gombatestekListazasa", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Command("gombatestekListazasa", jatekmenet, sajatMaga());
+                new Command("gombatestekListazasa", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -246,7 +247,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("passz", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Command("passz", jatekmenet, sajatMaga());
+                new Command("passz", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -254,8 +255,8 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("leiras", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Command("leiras", jatekmenet, sajatMaga());
-                mainFrame.getInfoFrame().modeValtozas("L");  
+                command = new Command("leiras", jatekmenet, sajatMaga(),infoFrame);
+                mainFrame.getInfoFrame().modeValtozas("L");
             }
         });
         
@@ -272,7 +273,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("gombaszEler", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Command("gombaszEler", jatekmenet, sajatMaga());
+                new Command("gombaszEler", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -288,7 +289,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("fonalLerak", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                command = new Command("fonalLerak", jatekmenet, sajatMaga());
+                command = new Command("fonalLerak", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -296,7 +297,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("sporaSzor", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                command = new Command("sporaSzor", jatekmenet, sajatMaga());
+                command = new Command("sporaSzor", jatekmenet, sajatMaga(),infoFrame);
             }
         });
     }

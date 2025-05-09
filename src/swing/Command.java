@@ -15,10 +15,11 @@ public class Command {
     private Jatek jatekmenet;
 
     //TODO
-    public Command(String nev, Jatek jatekmenet, JatekPanel jatekPanel){
+    public Command(String nev, Jatek jatekmenet, JatekPanel jatekPanel, InfoFrame infoFrame){
         this.commandNev = nev;
         this.jatekmenet = jatekmenet;
         this.jatekPanel = jatekPanel;
+        this.infoFrame=infoFrame;
         this.paramaterek = new ArrayList<>();
         executeCommand();
     }
@@ -37,9 +38,10 @@ public class Command {
                 if (paramaterek.size()==0) {
                     jatekPanel.mindentEngedely();
                 }
-                if(paramaterek.size() == 1){
-                    Tekton valasztott = jatekmenet.tektonFromString(paramaterek.get(1));
+                else if(paramaterek.size() == 1){
+                    Tekton valasztott = jatekmenet.tektonFromString(paramaterek.get(0));
                     infoFrame.setTektonInfo(valasztott);
+                    infoFrame.frissit();
                 }
                 break;
             case "bogarakListazasa":
