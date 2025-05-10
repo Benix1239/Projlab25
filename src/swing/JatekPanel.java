@@ -316,6 +316,14 @@ public class JatekPanel extends JPanel{
                 command = new Command("eves", jatekmenet, sajatMaga(),infoFrame);
             }
         });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("R"), "ragas");
+        this.getActionMap().put("ragas", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("ragas", jatekmenet, sajatMaga(),infoFrame);
+            }
+        });
     }
 
     
@@ -415,6 +423,16 @@ public class JatekPanel extends JPanel{
         for(int i = 0; i < tektonok.length; i++){
             if(tektonok[i]){
                 tektonGombok.get(i).setBackground(color);
+            }
+        }
+    }
+
+    public void tektonSzovegAllitas(boolean[] tektonok, ArrayList<String> a ){
+        int j=0;
+        for(int i = 0; i < tektonok.length; i++){
+            if(tektonok[i]){
+                tektonGombok.get(i).setText(a.get(j));
+                j++;
             }
         }
     }

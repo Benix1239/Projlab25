@@ -812,6 +812,33 @@ public class Jatek {
         return returnString;
     }
 
+    public ArrayList<String> jelenlegiBogaraszBogaraiTudRagni() {
+        Bogarasz bogaraszObj = jelenlegiBogarasz();  
+        List<Bogar> bogarak = bogaraszObj.getBogarak();  
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < bogarak.size(); i++) {
+            if(bogarak.get(i).getactionRagas()==true && bogarak.get(i).getHelyzet().getOsszekoto()!=null){
+                returnString.add("bogar" + i);
+            }
+        }
+
+        return returnString;
+    }
+
+    public ArrayList<String> bogarMitTudElragni(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < bogarObj.getHelyzet().getOsszekoto().size(); i++) {
+            returnString.add("fonal" + i);
+        }
+
+        return returnString;
+    }
+
     public boolean[] bogarHovaLephet(String bogarasz, String bogar) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj,bogar);
@@ -826,6 +853,7 @@ public class Jatek {
     
         return returnValue;
     }
+    
     
 
 

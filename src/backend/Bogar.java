@@ -174,7 +174,7 @@ public class Bogar
     public Set<Tekton> hovaLephet() {
         Set<Tekton> szomszedok=null;
     
-        if (this.mozgasok > 0) { 
+        if (this.mozgasok > 0 && helyzet.fonalKeres().size()!=0) { 
             szomszedok=new HashSet<>(helyzet.fonalKeres());
         }
     
