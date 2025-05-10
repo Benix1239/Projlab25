@@ -854,7 +854,19 @@ public class Jatek {
         return returnValue;
     }
     
+    public boolean[] bogarHovaAll(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        Tekton hely = bogarObj.getHelyzet();
     
+        boolean[] returnValue = new boolean[palyaMeret()];
+        int index = jatekter.getPalya().indexOf(hely);
+        if (index != -1) {
+            returnValue[index] = true;
+        }
+    
+        return returnValue;
+    }
 
 
     public void randomPalya(ArrayList<String> jatekosNevek)

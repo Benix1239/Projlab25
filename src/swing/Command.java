@@ -90,14 +90,19 @@ public class Command {
                         jatekPanel.elsoComboboxEnabled(true);
                         jatekPanel.tektonGombokEnabled(false);
                         jatekPanel.masodikComboboxEnabled(false);
+                        
                     }
                     else if(paramaterek.size()==1){
                         jatekPanel.elsoComboboxEnabled(false);
                         jatekPanel.tektonGombokEnabled(false);
                         jatekPanel.masodikComboboxElemek(jatekmenet.bogarMitTudElragni("Koron levo bogarasz",paramaterek.get(0)));
                         jatekPanel.masodikComboboxEnabled(true);
+                        
                         boolean[] hovamegy = jatekmenet.bogarHovaLephet("Koron levo bogarasz", paramaterek.get(0));
                         jatekPanel.tektonSzovegAllitas(hovamegy, jatekmenet.bogarMitTudElragni("Koron levo bogarasz",paramaterek.get(0)));
+                    
+                        boolean[] holvan = jatekmenet.bogarHovaAll("Koron levo bogarasz", paramaterek.get(0));
+                        jatekPanel.tektonSzinAllitas(holvan, Color.GREEN);
                     }
                     else if(paramaterek.size()==2){
                         jatekmenet.ragas("Koron levo bogarasz", paramaterek.get(0),paramaterek.get(1));
