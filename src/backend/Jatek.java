@@ -881,6 +881,24 @@ public class Jatek {
         return returnValue;
     }
 
+    public boolean[] jelenlegiGombaszBenitottak(String gombasz) {
+        Gombasz gombaszObj = gombaszFromString(gombasz);
+        List<Bogar> benitott = gombaszObj.getBenitottak();
+    
+        boolean[] returnValue = new boolean[palyaMeret()];
+        List<Tekton> palya = jatekter.getPalya();
+    
+        for (Bogar b : benitott) {
+            Tekton hely = b.getHelyzet();
+            int index = palya.indexOf(hely);
+            if (index != -1) {
+                returnValue[index] = true;
+            }
+        }
+    
+        return returnValue;
+    }
+
 
     public void randomPalya(ArrayList<String> jatekosNevek)
     {

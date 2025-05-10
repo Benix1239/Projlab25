@@ -83,6 +83,10 @@ public class Command {
                         jatekPanel.tektonGombokEnabled(false);
                         jatekPanel.masodikComboboxEnabled(true);
                         jatekPanel.masodikComboboxElemek(jatekmenet.jelenlegiGombaszTudEnni());
+
+                        boolean[] holvanbenitott = jatekmenet.jelenlegiGombaszBenitottak("Koron levo gombasz");
+                        jatekPanel.tektonSzovegAllitas(holvanbenitott, jatekmenet.jelenlegiGombaszTudEnni());
+                    
                     }
                     else if(paramaterek.size()==1){
                         jatekmenet.evesBogarat("Koron levo gombasz", paramaterek.get(0));
