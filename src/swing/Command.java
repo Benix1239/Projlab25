@@ -3,6 +3,7 @@ package swing;
 import backend.Jatek;
 import backend.Tekton;
 import java.awt.Color;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 
 public class Command {
@@ -78,7 +79,14 @@ public class Command {
                 }
                 else{
                     if(paramaterek.isEmpty()) {   
-                        
+                        jatekPanel.elsoComboboxEnabled(false);
+                        jatekPanel.tektonGombokEnabled(false);
+                        jatekPanel.masodikComboboxEnabled(true);
+                        jatekPanel.masodikComboboxElemek(jatekmenet.jelenlegiGombaszTudEnni());
+                    }
+                    else if(paramaterek.size()==1){
+                        jatekmenet.evesBogarat("Koron levo gombasz", paramaterek.get(0));
+                        jatekPanel.setCommandNull();
                     }
                 }
                 

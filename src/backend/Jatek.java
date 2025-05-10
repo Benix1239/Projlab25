@@ -672,8 +672,10 @@ public class Jatek {
         negy.gombatest = gtKet;
 
         bogaraszok.get(0).bogarHozzaad(ketto);
-
+        ketto.addSpora(new Benito(gombaszok.get(0)));
+        
         bogaraszok.get(1).bogarHozzaad(het);
+        het.addSpora(new Benito(gombaszok.get(0)));
 
         jelenlegiJatekos().korElejeInicializalas();
 
@@ -807,6 +809,17 @@ public class Jatek {
             if(bogarak.get(i).getactionEves()==true&& bogarak.get(i).getHelyzet().getSporak()!=null){
                 returnString.add("bogar" + i);
             }
+        }
+
+        return returnString;
+    }
+
+    public ArrayList<String> jelenlegiGombaszTudEnni() {
+        Gombasz GombaszObj = jelenlegiGombasz();  
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < GombaszObj.getBenitottak().size(); i++) {
+            returnString.add("bogar" + i);
         }
 
         return returnString;
