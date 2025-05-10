@@ -784,13 +784,29 @@ public class Jatek {
 
         return returnString;
     }
-    public ArrayList<String> jelenlegiBogaraszBogaraiIndexei() {
+    public ArrayList<String> jelenlegiBogaraszBogaraiTudLepni() {
         Bogarasz bogaraszObj = jelenlegiBogarasz();  
         List<Bogar> bogarak = bogaraszObj.getBogarak();  
 
         ArrayList<String> returnString = new ArrayList<>();
         for (int i = 0; i < bogarak.size(); i++) {
-            returnString.add("bogar" + i);
+            if(bogarak.get(i).getMozgaspont()>0&& bogarak.get(i).hovaLephet()!=null){
+                returnString.add("bogar" + i);
+            }
+        }
+
+        return returnString;
+    }
+
+    public ArrayList<String> jelenlegiBogaraszBogaraiTudEnni() {
+        Bogarasz bogaraszObj = jelenlegiBogarasz();  
+        List<Bogar> bogarak = bogaraszObj.getBogarak();  
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < bogarak.size(); i++) {
+            if(bogarak.get(i).getactionEves()==true&& bogarak.get(i).getHelyzet().getSporak()!=null){
+                returnString.add("bogar" + i);
+            }
         }
 
         return returnString;

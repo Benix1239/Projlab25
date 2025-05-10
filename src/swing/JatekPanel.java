@@ -308,6 +308,14 @@ public class JatekPanel extends JPanel{
                 command = new Command("lepes", jatekmenet, sajatMaga(),infoFrame);
             }
         });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("M"), "eves");
+        this.getActionMap().put("eves", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("eves", jatekmenet, sajatMaga(),infoFrame);
+            }
+        });
     }
 
     

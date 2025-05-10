@@ -46,7 +46,7 @@ public class Command {
                 break;
             case "lepes":
                 if (paramaterek.isEmpty()) {   
-                    jatekPanel.elsoComboboxElemek(jatekmenet.jelenlegiBogaraszBogaraiIndexei());
+                    jatekPanel.elsoComboboxElemek(jatekmenet.jelenlegiBogaraszBogaraiTudLepni());
                     jatekPanel.elsoComboboxEnabled(true);
                     jatekPanel.tektonGombokEnabled(false);
                     jatekPanel.masodikComboboxEnabled(false);
@@ -60,7 +60,26 @@ public class Command {
                     jatekmenet.lepes("Koron levo bogarasz",paramaterek.get(0), paramaterek.get(1));
                     jatekPanel.setCommandNull(); 
                 }
-
+                break;
+            case "eves":
+                if(jatekmenet.bogaraszKoreVanE()){
+                    if (paramaterek.isEmpty()) {   
+                        jatekPanel.elsoComboboxElemek(jatekmenet.jelenlegiBogaraszBogaraiTudEnni());
+                        jatekPanel.elsoComboboxEnabled(true);
+                        jatekPanel.tektonGombokEnabled(false);
+                        jatekPanel.masodikComboboxEnabled(false);
+                    }
+                    if(paramaterek.size() == 1){
+                        jatekmenet.evesSporat("Koron levo bogarasz",paramaterek.get(0));
+                        jatekPanel.setCommandNull();
+                    }
+                }
+                else{
+                    if(paramaterek.isEmpty()) {   
+                        
+                    }
+                }
+                
                 break;
             case "bogarakListazasa":
                 jatekPanel.bogarakListazasa();
