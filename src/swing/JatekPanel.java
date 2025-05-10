@@ -10,6 +10,9 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.AbstractAction;
@@ -102,6 +105,24 @@ public class JatekPanel extends JPanel{
             int valasz = JOptionPane.showConfirmDialog(this, "Biztos, hogy ki akar lepni?", "Kilépés megerősítése", JOptionPane.YES_NO_OPTION);
             if (valasz == JOptionPane.YES_OPTION) {
                 mainFrame.foMenuBekapcs();
+            }
+        });
+
+        // mentes gomb mukodese
+        mentes.addActionListener(e -> {
+            int valasz = JOptionPane.showConfirmDialog(this, "Szeretné menteni a játékot?", "Mentés megerősítése", JOptionPane.YES_NO_OPTION);
+            if (valasz == JOptionPane.YES_OPTION) {
+                try {
+                    FileOutputStream fileOut = new FileOutputStream("mentes3.txt");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(jatekmenet);  
+                    out.close();
+                    fileOut.close();
+                    JOptionPane.showMessageDialog(this, "A játék sikeresen elmentve.", "Mentés kész", JOptionPane.INFORMATION_MESSAGE);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Hiba történt a mentés során: " + ex.getMessage(), "Mentés hiba", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 

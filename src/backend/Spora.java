@@ -1,8 +1,9 @@
 package backend;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public abstract class Spora 
+public abstract class Spora implements Serializable 
 {
     private int pluszPont;
     private Gombasz tartozik;

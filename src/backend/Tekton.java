@@ -1,5 +1,6 @@
 package backend;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
@@ -8,7 +9,7 @@ import java.util.Random;
  * @class Tekton
  * @brief A egy-egy tekton adatainak taroljasa, es a tekton esemenyeinek kezeleset vegzi.
  */
-public class Tekton
+public class Tekton implements Serializable 
 {
 	protected Gombatest gombatest;			///Tarolja ha van gombatest az adott tektonon
 	protected  ArrayList<Spora> sporak;		///Tarolja a sporakat a tektonon

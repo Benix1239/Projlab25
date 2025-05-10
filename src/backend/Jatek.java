@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
 
 import swing.MainFrame;
 
-public class Jatek {
+public class Jatek implements Serializable {
 
     private Palya jatekter; 
 

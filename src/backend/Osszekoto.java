@@ -1,6 +1,8 @@
 package backend;
 
-public abstract class Osszekoto
+import java.io.Serializable;
+
+public abstract class Osszekoto implements Serializable 
 {
 
     private Tekton hova;

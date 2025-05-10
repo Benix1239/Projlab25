@@ -1,12 +1,13 @@
 package backend;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /** 
  * A Bogar osztály egy bogarat reprezentál, amely képes mozogni, rágni és enni.
  */
-public class Bogar 
+public class Bogar implements Serializable 
 {
     private int mozgasok;
     private Boolean actionRagas;

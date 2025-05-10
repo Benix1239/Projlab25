@@ -2,6 +2,8 @@ package swing;
 
 import backend.Jatek;
 import java.awt.CardLayout;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -83,32 +85,38 @@ public class MainFrame extends JFrame {
     //dicsosegPanel bekapcsolasa
     public void dicsosegBekapcs() {
         cardLayout.show(cardPanel, "dicsosegPanel");
+        dicsosegPanel.betoltEsFrissit();
         setSize(600, 400);
         setLocationRelativeTo(null);
     }
 
     //A megfelelő játékmenetet tölti be
-    public void jatekBetolt(int mentesSzam) {
+   public void jatekBetolt(int mentesSzam) {
         try {
             String fajlNev = "mentes" + mentesSzam + ".txt";
-            
-            jatekmenet = new Jatek(); // új példány létrehozása, ha még nem volt
-            jatekmenet.betolt(fajlNev); // betöltés a fájlból
+
+            // NINCS új példány itt
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(fajlNev));
+            jatekmenet = (Jatek) in.readObject(); // vagy Jatekmenet
+            in.close();
 
             // új játékpanel példányosítása a betöltött játékmenettel
-            jatekPanel = new JatekPanel(this, jatekmenet,infoFrame); // ha kell neki Jatek paraméter
-            cardPanel.add(jatekPanel, "jatekPanel"); // hozzáadás a CardLayout-hoz
-            cardLayout.show(cardPanel, "jatekPanel"); // váltás a játékpanelre
-            setSize(1400, 1000); 
+            jatekPanel = new JatekPanel(this, jatekmenet, infoFrame);
+            cardPanel.add(jatekPanel, "jatekPanel");
+            cardLayout.show(cardPanel, "jatekPanel");
+            cardPanel.revalidate();
+            cardPanel.repaint();
+            setSize(1400, 1000);
             setLocationRelativeTo(null);
-            
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, 
-                "Hiba történt a játék betöltése közben: " + e.getMessage(),
-                "Betöltési hiba", 
-                JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                    "Hiba történt a játék betöltése közben: " + e.getMessage(),
+                    "Betöltési hiba",
+                    JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
+
         infoFrame = new InfoFrame(jatekmenet);
     }
 

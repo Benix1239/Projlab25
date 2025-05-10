@@ -73,7 +73,7 @@ public class DicsosegPanel extends JPanel {
     /**
      * Automatikusan betölti a dicsőséglistát fájlból és frissíti a táblázatot
      */
-    private void betoltEsFrissit() {
+    public void betoltEsFrissit() {
         List<Jatekos> jatekosok = new ArrayList<>();
         
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FALJ_UTVONAL))) {

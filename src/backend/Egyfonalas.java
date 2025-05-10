@@ -1,12 +1,13 @@
 package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
  * @class Egyfonalas
  * @brief Az egyfonalas tektonokat kezeli. (Erre a tektonra csak egy fonalt lehet letenni)
  */
-public class Egyfonalas extends Tekton
+public class Egyfonalas extends Tekton implements Serializable 
 {
 
     /*

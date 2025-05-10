@@ -1,6 +1,8 @@
 package backend;
 
-public class Gyorsito extends Spora
+import java.io.Serializable;
+
+public class Gyorsito extends Spora implements Serializable 
 {
     /**
      * Konstruktor, amely l�trehozza a Gyorsito sp�r�t egy adott gomb�szhoz.

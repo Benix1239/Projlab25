@@ -1,12 +1,13 @@
 package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
  * @class Testetlen
  * @brief Testetlen tekton kezelese. (Erre a tektonra nem tud gombatest epulni)
  */
-public class Testetlen extends Tekton
+public class Testetlen extends Tekton implements Serializable 
 {
      /*
     * @brief Parameter nelkuli konstruktor

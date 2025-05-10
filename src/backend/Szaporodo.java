@@ -1,6 +1,8 @@
 package backend;
 
-public class Szaporodo extends Spora
+import java.io.Serializable;
+
+public class Szaporodo extends Spora implements Serializable 
 {
      /**
      * Konstruktor, amely l�trehozza a szaporodo sp�r�t egy adott gomb�szhoz.

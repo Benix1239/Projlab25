@@ -1,6 +1,8 @@
 package backend;
 
-public class Sima extends Spora
+import java.io.Serializable;
+
+public class Sima extends Spora implements Serializable 
 {
     /**
      * Konstruktor, amely l�trehozza a Sima sp�r�t egy adott gomb�szhoz.

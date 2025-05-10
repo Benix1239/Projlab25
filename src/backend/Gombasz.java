@@ -1,12 +1,13 @@
 package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 
-public class Gombasz extends Jatekos
+public class Gombasz extends Jatekos  
 {
     private ArrayList<Gombatest> testek;
     private ArrayList<Tekton> palya;

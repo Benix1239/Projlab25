@@ -1,11 +1,12 @@
 package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 /*
  * @class EletbenTarto class
  * @brief Az EletbenTarto tektonokat kezeli (Ennek a tekton eletben tartja a gombatesthez nem kapcsolodo fonalakat)
  */
-public class EletbenTarto extends Tekton {
+public class EletbenTarto extends Tekton implements Serializable {
     private ArrayList<Fonal> nemHalMegLista; ///A majdan feltamasztani kivant fonalak listaja
 
     /*
