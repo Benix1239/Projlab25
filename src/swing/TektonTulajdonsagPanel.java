@@ -72,7 +72,7 @@ public class TektonTulajdonsagPanel extends JPanel {
             for (int i = 0; i < bogarakHelyei.size(); i++) {
                 if (bogarakHelyei.get(i).equals(tekton)) {
                     if (ottLevoBogarak.length() > 0) ottLevoBogarak.append(", ");
-                    ottLevoBogarak.append(i); 
+                    ottLevoBogarak.append("b"+i); 
                 }
             }
         
