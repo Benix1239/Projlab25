@@ -299,6 +299,14 @@ public class JatekPanel extends JPanel{
                 command = new Command("sporaSzor", jatekmenet, sajatMaga());
             }
         });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("O"), "fonallalOsszekotott");
+        this.getActionMap().put("fonallalOsszekotott", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("fonallalOsszekotott", jatekmenet, sajatMaga());
+            }
+        });
     }
 
     
@@ -308,10 +316,6 @@ public class JatekPanel extends JPanel{
         tektonGombokEnabled(false);
         elsoComboBox.setEnabled(false);
         masodikComboBox.setEnabled(false);
-    }
-
-    public void mindentEngedely(){
-        tektonGombokEnabled(true);
     }
 
     private JatekPanel sajatMaga(){
@@ -375,8 +379,15 @@ public class JatekPanel extends JPanel{
     }
 
     public void tektonGombokEnabled(boolean ertek){
-        for(JButton gomb : tektonGombok){
+        if(ertek){
+            for(int i = 0; i < jatekmenet.palyaMeret(); i++){
+            tektonGombok.get(i).setEnabled(ertek);
+            }
+        }
+        else{
+            for(JButton gomb : tektonGombok){
             gomb.setEnabled(ertek);
+            }
         }
     }
 

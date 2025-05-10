@@ -304,11 +304,4 @@ public class Gombatest
     public Spora getSpora(){
         return spora;
     }
-
-    public boolean tudSporatSzorni(){
-        if(spora!=null){
-            return true;
-        }
-        return false;
-    }
 }
