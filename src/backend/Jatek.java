@@ -494,9 +494,16 @@ public class Jatek {
         return returnValue;
     }
 
-    public ArrayList<Tekton> fonallalOsszekotott(String tekton) {
+    public boolean[] fonallalOsszekotott(String tekton) {
         Tekton tektonObj = tektonFromString(tekton);
-        return tektonObj.fonalKeres();
+        ArrayList<Tekton> helyek = tektonObj.fonalKeres();
+
+        boolean[] returnValue = new boolean[palyaMeret()];
+        for(Tekton t : helyek){
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        }
+
+        return returnValue;
     }
 
     //kesz

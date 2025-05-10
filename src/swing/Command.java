@@ -203,11 +203,11 @@ public class Command {
                 break;
             case "fonallalOsszekotott":
                 if(paramaterek.size() == 0){
-
+                    jatekPanel.tektonGombokEnabled(true);
                 }
-
-                if(paramaterek.size() != 0){
-                    
+                else{
+                    boolean[] fonallalOsszekotott = jatekmenet.fonallalOsszekotott(paramaterek.get(paramaterek.size()-1));
+                    jatekPanel.tektonSzinAllitas(fonallalOsszekotott, Color.GREEN);
                 }
                 break;
         }
