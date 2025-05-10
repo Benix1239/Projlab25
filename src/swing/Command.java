@@ -3,6 +3,7 @@ package swing;
 import backend.Jatek;
 import backend.Tekton;
 import java.awt.Color;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 
 public class Command {
@@ -15,10 +16,11 @@ public class Command {
     private Jatek jatekmenet;
 
     //TODO
-    public Command(String nev, Jatek jatekmenet, JatekPanel jatekPanel){
+    public Command(String nev, Jatek jatekmenet, JatekPanel jatekPanel, InfoFrame infoFrame){
         this.commandNev = nev;
         this.jatekmenet = jatekmenet;
         this.jatekPanel = jatekPanel;
+        this.infoFrame=infoFrame;
         this.paramaterek = new ArrayList<>();
         executeCommand();
     }
@@ -34,12 +36,86 @@ public class Command {
         jatekPanel.frissit();
         switch(commandNev){
             case "leiras":
-                if (paramaterek.size()==0) {
-                    jatekPanel.tektonGombokEnabled(true);
-                }
-                if(paramaterek.size() == 1){
-                    Tekton valasztott = jatekmenet.tektonFromString(paramaterek.get(0));
+                jatekPanel.tektonGombokEnabled(true);
+                if (paramaterek.isEmpty()) {   
+                    infoFrame.modeValtozas("L");
+                } else {
+                    Tekton valasztott = jatekmenet.tektonFromString(paramaterek.getLast());
                     infoFrame.setTektonInfo(valasztott);
+                    infoFrame.frissit();
+                }
+                break;
+            case "lepes":
+                if(jatekmenet.bogaraszKoreVanE()){
+                    if (paramaterek.isEmpty()) {   
+                        jatekPanel.elsoComboboxElemek(jatekmenet.jelenlegiBogaraszBogaraiTudLepni());
+                        jatekPanel.elsoComboboxEnabled(true);
+                        jatekPanel.tektonGombokEnabled(false);
+                        jatekPanel.masodikComboboxEnabled(false);
+                    }
+                    else if(paramaterek.size()==1){
+                        boolean[] hovaLephet = jatekmenet.bogarHovaLephet("Koron levo bogarasz", paramaterek.get(0));
+                        jatekPanel.tektonSzinAllitas(hovaLephet, Color.GREEN);
+                        jatekPanel.tektonEngedelyezes(hovaLephet);   
+                    }
+                    else if(paramaterek.size()==2){
+                        jatekmenet.lepes("Koron levo bogarasz",paramaterek.get(0), paramaterek.get(1));
+                        jatekPanel.setCommandNull(); 
+                    }
+                }
+                break;
+            case "eves":
+                if(jatekmenet.bogaraszKoreVanE()){
+                    if (paramaterek.isEmpty()) {   
+                        jatekPanel.elsoComboboxElemek(jatekmenet.jelenlegiBogaraszBogaraiTudEnni());
+                        jatekPanel.elsoComboboxEnabled(true);
+                        jatekPanel.tektonGombokEnabled(false);
+                        jatekPanel.masodikComboboxEnabled(false);
+                    }
+                    if(paramaterek.size() == 1){
+                        jatekmenet.evesSporat("Koron levo bogarasz",paramaterek.get(0));
+                        jatekPanel.setCommandNull();
+                    }
+                }
+                else{
+                    if(paramaterek.isEmpty()) {   
+                        jatekPanel.elsoComboboxEnabled(false);
+                        jatekPanel.tektonGombokEnabled(false);
+                        jatekPanel.masodikComboboxEnabled(true);
+                        jatekPanel.masodikComboboxElemek(jatekmenet.jelenlegiGombaszTudEnni());
+                    }
+                    else if(paramaterek.size()==1){
+                        jatekmenet.evesBogarat("Koron levo gombasz", paramaterek.get(0));
+                        jatekPanel.setCommandNull();
+                    }
+                }
+                
+                break;
+            case "ragas":
+                if(jatekmenet.bogaraszKoreVanE()){
+                    if (paramaterek.isEmpty()) {   
+                        jatekPanel.elsoComboboxElemek(jatekmenet.jelenlegiBogaraszBogaraiTudRagni());
+                        jatekPanel.elsoComboboxEnabled(true);
+                        jatekPanel.tektonGombokEnabled(false);
+                        jatekPanel.masodikComboboxEnabled(false);
+                        
+                    }
+                    else if(paramaterek.size()==1){
+                        jatekPanel.elsoComboboxEnabled(false);
+                        jatekPanel.tektonGombokEnabled(false);
+                        jatekPanel.masodikComboboxElemek(jatekmenet.bogarMitTudElragni("Koron levo bogarasz",paramaterek.get(0)));
+                        jatekPanel.masodikComboboxEnabled(true);
+                        
+                        boolean[] hovamegy = jatekmenet.bogarHovaLephet("Koron levo bogarasz", paramaterek.get(0));
+                        jatekPanel.tektonSzovegAllitas(hovamegy, jatekmenet.bogarMitTudElragni("Koron levo bogarasz",paramaterek.get(0)));
+                    
+                        boolean[] holvan = jatekmenet.bogarHovaAll("Koron levo bogarasz", paramaterek.get(0));
+                        jatekPanel.tektonSzinAllitas(holvan, Color.GREEN);
+                    }
+                    else if(paramaterek.size()==2){
+                        jatekmenet.ragas("Koron levo bogarasz", paramaterek.get(0),paramaterek.get(1));
+                        jatekPanel.setCommandNull();
+                    }
                 }
                 break;
             case "bogarakListazasa":

@@ -38,9 +38,10 @@ public class JatekPanel extends JPanel{
     private Command command;
     private Jatek jatekmenet;
 
-    public JatekPanel(MainFrame mainFrame, Jatek jatekmenet){
+    public JatekPanel(MainFrame mainFrame, Jatek jatekmenet,InfoFrame infoFrame ){
         this.mainFrame = mainFrame;
         this.jatekmenet = jatekmenet;
+        this.infoFrame=infoFrame;
 
         // palya merete
         final int SOR = 25;
@@ -214,7 +215,7 @@ public class JatekPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                new Command("bogarakListazasa", jatekmenet, sajatMaga());
+                new Command("bogarakListazasa", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -230,7 +231,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("gombatestekListazasa", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Command("gombatestekListazasa", jatekmenet, sajatMaga());
+                new Command("gombatestekListazasa", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -246,16 +247,16 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("passz", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Command("passz", jatekmenet, sajatMaga());
+                new Command("passz", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
-        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("L"), "leiras");
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("D"), "leiras");
         this.getActionMap().put("leiras", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                command = new Command("leiras", jatekmenet, sajatMaga());
-                mainFrame.getInfoFrame().modeValtozas("L");  
+                command = new Command("leiras", jatekmenet, sajatMaga(),infoFrame);
+                
             }
         });
         
@@ -272,7 +273,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("gombaszEler", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Command("gombaszEler", jatekmenet, sajatMaga());
+                new Command("gombaszEler", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -288,7 +289,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("fonalLerak", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                command = new Command("fonalLerak", jatekmenet, sajatMaga());
+                command = new Command("fonalLerak", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -296,7 +297,31 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("sporaSzor", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                command = new Command("sporaSzor", jatekmenet, sajatMaga());
+                command = new Command("sporaSzor", jatekmenet, sajatMaga(),infoFrame);
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("L"), "lepes");
+        this.getActionMap().put("lepes", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("lepes", jatekmenet, sajatMaga(),infoFrame);
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("M"), "eves");
+        this.getActionMap().put("eves", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("eves", jatekmenet, sajatMaga(),infoFrame);
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("R"), "ragas");
+        this.getActionMap().put("ragas", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("ragas", jatekmenet, sajatMaga(),infoFrame);
             }
         });
 
@@ -304,7 +329,7 @@ public class JatekPanel extends JPanel{
         this.getActionMap().put("fonallalOsszekotott", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                command = new Command("fonallalOsszekotott", jatekmenet, sajatMaga());
+                command = new Command("fonallalOsszekotott", jatekmenet, sajatMaga(),infoFrame);
             }
         });
     }
@@ -413,6 +438,16 @@ public class JatekPanel extends JPanel{
         for(int i = 0; i < tektonok.length; i++){
             if(tektonok[i]){
                 tektonGombok.get(i).setBackground(color);
+            }
+        }
+    }
+
+    public void tektonSzovegAllitas(boolean[] tektonok, ArrayList<String> a ){
+        int j=0;
+        for(int i = 0; i < tektonok.length; i++){
+            if(tektonok[i]){
+                tektonGombok.get(i).setText(a.get(j));
+                j++;
             }
         }
     }

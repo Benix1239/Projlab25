@@ -304,4 +304,9 @@ public class Gombatest
     public Spora getSpora(){
         return spora;
     }
+
+
+    public Gombasz getTartozik(){
+        return tartozik;
+    }
 }

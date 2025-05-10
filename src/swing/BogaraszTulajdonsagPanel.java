@@ -30,14 +30,15 @@ public class BogaraszTulajdonsagPanel extends JPanel {
     public void frissit(Bogarasz b) {
         tableModel.setRowCount(0); // előző sorok törlése
         List<Bogar> bogarak = b.getBogarak();
-        int index = 1;
+        int index = 0;
         for (Bogar bogar : bogarak) {
             tableModel.addRow(new Object[]{
-                "Bogar" + index++,
+                "Bogar" + index,
                 bogar.getactionEves() ? "Igen" : "Nem",
                 bogar.getactionRagas() ? "Igen" : "Nem",
                 bogar.getMozgaspont()
             });
+            index++;
         }
         tableModel.fireTableDataChanged();
     }

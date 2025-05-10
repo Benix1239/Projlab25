@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -70,7 +71,7 @@ public class Jatek {
         jatekosIndex = 0;
         this.mainFrame = mainFrame;
 
-       alapJatekPalya(jatekosNevek);
+        alapJatekPalya(jatekosNevek);
     }
 
     private void jatekosokSorsolasa(ArrayList<String> jatekosNevek){
@@ -218,16 +219,21 @@ public class Jatek {
     public Bogarasz bogaraszFromString(String bogarasz) {
         //return bogaraszok.get(Integer.parseInt(bogarasz.substring(8)));
 
-        Pattern pattern = Pattern.compile("^bogarasz(\\d+)$");
-        Matcher matcher = pattern.matcher(bogarasz);
+        if(bogarasz == "Koron levo bogarasz"){
+            return jelenlegiBogarasz();
+        }else{
+            Pattern pattern = Pattern.compile("^bogarasz(\\d+)$");
+            Matcher matcher = pattern.matcher(bogarasz);
 
-        if (matcher.matches()) {
-            int szam = Integer.parseInt(matcher.group(1));
-            if(szam >= 0 && szam <bogaraszok.size()){
-                return bogaraszok.get(szam);
-            }
-        } 
-        throw new IllegalArgumentException("Ilyen bogarasz nem letezik");
+            if (matcher.matches()) {
+                int szam = Integer.parseInt(matcher.group(1));
+                if(szam >= 0 && szam <bogaraszok.size()){
+                    return bogaraszok.get(szam);
+                }
+            } 
+            throw new IllegalArgumentException("Ilyen bogarasz nem letezik");
+        }
+        
     }
 
     public Bogar bogarFromString(Bogarasz bogarasz, String bogar) {
@@ -614,6 +620,8 @@ public class Jatek {
         elso.szomszed.add(tizenketto);
         elso.szomszed.add(tizenharom);
 
+
+
         ketto.szomszed.add(elso);
         ketto.szomszed.add(tizenketto);
         ketto.szomszed.add(harom);
@@ -664,13 +672,17 @@ public class Jatek {
 
         Gombatest gtEgy = new Gombatest(elso, gombaszok.get(0));
         gombaszok.get(0).gombatestHozzaad(gtEgy);
+        elso.gombatest = gtEgy;
 
         Gombatest gtKet = new Gombatest(negy, gombaszok.get(1));
         gombaszok.get(1).gombatestHozzaad(gtKet);
+        negy.gombatest = gtKet;
 
         bogaraszok.get(0).bogarHozzaad(ketto);
-
+        ketto.addSpora(new Benito(gombaszok.get(0)));
+        
         bogaraszok.get(1).bogarHozzaad(het);
+        het.addSpora(new Benito(gombaszok.get(0)));
 
         jelenlegiJatekos().korElejeInicializalas();
 
@@ -781,6 +793,101 @@ public class Jatek {
 
         return returnString;
     }
+    public ArrayList<String> jelenlegiBogaraszBogaraiTudLepni() {
+        Bogarasz bogaraszObj = jelenlegiBogarasz();  
+        List<Bogar> bogarak = bogaraszObj.getBogarak();  
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < bogarak.size(); i++) {
+            if(bogarak.get(i).getMozgaspont()>0&& bogarak.get(i).hovaLephet()!=null){
+                returnString.add("bogar" + i);
+            }
+        }
+
+        return returnString;
+    }
+
+    public ArrayList<String> jelenlegiBogaraszBogaraiTudEnni() {
+        Bogarasz bogaraszObj = jelenlegiBogarasz();  
+        List<Bogar> bogarak = bogaraszObj.getBogarak();  
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < bogarak.size(); i++) {
+            if(bogarak.get(i).getactionEves()==true&& bogarak.get(i).getHelyzet().getSporak()!=null){
+                returnString.add("bogar" + i);
+            }
+        }
+
+        return returnString;
+    }
+
+    public ArrayList<String> jelenlegiGombaszTudEnni() {
+        Gombasz GombaszObj = jelenlegiGombasz();  
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < GombaszObj.getBenitottak().size(); i++) {
+            returnString.add("bogar" + i);
+        }
+
+        return returnString;
+    }
+
+    public ArrayList<String> jelenlegiBogaraszBogaraiTudRagni() {
+        Bogarasz bogaraszObj = jelenlegiBogarasz();  
+        List<Bogar> bogarak = bogaraszObj.getBogarak();  
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < bogarak.size(); i++) {
+            if(bogarak.get(i).getactionRagas()==true && bogarak.get(i).getHelyzet().getOsszekoto()!=null){
+                returnString.add("bogar" + i);
+            }
+        }
+
+        return returnString;
+    }
+
+    public ArrayList<String> bogarMitTudElragni(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        
+
+        ArrayList<String> returnString = new ArrayList<>();
+        for (int i = 0; i < bogarObj.getHelyzet().getOsszekoto().size(); i++) {
+            returnString.add("fonal" + i);
+        }
+
+        return returnString;
+    }
+
+    public boolean[] bogarHovaLephet(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj,bogar);
+    
+        Set<Tekton> lepesek = bogarObj.hovaLephet(); 
+    
+        boolean[] returnValue = new boolean[palyaMeret()]; 
+
+        for (Tekton t : lepesek) {
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        }
+    
+        return returnValue;
+    }
+    
+    public boolean[] bogarHovaAll(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        Tekton hely = bogarObj.getHelyzet();
+    
+        boolean[] returnValue = new boolean[palyaMeret()];
+        int index = jatekter.getPalya().indexOf(hely);
+        if (index != -1) {
+            returnValue[index] = true;
+        }
+    
+        return returnValue;
+    }
+
 
     public void randomPalya(ArrayList<String> jatekosNevek)
     {
@@ -834,6 +941,7 @@ public class Jatek {
             }while(foglalt.contains(kezdo));
             foglalt.add(kezdo);
             gombaszok.get(i).getTestek().add(new Gombatest(kezdo, gombaszok.get(i)));
+            kezdo.gombatest = gombaszok.get(i).getTestek().get(0);
         }
 
         for(int i = 0; i < gombaszok.size(); i++)

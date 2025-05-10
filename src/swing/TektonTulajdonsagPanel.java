@@ -3,6 +3,7 @@ package swing;
 import backend.Bogar;
 import backend.Bogarasz;
 import backend.Gombasz;
+import backend.Spora;
 import backend.Tekton;
 import java.awt.*;
 import java.util.List;
@@ -40,8 +41,20 @@ public class TektonTulajdonsagPanel extends JPanel {
         if (tekton != null) {
             for (int i = 0; i < gombaszok.size(); i++) {
                 Gombasz g = gombaszok.get(i);
-                String sporak = i == 0 ? String.valueOf(tekton.getSporak().size()) : "";
-                String gombatest = i == 0 ? (tekton.getGombatest() != null ? "Van" : "-") : "";
+
+                int gSporaDb = 0;
+                if (tekton.getSporak() != null) {
+                    for (Spora spora : tekton.getSporak()) {
+                        if (spora.getTartozik().equals(g)) {
+                            gSporaDb++;
+                        }
+                    }
+                }
+                String sporak = String.valueOf(gSporaDb);
+
+                String gombatest = tekton.getGombatest() != null && tekton.getGombatest().getTartozik() == g
+                        ? "Van" : "-";
+
                 tableModel.addRow(new Object[]{g.getNev(), sporak, gombatest, "-"});
             }
         } else {
@@ -50,22 +63,23 @@ public class TektonTulajdonsagPanel extends JPanel {
             }
         }
 
+
         // Bogarászok adatai
         for (Bogarasz b : bogaraszok) {
-            List<Bogar> bogarak = b.getBogarak(); 
             List<Tekton> bogarakHelyei = b.bogarakHelyei();
-    
+        
             StringBuilder ottLevoBogarak = new StringBuilder();
             for (int i = 0; i < bogarakHelyei.size(); i++) {
-                Tekton t = bogarakHelyei.get(i);
-                if (t.equals(tekton)) {
+                if (bogarakHelyei.get(i).equals(tekton)) {
                     if (ottLevoBogarak.length() > 0) ottLevoBogarak.append(", ");
-                    ottLevoBogarak.append(bogarak.get(i)); 
+                    ottLevoBogarak.append(i); 
                 }
             }
-    
+        
             String bogarakStr = ottLevoBogarak.length() > 0 ? ottLevoBogarak.toString() : "-";
             tableModel.addRow(new Object[]{b.getNev(), "-", "-", bogarakStr});
         }
+
+        tableModel.fireTableDataChanged();
     }
 }

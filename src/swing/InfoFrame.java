@@ -121,6 +121,8 @@ public class InfoFrame extends JFrame {
     
     public void setTektonInfo(Tekton t){
         kivalasztott=t;
-        frissit();
+        if(mode=="L"){
+            frissit();
+        }
     }
 }
