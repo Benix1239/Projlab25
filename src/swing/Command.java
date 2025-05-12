@@ -1,10 +1,10 @@
 package swing;
 
+import java.awt.Color;
+import java.util.ArrayList;
+
 import backend.Jatek;
 import backend.Tekton;
-import java.awt.Color;
-import java.lang.reflect.Parameter;
-import java.util.ArrayList;
 
 public class Command {
     
@@ -15,7 +15,7 @@ public class Command {
 
     private Jatek jatekmenet;
 
-    //TODO
+   
     public Command(String nev, Jatek jatekmenet, JatekPanel jatekPanel, InfoFrame infoFrame){
         this.commandNev = nev;
         this.jatekmenet = jatekmenet;
@@ -25,13 +25,13 @@ public class Command {
         executeCommand();
     }
 
-    //TODO
+    
     public void addPAram(String param){
         paramaterek.add(param);
         executeCommand();
     }
 
-    //TODO
+    
     private void executeCommand(){
         jatekPanel.frissit();
         switch(commandNev){

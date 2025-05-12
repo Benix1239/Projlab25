@@ -1,13 +1,15 @@
 package swing;
 
-import backend.Jatek;
 import java.awt.CardLayout;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import backend.Jatek;
 
 public class MainFrame extends JFrame {
     private JPanel cardPanel;
@@ -99,7 +101,7 @@ public class MainFrame extends JFrame {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(fajlNev));
             jatekmenet = (Jatek) in.readObject(); // vagy Jatekmenet
             in.close();
-
+            jatekmenet.setMainFrame(this);
             // új játékpanel példányosítása a betöltött játékmenettel
             jatekPanel = new JatekPanel(this, jatekmenet, infoFrame);
             cardPanel.add(jatekPanel, "jatekPanel");
@@ -148,5 +150,11 @@ public class MainFrame extends JFrame {
 
     public InfoFrame getInfoFrame(){
         return infoFrame;
+    }
+
+    public void legendFrameBekapcs()
+    {
+        legendFrame = new LegendFrame();
+        legendFrame.setVisible(true);
     }
 }

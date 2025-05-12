@@ -73,6 +73,7 @@ public class JatekosMegadosPanel extends JPanel {
           mainFrame.jatekIndit(jatekosok);
           mainFrame.jatekPanelBekapcs();
           mainFrame.infoFrameBekapcs();
+          mainFrame.legendFrameBekapcs();
           
         });
 

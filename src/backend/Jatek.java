@@ -104,6 +104,15 @@ public class Jatek implements Serializable {
         return bogaraszok;
     }
 
+    public MainFrame getMainFrame()
+    {
+        return this.mainFrame;
+    }
+
+    public void setMainFrame(MainFrame uj)
+    {
+        this.mainFrame = uj;
+    }
 //jateklogika-----------------------------------------------------------------------------------
 
     private boolean jelenlegiJatekos_e(Jatekos jatekos) {
