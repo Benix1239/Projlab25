@@ -98,10 +98,13 @@ public class MainFrame extends JFrame {
             String fajlNev = "mentes" + mentesSzam + ".txt";
 
             // NINCS új példány itt
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(fajlNev));
+             FileInputStream filetartalom = new FileInputStream(fajlNev);
+            ObjectInputStream in = new ObjectInputStream(filetartalom);
             jatekmenet = (Jatek) in.readObject(); // vagy Jatekmenet
             in.close();
+            filetartalom.close();
             jatekmenet.setMainFrame(this);
+            infoFrame = new InfoFrame(jatekmenet);
             // új játékpanel példányosítása a betöltött játékmenettel
             jatekPanel = new JatekPanel(this, jatekmenet, infoFrame);
             cardPanel.add(jatekPanel, "jatekPanel");
@@ -110,6 +113,9 @@ public class MainFrame extends JFrame {
             cardPanel.repaint();
             setSize(1400, 1000);
             setLocationRelativeTo(null);
+            jatekPanel.frissit();
+            infoFrameBekapcs();
+            legendFrameBekapcs();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
