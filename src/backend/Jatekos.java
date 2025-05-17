@@ -54,6 +54,18 @@ public abstract class Jatekos implements Serializable
         return osszesPont;
     }
 
+    public void setGyozelmekSzama(int gyozelmekSzama) {
+        this.gyozelmekSzama = gyozelmekSzama;
+    }
+    
+    public void setMeccsekSzama(int meccsekSzama) {
+        this.meccsekSzama = meccsekSzama;
+    }
+    
+    public void setOsszesPont(int osszesPont) {
+        this.osszesPont = osszesPont;
+    }
+
     public void addPoint(int amount)
     {
         pontok+=amount;

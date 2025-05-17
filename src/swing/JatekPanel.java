@@ -1,6 +1,8 @@
 package swing;
 
 import backend.Jatek;
+import backend.Jatekos;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,11 +12,16 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+
 import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -118,6 +125,45 @@ public class JatekPanel extends JPanel{
                     out.writeObject(jatekmenet);  
                     out.close();
                     fileOut.close();
+
+                    // 2. Dicsőséglista betöltése
+                    List<Jatekos> dicsoseglista = new ArrayList<>();
+                    File dicsosegFajl = new File("dicsoseglista.txt");
+                    if (dicsosegFajl.exists()) {
+                        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dicsosegFajl))) {
+                            dicsoseglista = (List<Jatekos>) ois.readObject();
+                        } catch (Exception ex) {
+                            ex.printStackTrace(); // hibás fájlformátum esetén
+                        }
+                    }
+
+                    // 3. Frissítés vagy hozzáadás
+                    List<Jatekos> osszesJatekos = new ArrayList<>();
+                    osszesJatekos.addAll(jatekmenet.getGombaszok());
+                    osszesJatekos.addAll(jatekmenet.getBogaraszok());
+
+                    for (Jatekos aktualis : osszesJatekos) {
+                        boolean megtalalt = false;
+
+                        for (Jatekos j : dicsoseglista) {
+                            if (j.getNev().equals(aktualis.getNev())) {
+                                j.setGyozelmekSzama(j.getGyozelmekSzama() + aktualis.getGyozelmekSzama());
+                                j.setMeccsekSzama(j.getMeccsekSzama() + aktualis.getMeccsekSzama());
+                                j.setOsszesPont(j.getOsszesPont() + aktualis.getOsszesPont());
+                                megtalalt = true;
+                                break;
+                            }
+                        }
+
+                        if (!megtalalt) {
+                            dicsoseglista.add(aktualis);
+                        }
+                    }
+
+                    // 4. Dicsőséglista mentése
+                    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dicsosegFajl))) {
+                        oos.writeObject(dicsoseglista);
+                    }
                     JOptionPane.showMessageDialog(this, "A játék sikeresen elmentve.", "Mentés kész", JOptionPane.INFORMATION_MESSAGE);
                 } catch (IOException ex) {
                     ex.printStackTrace();
