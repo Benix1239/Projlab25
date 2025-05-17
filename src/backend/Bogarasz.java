@@ -1,13 +1,12 @@
 package backend;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * A Bogarasz osztály egy játékost reprezentál, aki több bogarat irányít a játék során.
  * A játékos különböző akciókat hajthat végre, például mozgást, evést és fonalak rágását.
  */
-public class Bogarasz extends Jatekos implements Serializable 
+public class Bogarasz extends Jatekos
 {
     private ArrayList<Bogar> bogarak;
 

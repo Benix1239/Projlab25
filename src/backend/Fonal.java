@@ -1,8 +1,8 @@
 package backend;
 
-import java.io.Serializable;
 
-public class Fonal extends Osszekoto implements Serializable 
+
+public class Fonal extends Osszekoto
 {
     private Gombasz tartozik;
     private boolean elragva;
