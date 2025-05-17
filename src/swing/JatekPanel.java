@@ -505,6 +505,10 @@ public class JatekPanel extends JPanel{
         if(jatekmenet.getkorSzam()/(jatekmenet.getGombaszok().size() + jatekmenet.getBogaraszok().size()) >= 100)
         {
             visszajelzes.setText("Elertetek a 100. kort. Vege a Jateknak Yipie!!");
+            mentes.setEnabled(false);
+            kilepes.setEnabled(true);
+            this.getInputMap(WHEN_IN_FOCUSED_WINDOW).clear();
+            this.getActionMap().clear();
         }
     }
 
