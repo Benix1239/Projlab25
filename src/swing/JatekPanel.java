@@ -1,8 +1,5 @@
 package swing;
 
-import backend.Jatek;
-import backend.Jatekos;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -31,6 +28,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+
+import backend.Jatek;
+import backend.Jatekos;
 
 public class JatekPanel extends JPanel{
     
@@ -113,6 +113,8 @@ public class JatekPanel extends JPanel{
             if (valasz == JOptionPane.YES_OPTION) {
                 mainFrame.foMenuBekapcs();
             }
+            mainFrame.legendFramekikapcs();
+            mainFrame.infoFrameKikapcs();
         });
 
         // mentes gomb mukodese

@@ -1,9 +1,14 @@
     package swing;
 
-    import java.awt.*;
+    import java.awt.BorderLayout;
+    import java.awt.Font;
     import java.util.Map;
-    import javax.swing.*;
-    import javax.swing.table.DefaultTableModel;
+
+    import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
     public class PontokPanel extends JPanel {
 

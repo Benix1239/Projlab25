@@ -74,8 +74,15 @@ public class Jatek implements Serializable {
         jatekter = new Palya();
         jatekosIndex = 0;
         this.mainFrame = mainFrame;
-
-        alapJatekPalya(jatekosNevek);
+        if(jatekosNevek.get(0).toLowerCase().contains("teszt"))
+        {
+            alapJatekPalya(jatekosNevek);
+        }
+        else
+        {
+            randomPalya(jatekosNevek);
+        }
+        
     }
 
     private void jatekosokSorsolasa(ArrayList<String> jatekosNevek){
