@@ -115,8 +115,54 @@ public class JatekPanel extends JPanel{
             }
             mainFrame.legendFramekikapcs();
             mainFrame.infoFrameKikapcs();
-        });
+            try
+            {
+            // 2. Dicsőséglista betöltése
+                    List<Jatekos> dicsoseglista = new ArrayList<>();
+                    File dicsosegFajl = new File("dicsoseglista.txt");
+                    if (dicsosegFajl.exists()) {
+                        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dicsosegFajl))) {
+                            dicsoseglista = (List<Jatekos>) ois.readObject();
+                        } catch (Exception ex) {
+                            ex.printStackTrace(); // hibás fájlformátum esetén
+                        }
+                    }
 
+                    // 3. Frissítés vagy hozzáadás
+                    List<Jatekos> osszesJatekos = new ArrayList<>();
+                    osszesJatekos.addAll(jatekmenet.getGombaszok());
+                    osszesJatekos.addAll(jatekmenet.getBogaraszok());
+
+                    for (Jatekos aktualis : osszesJatekos) 
+                    {
+                        boolean megtalalt = false;
+
+                        for (Jatekos j : dicsoseglista) {
+                            if (j.getNev().equals(aktualis.getNev())) {
+                                j.setGyozelmekSzama(j.getGyozelmekSzama() + aktualis.getGyozelmekSzama());
+                                j.setMeccsekSzama(j.getMeccsekSzama() + aktualis.getMeccsekSzama());
+                                j.setOsszesPont(j.getOsszesPont() + aktualis.getOsszesPont());
+                                megtalalt = true;
+                                break;
+                            }
+                        }
+
+                        if (!megtalalt) {
+                            dicsoseglista.add(aktualis);
+                        }
+                    }
+
+                    // 4. Dicsőséglista mentése
+                    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dicsosegFajl))) 
+                    {
+                        oos.writeObject(dicsoseglista);
+                    }
+                    JOptionPane.showMessageDialog(this, "A játék sikeresen elmentve.", "Mentés kész", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Hiba történt a mentés során: " + ex.getMessage(), "Mentés hiba", JOptionPane.ERROR_MESSAGE);
+            }
+        });
         // mentes gomb mukodese
         mentes.addActionListener(e -> {
             int valasz = JOptionPane.showConfirmDialog(this, "Szeretné menteni a játékot?", "Mentés megerősítése", JOptionPane.YES_NO_OPTION);
@@ -436,15 +482,6 @@ public class JatekPanel extends JPanel{
 
         mindentLetilt();
 
-        if(jatekmenet.getkorSzam()/(jatekmenet.getGombaszok().size() + jatekmenet.getBogaraszok().size()) >= 100)
-        {
-            visszajelzes.setText("Elertetek a 100. kort. Vege a Jateknak Yipie!!");
-            mentes.setEnabled(false);
-            kilepes.setEnabled(true);
-            this.getInputMap(WHEN_IN_FOCUSED_WINDOW).clear();
-            this.getActionMap().clear();
-        }
-
         // gombok frissitese
         int palyaMeret = jatekmenet.palyaMeret();
         for(int i = 0; i < palyaMeret; i++){
@@ -454,6 +491,11 @@ public class JatekPanel extends JPanel{
 
         // jelenlegi jatekos frissitese
         jelenlegiJatekos.setText(jatekmenet.jelenlegiJatekosNeve());
+
+        if(jatekmenet.getkorSzam()/(jatekmenet.getGombaszok().size() + jatekmenet.getBogaraszok().size()) >= 100)
+        {
+            visszajelzes.setText("Elertetek a 100. kort. Vege a Jateknak Yipie!!");
+        }
     }
 
     public void bogarakListazasa(){

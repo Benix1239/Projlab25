@@ -1,12 +1,11 @@
 package backend;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 /*
  * @class Felszivo
  * @brief A felszivo tekton kezelese. (A tektonrol minden korben eltunik az utoljara ra helyezett fonal)
  */
-public class Felszivo extends Tekton implements Serializable 
+public class Felszivo extends Tekton
 {
     /*
     * @brief Parameter nelkuli konstruktor
