@@ -152,6 +152,11 @@ public class MainFrame extends JFrame {
     public void frissit(){
         jatekPanel.frissit();
         infoFrame.frissit();
+
+        if(jatekmenet.getkorSzam/(jatekmenet.getGombaszok().size() + jatekmenet.getBogaraszok().size()) < 100)
+        {
+
+        }
     }
 
     public InfoFrame getInfoFrame(){

@@ -381,6 +381,11 @@ public class JatekPanel extends JPanel{
 
         // jelenlegi jatekos frissitese
         jelenlegiJatekos.setText(jatekmenet.jelenlegiJatekosNeve());
+
+        if(jatekmenet.getkorSzam()/(jatekmenet.getGombaszok().size() + jatekmenet.getBogaraszok().size()) >= 100)
+        {
+            visszajelzes.setText("Elertetek a 100. kort. Vege a Jateknak Yipie!!");
+        }
     }
 
     public void bogarakListazasa(){

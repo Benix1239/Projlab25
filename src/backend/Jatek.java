@@ -30,8 +30,11 @@ public class Jatek implements Serializable {
     private ArrayList<Bogarasz> bogaraszok;
 
     private int jatekosIndex;
+    private int korSzam = 0;
 
     private MainFrame mainFrame;
+
+
 
     /*
      * Konstruktor, amely l�trehozza a j�t�kteret �s a karakterek list�j�t.
@@ -113,6 +116,11 @@ public class Jatek implements Serializable {
     {
         this.mainFrame = uj;
     }
+
+    public int getkorSzam()
+    {
+        return korSzam;
+    }
 //jateklogika-----------------------------------------------------------------------------------
 
     private boolean jelenlegiJatekos_e(Jatekos jatekos) {
@@ -143,10 +151,19 @@ public class Jatek implements Serializable {
     }
 
     private void jatekosIndexLeptetes() {
-        jatekosIndex = (jatekosIndex + 1) % (gombaszok.size() + bogaraszok.size());
-        jelenlegiJatekos().korElejeInicializalas();
-        if (jatekosIndex == 0) {
+       
+        if(korSzam/(gombaszok.size() + bogaraszok.size()) < 100)
+        {
+            jatekosIndex = (jatekosIndex + 1) % (gombaszok.size() + bogaraszok.size());
+            jelenlegiJatekos().korElejeInicializalas();
+            if (jatekosIndex == 0) {
             palyaKezeles();
+            }
+            korSzam++;
+        }
+        else
+        {
+            mainFrame.frissit();
         }
     }
 
