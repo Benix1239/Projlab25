@@ -1,5 +1,6 @@
 package backend;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 
 import swing.MainFrame;
@@ -32,7 +34,7 @@ public class Jatek implements Serializable {
     private int jatekosIndex;
     private int korSzam = 0;
 
-    private MainFrame mainFrame;
+    private transient MainFrame mainFrame;
 
 
 
@@ -159,7 +161,7 @@ public class Jatek implements Serializable {
 
     private void jatekosIndexLeptetes() {
        
-        if(korSzam/(gombaszok.size() + bogaraszok.size()) < 100)
+        if((double)korSzam/(gombaszok.size() + bogaraszok.size()) < 100)
         {
             jatekosIndex = (jatekosIndex + 1) % (gombaszok.size() + bogaraszok.size());
             jelenlegiJatekos().korElejeInicializalas();
@@ -173,6 +175,105 @@ public class Jatek implements Serializable {
             mainFrame.frissit();
         }
     }
+
+    public void dicsosegMentes() {
+        frissitStatisztikakat();
+        try {
+            // 1. Dicsőséglista betöltése
+            List<Jatekos> dicsoseglista = new ArrayList<>();
+            File dicsosegFajl = new File("dicsoseglista.txt");
+
+            if (dicsosegFajl.exists()) {
+                try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dicsosegFajl))) {
+                    dicsoseglista = (List<Jatekos>) ois.readObject();
+                } catch (Exception ex) {
+                    ex.printStackTrace(); // hibás fájlformátum esetén
+                }
+            }
+
+            // 2. Játékosok összegyűjtése
+            List<Jatekos> osszesJatekos = new ArrayList<>();
+            osszesJatekos.addAll(this.getGombaszok());
+            osszesJatekos.addAll(this.getBogaraszok());
+
+            // 3. Frissítés vagy hozzáadás
+            for (Jatekos aktualis : osszesJatekos) {
+                boolean megtalalt = false;
+
+                for (Jatekos j : dicsoseglista) {
+                    if (j.getNev().equals(aktualis.getNev())) {
+                        j.setGyozelmekSzama(j.getGyozelmekSzama() + aktualis.getGyozelmekSzama());
+                        j.setMeccsekSzama(j.getMeccsekSzama() + aktualis.getGyozelmekSzama());
+                        j.setOsszesPont(j.getOsszesPont() + aktualis.getOsszesPont());
+                        megtalalt = true;
+                        break;
+                    }
+                }
+
+                if (!megtalalt) {
+                    dicsoseglista.add(aktualis);
+                }
+            }
+
+            // 4. Dicsőséglista mentése
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dicsosegFajl))) {
+                oos.writeObject(dicsoseglista);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void frissitStatisztikakat() {
+        // Gombász győztes(ek)
+        List<Jatekos> gyoztesGombaszok = new ArrayList<>();
+        int maxGombaPont = -1;
+        for (Jatekos g : gombaszok) {
+            if (g.getPontok() > maxGombaPont) {
+                gyoztesGombaszok.clear();
+                gyoztesGombaszok.add(g);
+                maxGombaPont = g.getPontok();
+            } else if (g.getPontok() == maxGombaPont) {
+                gyoztesGombaszok.add(g);
+            }
+        }
+
+        // Bogarász győztes(ek)
+        List<Jatekos> gyoztesBogaraszok = new ArrayList<>();
+        int maxBogarPont = -1;
+        for (Jatekos b : bogaraszok) {
+            if (b.getPontok() > maxBogarPont) {
+                gyoztesBogaraszok.clear();
+                gyoztesBogaraszok.add(b);
+                maxBogarPont = b.getPontok();
+            } else if (b.getPontok() == maxBogarPont) {
+                gyoztesBogaraszok.add(b);
+            }
+        }
+
+        // Gombász: ha EGY győztes van, akkor győzelem/vereség osztás, különben senki nem nyer
+        if (gyoztesGombaszok.size() == 1) {
+            for (Jatekos g : gombaszok) {
+                if (g == gyoztesGombaszok.get(0)) {
+                    g.addGyzelem();
+                } else {
+                    g.addVereseg();
+                }
+            }
+        }
+
+        // Bogarász: ha EGY győztes van, akkor győzelem/vereség osztás, különben senki nem nyer
+        if (gyoztesBogaraszok.size() == 1) {
+            for (Jatekos b : bogaraszok) {
+                if (b == gyoztesBogaraszok.get(0)) {
+                    b.addGyzelem();
+                } else {
+                    b.addVereseg();
+                }
+            }
+        }
+    }
+
 
     private void palyaKezeles() {
         ArrayList<Tekton> tmp=new ArrayList<>();
@@ -854,7 +955,7 @@ public class Jatek implements Serializable {
 
         ArrayList<String> returnString = new ArrayList<>();
         for (int i = 0; i < bogarak.size(); i++) {
-            if(bogarak.get(i).getactionEves()==true&& bogarak.get(i).getHelyzet().getSporak()!=null){
+            if(bogarak.get(i).getactionEves()==true&& bogarak.get(i).getHelyzet().getSporak().size()>0){
                 returnString.add("bogar" + i);
             }
         }

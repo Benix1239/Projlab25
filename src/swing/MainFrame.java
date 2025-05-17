@@ -1,15 +1,13 @@
 package swing;
 
+import backend.Jatek;
 import java.awt.CardLayout;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import backend.Jatek;
 
 public class MainFrame extends JFrame {
     private JPanel cardPanel;
@@ -60,6 +58,7 @@ public class MainFrame extends JFrame {
     //Fomenu bekapcsolasa
     public void foMenuBekapcs(){
         cardLayout.show(cardPanel, "fomenuPanel");
+        pack();
         setSize(300, 300);
         setLocationRelativeTo(null);
     }
@@ -85,6 +84,7 @@ public class MainFrame extends JFrame {
     //betoltPanel bekapcsolasa, hogy ki lehessen valasztani, hogy melyik jatekot akarod folytatni
     public void betoltBekapcs(){
         cardLayout.show(cardPanel, "betoltPanel");
+        betoltPanel.frissitMentesAllapotokat();
         setSize(500, 300); // vagy amit szeretnél
         setLocationRelativeTo(null);
     }
@@ -170,4 +170,6 @@ public class MainFrame extends JFrame {
       
         legendFrame.setVisible(false);
     }
+
+    
 }

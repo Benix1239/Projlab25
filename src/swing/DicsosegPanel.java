@@ -97,8 +97,14 @@
             model.setRowCount(0); // Táblázat ürítése
 
             if (jatekosok != null && !jatekosok.isEmpty()) {
-                jatekosok.sort((j1, j2) -> Integer.compare(j2.getGyozelmekSzama(), j1.getGyozelmekSzama()));
-                
+                jatekosok.sort((j1, j2) -> {
+                    int gyozelemKul = Integer.compare(j2.getGyozelmekSzama(), j1.getGyozelmekSzama());
+                    if (gyozelemKul != 0) {
+                        return gyozelemKul;
+                    }
+                    return Integer.compare(j2.getOsszesPont(), j1.getOsszesPont());
+                });
+                    
                 int rang = 1;
                 for (Jatekos jatekos : jatekosok) {
                     Object[] sor = {

@@ -1,10 +1,9 @@
 package swing;
 
-import java.awt.Color;
-import java.util.ArrayList;
-
 import backend.Jatek;
 import backend.Tekton;
+import java.awt.Color;
+import java.util.ArrayList;
 
 public class Command {
     

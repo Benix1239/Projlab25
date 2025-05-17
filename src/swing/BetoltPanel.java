@@ -64,7 +64,7 @@ public class BetoltPanel extends JPanel {
     /**
      * Frissíti a mentés gombok állapotát a fájlok alapján
      */
-    private void frissitMentesAllapotokat() {
+    public void frissitMentesAllapotokat() {
         for (int i = 0; i < MENTES_FAJLOK.length; i++) {
             File mentesFile = new File(MENTES_FAJLOK[i]);
             if (mentesFile.exists()) {
