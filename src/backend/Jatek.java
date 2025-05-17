@@ -30,8 +30,11 @@ public class Jatek implements Serializable {
     private ArrayList<Bogarasz> bogaraszok;
 
     private int jatekosIndex;
+    private int korSzam = 0;
 
     private MainFrame mainFrame;
+
+
 
     /*
      * Konstruktor, amely l�trehozza a j�t�kteret �s a karakterek list�j�t.
@@ -71,8 +74,15 @@ public class Jatek implements Serializable {
         jatekter = new Palya();
         jatekosIndex = 0;
         this.mainFrame = mainFrame;
-
-        alapJatekPalya(jatekosNevek);
+        if(jatekosNevek.get(0).toLowerCase().contains("teszt"))
+        {
+            alapJatekPalya(jatekosNevek);
+        }
+        else
+        {
+            randomPalya(jatekosNevek);
+        }
+        
     }
 
     private void jatekosokSorsolasa(ArrayList<String> jatekosNevek){
@@ -113,6 +123,11 @@ public class Jatek implements Serializable {
     {
         this.mainFrame = uj;
     }
+
+    public int getkorSzam()
+    {
+        return korSzam;
+    }
 //jateklogika-----------------------------------------------------------------------------------
 
     private boolean jelenlegiJatekos_e(Jatekos jatekos) {
@@ -143,10 +158,19 @@ public class Jatek implements Serializable {
     }
 
     private void jatekosIndexLeptetes() {
-        jatekosIndex = (jatekosIndex + 1) % (gombaszok.size() + bogaraszok.size());
-        jelenlegiJatekos().korElejeInicializalas();
-        if (jatekosIndex == 0) {
+       
+        if(korSzam/(gombaszok.size() + bogaraszok.size()) < 100)
+        {
+            jatekosIndex = (jatekosIndex + 1) % (gombaszok.size() + bogaraszok.size());
+            jelenlegiJatekos().korElejeInicializalas();
+            if (jatekosIndex == 0) {
             palyaKezeles();
+            }
+            korSzam++;
+        }
+        else
+        {
+            mainFrame.frissit();
         }
     }
 
@@ -156,9 +180,10 @@ public class Jatek implements Serializable {
             tmp.add(elem);
         }
         for(Tekton t:tmp){
+            t.setEletkorNoveles();
             t.fonalElszakadKoronkent();
             Tekton uj = t.tores();
-            if(uj!=null){
+            if(uj!=null && jatekter.getPalya().size() < 625){
                 jatekter.getPalya().add(uj);
             }
         }

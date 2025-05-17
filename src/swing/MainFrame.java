@@ -77,6 +77,10 @@ public class MainFrame extends JFrame {
         infoFrame.setVisible(true);
     }
 
+    public void infoFrameKikapcs() {
+        infoFrame.setVisible(false);
+    }
+
     //betoltPanel bekapcsolasa, hogy ki lehessen valasztani, hogy melyik jatekot akarod folytatni
     public void betoltBekapcs(){
         cardLayout.show(cardPanel, "betoltPanel");
@@ -162,5 +166,10 @@ public class MainFrame extends JFrame {
     {
         legendFrame = new LegendFrame();
         legendFrame.setVisible(true);
+    }
+    public void legendFramekikapcs()
+    {
+      
+        legendFrame.setVisible(false);
     }
 }
