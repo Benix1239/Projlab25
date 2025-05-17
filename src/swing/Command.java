@@ -210,6 +210,10 @@ public class Command {
                     jatekPanel.tektonSzinAllitas(fonallalOsszekotott, Color.GREEN);
                 }
                 break;
+
+            case "tektonHelyeTombben":
+                jatekPanel.tektonGombokSzama();
+                break;
         }
     }
 

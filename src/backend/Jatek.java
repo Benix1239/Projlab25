@@ -592,6 +592,7 @@ public class Jatek implements Serializable {
         return null;
     }
 
+
     //Ez a fv CSAK abban az esetben használható, ha pontosan 4 jatekos van (2 gombasz, 2 bogarasz).
     public void alapJatekPalya(ArrayList<String> jatekosNevek)
     {
