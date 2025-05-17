@@ -73,6 +73,7 @@ public class MainFrame extends JFrame {
 
     //infoFrame bekapcsolasa
     public void infoFrameBekapcs() {
+        infoFrame.setJatekmenet(this.jatekmenet);
         infoFrame.frissit();
         infoFrame.setVisible(true);
     }
@@ -141,15 +142,12 @@ public class MainFrame extends JFrame {
 
     // jatekMenet letrehozasa uj jatek eseten. Parameterkent megkapja az uj jatekosok neveit
     public void jatekIndit(ArrayList<String> jatekosNevek){
-        if(jatekosNevek.size() == 4){
-            jatekmenet = new Jatek(this, jatekosNevek);
-            infoFrame = new InfoFrame(jatekmenet);
-            jatekPanel = new JatekPanel(this, jatekmenet,infoFrame);
-            cardPanel.add(jatekPanel, "jatekPanel");
-            
-
-            jatekPanel.frissit();
-        }
+        
+        jatekmenet = new Jatek(this, jatekosNevek);
+        infoFrame = new InfoFrame(jatekmenet);
+        jatekPanel = new JatekPanel(this, jatekmenet,infoFrame);
+        cardPanel.add(jatekPanel, "jatekPanel");
+        jatekPanel.frissit();
     }
 
     // meghivja a tobbi elem frissit() fv-et
