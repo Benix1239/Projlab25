@@ -291,12 +291,14 @@ public class Tekton implements Serializable
 		for(Fonal fonal : tomb)
 		{
 			Tekton hova = fonal.getHova();
-			Gombasz gombasz = fonal.getTartozik();
-			this.osszekoto.remove(fonal);
+			if(fonal.getTartozik() == g){
+				this.osszekoto.remove(fonal);
+			}
+			
 			ArrayList<Fonal> fonalak = hova.getOsszekoto();
 
 			for (Fonal fonali : fonalak) {
-				if (fonali.getHova() == this && fonal.getTartozik() == gombasz) {
+				if (fonali.getHova() == this && fonal.getTartozik() == g) {
 					hova.osszekoto.remove(fonali);
 					break;
 				}
@@ -433,7 +435,8 @@ public class Tekton implements Serializable
 			}
 		}
 		for(int i=0;i<indexek.size();i++){
-			sporak.remove(indexek.get(i));							///Kigyujtott indexeken levo sporak eltavolitasa
+			int index = indexek.get(i);
+			sporak.remove(index);							///Kigyujtott indexeken levo sporak eltavolitasa
 		}
 	}
 

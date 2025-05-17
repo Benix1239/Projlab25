@@ -470,7 +470,7 @@ public class Jatek implements Serializable {
 
         Set<Tekton> hovaLehetosegek = new HashSet<Tekton>();
         if (jelenlegiJatekos_e(gombaszObj)) {
-            hovaLehetosegek = gombaszObj.hovaLehetosegek(gombatestObj.getHely());
+            hovaLehetosegek = gombaszObj.hovaLehetosegekTestbol(gombatestObj);
         }
 
         jatekosKorvege();
@@ -783,16 +783,21 @@ public class Jatek implements Serializable {
         }
 
         int[] returnValue = new int[palyaMeret()];
-        ArrayList<Tekton> helyek = jelenlegiGombasz().gombatestHelyei();
-        for(Tekton t : helyek){
-            returnValue[jatekter.getPalya().indexOf(t)]++;
+        for(int i = 0; i < returnValue.length; i++){
+            returnValue[i] = -1;
         }
+
+        ArrayList<Gombatest> gombatestek = jelenlegiGombasz().getTestek();
+        for(Gombatest test : gombatestek){
+            returnValue[jatekter.getPalya().indexOf(test.getHely())] = jelenlegiGombasz().getTestek().indexOf(test);
+        }
+
         return returnValue;
     }
 
-    public int[] mindenGombatestHelyei(){
+    public boolean[] mindenGombatestHelyei(){
 
-        int[] returnValue = new int[palyaMeret()];
+        boolean returnValue[] = new boolean[palyaMeret()];
         ArrayList<Tekton> helyek = new ArrayList<>();
 
         for(Gombasz gombasz : gombaszok){
@@ -800,7 +805,7 @@ public class Jatek implements Serializable {
         }
 
         for(Tekton t : helyek){
-            returnValue[jatekter.getPalya().indexOf(t)]++;
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
         }
 
         return returnValue;

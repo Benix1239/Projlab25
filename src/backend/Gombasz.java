@@ -124,6 +124,29 @@ public class Gombasz extends Jatekos
     }
 
     /**
+     * Visszaadja, hogy a gombatestből melyik Tektonokra tud még a gombász fonalat rakni.
+     * @param honnan Tekton
+     * @return Halmaz
+     */
+    Set<Tekton> hovaLehetosegekTestbol(Gombatest gombatest){
+        Set<Tekton> fonallalElerhetokGombatestbol = gombatest.dfs();
+        Set<Tekton> hovaLehetoseg = new HashSet<>();
+
+        for(Tekton t : fonallalElerhetokGombatestbol){
+            ArrayList<Tekton> honnanSzomszedok = t.getSzomszed();
+            ArrayList<Tekton> honnanOsszekotve = t.fonalKeres(this);
+
+            for(Tekton t2 : honnanSzomszedok){
+                if(!honnanOsszekotve.contains(t2) && !fonallalElerhetokGombatestbol.contains(t2)){
+                    hovaLehetoseg.add(t2);
+                }
+            }
+        }
+
+        return hovaLehetoseg;
+    }
+
+    /**
      * Minden gomba körének vége.
      * @return Sikeres-e.
      */

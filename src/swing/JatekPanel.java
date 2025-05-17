@@ -28,6 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.Timer;
 
 import backend.Jatek;
 import backend.Jatekos;
@@ -47,11 +48,16 @@ public class JatekPanel extends JPanel{
     private ArrayList<JButton> tektonGombok;
     private Command command;
     private Jatek jatekmenet;
+    private final Timer visszajelzesTimer;
+    private boolean mostKezdodott;
 
-    public JatekPanel(MainFrame mainFrame, Jatek jatekmenet,InfoFrame infoFrame ){
+    public JatekPanel(MainFrame mainFrame, Jatek jatekmenet,InfoFrame infoFrame){
         this.mainFrame = mainFrame;
         this.jatekmenet = jatekmenet;
         this.infoFrame=infoFrame;
+        this.visszajelzesTimer = new Timer(3000, e -> visszajelzes.setText(""));
+        this.visszajelzesTimer.setRepeats(false);
+        this.mostKezdodott = true;
 
         // palya merete
         final int SOR = 25;
@@ -102,7 +108,7 @@ public class JatekPanel extends JPanel{
         spiralGombBejaras(gombokMatrix);
 
         //also visszajelzo mezo
-        visszajelzes = new JLabel("Visszajelzes");
+        visszajelzes = new JLabel("");
         visszajelzes.setFont(new Font("SansSerif", Font.PLAIN, 32));
         visszajelzes.setHorizontalAlignment(JTextField.CENTER);
         visszajelzes.setPreferredSize(new Dimension(10000, 100));
@@ -453,7 +459,11 @@ public class JatekPanel extends JPanel{
         }
 
         // jelenlegi jatekos frissitese
+        if(!jelenlegiJatekos.getText().equals(jatekmenet.jelenlegiJatekosNeve()) && !mostKezdodott){
+            setVisszajelzes("Játékos váltás történt");
+        }
         jelenlegiJatekos.setText(jatekmenet.jelenlegiJatekosNeve());
+        mostKezdodott = false;
     }
 
     public void bogarakListazasa(){
@@ -471,16 +481,17 @@ public class JatekPanel extends JPanel{
 
     public void gombatestekListazasa(){
         int[] sajatGombatestek = jatekmenet.sajatGombatestekHelyei();
-        int[] mindenGombatest = jatekmenet.mindenGombatestHelyei();
+        boolean[] mindenGombatest = jatekmenet.mindenGombatestHelyei();
 
         for(int i = 0; i < mindenGombatest.length; i++){
-            if(jatekmenet.gombaszKoreVanE() && sajatGombatestek[i] != 0){
-                tektonGombok.get(i).setBackground(Color.GREEN);
-            }
-            if(mindenGombatest[i] != 0){
+            if(mindenGombatest[i]){
                 tektonGombok.get(i).setText("G");
             }
-            
+
+            if(jatekmenet.gombaszKoreVanE() && sajatGombatestek[i] != -1){
+                tektonGombok.get(i).setBackground(Color.GREEN);
+                tektonGombok.get(i).setText("G" + sajatGombatestek[i]);
+            }
         }
     }
 
@@ -561,6 +572,16 @@ public class JatekPanel extends JPanel{
     public void tektonGombokSzama(){
         for(int i = 0; i < jatekmenet.palyaMeret(); i++){
             tektonGombok.get(i).setText("" + i);
+        }
+    }
+
+    public void setVisszajelzes(String szoveg){
+        visszajelzes.setText(szoveg);
+
+        if (visszajelzesTimer.isRunning()) {
+            visszajelzesTimer.restart();
+        } else {
+            visszajelzesTimer.start();
         }
     }
 

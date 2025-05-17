@@ -154,15 +154,15 @@ public class Gombatest implements Serializable
                 honnan.fonalElszakad(f2);
                 action--;
                 checkKorvege();
-                return "Fonal elhelyezese sikertelen, mert a hova tekton egyfonalas es van rajta mar fonal";
+                return "Fonal elhelyezése sikertelen, mert a hova tekton egyfonalas és van rajta már fonal";
             }
             action--;
             checkKorvege();
-            return "Siker";
+            return "Sikeres fonal lerakás";
         }
         action--;
         checkKorvege();
-        return "Fonal elhelyezese sikertelen, mert a honnan tekton egyfonalas es van rajta mar fonal";
+        return "Fonal elhelyezése sikertelen, mert a honnan tekton egyfonalas és van rajta már fonal";
     }
 
     //ez miert itt van, miert nem a tektonban?
