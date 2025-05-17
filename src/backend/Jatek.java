@@ -180,6 +180,7 @@ public class Jatek implements Serializable {
             tmp.add(elem);
         }
         for(Tekton t:tmp){
+            t.setEletkorNoveles();
             t.fonalElszakadKoronkent();
             Tekton uj = t.tores();
             if(uj!=null){
