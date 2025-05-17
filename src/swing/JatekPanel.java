@@ -436,6 +436,15 @@ public class JatekPanel extends JPanel{
 
         mindentLetilt();
 
+        if(jatekmenet.getkorSzam()/(jatekmenet.getGombaszok().size() + jatekmenet.getBogaraszok().size()) >= 100)
+        {
+            visszajelzes.setText("Elertetek a 100. kort. Vege a Jateknak Yipie!!");
+            mentes.setEnabled(false);
+            kilepes.setEnabled(true);
+            this.getInputMap(WHEN_IN_FOCUSED_WINDOW).clear();
+            this.getActionMap().clear();
+        }
+
         // gombok frissitese
         int palyaMeret = jatekmenet.palyaMeret();
         for(int i = 0; i < palyaMeret; i++){
@@ -445,11 +454,6 @@ public class JatekPanel extends JPanel{
 
         // jelenlegi jatekos frissitese
         jelenlegiJatekos.setText(jatekmenet.jelenlegiJatekosNeve());
-
-        if(jatekmenet.getkorSzam()/(jatekmenet.getGombaszok().size() + jatekmenet.getBogaraszok().size()) >= 100)
-        {
-            visszajelzes.setText("Elertetek a 100. kort. Vege a Jateknak Yipie!!");
-        }
     }
 
     public void bogarakListazasa(){
