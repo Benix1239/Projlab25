@@ -1,8 +1,8 @@
 package backend;
 
-import java.io.Serializable;
 
-public class Keseru extends Spora implements Serializable 
+
+public class Keseru extends Spora
 {
     /**
      * Konstruktor, amely l�trehozza a Keseru sp�r�t egy adott gomb�szhoz.

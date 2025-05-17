@@ -1,8 +1,7 @@
 package backend;
 
-import java.io.Serializable;
 
-public class Benito extends Spora implements Serializable 
+public class Benito extends Spora
 {
     /**
      * Konstruktor, amely l�trehozza a Benito sp�r�t egy adott gomb�szhoz.

@@ -1,8 +1,8 @@
 package backend;
 
-import java.io.Serializable;
 
-public class Lassito extends Spora implements Serializable 
+
+public class Lassito extends Spora
 {
     /**
      * Konstruktor, amely l�trehozza a Lassito sp�r�t egy adott gomb�szhoz.
