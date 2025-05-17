@@ -74,7 +74,7 @@ public class Jatek implements Serializable {
         jatekter = new Palya();
         jatekosIndex = 0;
         this.mainFrame = mainFrame;
-        if(jatekosNevek.get(0).toLowerCase().contains("teszt"))
+        if(jatekosNevek.get(0).toLowerCase().contains("teszt") && jatekosNevek.size()==4)
         {
             alapJatekPalya(jatekosNevek);
         }
@@ -997,7 +997,7 @@ public class Jatek implements Serializable {
             kezdo.gombatest = gombaszok.get(i).getTestek().get(0);
         }
 
-        for(int i = 0; i < gombaszok.size(); i++)
+        for(int i = 0; i < bogaraszok.size(); i++)
         {
             Tekton kezdo;
             do
