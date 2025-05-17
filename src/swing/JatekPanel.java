@@ -401,6 +401,22 @@ public class JatekPanel extends JPanel{
                 command = new Command("fonallalOsszekotott", jatekmenet, sajatMaga(),infoFrame);
             }
         });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("U"), "tektonHelyeTombben");
+        this.getActionMap().put("tektonHelyeTombben", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                command = new Command("tektonHelyeTombben", jatekmenet, sajatMaga(),infoFrame);
+            }
+        });
+
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released U"), "felengedveU");
+        this.getActionMap().put("felengedveU", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frissit();
+            }
+        });
     }
 
     
@@ -536,6 +552,12 @@ public class JatekPanel extends JPanel{
 
     public void setCommandNull(){
         command = null;
+    }
+
+    public void tektonGombokSzama(){
+        for(int i = 0; i < jatekmenet.palyaMeret(); i++){
+            tektonGombok.get(i).setText("" + i);
+        }
     }
 
 }

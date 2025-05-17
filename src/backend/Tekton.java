@@ -234,9 +234,8 @@ public class Tekton implements Serializable
 			for(int i=0;i<sporaEsely;i++){								
 				uj.add(sporak.get(i));									///Vegig megyunk ezen tekton spora listajan, es elso random szamu elemet kigyujtjuk, hogy atadhassuk
 			}
-			return uj;
 		}
-		return null;
+		return uj;
 	}
 
 	/*
