@@ -183,7 +183,7 @@ public class Jatek implements Serializable {
             t.setEletkorNoveles();
             t.fonalElszakadKoronkent();
             Tekton uj = t.tores();
-            if(uj!=null){
+            if(uj!=null && jatekter.getPalya().size() < 625){
                 jatekter.getPalya().add(uj);
             }
         }
