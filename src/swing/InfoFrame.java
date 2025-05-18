@@ -1,16 +1,14 @@
 package swing;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import backend.Bogarasz;
 import backend.Gombasz;
 import backend.Jatek;
 import backend.Jatekos;
 import backend.Tekton;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class InfoFrame extends JFrame {
     
@@ -96,7 +94,9 @@ public class InfoFrame extends JFrame {
             case "L":
                 cardLayout.show(cardPanel, "tekton");
                 break;
-    
+            case "C":
+                cardLayout.show(cardPanel, "pontok");
+                break;
             default:
                 cardLayout.show(cardPanel, "pontok");
                 break;
