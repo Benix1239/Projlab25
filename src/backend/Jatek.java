@@ -1009,8 +1009,10 @@ public class Jatek implements Serializable {
     
         boolean[] returnValue = new boolean[palyaMeret()]; 
 
-        for (Tekton t : lepesek) {
-            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        if (lepesek!=null) {
+            for (Tekton t : lepesek) {
+                returnValue[jatekter.getPalya().indexOf(t)] = true;
+            }   
         }
     
         return returnValue;
