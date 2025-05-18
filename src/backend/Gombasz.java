@@ -33,6 +33,10 @@ public class Gombasz extends Jatekos
         for(Gombatest gt : testek){
             gt.korElejeInicializalas();
         }
+        
+        if(mindenGombaKorVege()){
+            korVege = true;
+        }
     }
     
     /**
