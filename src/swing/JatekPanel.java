@@ -443,6 +443,8 @@ public class JatekPanel extends JPanel{
 
     public void frissit(){
 
+        infoFrame.frissit();
+
         mindentLetilt();
 
         // gombok frissitese
@@ -577,7 +579,7 @@ public class JatekPanel extends JPanel{
 
     public void tektonGombokSzama(){
         for(int i = 0; i < jatekmenet.palyaMeret(); i++){
-            tektonGombok.get(i).setText("" + i);
+            tektonGombok.get(i).setText("" + (i+1));
         }
     }
 
@@ -591,4 +593,7 @@ public class JatekPanel extends JPanel{
         }
     }
 
+    public void infoFrameFrissit(){
+        infoFrame.frissit();
+    }
 }

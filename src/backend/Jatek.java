@@ -169,6 +169,7 @@ public class Jatek implements Serializable {
             palyaKezeles();
             }
             korSzam++;
+            jatekosKorvege();
         }
         else
         {

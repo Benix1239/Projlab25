@@ -19,7 +19,7 @@ public class InfoFrame extends JFrame {
     private JPanel cardPanel;
     private CardLayout cardLayout;
     private Jatek jatekmenet;
-    private String mode;
+    private String mode = "pontok";
     private Tekton kivalasztott;
 
     public String getMode(){
@@ -71,9 +71,10 @@ public class InfoFrame extends JFrame {
         if (aktualis instanceof Gombasz g) {
             gombaszPanel.frissit(g);
         } else if (aktualis instanceof Bogarasz b) {
-                bogaraszPanel.frissit(b);
+            bogaraszPanel.frissit(b);
         }
         tektonPanel.frissit(kivalasztott,jatekmenet.getGombaszok(),jatekmenet.getBogaraszok());
+        modeValtozas(this.mode);
         
     }
 
@@ -100,8 +101,6 @@ public class InfoFrame extends JFrame {
                 cardLayout.show(cardPanel, "pontok");
                 break;
         }
-    
-        frissit();
     }
     
     public void setTektonInfo(Tekton t){

@@ -25,7 +25,7 @@ public class Gombatest implements Serializable
     public Gombatest(Tekton hely, Gombasz tartozik) {
         this.hely = hely;
         this.tartozik = tartozik;
-        maradt = 20;
+        maradt = 10;
         spora = null;
         korVege = true;
         action = 0;

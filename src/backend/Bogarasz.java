@@ -20,9 +20,7 @@ public class Bogarasz extends Jatekos
 
     
     public void korElejeInicializalas(){
-        /*for(Bogar bogar : bogarak){
-            bogar.beallit();
-        }*/
+        korVege= mindenBogarVege();
     }
 
     /**

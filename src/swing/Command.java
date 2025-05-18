@@ -181,13 +181,8 @@ public class Command {
                                 }
                             }
 
-                            if(hanyIgaz == 1){
-                                addPAram("tekton" + tektonIndex);
-                            }
-                            else{
-                                jatekPanel.tektonSzinAllitas(honnanRakhat, Color.GREEN);
-                                jatekPanel.tektonEngedelyezes(honnanRakhat);
-                            }
+                            jatekPanel.tektonSzinAllitas(honnanRakhat, Color.GREEN);
+                            jatekPanel.tektonEngedelyezes(honnanRakhat);
                         }
 
                         if(paramaterek.size() == 3){
@@ -232,6 +227,8 @@ public class Command {
                     jatekPanel.tektonGombokSzama();
                     break;
             }
+
+            jatekPanel.infoFrameFrissit();
         }catch(IllegalArgumentException e){
             jatekPanel.setVisszajelzes(e.getMessage());
         }
