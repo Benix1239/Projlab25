@@ -815,6 +815,16 @@ public class Jatek implements Serializable {
         gombaszok.get(1).gombatestHozzaad(gtKet);
         negy.gombatest = gtKet;
 
+        Fonal fonal10 = new Fonal(elso,gombaszok.get(0));
+        Fonal fonal11 = new Fonal(negy,gombaszok.get(0));
+        negy.addFonal(fonal10);
+        elso.addFonal(fonal11);
+
+        Fonal fonal20 = new Fonal(elso,gombaszok.get(1));
+        Fonal fonal21 = new Fonal(negy,gombaszok.get(1));
+        negy.addFonal(fonal20);
+        elso.addFonal(fonal21);
+
         bogaraszok.get(0).bogarHozzaad(ketto);
         ketto.addSpora(new Benito(gombaszok.get(0)));
         
@@ -988,17 +998,37 @@ public class Jatek implements Serializable {
         return returnString;
     }
 
-    public ArrayList<String> bogarMitTudElragni(String bogarasz, String bogar) {
+    public ArrayList<String> bogarMitTudElragni(String bogarasz, String bogar, String hova) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        Tekton tektonObj = tektonFromString(hova);
         
 
         ArrayList<String> returnString = new ArrayList<>();
         for (int i = 0; i < bogarObj.getHelyzet().getOsszekoto().size(); i++) {
-            returnString.add("fonal" + i);
+            if (bogarObj.getHelyzet().getOsszekoto().get(i).getHova()==tektonObj) {
+                returnString.add(bogarObj.getHelyzet().getOsszekoto().get(i).getTartozik().getNev());   
+            }
         }
 
         return returnString;
+    }
+
+    public String FonalKeres(String bogarasz, String bogar, String hova, String tartozik){
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        Tekton tektonObj = tektonFromString(hova);
+        
+        List<Fonal> fonalak = bogarObj.getHelyzet().getOsszekoto();
+
+        for (int i = 0; i < fonalak.size(); i++) {
+            Fonal f = fonalak.get(i);
+            if (f.getHova().equals(tektonObj) && f.getTartozik().getNev().equals(tartozik)) {
+                return "fonal" + i;
+            }
+        }
+
+        return null;
     }
 
     public boolean[] bogarHovaLephet(String bogarasz, String bogar) {
