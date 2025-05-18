@@ -107,18 +107,34 @@ public class Command {
                         else if(paramaterek.size()==1){
                             jatekPanel.elsoComboboxEnabled(false);
                             jatekPanel.tektonGombokEnabled(false);
-                            jatekPanel.masodikComboboxElemek(jatekmenet.bogarMitTudElragni("Koron levo bogarasz",paramaterek.get(0)));
-                            jatekPanel.masodikComboboxEnabled(true);
+                            jatekPanel.masodikComboboxEnabled(false);
                             
                             boolean[] hovamegy = jatekmenet.bogarHovaLephet("Koron levo bogarasz", paramaterek.get(0));
-                            jatekPanel.tektonSzovegAllitas(hovamegy, jatekmenet.bogarMitTudElragni("Koron levo bogarasz",paramaterek.get(0)));
-                        
+                            jatekPanel.tektonSzinAllitas(hovamegy, Color.blue);
+                            jatekPanel.tektonEngedelyezes(hovamegy);
+
                             boolean[] holvan = jatekmenet.bogarHovaAll("Koron levo bogarasz", paramaterek.get(0));
                             jatekPanel.tektonSzinAllitas(holvan, Color.GREEN);
                         }
                         else if(paramaterek.size()==2){
-                            jatekmenet.ragas("Koron levo bogarasz", paramaterek.get(0),paramaterek.get(1));
-                            jatekPanel.setCommandNull();
+                            ArrayList<String> lehetoseg = jatekmenet.bogarMitTudElragni("Koron levo bogarasz",paramaterek.get(0), paramaterek.get(1));
+                            lehetoseg.add("-- válassz masik tektont --");
+                            jatekPanel.elsoComboboxEnabled(false);
+                            jatekPanel.tektonGombokEnabled(false);
+                            jatekPanel.masodikComboboxElemek(lehetoseg);
+                            jatekPanel.masodikComboboxEnabled(true);
+                        }
+                        else if (paramaterek.size() == 3){
+                            if(paramaterek.get(2)=="-- válassz masik tektont --"){
+                                paramaterek.remove(2);
+                                paramaterek.remove(1);
+                                executeCommand();
+                            }
+                            else{
+                                String valasztottFonal= jatekmenet.FonalKeres("Koron levo bogarasz",paramaterek.get(0), paramaterek.get(1),paramaterek.get(2));
+                                jatekmenet.ragas("Koron levo bogarasz", paramaterek.get(0),valasztottFonal);
+                                jatekPanel.setCommandNull();
+                            }
                         }
                     }
                     break;

@@ -816,6 +816,26 @@ public class Jatek implements Serializable {
         gombaszok.get(1).gombatestHozzaad(gtKet);
         negy.gombatest = gtKet;
 
+
+        Fonal fon11 = new Fonal(ketto,gombaszok.get(0));
+        Fonal fon12 = new Fonal(ketto,gombaszok.get(1));
+        het.addFonal(fon11);
+        het.addFonal(fon12);
+        
+        Fonal fon21 = new Fonal(het,gombaszok.get(0));
+        Fonal fon22 = new Fonal(het,gombaszok.get(1));
+        ketto.addFonal(fon21);
+        ketto.addFonal(fon22);
+
+        Fonal fon31 = new Fonal(ketto,gombaszok.get(0));
+        elso.addFonal(fon31);
+        Fonal fon41 = new Fonal(elso,gombaszok.get(0));
+        ketto.addFonal(fon41);
+
+
+        het.addSzomszed(ketto);
+        ketto.addSzomszed(het);
+
         bogaraszok.get(0).bogarHozzaad(ketto);
         ketto.addSpora(new Benito(gombaszok.get(0)));
         
@@ -989,17 +1009,37 @@ public class Jatek implements Serializable {
         return returnString;
     }
 
-    public ArrayList<String> bogarMitTudElragni(String bogarasz, String bogar) {
+    public ArrayList<String> bogarMitTudElragni(String bogarasz, String bogar, String hova) {
         Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
         Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        Tekton tektonObj = tektonFromString(hova);
         
 
         ArrayList<String> returnString = new ArrayList<>();
         for (int i = 0; i < bogarObj.getHelyzet().getOsszekoto().size(); i++) {
-            returnString.add("fonal" + i);
+            if (bogarObj.getHelyzet().getOsszekoto().get(i).getHova()==tektonObj) {
+                returnString.add(bogarObj.getHelyzet().getOsszekoto().get(i).getTartozik().getNev());   
+            }
         }
 
         return returnString;
+    }
+
+    public String FonalKeres(String bogarasz, String bogar, String hova, String tartozik){
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj, bogar);
+        Tekton tektonObj = tektonFromString(hova);
+        
+        List<Fonal> fonalak = bogarObj.getHelyzet().getOsszekoto();
+
+        for (int i = 0; i < fonalak.size(); i++) {
+            Fonal f = fonalak.get(i);
+            if (f.getHova().equals(tektonObj) && f.getTartozik().getNev().equals(tartozik)) {
+                return "fonal" + i;
+            }
+        }
+
+        return null;
     }
 
     public boolean[] bogarHovaLephet(String bogarasz, String bogar) {
@@ -1010,10 +1050,23 @@ public class Jatek implements Serializable {
     
         boolean[] returnValue = new boolean[palyaMeret()]; 
 
-        for (Tekton t : lepesek) {
-            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        if (lepesek!=null) {
+            for (Tekton t : lepesek) {
+                returnValue[jatekter.getPalya().indexOf(t)] = true;
+            }   
         }
     
+        return returnValue;
+    }
+
+    public boolean[] jelenlegiTektonok() {
+    
+        boolean[] returnValue = new boolean[palyaMeret()]; 
+
+        for (Tekton t :jatekter.getPalya()) {
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        }
+
         return returnValue;
     }
     

@@ -544,6 +544,8 @@ public class JatekPanel extends JPanel{
         }
     }
 
+    
+
     public void tektonSzovegAllitas(boolean[] tektonok, ArrayList<String> a ){
         int j=0;
         for(int i = 0; i < tektonok.length; i++){
