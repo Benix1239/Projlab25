@@ -815,15 +815,25 @@ public class Jatek implements Serializable {
         gombaszok.get(1).gombatestHozzaad(gtKet);
         negy.gombatest = gtKet;
 
-        Fonal fonal10 = new Fonal(elso,gombaszok.get(0));
-        Fonal fonal11 = new Fonal(negy,gombaszok.get(0));
-        negy.addFonal(fonal10);
-        elso.addFonal(fonal11);
 
-        Fonal fonal20 = new Fonal(elso,gombaszok.get(1));
-        Fonal fonal21 = new Fonal(negy,gombaszok.get(1));
-        negy.addFonal(fonal20);
-        elso.addFonal(fonal21);
+        Fonal fon11 = new Fonal(ketto,gombaszok.get(0));
+        Fonal fon12 = new Fonal(ketto,gombaszok.get(1));
+        het.addFonal(fon11);
+        het.addFonal(fon12);
+        
+        Fonal fon21 = new Fonal(het,gombaszok.get(0));
+        Fonal fon22 = new Fonal(het,gombaszok.get(1));
+        ketto.addFonal(fon21);
+        ketto.addFonal(fon22);
+
+        Fonal fon31 = new Fonal(ketto,gombaszok.get(0));
+        elso.addFonal(fon31);
+        Fonal fon41 = new Fonal(elso,gombaszok.get(0));
+        ketto.addFonal(fon41);
+
+
+        het.addSzomszed(ketto);
+        ketto.addSzomszed(het);
 
         bogaraszok.get(0).bogarHozzaad(ketto);
         ketto.addSpora(new Benito(gombaszok.get(0)));
@@ -1045,6 +1055,17 @@ public class Jatek implements Serializable {
             }   
         }
     
+        return returnValue;
+    }
+
+    public boolean[] jelenlegiTektonok() {
+    
+        boolean[] returnValue = new boolean[palyaMeret()]; 
+
+        for (Tekton t :jatekter.getPalya()) {
+            returnValue[jatekter.getPalya().indexOf(t)] = true;
+        }
+
         return returnValue;
     }
     
