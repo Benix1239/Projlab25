@@ -831,7 +831,6 @@ public class Jatek implements Serializable {
         Fonal fon41 = new Fonal(elso,gombaszok.get(0));
         ketto.addFonal(fon41);
 
-
         het.addSzomszed(ketto);
         ketto.addSzomszed(het);
 

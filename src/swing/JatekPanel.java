@@ -338,6 +338,15 @@ public class JatekPanel extends JPanel{
             }
         });
 
+        this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("C"), "pont");
+        this.getActionMap().put("pont", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainFrame.getInfoFrame().modeValtozas("C");
+
+            }
+        });
+
         this.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("E"), "gombaszEler");
         this.getActionMap().put("gombaszEler", new AbstractAction() {
             @Override
