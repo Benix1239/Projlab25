@@ -83,9 +83,7 @@ public class Gombasz extends Jatekos
         }
 
         for(Tekton t : palya){
-            if(!elerhetok.contains(t)){
-                t.megSeHalMeg();
-            }
+            t.megSeHalMeg();
         }
     }
 

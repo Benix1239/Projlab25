@@ -299,6 +299,9 @@ public class Tekton implements Serializable
 
 			for (Fonal fonali : fonalak) {
 				if (fonali.getHova() == this && fonal.getTartozik() == g) {
+					if(hova instanceof EletbenTarto){
+						hova.addMegseHalMeg(fonali);
+					}
 					hova.osszekoto.remove(fonali);
 					break;
 				}
@@ -306,6 +309,11 @@ public class Tekton implements Serializable
 		}
 		
 	}
+
+	/*
+	 * @brief Eletben tarto tektonban felul irva
+	 */
+	public void addMegseHalMeg(Fonal f) {}
 
 	/*
 	 * @brief Meghatarozza hogy az adott tektonon hany daraab fonala van egy adott gombasznak

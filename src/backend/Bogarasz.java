@@ -33,8 +33,8 @@ public class Bogarasz extends Jatekos
                 return false;
             }
         }
-        for(Bogar bogar : bogarak){
-            bogar.korVegeEmeszt();
+        for(int i = 0; i < bogarak.size(); i++){
+            bogarak.get(i).korVegeEmeszt();
         }
         return true;
     }

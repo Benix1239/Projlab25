@@ -92,6 +92,9 @@ public class Gombatest implements Serializable
      * @return boolean.
      */
     public boolean tudFonalatRakni(){
+        if(action == 0){
+            return false;
+        }
         Set<Tekton> dfsEredmeny = dfs();
         for(Tekton t : dfsEredmeny){
             if(tartozik.hovaLehetosegek(t).size() != 0){

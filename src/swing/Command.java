@@ -40,7 +40,7 @@ public class Command {
                     if (paramaterek.isEmpty()) {   
                         infoFrame.modeValtozas("L");
                     } else {
-                        Tekton valasztott = jatekmenet.tektonFromString(paramaterek.getLast());
+                        Tekton valasztott = jatekmenet.tektonFromString(paramaterek.get(paramaterek.size()-1));
                         infoFrame.setTektonInfo(valasztott);
                         infoFrame.frissit();
                     }

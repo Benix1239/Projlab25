@@ -73,6 +73,8 @@ public class MainFrame extends JFrame {
     //infoFrame bekapcsolasa
     public void infoFrameBekapcs() {
         infoFrame.setJatekmenet(this.jatekmenet);
+        infoFrame.setSize(500,200);
+        infoFrame.setLocation(0,0);
         infoFrame.frissit();
         infoFrame.setVisible(true);
     }
@@ -103,7 +105,7 @@ public class MainFrame extends JFrame {
             String fajlNev = "mentes" + mentesSzam + ".txt";
 
             // NINCS új példány itt
-             FileInputStream filetartalom = new FileInputStream(fajlNev);
+            FileInputStream filetartalom = new FileInputStream(fajlNev);
             ObjectInputStream in = new ObjectInputStream(filetartalom);
             jatekmenet = (Jatek) in.readObject(); // vagy Jatekmenet
             in.close();
@@ -113,12 +115,10 @@ public class MainFrame extends JFrame {
             // új játékpanel példányosítása a betöltött játékmenettel
             jatekPanel = new JatekPanel(this, jatekmenet, infoFrame);
             cardPanel.add(jatekPanel, "jatekPanel");
-            cardLayout.show(cardPanel, "jatekPanel");
             cardPanel.revalidate();
             cardPanel.repaint();
-            setSize(1400, 1000);
-            setLocationRelativeTo(null);
             jatekPanel.frissit();
+            jatekPanelBekapcs();
             infoFrameBekapcs();
             legendFrameBekapcs();
 
@@ -133,11 +133,11 @@ public class MainFrame extends JFrame {
         infoFrame = new InfoFrame(jatekmenet);
     }
 
-    //TODO
+    
     public void jatekPanelBekapcs(){
         cardLayout.show(cardPanel, "jatekPanel");
         setSize(1400, 1000);
-        setLocationRelativeTo(null);
+        setLocation(500,0);
     }
 
     // jatekMenet letrehozasa uj jatek eseten. Parameterkent megkapja az uj jatekosok neveit
@@ -163,6 +163,7 @@ public class MainFrame extends JFrame {
     public void legendFrameBekapcs()
     {
         legendFrame = new LegendFrame();
+        legendFrame.setLocation(120,200);
         legendFrame.setVisible(true);
     }
     public void legendFramekikapcs()

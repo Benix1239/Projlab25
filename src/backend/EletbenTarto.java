@@ -1,19 +1,21 @@
 package backend;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 /*
  * @class EletbenTarto class
  * @brief Az EletbenTarto tektonokat kezeli (Ennek a tekton eletben tartja a gombatesthez nem kapcsolodo fonalakat)
  */
 public class EletbenTarto extends Tekton {
-    private ArrayList<Fonal> nemHalMegLista; ///A majdan feltamasztani kivant fonalak listaja
+    private Set<Fonal> nemHalMegLista; ///A majdan feltamasztani kivant fonalak listaja
 
     /*
      * @brief Parameter nelkuli konstruktor
      */
      public EletbenTarto(){
         super();    ///Az ososztaly parameter nelkuli konstruktorat hivja
-        nemHalMegLista=new ArrayList<Fonal>();
+        nemHalMegLista=new HashSet<Fonal>();
     }
 
      /*
@@ -23,7 +25,7 @@ public class EletbenTarto extends Tekton {
      */
     public EletbenTarto(ArrayList<Spora> spo, ArrayList<Tekton> szom){
         super(spo,szom);
-        nemHalMegLista=new ArrayList<Fonal>();
+        nemHalMegLista=new HashSet<Fonal>();
     }
 
     /*
@@ -66,16 +68,23 @@ public class EletbenTarto extends Tekton {
 
         if(nemHalMegLista.size()>0){
 
-            for(int i = 0 ;i < nemHalMegLista.size();i++){
+            ArrayList<Fonal> nemHalMegLista2 = new ArrayList<>(nemHalMegLista);
 
-                osszekoto.add(nemHalMegLista.get(i));
-                Gombasz g = nemHalMegLista.get(i).getTartozik();
-                Tekton hova= nemHalMegLista.get(i).getHova();
+            for(int i = 0 ;i < nemHalMegLista2.size();i++){
+
+                osszekoto.add(nemHalMegLista2.get(i));
+                Gombasz g = nemHalMegLista2.get(i).getTartozik();
+                Tekton hova= nemHalMegLista2.get(i).getHova();
 
                 hova.addFonal(new Fonal(this, g));
             }
         }
         nemHalMegLista.clear();
+    }
+
+    @Override
+    public void addMegseHalMeg(Fonal f) {
+        nemHalMegLista.add(f);
     }
 
     /*

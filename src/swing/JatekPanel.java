@@ -117,7 +117,6 @@ public class JatekPanel extends JPanel{
                 mainFrame.foMenuBekapcs();
                 mainFrame.legendFramekikapcs();
                 mainFrame.infoFrameKikapcs();
-                mainFrame.infoFrameKikapcs();
             }      
         });
 

@@ -171,10 +171,9 @@ public class Jatek implements Serializable {
             korSzam++;
             jatekosKorvege();
         }
-        else
-        {
-            mainFrame.frissit();
-        }
+    
+        mainFrame.frissit();
+
     }
 
     public void dicsosegMentes() {
@@ -759,7 +758,7 @@ public class Jatek implements Serializable {
         elso.szomszed.add(tizenharom);
 
 
-
+        ketto.szomszed.add(het);
         ketto.szomszed.add(elso);
         ketto.szomszed.add(tizenketto);
         ketto.szomszed.add(harom);
@@ -779,6 +778,7 @@ public class Jatek implements Serializable {
         hat.szomszed.add(harom);
         hat.szomszed.add(nyolc);
 
+        het.szomszed.add(ketto);
         het.szomszed.add(harom);
         het.szomszed.add(negy);
         het.szomszed.add(tizenegy);
@@ -832,14 +832,24 @@ public class Jatek implements Serializable {
         Fonal fon41 = new Fonal(elso,gombaszok.get(0));
         ketto.addFonal(fon41);
 
-        het.addSzomszed(ketto);
-        ketto.addSzomszed(het);
+        Fonal fon47 = new Fonal(negy,gombaszok.get(1));
+        het.addFonal(fon47);
+        Fonal fon74 = new Fonal(het,gombaszok.get(1));
+        negy.addFonal(fon74);
+
 
         bogaraszok.get(0).bogarHozzaad(ketto);
-        ketto.addSpora(new Benito(gombaszok.get(0)));
         
         bogaraszok.get(1).bogarHozzaad(het);
-        het.addSpora(new Benito(gombaszok.get(0)));
+    
+        // sporak a konnyebb tesztelhetoseg miatt
+        tizenharom.addSpora(new Benito(gombaszok.get(0)));
+        tiz.addSpora(new Sima(gombaszok.get(0)));
+        tizenketto.addSpora(new Gyorsito(gombaszok.get(0)));
+        harom.addSpora(new Lassito(gombaszok.get(0)));
+        ketto.addSpora(new Keseru(gombaszok.get(0)));
+        hat.addSpora(new Szaporodo(gombaszok.get(0)));
+
 
         jelenlegiJatekos().korElejeInicializalas();
 
