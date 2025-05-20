@@ -1068,6 +1068,27 @@ public class Jatek implements Serializable {
         return returnValue;
     }
 
+    public boolean[] bogarRagasLephet(String bogarasz, String bogar) {
+        Bogarasz bogaraszObj = bogaraszFromString(bogarasz);
+        Bogar bogarObj = bogarFromString(bogaraszObj,bogar);
+    
+        Set<Tekton> lepesek = null;
+    
+        if (bogarObj.getHelyzet().fonalKeres().size()!=0) { 
+            lepesek=new HashSet<>(bogarObj.getHelyzet().fonalKeres());
+        }
+    
+        boolean[] returnValue = new boolean[palyaMeret()]; 
+
+        if (lepesek!=null) {
+            for (Tekton t : lepesek) {
+                returnValue[jatekter.getPalya().indexOf(t)] = true;
+            }   
+        }
+    
+        return returnValue;
+    }
+
     public boolean[] jelenlegiTektonok() {
     
         boolean[] returnValue = new boolean[palyaMeret()]; 

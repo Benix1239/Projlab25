@@ -109,7 +109,7 @@ public class Command {
                             jatekPanel.tektonGombokEnabled(false);
                             jatekPanel.masodikComboboxEnabled(false);
                             
-                            boolean[] hovamegy = jatekmenet.bogarHovaLephet("Koron levo bogarasz", paramaterek.get(0));
+                            boolean[] hovamegy = jatekmenet.bogarRagasLephet("Koron levo bogarasz", paramaterek.get(0));
                             jatekPanel.tektonSzinAllitas(hovamegy, Color.blue);
                             jatekPanel.tektonEngedelyezes(hovamegy);
 
